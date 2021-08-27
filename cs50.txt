@@ -1,0 +1,483 @@
+WEEK 1:
+if you want to know change the character to it's asci number then do this :
+int a = (int) string[i]; which is called casting and this is explicit and you can do it implicitly like this:int a = string[i];
+stuck with any method just type in man function
+when you do replace void with int argc int argv[] in the main function you have the ability to put words after the ./ in the terminal
+97 for a and 65 for A
+
+WEEK 2:
+
+bubble sort : is swapping adjacent pairs of elements as long as they aren't sorted and it's an n^2 algorithm
+
+insertion sort : is making space for sorted elements and shifting unsorted elements back where they belong and it's an n^2 algorithm
+
+selection sort : searching for the smallest element and shifting it and it's a n^2 algorithm
+
+mege sort : dividing the arrays in halves and then merging to sort and it's a nlogn algorithm
+
+linear search : looking for a specific element and then done when we find it and it's an n algorithm
+
+WEEK 3:
+
+compiling process is divided into 
+preprocessing 
+compiling 
+assembling 
+linking
+
+~ symbol is called tilda and it's a notation for the home folder 
+
+ls a linux command stand for "list" and it shows you the files in the folder you are in 
+
+./ means that you are working in the current folder
+
+cd is a linux command stand for "change director" and it allows you to move between folders 
+
+rm is a linux command stands for "remove" and it deletes files and folders
+
+mkdir linux command allows you to create directories and it stands for "make directory"
+
+rmdir removes directories 
+
+check50 allows you to check your code correctness
+
+debug50 ./"your program name" allows you to use breaking points to check your code step by step
+
+char *"variable name" is called a pointer and it shows you where this character started and it's the same as string 
+
+!"vraible" checks if the variable is empty or not
+
+malloc a memmory allocation method example
+malloc(strlen(s)+1) and the syntax between the parathes is the size of the required memory and it returns a pointer to where the memory is 
+so if you want to store it you have to do this for example int *i = malloc(sizeof(int)) and then to assgin it to something you do this *i = 4
+
+strcpy("destination variable" , "source variable") copies a string from a source to destination
+
+free(malloced varible name) frees the memory allocated to the variable , deletes the variable don't use unless you have something malloced 
+
+scanf("%i",  &x) takes an integer input from the user and the and operator meaning correspond to the x's address , side note "arrays can be treated as pointer and you can simply pass an array without &" IN general if you want to get the address of a variable do & beofre it 
+
+pointers are the addreses of where any variable is stored if you want to know the pointer address pritf("%p\n", any varible)
+
+the format of the pointer address is hexadecimal 
+
+after defining a pointer if you do *pointer then it's going to get you the value stored at that pointer
+
+typedef struct{
+	char*name;
+	char*dorm;
+
+}
+name of struct "student"
+access the name and dorm through student.name and student.dorm
+
+recursion is the process where the function calls itself 
+
+every recursive function has two casses a BASE case which terminates the function and RECURSIVE case which will actually cause the function to recurse
+
+defining a recursive function is as follows 
+
+int fact(int n)
+{   
+    //base case
+	if (n==1)
+	{
+      return 1;
+	}
+	//recursive case
+	else
+	{
+	  return n*fact(n-1);
+	}
+}
+
+
+RAM is just a big array where the size of each element is a byte
+
+derefrencing is actually going to the address of a data to modify or inspect it *pointer 
+
+if A is a pointer and then you do this *A then you are going to set this pointer to a specific data type
+
+oxhexadcimal is just only a sign to map the difference between binary and hexadecimal
+
+file operation are "r" for read , "w" for write or overwritting , "a" for abend which means go to the end of the file and continue and you use the file oeprations with fopen method like this : FILE *ptr = fopen("bodi.txt", "a")
+
+fclose(<file pointer>) closes a file
+
+char ch = fgetc(<file pointer>) and it allows for getting a character from a file and remember that the pointer must from an fopen function which performed reading and not writing 
+
+cat "filename" allows for linux to print out the content of this file on the screen
+
+EOF end of file
+
+fputc("what you want to put", pointer) used for abending or writing to a file depending on your pointer function
+
+cp is a copy command that copies data from on file into another
+
+fread("pointer to location where we store info 'aka buffer' ", "size of info" , "how many units of info ", source pointer of file) and it's used to copy characters from files and output them into any array 
+example fread (arr, sizeof(int), 10 , ptr) and that means that we are going to take 10 ints which means 40 bytes and then we put them an array we declared previously called arr
+
+if we have arr[10] if you type arr only that is the same meaning of *arr which is just the address of the first byte of the array
+
+fwrite ("buffer pointer ", size of data , data quantity , destination pointer ) opposite of fread
+
+dynamic allocated memory is memory that is assigned dyncamically during runtime not while compiling and it comes from the heap 
+
+stack is compiled programs memory 
+
+touch is a linux command to create a file 
+
+a stack frame is created whenever you have a function and it stores the function varaibles and data 
+
+stack frames on the top are the active frames which are doing all the work and when they finish work they are popped and other functions come in place
+
+call stack is a term shows how functions are called 
+
+headers of bmp images contain it's metadata and bmp has two headers called bitmap file header and bitmapfileheader 
+
+bitmap image file format is literally a bit map and is pixel is represented by a number of bits
+
+diff is a linux command that compares files line by line
+
+the first two bytes of a BMP file defines the type of the file
+
+fputc(chr , destination) types a character in a specific place
+
+fseek(the file pointer you are seeking , the bytes you are going to seek , SEEK_CUR) SEEk_CUR acctually tells the program to start from the begging and move the given number of bytes
+
+WEEK 4
+
+valgrind is a linux command that comes before ./"your program" and it tells you where a memory leak is 
+
+rubber duck debugging is when you talk to yourself trying to figure out your code and what's wrong with it
+
+memory is devided to text , heap and stack and in the text which is the upper part of the memory lies all the zeroes and ones of your program
+
+typedef struct node 
+{
+	int n;
+	struct node *next;
+
+}
+node;
+that means that we are creating a node that is storing an int and the address of the next int ;
+
+keys for information are the places where these info is stored and value is the actual data stored at that key 
+
+hash tables' key is the hash code of the daa , and the balue is linked to the hash of that code
+
+tries store data suing structures and pointers together to store data differently and it mainly depends on the start of the tri cause if we can't find the start then the whole tri is useless and we move down a key so that we can find the data we are looking for
+
+singly-linked lists are composed of nodes and those nodes contain a value "like an integer or a character " plus the pointer to another node of the same type and when creating the node you must have a temporary name so that you can refrence the next node of the same type, you must keep track of the first element in a single linked list
+
+collision is something that happens when two pieces of info in a hash table yield out the same hash code which means that they got stored in the same place , and the solution is called linear probing which adds the double element in the same place of the previous hash value + 1 and if still not availaible then + 2 and so on , too much of linear probing causes clustering which means that you have to go far away from an alreading hashed value so that you can input a new value 
+
+
+chainig is storing linked lists in an array instead of seprate variables
+
+typedef is definig the name of a new type for later use
+
+structs are like objects and they have proprties on their own
+
+hash tables are just an array of linked lists
+
+WEEK 5:
+
+
+the structure of an html page is as following
+<html>
+   <head>
+      <title>
+        hello world
+      </title>
+   </head>
+   <body>
+      world, hello
+   </body>
+</html>
+
+some common HTML tage 
+<b> , </b> text between those tags indicate a bold font
+<i> , </i> text between those indicate an italic font
+<u>, </u> indicate an underlined font
+<p>,</p> paragraph tags
+<hx>,</hx> indicates header tags
+<ol>,</ol> indicates an ordered list and between them is an <li>
+<ul>,</ul> indicates an unordered list and between them is an <li> too
+<table>,</table> indicates a table and between it should be <tr>,</tr> which 
+is a Table Row and then in each table row there is a Table Data <td>,</td>
+
+
+<form>,</form> is a form that allows you to take data from the user and inside
+of it is <input name = x type= y/> defines a field within <form > where
+x is the identifier of the input and y is it's type
+
+<div>,</div> means divison of a page or a new part in a page but it has no
+actual visual effect in the screen on it's own
+
+<a href= ""> </a> is a hyperlink that takes you to a webpage , it's a link text
+
+at the start of an html file <!DOCTYPE html> indicates that HTML5 markups 
+could be used 
+
+<img src = ""/> is a self closing tag to include an image
+
+<!-- comment --> is to include a comment in html like or you can do */ which
+is way better
+
+<link hrf = ""  rel = "stylesheet"/> links a css style sheet 
+
+DHCP dynamic host configuration protocol
+
+so there are global DNS systems and local ones and both are connected together
+all that global DNS does is that it has the addresses of the local ones 
+so that they could be updated 
+
+routers are liked nodes between connections that ROUTES the data where it should
+go
+
+ip addresses are like the paths that a packet should take to get somewhere specific
+
+TCP is like the identifier of the packets that are routed through the ip and
+it tells the ip which packet is for which service and we do that through the 
+port number which lies next to the ip address
+
+
+OTHER thing that the TCP does is that it orders the packets of the ip address
+in order to be reconstructed when it's recieved by the other machine and it
+guarntees delivery by sending back a request to the sender ip to ask for 
+missing packet
+
+javascript is the code that runs on YOUR machine not on the server side
+
+bootstrap is a tool that implements a lot of css libraries
+
+WEEK 6:
+
+
+remember that tcp/ip looks like this 192.168.1.1:8080   
+
+remember that the ? after the url name means that's it for the url and here
+comes the user input
+
+the server replies back with something like this to a website requeste
+http/1.1 200 or http/1.1 301 
+and here 200 means ok and 301 means moved permenantly
+
+print(f "hello,{s}) means that the string is going to be formatted in a specific 
+way
+
+print(f "x/y={z:.2f}") means that we are going to print the result to the nearset 2 decimal points
+
+for i in range(3):
+     print ("hello") 
+prints out hello 3 times
+
+to create a function 
+def cough():
+   print("cough")  
+this defines a function called cought
+
+for c in s: means that we are going to loop through the string characters
+
+print(something , end= "") this defines the end of the print wether you
+want to be a \n or anything else
+
+
+string in pythons are objects with functions that you can call whenever 
+you want like string.upper which captalizes everything
+
+len(string) types the length of a string 
+
+if number NOT IN numbers : that means that it will check if the number
+exists in the array or not
+
+for i in range(): is the for loop 
+
+creating a structure is like this students = {"key name" = value , "key name" = value}
+
+to access a structure value do this 
+students['key name']
+
+to declare a list in python nums = []
+
+list comprehension nums = [for x in range(500)] declares a list of 500 elements
+
+
+nums.append() : appends a new item to the list
+
+nums.insert(the number of position of insertion, inserted element) 
+
+len(nums) : calculates the length of nums
+
+tupples are items in a list and they are never changed and their order 
+matters the most like this list = [("hello")] 
+
+you can have two iterators in a for loop as following 
+for pres, year in nums :
+
+print("IN{1},{0} took office".format(prez,year)) where 
+1 indicates year and 0 indicates prez
+
+
+dictionaries are like hashtables in c and it's defined like this 
+
+pizzas = {"cheese": 9, "peeroni" :10} and they are refrenced later as keys
+like this pizzas["chesse"] = 8 and this changes chesse to 8
+and you can add a key like this pizza["bacon"] = 8
+
+for i in pizzas : iterates over the keys
+
+for i in pizzas.items() : iterates over the values and it
+doesn't return items in order
+
+for pie,price in pizzas.items(): it iterates over the key and the 
+value 
+
+print ("Awhole" + str(price)) it changes price to a string 
+to concatenate it
+
+if__name__ == "__main__": main () 
+allows code to be runk
+
+
+** power 
+
+defining an object
+
+class Student():
+#here is the initialaization of the object
+def __init__(self,name,id)
+slef.name = name
+self.id = id 
+#here is a method 
+def changeID(self,id):
+self.id = id 
+#here is another method
+print("{}- {}".format(self.name,self.id))
+
+
+from cs50 import something
+
+week 7:
+
+the logic behind any website is called LOGIC
+and the estatics are called VIEW
+anything database related is called MODEL 
+and the total website is made up of MVC
+
+in html if you want a drop down menu you can do 
+<select></select> and <option> is between 
+
+<form> takes an "action" attribute the determines where the form is going 
+to be submitted
+
+and in form you can have an <input > and it has the proprties like 
+"name" , "type" , "placeholder" and the third is actually to highlight 
+the input form 
+
+frame works are actually prewritten code that makes it easier to create 
+something new
+
+to import flask do this 
+from flask import Flask 
+render_template is a function in flask that renders or creates other pages for you
+you can import it like this
+from flask import render_template
+if you want to turn a file into a web application you do this 
+at the begging of the file app = Flask(__name__)
+@app.route("/") : defines a route that the system listens too 
+and what you write under app.route is what happens when the user 
+open the route 
+request.args.get("first value" , second) "first value" is the name of the 
+paramter that we are going to get it's value from 
+the http request  , and the second can be used to be as a default value 
+if the first value paramter wasn't provided by the user 
+
+In HTML if you want to have a variable do this {{ variable }}
+
+unlike c and clang the errors of flask are at the bottom of the console 
+
+
+if you are creating a webage with a specific format then have a layout page
+and in this page have the common format accross pages and have this
+{% block body %}{% endblock%} which is goin to copy any code in other pages
+in the place that you specified in the layout page
+
+
+then if you want to include the layout in another file just do this 
+{% extends "layout.html" %} this extends the format that you assigned in 
+the layout 
+{% block body %}
+// coddeee 
+{% endblock %} this code then goes between the body tags the layout page
+
+
+if you import smtp 
+and you use the following 
+server.login("your email " , os.getenv("your password")
+server.sendmail("mail name you came up with " , reciever email , content of the message)
+you can actually fake the name of your email to be anything else 
+
+you can create a csv file and save databases to it by 
+importing the library of csv  by "import csv"
+create a file let's say abdo.csv
+then do this in python 
+file = open ("abdo.csv",'r')
+writer = csv.writer(file)
+writer.writerow((request.form.get("name") , request.form.get("dorm"))
+file.close
+
+
+if you want to read the file then you do this 
+with open ("abdo.csv",'r') as file:
+	reader = csv.reader(file)
+	students = list(reader)
+return render_template("registered.html", students = students)
+
+if you want to read a line in a file you do this file.readline()
+
+
+string.rstrip() removes a character you want in this case \n
+
+<meta name = "viewport" content = "initial-scale=1, width - device-width">
+makes the website fits on mobile devices
+
+string.startswith() shows you the first letter of a string 
+
+jsonify is a flux method that returns a list of data you want
+jsonify(data)
+
+document.querySelector("input") searches for a specific query in the html
+document.querySelector("input").innerHtml : puts something inside an HTML 
+tag you want
+
+
+ajax allows us to refresh sections of the page and not the whole page
+using an object called XMLHTTPRequest and it's created like this 
+var xmlhttp = new XMLHttpRequest();
+then define an onreadystatechange behavior using an anonymous function
+and it has 4 states from 0 to 1 where 4 is ready for example 
+ajax.onreadystatechange = function(){
+   if (ajax.readyState == 4 && ajaxt.status ==200 {
+    $('#infodiv').html(ajax.responseText); // a jquery function that fills the IDed html property
+    }; //be careful this is java script code 
+ajax.open('GET', name + '.html',true);
+ajax.send();
+   
+
+you can assign an id to any html header 
+
+an option in the <select> menu is onchange(this.value) which is an event 
+listener that gets triggered when the menu options are changed and in this
+case this.value means that the option that triggered the change is going 
+to pass it's value in the paranthes for example:
+<select name - "staff" onchange = "cs50Info(this.value);">
+  <option value = ""> select someone: </option>
+</select> means that the select someone is going to pass "" to cs50Info
+ 
+
+
+export FLASK_APP = application.py
+export FLASK_DEBUG = 1 ,  that runs the app with the debugger active 
+flask run

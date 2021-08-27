@@ -1,0 +1,285 @@
+head -numberOfLines filename  : if you are in the same directory of 
+the file then this command is used for showing the first numberOfLines
+of the text file 
+
+tail -nubmerOfLines filename : opposite to head 
+
+nl (nubmer lines) : used for displaying text files with numbered lines  
+
+grep -B numberOFLines : shows a number of lines before the found line 
+
+sed s/mysql/MySQL/g snort.conf > snort2.conf : the sed stands for stream
+editor and it changes the word mysql to the word MySQL in the file 
+snort.conf and then renames the file to snort2.conf 
+s stands for search 
+g stands for globaly "which is the whole file" 
+if you don't inlcude the g command then it's going to only replace the 
+first instance of the mysql in the text file 
+if you want to replace a specific occurence of the word like the second
+occurence then just place 2 instead of g 
+
+more sonrt.conf : displays the whole text file in a style of a page like 
+man 
+
+less snort.conf : does the same as more but it's more powerful and faster in 
+opening up files and it lets you search for whatever you want by pressing /
+and then what you want to search for 
+if you press n "stands for next" then you can see the next occurence of your search
+
+ifconfig : allows you to interact with active network interfaces 
+
+ifconfig eth0 192.168.171.116 netmask 255.255.0.0 broadcast 192.168.1.255: changes your ip address for the eth0 interface to be 
+this address and makes your netmask this address and your broadcast to be this address
+
+
+ifconfig eth0 down
+ifconfig eth0 hw ether 00:11:22:33:44:55
+ifconfig eth0 up 
+this brings the interface down first and then changes it's mac address to be this address
+then brings back up the ethernet connection with the new mac address 
+
+dhclient eth0 : assigns a new ip address to the eth0 interface using a DHCP server 
+
+dig hackers-arise.com ns : is used for targeting the dns server of this domain 
+ns stands for name server which is what translates the website name into an ip address
+and overall this command is used to find the name servers of this domain 
+if you replace the ns with mx "short for mail exchange server) it will show you 
+the email servers associated with this website 
+
+apt : Advanced Packiging Tool 
+
+apt-cache search keyword : search in your repository for a packeage named keyword
+
+apt-get install package name : goes the the get directory and installs the package 
+
+apt-get remove snort : removes snort from the get directory 
+
+apt-get purge snort : removes snort and it's configuration files 
+
+apt-get update : updates the your get repository with new packages 
+
+apt-get upgrade : updates your repository existing packages 
+
+you can install a software with a gui like synaptic 
+
+you can install repositories from git using git clone 
+
+chown : stands for change owner 
+
+chown bob /tmp/bobsfile : this changes the permissions so that bob now owns the file
+
+chgrp : stands for change group 
+
+chgrp security newIds : this changes the permissions of newids to be accessible to the 
+group security 
+
+/user/share/hashcat : is a password cracking tool
+
+ls -l : can show you the premissions granted for each file 
+
+the permissions of files we have are the permission to read , permission to write and 
+permission to execute 
+
+if you ls -l a directory you are going to see this 
+drwx-xr-x t root root 4094 dec5 charsets
+d is the file type "directory here" and - if it's a file 
+rwx : are the permission of the root which are write ,execute and , read
+xr: permissions of the groups which is read and execute here
+x: is the permission of the user which is execute here
+5 : is the number of links
+root : is the owner
+4095: is the size
+the date : is when the file was created or last modified 
+charesets : is the name of the file 
+
+chmod 774 hashcat.hcstat changes the permission to be 
+rwx for root 
+rwx for groups 
+r-- for users 
+
+the numbers syntax for permissions of the is called the numeric method 
+
+there is another method for writing the permissions of files while is the UGO 
+stands for User ,Owner ,group method
+
+chmod u-w,u+r hashcat.hcstat : which removes the write permission from the user 
+if you want to add the permission change - to + 
+if you want to write all the permissions granted to a user use the = sign 
+
+by default all files and directories in linux permissions whise are 666 and 777
+
+rwx : those are called general purpose permissions 
+
+special permissions are SUID AND SGID which stands for set user id and set group id 
+
+/etc/shadow : this directory has all the users passwords on linux
+
+SUID : allows user to execute file under the owner's permission only and to do that 
+inlcude the number 4 before your general purpose permissions like this 4644
+
+SGID : if this bit is set then the whole group who has the permissions may execute the file
+if group individuals don't have the permission to execute it and you have to include 2 
+befor the general purpose permissions
+
+sticky bit : a permission that allows users to change the name or delete files within
+a directory but no one uses it anymore 
+
+
+find / -user root -perm -4000 : this finds all the files under the / directory where 
+the owner is root and the permissions of the file is -4000
+
+if you see something like this rwsr , that means that the SUID bit is set 
+
+ps : shows you currently active processes that you started as a user
+
+ps aux : shows all the processes running by the system not only those started by the user 
+
+top : displays processes that are taking most of the hardware 
+
+PID: Process ID 
+
+nice : lets you determine the priorty of processes with -20 being the heighst and +19 
+being the lowest
+
+renice : lets you alter the value of the priority that you gave to a process and sets 
+it as an absloute level for example
+renice 20 4888 "PID"
+
+nice -n -10 /bin/slowprocess : this increments the priority of the process to be -10 
+which is fairyly high
+
+zombie process : is a process that is consuming a lot of resources and exhibit a strange
+behaviour and maybe even freeze
+
+kill -3 PID : this kills a process and sends it's information to the disk drive
+
+kill -9 PID : this completely kills a process
+
+killall -9 processname : kills all the processes that have that name immediately 
+
+& : is for starting a process in the background like this leafpad newscript & 
+
+fg PID : moves a process to the ForeGround
+
+at : is a command that tells a process when to run once and for all like this 
+at 7:20pm 
+
+crond : is a command that tells a process of when to run repeatedly in the future like 
+once a week or once a month
+
+there are two types of variables in linux , environment variables and shell varibles 
+environment variables control how the system acts and feels to the user and the proccesses
+under it inherit it's proprties but shell variables are specific for the shells that they
+are used in 
+note : variables are key-value pairs like this key=value
+
+set | grep HISTSIZE : will show you how many commands that the shell stores 
+HISTSIZE=0 : changes the number of commands that the bash shows to be 0
+
+export HISTSIZE : this command stores the HISTSIZE forever in this case it's going to be 0
+
+ps1 variable : is an environment variable that is the user name that appears in the 
+shell prompt like root@kali by doing PS1="HELLO"
+
+most of the commands that we run on the shell are found in the bin or sbin directory 
+
+echo $PATH : shows you which path your commands are installed in 
+
+PATH=$PATH:/root/newhackingtool this adds the new hacking tool folder to your paths so that 
+you can use it later 
+
+HELLO="SHIT SHIT" : this creates a new user variable that has this value
+
+echo $variable : shows the value that the variable holds
+
+unset variable : this deletes a variable 
+
+#!/bin/bash : allows you to use the interpreter in bash
+
+./program : to execute program 
+
+read varaible : allows you to take variable value from the user
+$variable : allows you to display the variable value 
+
+nmap : is a tool that allows for you to know which ports are opened in a system that you
+are targeting 
+and this acutally allows you to know what processes are working on the system
+
+nmap -sT ip address : allows you to do a TCP scan on ip address
+
+nmap -sT ip address -p port number : this allows you to check wether a specific port 
+is open or not for example -p 3306 is mysql port
+
+nmap -sT ip address-last octet of another ip address : scans a specific range of ip addresses
+
+lossy compression : is a compression that changes the file to a smaller one but by changing
+some of it's characterestics without being noticed by the user 
+
+Tar : tape archive refrencing the old days when tapes where used to store data 
+
+tar -cvf : where c stands for create , v stands for verbose , f stands for right to the 
+following file 
+tar -cvf haker.tar hack hack1 : this COMBINES those two files in haker.tar
+
+tar -tvf haker.tar : shows you what's inside of that tar and t stands for content list
+
+tar -xvf haker.tar : extracts the file and -x stands for extract
+
+three tools for COMPRESSION with three different extensions 
+gzip , .tar,.gz,.tgz falls in between bzip and compress
+bzip2 , .tar.bz2 is the slowest but with the least size resultant file
+compress , .tar.z is the fastest but with a larger compression than the original files
+
+gzip file : let's you compress the file 
+
+gunzip file : let's you decompress the file and this can be used with .zip files
+
+bzip2 file : compresses this file
+bunzip2 file : decompresses the file 
+
+same applies to compress
+
+dd if=/dev/sdb of=/root/flashcopy bs = 4095 conv:noerror: copies sdb folder to flashcopy 
+folder bit by bit and even with the deleted files and bs specefies the sector of copying
+and conv:noerror continues copying even if there is some error encountered
+
+sda sda1 sdb : that means that you have two drives , sda and sdb and sda is split into 
+two sections or partitions
+
+fdisk -l  : shows you the partitions of your disk and how much space is allocated to each
+
+lsblk : stands for list block devices and it shows you your hard drives and their sections
+
+mounting : is a term that stands for appending external data storage devices on the file 
+system , usually hard drives and mounted at /mnt and usb drives are mounted at /media
+
+mount /dev/sdb1 /mnt : this mounts a device to the folder /mnt
+
+unmount /dev/sdb1 : ejects the hard drive from the pc
+
+fsck : file system check checks for bad parts in the system 
+
+rsyslog.conf : a file in etc which shows you the rules set for the system 
+
+shred -f : allows you to delete a file permanently , even a forensic investigator wouldn't
+be able to recover it 
+
+service ServiceName option : if you would like to restart , shutdown or even start 
+a servce you do it like the previous format example:
+service rsyslog stop
+
+SSH : Secure Shell
+
+Raspberry pi : a small sized pc that is perfect for spying
+
+mysql -u root -p 192.168.1.1 : this remotely accesses the database of another machine
+
+use database name : allows you to switch databases to a specific one 
+
+proxychains <the command you want proxied><arguments>: allow you to hide your traffic 
+
+proxychains nmap sT -pn 191.178.1.1 : this hide the fact that you are scanning this website
+
+proxychains firefox website : opens a website using your proxy not your ip 
+
+iwlist wlan0 scan : scans for available networks 

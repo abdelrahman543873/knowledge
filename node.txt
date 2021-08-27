@@ -1,0 +1,1288 @@
+to enter the shell of node , type node 
+
+fs = require('fs')
+fs.writeFileSync('hello.txt',text) : this allows you to write text to a file 
+
+REPL : Read user input , Evaluate user input , Print output, Loop or wait for new input again and this is 
+a way of writing your code 
+
+Executing files : is another way of writing your code 
+
+const something = function(){} : this is called an anamous function where you don't see a name after the 
+function keyword and it's different from the arrow function 
+
+spread operator is like this
+let hello = ['one','two']
+let new_array = [...hello] : this will copy the old array into the new array 
+
+the rest operator is like this 
+const toArray=(...args)=>{return args} : this is gonna do the opposite of the rest operator , this is gonna
+take a bunch of seperated inputs and bundle them into an array and then return it 
+
+array and object destructring could be used inside a function like this
+({property})=>{console.log(property)} : this function will extract this property of any object that is passed
+to it 
+
+https is http with ssl encryption that prevents data spoofing 
+
+https,http,fs,path,os : are core nodejs modules 
+
+const http = require('http');
+http.createServer((req,res)=>{console.log(req)} : this will create a server that is not used  , this is 
+handeld by the event loop which registers this function as a listener which is always waiting for events
+http.listen(3000) : this will now configure the server to be able to listen to requests on port 3000 and 
+respond to them with the server that we created and this method is executed for every incoming request 
+
+process.exit() : allows you to exit your listener , so if you place this inside the function of the create
+server it will exit the server 
+
+(req,res)=>{console.log(req.url,req.method,req.headers)} : req.url : gives you the request the user requested,
+req.method gives you the method that the user used to do the request like GET , POST , headers gives you 
+the headers that the user placed in his request 
+
+res.setHeader('Content-Type','text/html') : this sets the headers coming from the response of our server , 
+here we are saying that our server is gonna response by an html ,text 
+
+res.write('<html></html>') : this is gonna set the response of our server to send an html page and you 
+can write what you want inside this html 
+
+res.end(); : is what writes all our changes on the response and node.js will send the response back to the 
+client 
+
+the form submit action and the method , make another request to the server with the data with the url in 
+the action attribute of the form 
+
+requests are recieved by node in chunks and the buffer allow the manipulation of those chunks 
+
+req.on('data',()=>{}) : this is triggered everytime a chunk of the request data is recieved 
+
+req.on('end',()=>{}) : this function is triggered when requests are fully recieved 
+
+Buffer.concat(array_of_chunks).toString() : this will gather the chunks of data together to form one string 
+
+fs.writeFile('file path', writing to the file,function) : this willnot block the code after it from running
+instead when the file is written and done the function gets executed 
+
+event loop : handles event callbacks only which is fast executing calls
+
+worker pool : handles the file system operations and long time taking processes and it's responsible for 
+all the heavy lifting and it can do multiple threads at the same time 
+once a process is done in the worker pool , it triggers a callback in the event loop 
+
+the first thing that executes in the event loop is timers then pending callbacks for long time consuming
+operations which are either file executers or network , and then the last thing that executes is the events
+for the i/o and listeners and then execute all close callbacks like process.exit()
+
+module.exports = something; : this allows the export of anything like a class or a function 
+and then to import this from some other place you do 
+const something = require('path of module.exports');
+and you can do exports = something ; directly without the need of exports 
+
+js is event driven 
+
+package.json file key value pairs have to be included in double quotes 
+
+start : is a special script name so you can do this npm start but if you have a specific script name you do
+this 
+npm run special_script_name
+
+there are development dependencies and production dependencies , that why you should choose where your packages
+go when you install them by saying for example npm install something --save-dev 
+
+npm install nodemon --save-dev : allows you to install nodemon on the development server which allows for 
+automatic refreshing of your code edits when you change your code 
+
+-g : installs your packages globaly on your machine 
+
+devDependencies :{} : a key that describes the packages that goes into the development server 
+
+all the modules you install go to the node modules folder 
+
+Global features : are keywords like let and const and the function keyword
+
+core node.js modules : modules that comes preinstalled when you install node , like fs and http 
+
+third-party Modules : modules that are installed using npm-install 
+
+when you place commands in the scripts object it looks for the command locally in that project , when you 
+type a command in the terminal it looks for the command globaly which mean it has to be on your system 
+
+npm install -g : this allows you to install a package globally which means that afterwards you can run the
+command from the terminal 
+
+express.js : is a node.js framework that allows you to write server side logic and handle request and responses
+easily 
+
+npm install --save : allows the package you installed to be added to the dependcies object 
+
+const express = require('express') : how you include express in your project 
+
+middle ware : is any transitionary function between the request and the response
+
+app.use('path',(req,res,next)=>{next()}) : use recieves a function that is going to handle the incoming request 
+where next the is the middle ware that is going to execute next , next() is what allows the request to go 
+to the following middleware which is the middle war after it in the code 
+res.send('something'); this will send the response and the next middle ware isn't going to be executed,
+path is the url path that is going to trigger this function , if this path is set to '/' , then it would 
+respond to all the request and not only the ones that have the / path , that's because the path here means
+that we are going to respond to request that starts with that path and that's for app.use , if you do app.get
+or app.post this will get you the exact route and that's it 
+
+app.listen(3000); : will create the server for you and make it on port 3000
+
+res.redirect('/'); : this allows you to redirect to a different path , in this case the / path 
+
+const bodyParser = require('body-parser'); : this will allow you to parse the body of the incoming requests
+
+npm install body-parser : this will install the body parser for parsing the body of the incoming requests 
+
+app.use(bodyParser.urlencoded()); : this is a routing fucntion that allows us in later routing functions
+to parse the body of the requests easily , so you can later do this 
+console.log(req.body) : which will get you out the body of the request and this by default works for form
+data submission and not for json data , if you want for json you do this 
+bodyParser.json()
+
+res.redirect('path') : redirects you to a path you want 
+
+app.get(),app.post() and so on are the same as app.use() but with the specific http methods 
+
+app.use() get triggered for all http methods 
+
+the convention is to place your routes in a routes folder 
+
+const router = express.Router(); and then you can do it like this 
+insted of app.post() , you do router.post()
+
+req.body : the body paramter here comes from the bodyParser package 
+
+post man : a tool that allows you to do requests your rest api
+
+Access-Control-Allow-Origin : this is a header that allows for external requests on the server and if it's
+absent it causes a CORS error 
+
+CORS : Cross-Origin-Resource-sharing which be default doesn't allow other servers to share resources and it's
+only solved on the server side code 
+
+res.setHeader() : doesn't send a response it just modifies it's headers 
+
+res.setHeader('Access-Control-Allow-Origin','*') : this allows servers from other domains to access our server and if you
+want to restrict the access to certain domains , you put a website name instead of the * 
+
+res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT') : this will allow those methods on the allowed
+servers 
+
+res.setHeader('Access-Control-Allow-Headers','Content-Type') : this will allow clients to put certain headers
+on their requests 
+
+the browser sends an options request to know what methods are allowed on the server before sending a request
+
+if you do app.use(function()) : this will execute no matter what path you are in , cause the path isn't specified
+
+res.status(404) : would set the status code of the response that could be any of the http codes , which is 
+in this case 404
+
+app.use('route',outsourcedRoutes) : no all the outsourced routes will be under the roue that is here because
+of the 'route' attribute
+
+views : is the name of the folder where you place visual content like html , css and so on
+
+res.sendFile('path to file') : allows you to send a file to the user 
+
+const path = require('path')
+path.join(__dirname,'..','folder containing your file','your file') : this will construct a path to your file 
+regardless of your OS , the __dirname is the name of the folder you are currently in , and the .. will make
+cause the directory to go up one level
+
+path.dirname(require.main.filename); : this gives you the root folder of your project 
+
+public : this is a convention name of folders that hold resources that are used for the public like css 
+files, the public files could be access throught the path in the url 
+
+static file handling : means that files won't be handeld by express routers and it will be handeled by the 
+file system 
+
+app.use(express.static(path.join()) : this allows you to serve files statically and make them accessible to 
+the user and to other files , like if you want to access your css files using <link>
+
+routes allows for splitting routes across files elegentaly 
+
+<p><%=name%></p> : this is how you inject data in ejs templating engine 
+
+app.set('view engine', 'pug') : this allows you to configure the template engine of the express app , pug
+could be replaced by ejs or express-handlebars
+
+app.set('views','the_folder_where you store your views') : this allows you to set the directory where the 
+templating engine will be looking for the html files , by default this looks in the views folder in the 
+main directory of your project 
+
+something.pug : this is the pug template file 
+
+res.render('template file',{key:value}) : this will return  a template that is going to be rendered by the 
+templating engine, you don't need to get the path to the file cause you configured the views file 
+using app.set('views') , the second object is going to be the values that you render in the template file
+the key is going to be placed inside the html and the value is going to be passed by the render function 
+
+.class : this syntax indicates that the element is a div element 
+
+#{variable} : is the variable that is passed to pug to allow rendering data 
+
+element(something='value') : this adds attibutes to the element
+
+each something In iterable : the pug syntax for iteration
+
+if something
+else : this is the conditional statements for pug
+
+if you have standard code for all html templates you should create a layouts folder inside the views folder
+and add your layouts file
+
+block something : in pug in the layouts file this allows you to insert data in the block area 
+
+extends layouts_path : this allows you to insert a layout file into the pug file and use it 
+
+block something
+	the content you want  : this will allow you to insert the data in the place of the block 
+
+something === 'value' ? value1:value2 : you can use this conditioning in pug template engine 
+
+you always pass the data to views in the same way with a dictionary as the second paramter object in the 
+render function 
+
+{{# if }} {{/if}} : to close the if statement in handlebars
+
+{{this}} : this is how you refer to iterations in for loop in handlebars engine
+
+<% if (something){%> <%}> : this is how you write a conditional statement in the ejs template engine 
+you write it as normal js 
+
+<%- include('file_path') %>: this will insert your html layout partial in ejs 
+
+res.render() function always looks for the templating engine that we set for it in the 'view engine' in the
+app.set()
+
+MVC : controller is the in between layer that allows for the business logic and is what triggers data saving
+and displays data in the views like the routes
+
+controllers : is the default name for the folder conataining your controllers
+
+the difference between exports.something and module.exports = something , is the way you import them , 
+for the first you do , importName.something , for the second you do importName only 
+
+models : the conventional name for your folder of models 
+
+fs.readFile('file_path',(err,fileContent)=>{})  : this is a file system function that will read a file and 
+return err in case of an error or the file content in case of success
+
+fs.writeFile('file_path',data,(err)=>{}) : will write the data attribute to the file and execute the function
+in case of an error 
+
+path.dirname(require.main.filename); : this allows for getting the main name of the directory 
+
+something(cb) : the cb paramter is a callback function, which here means that this is a function calling 
+another function 
+
+functions for the routes should be in the controllers folders , routes folder should only have mappings
+between routes and functions from the routes folder 
+
+app.js file should have only the first main routes of a website , more than one path in the url is then placed
+in the routes folder and it's functions are placed in the controller 
+
+<textarea name="something" rows="5"><textarea> : this will allow you to store the text in the text area in 
+a variable named something and the maximum amount of text is 5 rows 
+
+<input type="number" name="something" step="0.01"/> : the step attribute allows you to have decimal places
+in your numbers 
+
+<a href="someurl/<%= something.id%> : this will allow you to view some id when you click on the url 
+
+router.get('/somelink/:someVarialbe') : this will allow you to go to links like this 
+/somelink/23 or /somelink/343 cause of the : syntax
+
+req.params.linkParamter : this allows you to get the dynamic parts of your url , so if you had a url like
+this something/123 then this expression would return 123 , linkParamter here would be the name assigend to 
+the html input element 
+
+if the method of the form is post you can put the data in the request body 
+
+<input type='hidden' value='something' name='key'/> : this will allow to pass data in key value pairs ,
+data that is hidden from the user and will have the value passed in the value paramter 
+
+url/?key=value : this is called query paramter where everything after the ? is a key value pair representing
+the value of each key passed 
+
+req.query.paramter : this will get you the values of the keys passed after the query method which is managed
+by node , an example would be req.query.edit : this will get you the edit key that is passed after the 
+? in the url  , that value that is returned is always a string 
+
+you have views routes(controllers) and models , the views gets to set what does the user sees , the routes
+and the controllers get to choose what logic is executed and the logic is placed in the models , so the 
+controllers are always only calling the methods in the classes of the models 
+
+sql : Structured Query Language
+
+collections : is the name of tables in the nosql databases 
+
+in nosql data is duplicated , where data that is relevant to each other is stored to a bigger object of 
+data that relates to the smaller chunk of data like this
+{age:25}
+{name:abdelrahman,{age:25}}
+
+horizontal scaling : means getting more servers to expand your database , horizontal sacling is nearly
+impossible or very hard with sql databases 
+
+vertical saling : means making the same server more powerful to expand your database 
+
+sql maybe slow with thousands of requests on the database and especially if there are a lot of table relations
+
+horizontal scaling is easier with nosql dbs
+
+nosql is more fast with thousands of requests
+
+npm install --save mysql2 : allows you to install sql on node to communicate with a mysql server 
+
+util : a folder where you store connections to dependcies , like connection setup to a database 
+
+const mysql = require('mysql2') : this allows to connect to mysql server
+
+const pool = mysql.createPool({
+	host:'localhost',
+	user:'roor',
+	database:'node-complete',
+	password:'your password'}): this will allow you to create a pool of connections which allows you to 
+run queries on the server collectively without the need for creating a connection for every query 
+
+module.exports = pool.promise() : this allows you to make the connection to the database work with the pool
+in a promise based way 
+
+const db = require('./util/database') : now after exporting your database you can import it to any other 
+file where you want to use or make connections on the database 
+
+db.execute('sql query') : allows the execution of sql queries  , you can do db.execute('sql query').then()
+, that's because you exports a promise based pool  
+
+sequilize : is an ORM library
+
+npm install mysql2 --save
+npm install --save sequelize : how you install sequelize 
+
+
+const Sequelize = require('sequelize') : how you import sequelize 
+
+const sequelize = new Sequelize('table_name','username','password',{more options}): this will setup a connection
+pool to the database 
+module.exports = sequelize : to use sequelize in other files
+
+const sequelize = require('the path where you do 'module.export'') 
+const Product = sequelize.define('model_name',{id:{ type:Sequlize.string},title:Sequlize.string}) : here you define a model 
+with one column id , of type string  and if you only want to set the type proerty you don't need the object
+notation you can do it directly like in the case of title, note that capital letter of the word sequlize
+refer to the main package and not the imported pool
+to export your model do 
+module.exports = Product 
+
+sequelize.sync() : create all your tables for you  and it's a promise based function
+
+sequelize.create({key:value}) : this will create a new entry in your table , where the key the column name
+where you want to insert the data 
+
+npm install --save pg pg-hstore : dirver of postgres for sequelize 
+
+{dialect:'postgres'} : this is what you define when you want to connect to a postgress database 
+ 
+findByPk('id') : gets you an element by it's id from the table 
+
+table.findAll(where:{}) : retrieves all the records from the table and it's also promise based and if you 
+put the where paramter you can limit your search , and it's optional  
+
+sequelize.save() : submits the changes that happened in the data base 
+
+sequelize.destroy() : removes an element from the database 
+
+table.belongsTo(another_table,{constraints:true,onDelete:'CASCADE'}) : this create a foregin key in the 
+table where the primary key is in the another_table , constraints allows you to set constraints on the 
+relation like ondelete in here 
+
+table.hasMany(product) : create a foreign key in the table and links it to a primary key in the product table 
+
+.sync({force:true}) : if the force option is set to true it allows for always forcing the updates made on 
+the database 
+
+npm start first starts running the database initialization if there is any 
+
+table.hasOne(another_table) : set a onetoone relation and it's the same as belongsTo but the difference is 
+that the foreign key is in another table instead of the source table 
+
+table.belongsToMany(another_table,{through:something}) : a Many2Many {relation} 
+
+createModelName() : this is a magic function that gets created for every model you have 
+
+setModelName() : a magic function that allows setting a value for the table 
+
+getModelName({include:['table_name']}) : this works between two models that have relations between them , 
+and it alows the inserting of a field that has a relation in it 
+
+in mongodb a db has collections and those collections store documents and those documents store schemas 
+in the form of objects , cause mongo db store json strings in a form called BSON 
+
+in mongo Db you can have both objects and refrences depending on the fact if you want to have relational
+schemas or not , refrences allow relational schemas
+
+npm install --save mogodb
+
+rest apis : stands for Representational State Transfer and it helps transfer data instead of user interfaces
+and then leave the front end wether it's a mobile application or any front end to do what it want and it
+helps with mobile apps , single page web apps or any application that is not connected to the backend
+and only takes data from the backend 
+
+API Endpoints : is the routes that are configured in the backend server in combination with the http method
+required 
+
+PUT : an http method that allows loading a resource in the server 
+
+PATCH : updates data in the derver 
+
+DELETE : deletes data from the server 
+
+REST principle : 
+uniform interface : which means that the api endpoints are documented and they have defined responses that 
+don't change 
+stateless interactions : the server and the client don't store any connection history , and every request 
+is handeled as if it's the first one 
+cacheable : set caching headers to allow clients to cache data 
+client-server : meaning that the client shouldn't handle or store data 
+layered system : the server may froward the request to other apis 
+code on demand : the server allows some routes to send executable code 
+
+res.json() : will send back a json response and with the json repsonse you mostly want to send the status 
+before the json response like this res.status(200).json({})
+and you should always send the status to your client before a json response 
+
+httpmethodObjectCreated : this is the naming convention max uses like this getPosts , postPosts
+
+201 : http code that signals that a resource was created 
+
+GraphQl : is as restful api with higher query flexibility which allows for more options than restful api
+like querying pieces of data instead of the whole data 
+
+operations of graphQl : 
+query :post/graphqlQeury  is how you retrieve data from the serever 
+mutation : manipulate data like post patch delete
+subscription : set up realtime connection via websockets 
+
+npm install --save graphql express-graphql : allows you to install graphql and express-graphql allows the 
+parsing of the incoming requests 
+
+graphql : is the name of the folder where you place your graphql definitions 
+
+resolvers.js : is the logic file for the incoming queries 
+
+schema.js : is the the mapping between the queries and the logic in resolvers .js 
+
+const { buildSchema } = require('graphql') : this allows you to map the graphql queires to their logic
+
+module.exports = buildSchema(`type objectName {hello:String}`) : this allows you to then mab your objects
+to a resolver like this 
+module.exports = {hello(){return 'hello'}} : now this is the function that is gonna map the to the hello in 
+the schema hello string   and then the request is done like this 
+{ query :{ hello }} : which only returns hello and the keyword query here mean that you are doing a query
+
+creating a mutation , a mutation is logic that you want to execute on the server like storing data on the database
+ , meanwhile a query is 
+data you want to get from the server , in the schema.js file of your graphql folder , you do a mutation like
+this 
+module.exports = buildSchema(`
+	type User {
+		username:String!
+	}
+	input UserInput {
+		email:String!}
+	type RootMutation {
+		createUser(userinput : UserInput):User
+	}
+	schema { mutation: RootMutation}`);  the input keyword is followed by the data that is passed to the
+function , the ! means that this paramter is compulsory and if you don't want it to be compulsory you just
+remove the !, and the return type of the function is going to be User 
+and then to define the function logic you go into the resolver and do something like this
+module.exports = {
+	createUser({userinput}){
+	console.log(userinput.username)}
+};
+now this is going to allow you to extract your data from the incoming input 
+
+validation in graphql is done in the resolvers 
+
+npm install --save validator : a package that allows you to validata input data and it allows you to use functions
+like the following , 
+validator.isEmail('string') : returns true if the string is an email
+validator.isEmpty('string') : checks if the string is empty 
+validator.isLength('string',{min:5}) : this allows for the checking of a password length if it's less than 
+5 or not 
+
+app.use('/graphql',graphqlHttp({schema:graphqlSchema,rootValue:graphqlResolver,
+	graphiql:true}) : this allows you to use and configure graphql resolvers and shcemas 
+
+because graphql doesn't accept any methods other than post and get you need to do this before 
+entering the graphql query 
+if (req.method = 'OPTIONS'){
+	res.status(200)} : which is gonna return 200 status before entering into the graphql
+middleware 
+
+authentation in graphql is simply a query for a function let's name it login , that has paramters
+and then the function is computed in the resolvers to check the database 
+
+nest is built on top of express 
+
+the goal for nest was to create nodejs applications with better architicture , and it inspires it's architcture
+from angular 
+
+npm i -g @nestjs/cli : this will install nest globaly 
+
+nest new project-name : this will create the core structure of your nest project 
+
+when you run nest new proect a folder called src is created and it has three files , 
+app.controller.ts : a file that has a sample controller with a single route
+app.module.ts : will be the root of your application 
+main.ts : will be the main entry point for your application like app.js
+
+to create a nest application instnce we use the NestFactory class like this
+import { NestFactory} from '@nestjs/core';
+import { AppModule } from './app.module';
+const app = await NestFactory.create(AppModule);
+
+nest is cross platform which means that it can be used with any node server , and it could be used with
+express or with fastify 
+
+@Controller('route') : a decorator that is used to define meta data for a controller class and the paramters
+taken are the routes for this controller , which means the controller under this decorator will always be 
+a sub route of /route/sub-route 
+import {Controller,Get} from '@nestjs/common'; 
+this will allow you to import the controller from the nest 
+
+@Get is a controller that allows you to add a subroute for your main @Controller route 
+so if you do @Get('routing') and had the @Controller('route') , then your final link will be 
+routing/route 
+
+by default the @Get decorator serializes any js object or array to a JSON string in the response
+but if the response is number ,boolean or string it will be returned in row type without converting
+it and by default the status response for get is 200 and 201 for @Post 
+
+@Get can also return specific objects like an expres object like this one response.status(200).send)(
+but this is not recommended and it's done by Passing (@Res() response) as paramter to the function
+that is decorated 
+
+in the src folder you define the routes each in it own folder 
+
+findAll(@Req() request: Request): string : this allows you to capture the client request details like paramters
+passed and so on and here to have the Request Type you have to import {Request} from 'express'
+and here the request object will be the whole request object enabled by express 
+
+@Req(key) request is the whole request object with all the extra not required details , you can do @Body request
+to get request[body] by default and you could pass a key to retrieve the value of the key you want to get 
+from the object 
+
+@Query() : also allows you to get the queries that the user passed 
+
+in the http decorators pattern based routes are supported
+example : @Get('ab*cd') with match anything that starts with ab and ends with cd , so regex expressions 
+are supported as well
+
+@Get()
+@HttpCode(204) 
+this will change the default resposne of the @Get method to be 204 instead of the default 200 
+
+@Get()
+@Header('Content-Type','text/plain') 
+funtion
+this will allow you to control your response header , here we control the content type of the response 
+
+@Get()
+@Redirect('something',http code) : this will allow the redirection to another url and return a status code
+by default it's 301 if omitted and this if put on to top of a function doesn't allow it to execute and the
+page is redirected before entering the function 
+
+@Get(':id')
+findOne(@Param() params): string{
+console.log(params.id);}: 
+this is how you accecpt dynamic data from the client where the id is gonna be the name of the paramter you
+retrieve inside your function by object notation from the params object 
+and you can do it this way too 
+@Get(':id') 
+findOne(@Param(':id') id):string{console.log(id)}
+
+@Controlller({host:'admin.eg'}) : this means that in order for this request to pass into the controller 
+class it has to be coming from this host first 
+
+providers are classes that are used as dependcies for other classes by being a helper for them to outsource
+functionality and they are preceeded by @injectable()
+
+in order to pass params to the post method , we need to define a dto 
+DTO : Data Transfer Object which defines how the data will be sent over the network 
+and they allow for making less request , instead of requesting individual pieces of data
+you can make one request with one object that has all the data you need , those DTOs are defined
+as normal classes and that's preferrable to defining them as interfaces cause classes could be accessed 
+during runtime unlike interfaces 
+
+find(@Res res: Response){
+	res.status(200)
+} : this will allow you to access the normal res from express 
+
+interfaces : the folder name of any ts interfaces should be placed in the same folder of the controllers
+
+dto : the folder of the interfaces representing the DTOs and this folder should be placed within the same 
+folder of the controllers 
+
+providers : are helper classes that allow for more functionality for other classes and syntactically they 
+are classes with @injectable decorator around them and you inject them to other classes by passing them 
+as private paramters in the constructor of other functions and this is called constructor based injection 
+
+after we create a prvoider we must register it in the app.module.ts with the @Module decorator like this
+@Module({ 
+	controllers: [CatsController],
+	providers: [CatsService],}) : here both the controller(consumer) and the provider are registered by 
+nest in the app module and that allows them to be used by nest 
+
+modules : each application has at least modules which is the root of the application , that nest uses to build
+the rest of the application graph and helps nest with providing relationship between providers and consumers
+and the relationship between them , only very small applications have one module , but in normal cases 
+applications have more than one module reach relation to a group of activities 
+
+@Module takes a single paramter which is an object like this 
+@Module({providers :[] ,controllers:[],imports[],exports[]})
+class something{} : 
+providers : are the injectable classes that are required by the controllers of this module and should be 
+sharable accross this module at least 
+controllers : the controller that have to be instantiated in this module 
+imports : are the required providers for this module that should be imported from outside modules 
+exports : the subset of providers in this module that should be exported to other modules 
+
+modules are singeltons 
+
+if you want a module to be importable by other modules then in the module file.module.ts you do this 
+@Module({exports:[the providers of your module]}) , then now you will be able to import it , you should 
+only export files that are @injectable
+
+a module class can also inject modules for configuration purposes
+
+module classes can't be injected themselved due to causing circular dependecy
+
+@Global()
+@Module : this allows the module to be Global which means that other modules that want to use that module 
+don't have to import it in their @module decorator and it's not good practice 
+
+dynamic modules : is changing the providers of your module based on some conditions, and this is done by 
+configuring your module class to return an object of porviders and which is gonna be appended to the metadata
+stored in your @Modules decorator and when you later import this dynamic module you do it like this 
+imports: [DatabaseModule.forRoot([User])] : which allows you to have your providers list 
+
+implementing a Middle ware in nest 
+import {NestMiddleware , Injectable} from '@nestjs/common'
+import {Request , Response} from 'express
+
+@Injectable()
+class someMiddleware implements NestMiddleware{
+	use(req:Request, res:Response,next:Function){
+	console.log('something');
+	next();
+} and this is how you create a nest middle ware , and it fully supports dependcy injection 
+
+if you want to export or import nest middleware you don't do it through the @Module decorator , but you do 
+it through the configure() mehthod and module classes that use nest middle wares have to implement NestModule
+interface like the following , p.s "you do the imports":
+import {MiddlewareConsumer} from '@nestjs/common';
+@Module({})
+class something implements NodeModule{
+	configure(consumer:MiddlewareConsumer){
+	consumer.apply(you_custom_middleWare).forRoutes('restricting_your_routes')
+	}}
+
+if your middleware don't use dependencies or injections you can use functional middlewares instead of class 
+based ones and you can do it like this 
+
+import {Request,Response} from 'express';
+export function logger(req:Request,res:Response){
+	console.log('Request...');
+	next();
+};
+
+and then simply use it in your app module like this 
+consumer.apply(logger)
+
+in order to use multiple middleware just do this 
+consumer.apply(logger, anotherone,anotherone)
+
+throw new HttpException('sometext', httpcode) : this will throw an http error code with a message 
+
+httpStatus enum : an object that has all the codes of the http error in the common library of nest 
+
+npm install --save-dev @types/sequelize : this is to install type script with sequelize 
+
+npm install --save @nestjs/sequelize sequelize sequelize-typescript pg pg-hstore : this is to install the 
+sequelize stuff with postgress handler 
+
+this is how you make a query in graphql 
+{hero { somekey}} and you are gonna recieve this {"data"{"hero": { "somkey":"value"}}}
+
+required package for nest and graphql usage : 
+npm i @nestjs/graphql graphql-tools graphql apollo-server-express
+
+http://localhost:3000/graphql : this is called the graphql play server , you can access it after you have
+a working graphql server and then you will be able to make requests and responses on that server 
+
+import {GraphQlModule} from '@nestjs/graphql'
+@module({imports:[GraphQlModule.forRoot({options})]}) this is how you import and use graphql in your module
+
+when building a graphql api , you have two approaches availble , code first and shcema first approach , 
+code first allows you to write type script code and classes and then the compiler will transform them in their
+parallel graphql schemas , meanwhile in the schema first approach , you write your graphql schemas in 
+SDL(Schema Definition Language) and then you write the code to query them , you would use the second approach
+if you want something cross platform 
+
+GraphQLModule.forRoot({
+  autoSchemaFile:true,
+  sortSchema: true}) : this will compile your code to graphql schema on the run in the memory , you 
+can generate a file for the schema by replace true with 'src/schema.gql'
+, now the srotSchema will sort the types of the table lexographically 
+
+in graphql you have types which defines the kind of processes you want to do like mutations, queries, 
+subscriptions and map them to resolvers and resolvers will handle the logic and compared to the normal 
+rest api , the types are the routes , and the resolvers are the controllers 
+
+in the query field of the graphql schema you set your refrenced queries not the raw ones , an expample
+type RootQuery{
+	hello:String
+}
+schema{
+	query:RootQuery
+}
+
+input UserInput{ whats:String! 
+	something:Number!
+} : this allows for inputting the paramters to the muation you defined 
+type something{ hello(userInput):String} : this is the definition of a mutation 
+schema{ mutation:something}
+
+in nest js , we have decorators that generate the SDL schema for us 
+
+so in nest js , instead of writing this 
+type something{
+	title:string
+	firstname:string
+}
+using the code first approach in nest we can do this
+@ObjectType()
+export class something{
+	@Field()
+	title:string;
+	@filed()
+	firstname:string;
+} and this is going to be converted to graphql sdl and this should be placed in a .model.ts file in the models
+folder 
+
+nestjs is inspired by angular 
+
+main.ts : is the entery point of any web application
+
+controllers are instantiated by nestjs and if you pass a provider using dependency injection , the nest 
+framework is responsible for passing that service and it happens because you pass the providers in the 
+providers array in the app module 
+
+services are like the controllers they do the heavy lifting while controllers in nest are only responsible 
+for routing and putting responses together 
+
+@Post()
+function(@Body() argument:string){} : the @Body nest decorator will parse the body of the request 
+
+SequlizeModule.forRoot({autoLoadModels:true,synchronize:true}) : 
+autoLoadModels will load modules automatically if set to true
+synchronize: will synchornize loaded modules
+
+when you extend a table in sequlize to inherit from the Model class the id primary key is automatically inherited
+from the model class 
+
+@Column({primaryKey: true})
+something:string; 
+this will change the default primary key inherited from the base model and make it something instead of id
+
+imports:[SequlizeModule.forFeature([model])] : allows the specification of the models of the current module
+so we can Inject the model later like this
+@InjectModel(model)
+private someModel: typeof model
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+}); : this is the way to initialize a sequlize connection
+
+sequelize.close() : closes the database connection and returns a promise 
+
+@HasMany(()=> ModelName)
+field : ModelName [];
+: this will define a onetomany relation from field with object 
+
+@Field({ nullable: true })
+  description?: string; 
+: this is used in the @ObjectType in graphql schema sdl generator and it allows the class to be converted to 
+graphql sdl and this field could be ignored when the user is entering the data that is because of the 
+nullable:true option and the ? after the description 
+
+because of type script limitations to identify the proprties of a class field we have to anotate it with the
+@field() decorator and specify it's optionality like nullatble : true option 
+
+@field(type) : you would need to fill the type paramter if the type is a graphql type , like for example
+if declared a type of Posts you would need to do this 
+@filed(type => Post) but if the field is a primitive or scalar field you can depend on the ts inferece system and do 
+this :string for example 
+if you wanna have an array of something you must declare it in the type function in the @field() decorator 
+like this  
+@field(type =>[String]) this would declare an array of strings 
+
+you should use environment vaiables anywhere where the values of your code change based on your environment
+
+transactions are responsible for calling back queries that are done on the database , there are two types 
+of transaction which are managed and unmanaged , where in managed the transaction is rolled back automatically
+if any error is thrown , and unmanaged transaction the user is responsible for rolling back his queries 
+
+pipes have two typical use cases which are either validation of data or data transformation like from 
+string to integer 
+
+a decorator is a function that takes another function as paramters and extends it's behaviour without 
+modifying it 
+
+mongoose : is an orm for mongo db 
+
+ODM : Object Document Model , this is different from orm that is links documents together rather than linking
+tables  
+
+cookies are stored in the client side , they are send with the client request to make sure that it's the same
+client that is making the requests 
+
+res.setHeader('Set-Cookie','something=boolean'): this will set a cookie to a boolean value 
+and by default if set , the browser sends that cookie with every request made 
+
+session is stored on the server side , where your cookies are storing the hashed server id and is confirmed by 
+the server 
+
+npm install --save express-session : this will install the session manager for express 
+
+const session = require('express-session')
+session({options}) as an expamle 
+session({secret:'some secret key',resave:false :: allows for no resaving each time the value changes ,
+saveunintialize:false})  : these are options for the session imported package 
+
+the session cookie is what stores your session id in an encrypted format 
+
+npm install express jsonwebtoken : to install jwt 
+
+jwt.sign({key,value},"key",(err,token)=>{console.log(token)}) : this will return the token that was created 
+for that object in the console 
+
+bcrypt is a package that allows decrypting the password of the user so it's not stored in plain text ,
+and it's done using a library called bycrypt and you install it like this 
+npm install --save bcryptjs
+
+bcrypt.hash('string you want to hash',rounds of decryption you want) , example: bycrpyt.hash('something',12)
+ where 12 is highly secure for decryption 
+
+bcrypt.compare ('string',hashed pass) : this allows you to compare the hashed password to the string the user 
+entered and find out if the string the user entered was correct or not 
+
+the middle ware cycle goes from left to right in the middle ware functions 
+
+csrf : Cross Site Request Forgery , this will protect against someone stealing your sesssion and doing uninteded stuff with it 
+
+csurf : a package that protects againist csrf attacks 
+npm install --save csurf 
+
+npm install connect-flash : allows you to display errors before directing users to new pages 
+and you could use it as a request like this 
+req.flash('error','the error text you want to display');
+
+npm install --save nodemailer : this allows your node server to send mails 
+
+const transporter = nodemailer.createTransport(your_server_configuration_function()): this sets up your mailing
+server , cause then you will use transporter to send mails 
+
+transporter.sendMail({
+	to:email
+	from:email
+	subject:'text'
+	html: html}) : this allows you to send the mail to someone where the person's email will the be in the 
+to key value and the 'from' key will be the email displayed to the user that is recieving the email 
+and the kye 'subject' will be the text that is displayed to the user in the subject of the mail 
+and the 'html' key will be the page that is displayed to the user in the mail 
+
+crypto : is a package that generates a buffer of random bytes and it's used like this 
+crypto.randomBytes(32,(err,buffer)=>{console.log(buffer)}) : the buffer will be the generated buffer
+
+sequelize has two methods of transaction , unmanaged transactions where the rolling back of the transaction 
+should be done by the code manually
+
+managed transaction : where sequelize will rollback the transaction if any error is thrown 
+
+User.sync({ force: true }) : this drops the table if it exists and it does this before creating the table
+
+User.sync({ alter: true }) : checks for differences and commits them in the database if they exist , not like
+force which drops the whole table 
+
+model.drop() : drops all the tables related to a model
+
+the created at and the updated at columns are only updated when the commands are sequelize commands and not 
+sql commands 
+
+sequelize.now : this will return the value of the current data to the column 
+
+@Default(DataType.UUIDV4) : this will automatically generate uuidv4 ids for the id column by default 
+
+dao or data Acess Object is the pattern of providing an interface for the database 
+
+const jane = User.build({column:"value"}) : this will allow you to create a new row of the user model and
+it's gonna be name jane and the value of the column pass in the build method will of of value "value"
+jane.save() : will create the row of the model in the database without nothing will be created
+
+row.destroy() : this will remove the row from the database  
+
+row.incerement('column',{by:value}) : allow you to increase the value of the column in the instance by the value
+you want 
+const jane = await User.create({ name: "Jane", age: 100 });
+const incrementResult = await jane.increment('age', { by: 2 });
+if you remove the by 2 option the age will be incremented by one , 
+
+ where: sequelize.where(sequelize.fn('char_length', sequelize.col('content')), 7) : this allows you to query
+the columns through functions instead of only key value pairs , here the function is the second paramters and the
+name of the function name is 'char_length'
+
+model.bulkCreate([{name:'abc123'} , {name: 'name too long'}]) : this will allow the creation of muliple records 
+at the same time , if {validate:true} is passed , then the inputs will be checked before the row is created in 
+the database to make sure that inputs have the same type as the column 
+
+Project.findAll({ offset: 5, limit: 5 }); : this query will skip the first 5 elements acording the offset paramter
+and will only get the 5 elements remaining 
+
+findAndCountAll : this sequelize method will allow to find and count all the instances found and returns 
+count and rows , where count is the number of records matching the query and rows is an array of the obtained 
+queries and this is an example 
+const { count, rows } = await Project.findAndCountAll({
+  where: {
+    title: {
+      [Op.like]: 'foo%'
+    }
+  },
+  offset: 10,
+  limit: 2
+});
+
+setters are always executed before storing the value in the database and this is an example 
+const User = sequelize.define('user', {
+  username: DataTypes.STRING,
+  password: {
+    type: DataTypes.STRING,
+    set(value) {
+      // Storing passwords in plaintext in the database is terrible.
+      // Hashing the value with an appropriate cryptographic hash function is better.
+      this.setDataValue('password', hash(value));
+    }
+  }
+});
+
+virtual fields are fields that don't exist in the database but can be queried , for example if we have firstname
+and last name and we want a field that get's their combination value like this 
+const { DataTypes } = require("sequelize");
+
+const User = sequelize.define('user', {
+  firstName: DataTypes.TEXT,
+  lastName: DataTypes.TEXT,
+  fullName: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+    set(value) {
+      throw new Error('Do not try to set the `fullName` value!');
+    }
+  }
+});
+
+validations are done the sequelize level while constraints are on the database level they are raw sql queries 
+
+@Get('ab*cd') : this will allow you to match any url with this pattern 
+
+@HttpCode(204) : this changes the response code that is going to be returned by the routing function 
+
+@Header('Cache-Control', 'none') : this will change the cache control header value to be none 
+
+@Redirect('https://nestjs.com', 301) : this allows the redirecting of the website to another link with the 301 code
+that could be changed to any other code 
+
+@Get(':id') : this will allow you to get dynamic parts of your url  like this 
+@Get(':id')
+findOne(@Param() params): string {
+  console.log(params.id);
+  return `This action returns a #${params.id} cat`;
+}
+
+@Controller({ host: 'admin.example.com' }) : forces the host of the incoming request to be coming from this 
+route , so it will lock the router function 
+
+ constructor(@Optional() @Inject('HTTP_OPTIONS') private httpClient: T) : this is an optional decorator that 
+allows for optional dependency injection where dependencies are only injected when needed 
+
+@Inject('HTTP_OPTIONS') this is property based injection , and it's used if you are inheriting or extending
+your class if it's inheriting from something else outside of the @injectables 
+
+modules are any class that is using @Module
+
+providers can't be used unless they are imported from the current module or imported from outer modules 
+
+feature modules : are modules encapsulating features and parts of the application that are seperate from each 
+other 
+
+a module can inject a service modules for configuration purpose like this
+@Module({
+})
+export class CatsModule {
+  constructor(private catsService: CatsService) {}
+}
+
+modules themselves can't be injected as it causes circular dependecy injection 
+
+@Global() this will cause the module to be a global module and this will allow the module to be automatically 
+used without the need to import it 
+@Global()
+@Module({
+})
+export class CatsModule {
+  constructor(private catsService: CatsService) {}
+}
+
+this class is a nest middle ware class that allows you to access the req and res and next of the normal express middleware
+@Injectable()
+export class LoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: Function) {
+    console.log('Request...');
+    next();
+  }
+
+there is an exception layer in nest that allows for catching of httpError objects and it's subclasses 
+
+HttpStatus is an enum that is found in the @nestjs/common package 
+
+throw new HttpException('Forbidden', HttpStatus.FORBIDDEN) : this is a nest constructor that allows you to 
+throw a custom message and an error , that the user sees as in the following 
+{
+  "statusCode": 403,
+  "message": "Forbidden"
+}
+
+when you create custom exceptions it's best practice to make them inherit the httpexception base class like this
+export class ForbiddenException extends HttpException {
+  constructor() {
+    super('Forbidden', HttpStatus.FORBIDDEN);
+  }
+}
+and then if you wanna throw that exception you do it like this 
+throw new ForbiddenException();
+
+@Catch(HttpException) : allows you to create an exception filter catching class  and it's done like this
+@Catch(HttpException)
+export class HttpExceptionFilter implements ExceptionFilter { catch(){}}
+
+method parameter level binding : is the binding of the pipe in the paramters of the controller like this
+async findOne(@Param('id', ParseIntPipe) id: number) 
+in this function the id will always be passes as an integer and causes an error if not converted to an integer 
+
+you create a pipe by implementing a pipetransform class and the transform function 
+@Injectable()
+export class ValidationPipe implements PipeTransform {
+  transform(value: any, metadata: ArgumentMetadata) {
+    return value;
+  } 
+
+single responsibility rule (SRP) : is one of the solid priciples of oop where each class,function , object 
+should only have a single rule 
+
+
+middlewares are unaware of the execution context while the validator class are aware of the execution context 
+
+method call level binding : using the @UsePipes(pipe instance) : this is a pipe when the method is called using
+the ioc of nest , example:
+@UsePipes(new JoiValidationPipe(createCatSchema)) : this will allow you to validate the incoming object againist
+the createCatSchema object before passing it to the function 
+
+this is how you define a guard automatically so that you don't include magic strings in the @UseGuards
+@Injectable()
+export class LocalAuthGuard extends AuthGuard('local') {}
+
+
+(@Inject('CONNECTION') connection: Connection : this is the syntax for importing a custom created token that is
+called connection , connection is a string object 
+
+here we are having a dynamic token for a static class , which means that we will use the token config service
+and based on the env variable the class that is going to be used is either development or production config service
+and this is done using the useClass property that allow for dynamic class association with the token 
+const configServiceProvider = {
+  provide: ConfigService,
+  useClass:
+    process.env.NODE_ENV === 'development'
+      ? DevelopmentConfigService
+      : ProductionConfigService,
+};
+
+factory providers or useFactory : this is a custom provide function that allows for dynamic injection of providers
+by the factory function that allow the injection of a provider based on the factory function logic(useFactory)
+an example would be the following 
+const something = {
+	porvide: "theNameOfYourProviderWhenIt'sInjected"
+	useFactory : (dependcy:Dependency)=>{return some provider}
+	inject: [Dependency]
+}
+
+alias resolution or useExisting : this allows you to have an alias or a refrence name as you alias name for a service
+and it can be done like this
+const someName = {
+	provide:"your_alias_name_that_is_going_to_be_used_in_the_constructor"
+	useExisting: yourService}
+so right now the name in the "provide" property and the default class name could be used inside the constructor
+when you are injecting your service and it's going to refrence the same service if you inject it using the default
+service class name 
+
+Non-service based providers:
+while providers mostly provide services , they can provide objects and more values and it can be done like this
+const something ={
+	provide : "something"
+	useFactory : {key:'value"}
+}
+
+providers could be only used in their scope and will only be used globally if they are exported 
+
+asynchronus providers , are providers that needs to wait for certian functions to be instantiated and as result
+anything depending on those providers will also wait 
+ provide: 'ASYNC_CONNECTION',
+  useFactory: async () => {
+    const connection = await createConnection(options);
+    return connection;
+  },
+
+if you want to use a provider from another module you need to export this provider by putting it in the exports
+property of the module decorator and then when you want to use it in another module you need to import the WHOLE
+MODULE in the imports property of the consuming module 
+
+ConfigModule.register({ folder: './config' }) : this is how you import a dynamic module in the imports property
+of the @Module decorator 
+
+dynamic module is a module that is created at run time 
+
+the imports property of the @module decorator can take functions that returns modules and not only module class 
+names 
+
+for graphql the underlying protocol is different than the normal rest api or normal http requests , in rest 
+apis you have a request object protocol in graphql you have context 
+
+
+forward refrencing is when you refrence a service that isn't instantiated yet using the frowardRef() function 
+which is done like this 
+constructor(
+	@Inject(forwardRef(()=>CatsService))
+	private catsService: CatsService){})  here catsService isn't created yet , and you need to go to CatsService
+and do the same in the constructor and in the module file of your module you need to do this
+@Module({
+  imports: [forwardRef(() => CatsModule)],
+})
+
+this is the ModuleRef instance that is provided by nest it allows you to instantiate a class after it's created
+here the service property is associated with the service provider using the get method of the moduleRef class 
+of nest 
+@Injectable()
+export class CatsService implements OnModuleInit {
+  private service: Service;
+  constructor(private moduleRef: ModuleRef) {}
+
+  onModuleInit() {
+    this.service = this.moduleRef.get(Service);
+  }
+}
+
+to import a dynamically scoped provider in a cricular dependcy state , you use the resolve method from the 
+ModuleRef provider from nest 
+
+ArgumentsHost and ExecutionContext : are examples of execution context utility classes that help writing applications
+in different contexts 
+
+stub code is code where you don't need to clarify the network operations when you make a request to the server
+cause there is a local method or function that handles that automatically under the hood 
+
+nest calls lifecycle hooks on injectables modules and controllers , the life cycle hooks are 
+onModuleInit()
+onApplicationBootstra()
+onModuleDestroy() : this hook is only called if app.close() is called execlusivy
+beforeApplicationShutdown() , same as onModuleDestroy 
+
+asynchronus js request is a request where you don't need to reload the page to make requests as it's done asynchornasly 
+and you can do it using event listeners on the the buttons and sending the requests using either fetch or axios
+api for sending json data 
+
+payment is processed by passing the credit card details to the stripe third party library , and then stripe
+replies with a token verifying that this is a valid credit card and then we send this token to our server and 
+then our server send a payment object to stripe servers to withdraw the money 
+
+SPAs are single page applications that don't need to reload the whole page to load data , it can do it directly 
+
+REST stands for REpresentational state Transfer , which is used for transfering data instead of html pages 
+
+express-validator : this is a package that allows for checking of inputs like this , isEmpty() which checks 
+if the input string is empty or not 
+
+app.use('somePath',express.static(folderPath)) : this allows you to pass a folder to a certain path 
+
+json data is only supported for text and nothing else 
+
+top level await : you can use await outside an asynchronus function 
+
+socket.io : is a websocket library that allows you to use websocket technology 
+
+web sockets are a way to notify the client about the server updates without the tradional get and push http methods
+
+today :
+
+directives are associations done with the fields that allow field manipulation in any way the server desires 
+
+plugins allow you to extend appolo server to have more functionality and plugins can be imported as providers
+
+@InterfaceType() : this allows graphql objects to be extended and implemented by other graphql objects like this
+@ObjectType({
+  implements: [Character],
+})
+export class something implements 'class annotated with @interfaceType'
+
+
+@partialtype  allows you to make all the fields of an object optional 
+@InputType()
+export class UpdateUserInput extends PartialType(CreateUserInput) {} : this is called partial type it could be 
+passed on object type graphql object and it will make all it's field optional , this is useful for something like
+updating fields 
+
+Picktype() : allows you to pick fields from an object and create a new object type like this 
+@InputType()
+class CreateUserInput {
+  @Field()
+  email: string;
+
+  @Field()
+  password: string;
+
+}
+@InputType()
+export class UpdateEmailInput extends PickType(CreateUserInput, ['email'] as const) {} : this would allow the 
+updatemeailinput to only inherit the email type 
+
+omitType() : is opposite to picktype as it only takes some fields from the object type 
+
+intersection type to generate one type out of two types
+@InputType()
+export class UpdateUserInput extends IntersectionType(CreateUserInput, AdditionalUserInfo) {}	
+
+complexity setting and querying is done to protect your resources againist ddos attacks 
+
+extensions allow you to set metadata for your fields , you can set access roles on fields to restrict access to those 
+fields and you can do it using @extensions() 
+
+map : a function that changes the values of the array 

@@ -1,0 +1,1031 @@
+hypertext : a form of text where documents can link to each other 
+
+markup : is the syntax in the text that tells the browser how to display the text
+
+<strong> </strong> : tells the browser to change the font of the text to be a little bit bolder 
+
+tag : is anything enclosed between <>
+
+element : what's inside the tag 
+
+<em> </em> : is an emphasis tag that changes the font to italic
+
+event handlers , event listeners : will help you with the reaction to your user's actions 
+
+evenet handlers : this will allow for one action 
+
+event listerners : this will allow for more than one action 
+
+minification : a minifier that removes all space from the script 
+
+=> this is called an arrow function  will load something into something else 
+
+<br> : is a break tag that allows the text to be on multiple lines 
+
+void or empty element : is an element that has nothing inside like an img element or a br element 
+
+<p> </p> : is a paragraph element that allows each group of text to be seperated on it's own 
+
+<mark> </mark> : is an element that allows you to have a yellow mark over a specific text 
+
+<sup></sup> : is gonna raise up the text as if it was an exponent
+
+flex-direction : column; : will change the axis or the orientation of the flex box elements to vertical instead of
+horizontal
+if you do column reverse or row reverse it will reverse the order of the elements
+
+order:3 : this is a css property for flex items that allows the ordering of the flex elements in a specific way 
+here this element will be the third
+
+justify-content:center; : definest the location of the element relative to the container they are in and here 
+the elements are gonna be in the center
+
+align-items: stretch ; : this will define the size of the elements relative to the container by doing stretch 
+for example the items will expand to fill their containers either horizontally of vertically 
+
+grid is for how contents are placed , flex box is for element's flow inside the grid
+
+header > div:nth-child(3) : css selector that chooses the 3rd div element inside the header
+
+grid-template-columns:35vw 35vw; : this will define the columns of the grid this would create two columns 
+
+grid-template-rows:69px 56px: this will define the rows of the griid , this would create two rows first 69 , second 56px
+tall and then the filling happens accordingly where the second column would start filling after the first column 
+is filled with two values
+
+grid-gap: 15px; : this will define the gap between rows and columns
+
+grid-template-areas : "hd hd" "hello yes" : if you assign any grid element the property grid-area:hd; it 
+will take up the top two columns hd and hd and if you set to hello it gonna take the first column of the second
+row
+
+grid-area: 1/2/3/3; where 1 is the starting row , 2 is the starting column , 3 is the ending row and 3 is the 
+ending column and the item will occupy all those rows and column
+
+grid-template-columns:1fr 1fr; is the same as grid-template-columns: repeat(2,1fr); : where fr is the weight of 
+the view or the element 
+
+grid-auto-rows: minmax(100px, auto) : will create a row that is of a minimum size 100 px and max size automated 
+to the size of the content	
+
+CMS : Content Management System
+
+wordpress is the interface between your database ,server and the user by creating a layout that users can use 
+to navigate through your content
+
+posts : are any type of thing you want to publish , texts , images , videos and so on 
+
+media : are standalone files you want to upload like pdfs or zip files
+
+posts are supposed to be for changable media while pages are constant non changing data which are standalone and 
+has to be included in the main menu
+
+post -> drafts : are for items that were not compleletly edited but some circumstance happened and it was not 
+published 
+
+link : is a post option that allows you to highlight some text and associate a link with it
+
+group block : allows you to add seperate different time of blocks at the same time and allows for the changing of 
+the background color
+
+reusable block : allows for the reusing of the block in different places of the website which makes it easier 
+to add blocks
+
+toptal : for experienced freelancers only who are tested by the website
+
+generic containers : are containers that don't hold any other value other than styling value
+
+block elements are elements that have a block around them 
+
+inline elements : are elements that are in the same line that has no blocks around them and are located one after
+the other 
+
+ <!-- and end with --> or /* something */ : is a comment in html 
+
+<b> text </b> : for making text bold 
+
+<i> text </i> : making text italic 
+
+<nav> <a></a> </nav> : is used for linking navigational links in the same place and those links should all 
+redirect to your website 
+
+width = "100px" , height="100px" : those are attributes for the img file and it allows for the resizing of images
+
+<link rel="icon" type="image/png" href="image's url"/> : this will make the url have an icon which is an image
+
+<section> : is used for dividing page into topics where each section has it's own title and the content 
+is a thematic group of content
+
+<aside>...</aside> : is for including secondary info about the website like authors name , age etc
+
+<footer>...</footer> : to include html that is at the end of the page 
+
+<header> : it's different from head and should contain the header elements like h1 , h2 and so on 
+
+mailto:shay@awesome.com : this would if the href attribute if you wanted to create a refrence to an email 
+
+
+mailto:shay@awesome.com?subject=Reaching%20Out&body=How%20are%20you. : is an href value that will define 
+the email paramter with mailto and then the subject of the email with the subject paramter and the
+body of the email using the body attribute 
+
+<a href="#top">Back to top</a> : this link will take you to the same page element with the id top 
+
+start="30" : is an ordered list attribute that changes the starting number of the list which is 30 in this case
+
+reveresed : is an ol attribute that will make the elements ordered in a reverse way 
+
+value="9" : is a li attribute that will make the li element have a certain value and all the elements after it
+will have a value upward from 9 in this case 
+
+<dl>: is the block element of the dictionary list 
+<dt> : is the dicitonary term that is inside the dl 
+<dd> : is the dictionary defenition which is also inside the dl 
+
+title="hello" : is an img attribute that allows you to display a title when you hover over the image on the 
+webpage
+
+&lt; : is an example of special entity tag in html which is < , so if you want to display < as text you put 
+the &lt; 
+
+font awesome : allows you to include a lot of icons in your code from the website 
+and you can include it in your page by using the link attribute in the head section 
+
+<source> : is a tag used for video elements and it has attributes like controls , hight , width ,autoplay , loop
+
+<video src='link to the video' > : is another tag for video and you should put text in this tag if the video doesn't show so users 
+will be able to detect what's there 
+
+<audio> : for including audio on your pagge 
+
+<table> 
+<tr><th>columnName</th><th>columnName</th>
+<tr><td>hello</td><td>yes</td></tr>
+<tr><td>yes</td><td>no</td></tr> 
+this will create a table of two rows and two columns where th is called table heading which creates a more bold
+text labeling the column name 
+
+https:BYEThost.com
+
+
+
+sftp : secure file transfer protocol
+
+ftp client : allows you to control file transfer between servers as winscp
+
+ftp address : is the address that you use with your ftp client to control the files on your server 
+
+<link rel="stylesheet" href="style.css"/>
+
+h1{
+color: blue; !important;
+} this willnot be changed even if the property is updated later
+
+line-height:50% : this assigns the space between the lines where here there will be 50% between lines 
+
+serif fonts are clean fonts meanwhile sans serif fonts are actually edgy and more stylistic 
+
+display:inline-block : allows you to have a box around the element but at the same time you can set some height
+and width for it 
+
+clear : both: removes any element in the same line to the next line 
+
+overflow:auto : allows the text to automatically have a scroll bar if it's not enough 
+
+display: table-cell : is gonna display the items as if they were in a table cell next to each other 
+
+border-width: 3px 10px; : will create a border of width 3px top and bottom , 10 px left and right 
+
+text-decoration : none;
+
+a:hover must come after a:link and a:visited 
+
+a:active must come after a:hover 
+
+a:hover{} : modifies the hovering shape 
+
+a:focus{} : modifies the focusing shape
+
+a:active{} :modifies the active shape
+
+list-style-type : ordered list : this css property will change your list in a numbered list 
+and you can have list-style-type :square will changes the list markers into squares 
+
+a[href^='http://umich'] : find an anchor element that has an href attribute that starts with 'http://umich'
+
+img[src$='.png'] : pick images that has the src attribute with the value of .png at the end 
+
+img[src*='hello'] : pick an image that has src attribute with the value hello inside any part of it 
+
+h2 ~ p : will select all the elements at the same level with h2 
+
+h2 + p : will select the p elements that is directly under the h2 element
+
+:first-child : is a pseudo class selector that chooses the first tag inside another element
+
+:last-child : opposite to first-child 
+
+:first-of-type, :last-of-type, and :only-of-type : pseudo class selectors that choose elements of specific type
+of some element like p 
+
+shorthand rules : are rules for th css that allows the abbrevation of css rules
+
+background-image: url('ocean.jpg') : this creates an image as a background 
+
+background-repeat, background-position, and background-size : are all proprties of background
+
+opacity : is how transparent the color is 
+
+POUR : Precievable
+ Operable : which means that everything is accessable through the key board 
+ Understandable
+ Robust: is if your device is working on all platforms or not 
+ are the proprties that your site should have 
+
+transition: background .2s linear, border-radius 1s ease-in 1s;
+
+transform: translate(100,100); : will move the element along the axis 
+
+transform: rotate(360deg); : will rotate the element 360deg
+
+transfrom:scale(width,height); : will change the size of the element 
+
+transform:skew(30deg,15deg)
+
+static is the default way of adding elements to the page 
+
+relative positioning : will allow for elements to be placed relative to the element that they may overlapse
+
+absloute : will position the element relative to the root
+
+fixed position : is postionied relatvie to the browser window
+
+height:100vh; will take up the whole height of the page 
+
+nav li{
+	dispaly:none;
+{
+nav li:hover ul{
+	display:block;
+} this allows the elements inside the menu to appear when hovering
+
+alert("hell") : will print hello to you 
+
+prompt("enter input") : this will create a popup with an input	
+
+document.write("") : will print something to the html 
+
+element.innerHTML="something" : this will get a specific somethig and change it 
+document.getElementById('test').innerhtml = "something" will change the element h1 text with something 
+
+console.log("will output a message to the console");
+
+nemonic : when a variable has a discriptive name 
+
+window.innerWidth: is the length of the width 
+
+function functionName(paramters){
+hello
+}
+
+for(j=0; j<array.length;j++){
+ whatever
+}
+
+If(something){
+}
+
+<form>
+   <label for="name">Name</label>
+   <input type='text' id='name' name='name'><br/> "or"
+   <label>something: <input type='email' name='email'></label>
+   <input type="submit" value="clik"> // this will submit the form without this nothing will happen 
+
+<script src="file"></script>
+
+<script>function call</script>
+
+<div onclick = "somefunction> : will triger a speicifc event when clicking 
+
+<div onmouseover="somefunction"> : when a mouse is clicked 
+
+<div onresize = "somefuntion> : when the window is resized 
+
+<div onload = "somefunction> : when the browser finishes loading the page 
+
+domObject.style.display="block" : will change the element view in a block element
+
+domobject.className="something" :will change the class to something
+
+required : is an attribute that allows an element to be compulsory 
+
+patter="[0-9]{5}" : this html attribute will allow only the entery of 5 numbers 
+
+min="somethingg" and max="something' : html attriubtes that allow for min and max numbers
+
+onchange : a java script pesudo selector that allows you to detect change when it happens in inputs 
+
+onlick ="reutrn fucntion()" : will return a output of a function when clicked and if False is reutrned the
+html element doesn't work 
+
+checked="True" : a radio button attriubte that causes the checking of a specific radio button 
+
+getElementbyId('something').checked : this checks if the elment is checked or not 
+
+getElementbyId('something).setAttribute('required',true) : this will make a certain field a required entro 
+
+getElementById('nickname').removeAttribute('required') : this will remove the required attriubte 
+
+Vcs : Version Control Systems allows collaboration between programs on their code 
+
+FC file1 file2 : this a cmd command that will compare two files and extract out difference between them 
+
+git config --global user.email "me@example.com" : sets github email 
+
+git config --global user.name "something : to set your github user name 
+
+--global : to make those changes to all the reposotories that we use
+
+git init : creates an empty repo in the currnet folder 
+
+git clone : will copy a repo in the current folder 
+
+git add filename : adds the file in the staging area so that when you do the next commit you this change will 
+
+git pull : this will update our repo with the online repo data 
+
+git remote -v : this gets back the the fetching and pushing links to the repos 
+
+git remote show origin : gives you all the details about the origin branch online like if your local repos 
+are update or not 
+
+git log master : shows you what version of the online repo that you have 	
+
+git fetch : return the commands that should be applied on our local system to be up to data without actually 
+merging them 
+
+
+git pull : automatically merges the master branch that is on our system 
+
+git chekcout update : will automaticall pull all the data without merging 
+
+git merge origin/master : this merges the online repo with the local one 
+
+git branch -r :returns the remote branch that our local system is tracking 
+be added 
+
+git commit : will commit the changes to the repo on git 
+
+git status : this will allow us to see the status of our current file  
+
+modified : means that the file is manipulated but not staged
+
+staged : means that the file is added and ready for commit 
+
+commited : means that the file is updated and live 
+
+git config -l : tells you all the configuration of your git 
+
+commit message structure:
+first line : what is the update about 
+second senetences : will explain what is the change and why is it there 
+
+git log : tracks the commits , when they were done and who made them 
+
+git commit -a : will commit all files and changes with one message 
+
+git log -p : will show you what was changed exactly in you files 
+
+git show id : shows you a specific commit that was done , you can extract the id part by doing git log 
+and getting the yellow part that you are intrested in 
+
+git diff : will show you what lines were removed or added in the files 
+
+git add -p : shows you all the changes in the files before you commit them
+
+echo file > .gitignore : this will ignore the file and will not track it 
+
+git checkout filename.py : this will revert back your changes to the file
+
+git checkout -p : will go change by change to ask you if you want to revert this change or not 
+
+git reset HEAD filename : will revert back committed changes 
+
+git add * : will add everything to the staging area
+
+git commit --ammend : allows for the overwriting of the latest commit 
+
+git revert HEAD : revenrts the last change you have done 
+
+git revert id : will revert back to the version of the code based on id that is generated from git log
+
+git branch : will show you all the brances that there is
+
+git branch newbranch : this will switch to another branch 
+
+git chekcout -b newbranch : this will create and switch to a new branch 
+
+the commits that you do are submitted to the branch you are in 
+
+git branch -D branch : will delete a branch 
+
+git merge branch : will merge the data of two branches 
+
+git merge --abort : this aborts the merge as it never happened
+
+you can modify the master in branches without actually disturbing the master 
+
+git clone url : will clone a distant url 
+
+git remote add name url : will allow you to add a remote git repo
+
+git remote update : fetches updated objects 
+
+git log --graph --oneline --all : this will show us 
+
+git log -p origin/master : this will show differences between online and offline repos
+
+git push -u origin refactor : this will push the code to the to the origin repo and we name it a refactor branch
+
+git rebase : should be done when the branch isnot up to data with the master branch 
+
+git push --delete origin refactor : will delete the refactor branch       
+
+forking is creating a repo that allows us to make changes on the master branch without modifying the master branch code 
+
+you can fork a repo from github and clone it locally and then you will be able to push to it and then 
+do a push request 
+
+git rebase -i : will include changes with all the commits
+
+git pick number : will pick the changes id and put them in the readme file       
+
+<div class="oe_structure"/> : is a way for having an empty place that allows for user editing and retrival 
+of objects that the user could fill with layouts or snippets of code 
+
+class = "someClass anotherOne" : this is a inline styling element 
+
+h1,h2,h3 { property:value} : this will give style to the three elements 
+
+* {} : is a universal selector that selects everything on the page and it has the lowest precedence
+
+.class.class{} : to select two classes at the same time 
+
+margin collapsing : is using the margin of one element to seperate between two elements 
+
+code collapsing : collapses the code or hides it 
+
+.class element : will change the element inside a class
+
+z-index : allows for stacking elements on top of each other 
+
+flex-basis : sets the initial size of the flex items 
+
+flex-grow : will fill the empty space
+
+flex-shtrink : is the how the items will shrink if there is no availble space in the container and if the value
+is set to zero it will not shrink and if set to one all the items will expand to fill up the space 
+
+grid-auto-columns : will encompass the content in columns automatically 
+
+grid-auto-rows: will encompass the content in rows automatically
+
+grid column start : this defines the place of the start
+
+grid column end : shows where the content ends 
+
+column-gap : will create space between columns 
+
+media query : is like @media screen and (max-width: 1000px){
+h1{font-size:16px;}} : where @media is the rule and the media type is screen and the the future that is going 
+to happen when this rule is applied is max-width = 1000 px 
+
+jquery : is a java script based library that is allows to do more with less code 
+
+new Date() : is a date time object that allows you to figure out the current date by default 	
+
+console.log(): this will output something to the shell 	
+
+document.body.InnerHTML = SOMETHING : this will allow you to insert html inside the body tag 
+
+new Date().getMonth() or getDate() or getFullYear : this will ouput month , date , year
+
+if you place the script in the head it will run before the page loading and if you place it after the body 
+then the page is rendered after the page is rendered 
+
+javascript render blocking : is when the java script file has to be downloaded and loaded before the page
+starts which cause a lot of slow down 
+if you do <script defer/> this will load the page asynchronously and solve the java script render blocking problem
+
+if you create a variable wihtout the word var it will be a global variable 
+
+weakly typed : means that you don't have to declare variables as you go 
+
+typeof variable : returns the type of the variable 
+
+a == b ? console.log("something") : console.log("something") : this is a ternary operator where the first 
+condition is applied if the statement is true and the second statement is applied if the statement is false 
+
+function something (paramterss) {} : is how you write a fucntion 
+if you define a function without a name you can call it like this (())
+you can change the value of an outside variable by only placing the function after it 
+
+var something = function(paramters){something else} : this will allow for the variable something to be equal 
+to something 
+
+const : is a type of variable that can't be changed in java
+
+let : another type of variabe that allows for smaller scope than var like if you define a let inside a for 
+and there is an if inside the let varaible willnot be inside the if statement 
+
+something : function() {expression} : this is how you declare a method 
+
+function Something(variable1){
+this.variable = varaible1} : this is how you are gonna create a constructor and then call it like this 
+var something = new Something("something") : this is how you call the constructor 
+
+you can call classes variable using two ways
+object.variable or object['variable'] : the second is used when the class property isn't used properly 
+
+closure : is function inside a function that allows for the saving of the outer scope variables of the outer 
+function 
+
+BOM : Browser Object Model which deals with the whole browser as an object
+
+window.innerWidth : this is how you get the width of your window
+
+window.open() : opens a window 
+
+document.getElementsByClassName("className") : gets an element through the class name
+
+document.getElementByTagName("tag") : gets an element through the tag
+
+document.querySelectory("css selector") : query by a selector
+
+document.querySelectorAll('selector') : gets all elements 
+
+document.querySelectory("css selector").classlist: this will return the list of all clases 
+
+ELEMENT.append("something") : will add text inside the element 
+
+element.style.color = "black" : will change the value of the element to black 
+
+element.style.transform : is to manipulate the elment like moving it or rotating it 
+
+setinterval() : is a method that allows for calling of something multiple time 
+
+harmony, es6, es2015 : are all names for the same thing which is an update to java script 
+
+hoisting : is a result of the java script interpretation method where all the variables in java script are 
+raised to the top of the program and only declared without initialization of any values at runtime , this
+is why if you print a value of any variable it returns undefined and not refrence error , because the 
+variable is declared but not initialized
+
+let and const allow for only block declaration which means that any variable isn't accessible outside the scope
+of the curly braces that the variable is in and this removes the hoisting problem
+
+using var make the variable's scope to be global or local to the whole function that the variable is in 
+
+let variables can be reassigned but can't be redeclared 
+
+const variables must be initialized and can't be redeclared or have their values be changed 
+
+var shouldn't be used as it's considered a bad practice because it copies the behaviour of a global variable 
+which is a bad practice on it's own 
+
+string interpolation : a more effective way of concatenation
+
+template literals : are another form of concatenation where the strings that are variables are done like that 
+'hello ${variable}' , instead of pluses between strings and template literals presever new line characters in 
+the string so if you write the following
+` hello
+ nice` this will output as two lines 
+
+destructing : is a new way in java for extracting info from arrays as if it was a dictionary in python like the 
+following 
+const point = [10, 25, -34];
+const [x, y, z] = point;
+console.log(x, y, z); :: this will output 10,25,-34 , this means that x,y,z were assigned to 10,15,25
+it's like assigning three variables 
+you can destruct arrays and objects 
+let {color} = gemstone; where gemstone is an object and the color variable will get assigned automatically to the
+color property of gemstone
+
+let gemstone = {
+  calculateWorth() { ... }}; : this assigns a function property to the object  
+
+for (const digit of digits) {
+  console.log(digit);
+} : this the for of loop which is similar to for in loop in python
+
+spread operator : a ... dot operator that allows you to spread your iterable object like this 
+console.log(...iterable)
+
+array.concat(another array) : this will add the two arrays together 
+
+you can bundle couple of items in an array using the rest (...) operator
+
+variadic functions : are functions that take indefinite number of arguments 
+
+argument object : is a local variable containing the list of variables that get passed to functions 
+
+tockenaization : is the process of conveting the string stream from it's initial state to the DOM state
+
+.getelementsbytagname("div") : this will will you to return elements with a specific tag name , in this case 
+all div elements 
+
+all the get element BYs return an html collection and not an array 
+
+the order of the node structure in html is as following :
+tags ,token, nodes, dom
+
+$0 in the console returns the highlighted element
+
+jquery was made at first to support writing the same code across all browsers
+
+.queryselector('div') : a method that selects elements just like css does but it returns only one element at a
+time and if you write a class , it will write the first element it encounters
+
+.querySelectorAll() : same as query selector method but doesn't stop at the first element and it returns nodes 
+list and not an array and you can only loop through it using foreach method or for loop
+
+.innerHtml() : this will return the inner html between the tags specified for the method 
+
+.outerHtml() : this returns the whole elements with it's tags and not only the inner components of the tag
+
+.textContent() : returns the inner text of any html content 
+
+.innerText() : same as text content but it returns the text as seen on the browser while textContent reutrns
+all the text as it's defined in the html
+
+element.style.fontsize = "3em" : this will change the font size of an element 
+
+element.style : returns a declaration that will tell you all the attirbutes that an element can take 
+
+element.style.cssText = 'color:blue,font-size:3em' : this will set the proprties of any element at the same 
+time 
+
+element.setAttribute('property' : 'value') : this property will be set for this element , an example would 
+be element.setAttribute('style':'color:black') 
+
+element.className : this returns a list of class names that are assigned to this element 
+
+element.className = "class" : this will set the class of the element to a certain css class 
+
+string.split(' ') : will change a string into an array of elements based on the specified seperator which is
+space in this case 
+
+list.push() : will push an element the list 
+
+element.classList() : this will return an array of classes instead of a string seperated with a space 
+
+element.classList().add() : this will add an element to the class list , there are also other methods for 
+classList like remove toggle and contains 
+
+list.contains('element') : this returns true if the element exists in the list 
+
+DOMTokenList.toggle('class') : this will turn a class to false in the first toggle and then turn it 
+to true in the second toggle , which allows for the class to be activated or deactivated and if you 
+toggle a non exsistent class it will turn it to true and add it to the class list 
+
+it's recommended to use the class list property when modifying element's looks so that the css and the 
+java script are kept in different files 
+
+monitorEvents(document.body) : a method that monitors any element that is speicfied to it , in this case 
+it monitors the body of the document and if a second paramter isn't specified it monitors all the events 
+and it's only suppoerted for development code and not for production 
+
+list.pop() : will remove the last element of the list 
+
+EventTarget interface : is an interface that allows for objects and classes to have listeners and be monitored 
+and objects and classes always inherit from the EventTarget interface, event target doesn't inherit something
+
+<event-target>.addEventListener(<event-to-listen-for>, <function-to-run-when-an-event-happens>) : this adds 
+an event listener to the element and responds when an event happens 
+an event listener is divided into three categories : target : which is the element that has the event listener
+the type : which is the type of the event to listen to 
+the listener : which is the repsonse function that is going to be triggered 
+an example would be 
+document.addEventListener("click",function(){console.log('hello')} : this would write hello every time 
+you click in any place in the document 
+
+type coercion : java converts objects to the same type for comparison when you use the == operator and doesn't
+use it when you use the === operator
+
+.removeEventListener('click',event function) : the event function has to be the exact same as the added listener
+function meaning that both functions should be add in function definition so it could be removed 
+
+we have three event phases : capturing , at target , bubbling : the capturing process is the cursor moving 
+through the html to the target element 
+at target : is when the cursor is at the element and is the time that the function starts running 
+bubbling : is when the cursor goes back up to the main head of the html page 
+
+the listener is by default activate during the bubbling phase , if you want the listener to be activated during
+the capturing phase you can do this 
+.addEvenetListener('click',function(){},True) then the true will activate the listener in the capturing 
+phase 
+
+.addEventListener('click'function(event){}) : the event paramter can be named anything and it's value is 
+the action that has happened
+
+.addEventListener ('click') ,function(event){event.preventdefault()} : which prevents the default action from
+happening
+
+function respondToTheClick(evt) {
+    console.log('A paragraph was clicked: ' + evt.target.textContent);
+} : this is a listener function with one paramter evt and evt.target returns the element that was clicked and
+.textContent returns the text inside this element 
+evt.target.nodeName: this will return the name of the node that was clicked , and it will return the name of
+the node in capital letters 
+
+Event delegation : is the process of delegating the ability of managing the events of children elements to 
+the parent element 
+
+'DOMContentLoaded' : is an event just like 'click' which signals that the DOM elements have been structured 
+
+you should add the script to the end of the file so that the script is run when the dom tree is loaded ,
+if you want to place it at the beggining of the code you have to do the following 
+document.addEventListener('DOMContentLoaded',function(){document.querySelector('footer').style.backgroundcolor='purple';});
+and this will allow for the action to be taken after the dom is loaded 
+
+document.onload(): is an older of version of DOMContentLoaded and it used to wait for everything to load , 
+things like the images , sheets and everything that is refrenced by the html code 
+
+in general you want to put your script before the body closing tag  and not in the head 
+
+performance.now() : returns a time stamp of the current time in milliseconds , you can place it at the 
+beggining of the code and at the end and subtract both to measure the difference and output the time took 
+by the code 
+
+the reflow calcualation : the calculation that is done to calculate the new shape of the screen 
+the repaint screen : recolors the screen and draws screen pixels 
+
+java script is a single threading language which means it executes one command at a time which is opposite to 
+multithreading 
+
+the call stack : a stack that has all the functions that are beig called , so when any function is invoked
+it'a added to the call stack and the oldest functions are at the bottom of the stack and the newest ones are
+at the top of the stack 
+
+the event listeners aren't synchronus code , they are web apis , when they are executed they get added to 
+the call stack and then get added to the web internals , and then when the listener events happens , the 
+listener's function gets added to the queue and then waits for any java script code in the stack and then 
+after the java script code is finished the function is moved from the que to the stack and is executed
+
+
+setTimeout(function sayHi() {
+    console.log('Howdy');
+}, 1000); : the set timeout function will run the sayHi function after 1000 mili seconds or after one second,
+the set time out functon hand the sayhi function to the browser and after 1 second the browser hands the say
+hi function to the que and then if there is no functions going in the stack the function is run 
+
+javascript event loop : is the loop that the events go through by going through the web api , que and the 
+the call stack 
+
+setTimout(function,0) : this function is important as it allows for the script to run and finish in the stack
+first and then afterwards the function in the que will be executed , and this will allow the user to interact 
+with the webpage when there is java script running in the background 
+
+document.createDocumentFragment() : this will create a document fragment which is a structure that is similar
+to the dom tree but it's not in the active dom tree so changes done to it are not gone through the reflow 
+or the repaint process which makes adding elements to it faster than adding elements directly to the body 
+of the dom 
+
+array.foreach(function(){}) : allows for the editing of each element in an array 
+
+nodes.js : is  a crossplatform , java script , server side framework that allows you to run js outside the 
+browser or in the server and also on the browser 
+
+server side scripts allows for the creation of dynamic web pages 
+
+node.js allows the execution of very hard js code that can't be created using js 
+
+presistence : is the ability to present dynamic data for webpages 
+
+modules : are js libraries that you can include in your code 
+
+express : is a node package 
+
+cors : a package that allows communication accross the web 
+
+body-parser : allows for parsing the data the will be coming through the routes of the system 
+
+npm install express : installs the express package 
+
+require() : this is the way to include an already installed package 
+
+express : is a node.js frame work 
+
+middle ware : is the software that connects different parts of the project togther 
+
+const http= require('http'); : this will allow the creation of an http server  using the following command
+http.createServer()
+
+if you want to listen on a specific port you can use a listen method after you have created a server 
+you can do 
+server.listen(port,hostname)
+
+app.listen(port,function) : this will create a server that listens on the port and responds using 
+the function 
+
+arrow function is anyonmous function calls that can be done this way 
+instead of function(paramter){some functionality} you can do this (paramter) =>{some functionality}
+and if there is only one paramter you can do this paramter => some functionaliy 
+
+app.use(express.static('demo')); : this will locate the folder where the resources of the website
+exists
+
+the strucutre of the website in node is a javascript file and the folder containing the files of the website
+and it's called the project's root 
+
+const app = express();
+app.get('/',function(req,res){}) : this will handle the get request and respond to it using the function assigned
+and the first paramter is the path that the get request responds to 
+req and res are the request and response paramters that are gonna be passed by the get function 
+
+app.post('url',function(){}) : this will post data to the website end point 
+function () : console.log(req.body){console.log(req.body)data.push(req.body)} , this function wil allow
+the data pushing to the data base 
+
+jquery is for animation 
+
+bootstrap: is a css framework
+
+javascript and css files are also included in the head
+
+<hr> </hr> : is a tag that seperates two things with a line 
+
+semantic tags : are tags that are a reinforcement of the meaning of the text that is insdie of it 	
+
+if a tag href="name of anohter file in the same directory" : then it will go to this page 
+
+
+<table> : table is divided into head and tbody
+
+controls : is a video attribute that allows controlling the video 
+
+<form method="post" action="somepage.html">
+	<input name="name" type='text'/>
+	<select name ="something"/>
+		<option>something</option>
+	</select>
+	<textarea> allows for text input
+</form> if you put get insted of post the details will be availaible in the url 
+action is the action that will be executed after submission
+input is what the user is gonna input and the input name attribute will assign the name string as identifier
+for recrods  
+input tag have types that could be anything like text number or anything 
+
+if two radio buttons have the same name then you will only be able to select one    
+<input type="submit"> will submit the form
+<input type="file"> will browse
+
+autofocus : is the thing that starts first when you open the webpage
+
+rem : is a measuring unit that is good for sizing for different window browsers
+
+min-width , min-height : gets you the minimum width and height of an element
+
+text-transform : captalizes the first letter
+
+align-self: center : this will will allow individual elements to have style , using inline style 
+
+align-items : center : css property to center the elements in the middle	
+
+app.get('/',(req,res)=>{res.send("hello:)} : this means that whenever a request is made to the home 
+page there will be a response with hello
+
+app.post('/',(res,req)=>{data.push(req.body)} : this will save posted data from the user inside the 
+array 
+
+if you assign a new paramter that didn't exist before to an array it will create a new entry in the array
+with the value you assign it to 
+
+
+
+javascript is a single threaded application which means that is runs one process at a time 
+
+java script is synchornus which means that it runs in order but we can sometimes break this synchrousity
+by some asynchrous functions like setTimeout() which allows us to wait for some time to run a code
+functionality , as the following setTimeout(function(){},3000) which will wait 3 seconds before executing
+the code , and instead of time we can make it a condition , so the code won't execute before the 
+condition is met 
+
+var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+}); : this allows a function to run in case of resolve and rejects it in case of reject and these are 
+called promises and they are the best practice for asynchoronus tasks
+
+const function = functiontype( paramters) => {} : this is the syntax to create a function
+
+once inside an async function you can write try ,catch and await functions inside 
+
+a promise has four states : 
+fulfilled : which means that the promise has sucesseded 
+rejected : means the promise has failed 
+pending : the promise is neither successful or failure
+settled : has fullfilled or rejected 
+
+async : waiting for something for code execution
+await : wiating for api response
+try : after api response trying the code
+except : if try code fials code inside except executes
+
+a promise takes two paramters resolve and reject , those are the return types of the promise , if the 
+problem is finished then it's resolved and if it's not then it's rejected , an example would be
+const something = new promise(function(resolved,reject){ 
+// does something then 
+let isDone = True;
+if (isDone){resolve('someone');;
+else (reject();}});
+
+promise.then(function(){}) : this would execute the function after the promise finishes execution 
+
+promises has one function as a paramter with two paramters resolve and reject
+
+promise.catch(function(message){}) will run some function in case of promise failure and if you pass
+a paramter in the function of catch or then the first paramter will be the resolve or reject message
+
+function( ) {
+return promise(function(){})} : this is how you write a promise fucntion 
+
+promise.then(promise).then(something) : this is called chaining promises
+
+async function something() {} : this will create a function that handles asynchrous functionality 
+
+async function something() {
+const someone = await some_promise() 
+console.log("hello")
+} : this will create an async function and the someone variable will recieve the resolve or reject result
+of the some_promise function , javascript will await the some_promise function until it finishes to execute
+the code after it 
+
+async function are used to include awaits that replaces the .then syntax of promises , and if you want 
+to catch errors using async functions you do the following 
+
+async function name(){
+	try{
+	all your awaits and code
+	}
+	catch(the reject message of the promise){
+	will execute in case the code was rejected
+	}
+}
+
+fetch("api_link",{post , get or whatever}) : this allows you to request an api link and the second paramter
+is optional and allows you to use any html function you want , and fetch is promise based so it can be used
+in asynchrous functions and can be use with await , fetch returns a string of data that looks like a 
+json , in order to transform it into json it will be like this 
+
+fetch('link).then(res=> res.json()).then(data=> console.log(data)) : the .json() is a promise function that
+resolves to json if successful and then you can console log the data by another .then method
+
+fetch always resolves to success unless there was some problem with the internet or the browser that we are
+using 
+
+fethc('link').then(res=> console.log(res.ok)) : res.ok will return true if the api responds successfuly and
+return false the api didn't return anything 
+
+fetch('link',{method:http_method,header:{ 'Content-Type' : 'application/json'}
+body:JSON.stringify{dictionary of value}}) : this will send data to 
+our api and save it , and the body has to be in JSON format in order to be saved 
+and header tell the fetch the type of the content that is going to be passed which is json in our case 
+here
+
+app.Method(path,function) : this is the routing of node where the method is any http method and path
+is the path that is going to be matched and function is the functionality that is going to be executed when
+the path is matched 
+
+app.listen(port,()=>{console.log('hello')}) : runs a server for listening on port with port number port 
+, and once the port is run then hello is logged in the console window
+
+middleware : is function that has access to the request and the response object 
+
+app.use() : is run everytime the app recieves a request in general
+
+app.get(route,()=>{something 
+	next()},
+	()=>{console.log("anotherfunction")}) : this will execute two functions in row 
+
+npm init : allows you to create initialize a project
+
+jquery traversing allows you to select elements in the dom and manipulate it 
+
+$(document).ready(function(){$('div').find(".red").css("color":"red") : this function is going to 
+search the document after it's ready for a red class that is inside a div 
+
+$.noConflict(); , will change all the $ signs into jquery(document) instead of  $(document) and if you 
+do var ja = $.noConflict() then you can do jq(document)
+
+you can pass the $ as a paramter for the ready function after jquery(document)
+
+bootstrap changes the default shape of tags like h1 and p when you include it 
+
+php is a server side programming language 

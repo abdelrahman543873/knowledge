@@ -1,0 +1,575 @@
+effecient learning procedure : 
+
+make the words in conversation style 
+
+look at pictures corelating the topic 
+
+correlate the content with emotions
+
+have it in a story way cause brains are way more effective when it's required to make 
+DECISIONS or JUDGMENTS
+
+personalize things a make them look like people because you are a HUMAN being and your 
+brain focuses on people more than things 
+
+two ways to really get something :
+
+either by repetition 
+try to involve more neurons in the process like pictures or other activities
+learning in conversation mode is very effective
+try to have some emotions with the content
+
+STEPS FOR LEARNING MORE EFFECIENTLY :
+
+1: slowww dowwwn and really take the time to understand and imagine things cause you 
+remember by UNDERSTANDING 
+
+2: take notesss 
+
+3: make sure that the reading is the last mentally challenging thing you do in the day
+
+4:talk it out loud 
+
+5: drink water cause dehydration (which can happen way before you feel thirsty) can 
+cause you decreased cognitive function
+
+6: pay attention to your brain , so if you are just skimming or you just forgot what you 
+read stop, cause shoving more in DOESN'T work 
+
+7: have storiessss , laughing at a bad joke is way way way better for learning
+
+ANDROID:
+
+layouts : defines what each screen looks like
+
+activities : define a single action that the user can take 
+
+resources : are the things that the app needs
+
+SDK : Software Development Kit contains libraries and tools you need to develop android
+
+SDK platform : is an SDK for each version of android
+
+pacakage name : is derived from the company domain and the app name 
+
+api : is the framework that apps use to interact with underlying hardware of the device
+
+https://developer.android.com/
+about/dashboards/index.html : this webiste is for checking how much precentage of devices
+work on a specific api level
+
+THE PROCESS BETWEEN ACTIVITY AND LAYOUT :
+
+activity is launched , activity chooses a layout , activity tells android to display this layout
+user interacts with layout , activity responds to those interactions by launching the code ,
+activity update the display which the user sees
+
+STRUCTURE OF THE APP : 
+
+build folder : contains the files that are generated to you by the android platform 
+
+src folder : contains the code you write and edit
+
+java folder under source : contains any java code you write 
+
+androidmainfest.xml : contains the the essential info that the app contains such as info 
+about the app and what components it contains 
+
+oncreate method : is a method that is called when the app is first launched and it's
+extended from activity class
+
+AVD : Android Virtual Device 
+
+QEMU : is the virtual emulator that the android studio uses
+to emulate devices , this emulator is the same as others like vmware
+
+APK : is an Android Application Pakcage file and it's a combination of the byte
+code and the resources required for the application like libraries 
+
+ART : Androd RunTime is the compiler of the java code in android and it runs a dex code 
+which is a more effecient byte code for android which runs directly on the cpu of the android
+device which allows it to use way less battery power and be way more fast 
+
+<android.support.constraint> : this element tells android how to display elements on the 
+screen
+
+Android studio is just a version of inelij IDEA that has android interface
+
+android:layout_gravity = "center" : centers anything in the middle of the layout
+
+spinner : is the android term for drop down list
+
+strings.xml : it's used to store the text inside so it's applicable for your app to be translated
+into other languages 
+
+android:text="@string/find" : this uses the strings.xml resource file and allocates 
+a text to your view , and @string means to lookup a string resource from the resources 
+files 
+
+<resources></resources> : identifies the content of the file as resources 
+
+<string name="blabla">whatever</string> : this indicates that the following is a resource 
+file 
+
+if you want to user another language place it in a different values folder 
+
+<string-array name="String array">
+	<item>value1</item>
+	<item>value2</item>
+</string-array>
+
+android:entries="@array/beer_colors" : notice that cause we are searching for an array 
+we said @array and the entries attribute is used for refrencing the entries of a spinner
+
+R file : is used to keep track with the resources your app has 
+
+String.valueOf(View.getSelectedItem()); : returns the option that the user selected in 
+a String format from a spinner
+
+if you create a method inside a class and want to call this method into another class
+you have to create an object of this method
+
+task : is a chain of activities
+
+android:ems="10" : an edit text element attribute that has 10 words entered max
+
+mainfest file : it's the file in android that tracks your activities and your changes on 
+the app and the libraries required for the app to work , if an activity isn't mentionted in
+the mainfest file the system won't recognize it and it won't run 
+
+intents : are used to launch another activity in the same app or in another app , when 
+an activity makes an intent it sends it to android and android sends the intent to 
+the app and if everything is okay the activity related to this intnet will launch 
+
+explicit intent :Intent intent = new Intent(this, target.class) : this is used 
+to specify the this activity (the first paramter) wants to send an activity to 
+traget class (second paramter) so we explicitly know which class we want to open 
+
+startActivity(intent) : passes the intent created previously to android to start the activity
+correlated with this intent
+
+
+intent.putExtra("name of variable" , value.toString()) : allows you to pass any info to the next intet
+
+intent.getStringExtra("name name of variable") : allows for varaible retreival in the
+second intent
+
+implicit intent : in the implicit intent you tell android which action you want to perform
+and android handles the intent for you 
+
+implicit intent declaration : Intent intent = new Intent(action)
+action could be Intent.ACTION_DIAL , Intent.ACTION_SEND , INTENT.ACTION_WEB_SEARCH
+
+In order to be able to start an activity in another messaging app we need to do the following
+steps :
+
+Intent intent = new Intent(Intent.ACTION_SEND)
+intent.setType("text/plain")
+intent.putExtra(Intent.EXTRA_TEXT , "whatever text")
+startActivity (intent)
+
+intent resolution : is the process where android identifies which app 
+is able to handle the intent and it does this by checking the intent filter
+at every app's android mainfest file 
+
+intent filter : is a property in the mainfest file of android apps 
+that specifies if the app could be implicity launched or not and tells
+what type of data could be passed to it in the implicit intent and it finds the
+suitable app by searching using the action and the passed intent data and the
+app that is gonna be launched has to have the category of being default
+
+intent.createChooser() : displays a chooser dialogue which narrows down
+the options the user has for the app that is going to handle the intent by
+displaying a title for the chooser dialougue and removing the always or only this time
+option from the chooser dialogue
+
+getString() method : is used to get the value of a string resource 
+example getString(R.string.whatever)
+
+each app is related with a process 
+
+Handler : is an android class that you can use to schedule code that should be run at some
+point in the future and you can use it to post code to another android thread than the main
+android thread
+
+post() : is a method in the handler class that allows you to run a runnable object (that
+has a code you want to execute) immediately 
+example :
+Handler handler = new Handler();
+handler.post(runnable) "runnable is an object type"
+
+postDelayed() : is a method of the handler class same as post() but allows
+for the delay of the code execution 
+example: 
+Handler handler = new Handler();
+handler.postDelayed(runnable , long); "long is the time in milliseconds for 
+the delay)
+
+android takes into consideration the orientation and the physical aspect of the device 
+when the phone is rotated the activity gets destroyed and it launches again
+
+onDestroy() : get's called right before your app gets destroyed like onCreate() gets called
+when your app is launched 
+
+STATES OF ANDROID APPLICATION :
+
+Activity is launched (the process before your app is displayed on the screen 
+onCreate() (activity is being launched but not visible in the foreground yet)
+onStart() (activity is in the foreground but doesn't have the focus yet)
+onResume() ( activity is in the foreground and has the focus)
+Activity is running (your app is on the screen)
+onPause() (
+activity is destroyed (your app doesn't exist)
+
+Activity class : includes things like the lifcycle of the app methods , and things like 
+findViewById() , onCreate() , onDestroy() , onResume() , onRestart
+
+onSavedInstanceState() : it gets called before onDestroy() which allows you to save any 
+variables before the app gets destroyed and it has a Bundle as a paramter 
+
+Bundle : is like a container that allows you to gather different types of data into one place
+
+Bundle.put*("name" , value) : where * is the variable type and the rest is obvious
+example: boodi.putInt("seconds" , seconds) where seconds is the value of "seconds"
+
+Bundle.get*("name") : allows you to get the values of the saved instances 
+
+int seconds = bundle.getInt("seconds")
+
+onStart() : is started when your activity is visible to the user 
+
+onStop() : is started when your activity isn't visible to the user
+
+onRestart() : gets called on the relaunch of your activity
+
+onPause() : gets called when the activity is partially visible
+
+onResume() : gets called when the activity has regained focus 
+
+let's say for example that the app never comes into the foreground then onResume() is 
+never gonna be called and the code is gonna jump from onStart() to onPause() and onStop()
+
+so if you pause an activity then the on resume of the second activity get called and when 
+the second activity is finished the on pause code of the first activity is run first and then 
+the onResume() of the first activity is started
+
+android:supportsRtl="true" : this attribute is used to specify the directon of your GUI
+components depending on the language you are reading 
+
+xmlns:android : is an attribute that specifies the usage of android framework 
+
+android:supportsRtl="true : this is an attribute in androidMainfest and supportRtl means
+support Right To Left languages
+
+padding : is the distance between the view and it's parent 
+
+IT'S BETTER TO ADD DIMENSIONS OF LAYOUTS IN A SEPERATE DIMENSIONS FILE
+
+</dimen name="dimension">16dp</dimen>
+
+margin gives you distances between views
+
+android:layout_wegith="number" : this tells each gui component how much space is it going
+to take compared to the other views 
+
+0dp : is actually a better way to determine wrap_content as android doesn't have to translate
+the value of wrap_content
+
+android:gravity="value" : we could have two values at the same time like this value=top|right
+
+android:layout_gravity="value" : it controls the position of a view in a layout 
+
+android : gravity : moves the view the content inside the view 
+
+the values of android gravity can be like "top|right" which mixes the two positions 
+
+
+value could be "fill_vertically" or "fill_horizontally" which expands the views vertically
+or horizontally and "fill" does both
+
+<Framelayout> : is a layout that allows views overlapping over each other , and according 
+to the order you place the views are displayed on top of each other 
+
+drawable folder : located in app/src/main , it's used to store graphic resources like 
+images
+
+android:scaleType : it controls how a graphic resource like an image is shown in the app
+
+the super class of layouts are viewGroups , those are views that can contain other views
+
+sp : scale Independet pixels , used for detecting the size of text
+
+toggle button : is a button that has two states and it changes between them when it's clicked
+
+android:textOn : is an attribute that is used to set the text of a toggle button when it's
+turned on 
+
+android:textOff : is an attribute that is used to set the text of a toggle button off
+
+isChecked : this is a toggle button attribute if the toggle button is turned into a java
+object and it yields out a boolean which is true or false
+
+switch : same as toggle button 
+
+<CheckBox> : is a view that allows for checking or unchecking independently of other multiple boxes
+and it has the same isChecked method that is in the swtich or toggle button 
+
+<RadioButton> : same as CheckBox but only allows for one option to be checked and you should
+define radioButtons with <RadioGroup> tag
+
+getCheckedRadioButtonId() : allows for checking wether a radio button is checked or not
+
+Radiogroup : is a subclass of linear layout that allows you to group radio buttons
+verticall or horizontally
+
+getSelectedItem() : is a method that allows for getting the option which is selected from 
+the spinner
+
+drawable-ldpi , drawable-mdpi , drawable-hdpi , drawable-xhdpi : all of those are folders
+that allow for different resources densities
+
+setImageResource(R.id.whatever) : allows you to set your image resource in java object of 
+an image
+
+android:drawableRight : allows for a button to have a picture with it 
+
+<ImageButton> : is a button that only has an image and no text
+
+<ScrollView> : is a view that surround your original view in order to allow for more 
+items on the screen 
+Note: you have to move the xmlns and tools:context attribute to the scroll view as it's 
+now the root view
+
+<horizontalScrollView> : same but horizontal
+
+Toast.makeText (this,"hello",Toast.LENGTH_SHROT).show(): allows you to show a message 
+for some time 
+
+constraintLayout allows you to design more complex layouts and you can do it "drag and 
+drop" style 
+
+each view in the constraint layout must have two constraints one vertical and one horizontal
+
+if you press the shift key while pressing on  views you can select multiple ones
+
+in the constraint layout , editText is called plain text
+
+email : is a component in the palette that acts like a editText
+
+infer constraints button allows the layout to automatically detect the constraints of the 
+layout
+
+HOW TO STRUCTURE APPS :
+
+divide the app into three main categories 
+
+top level activity 
+category activity 
+detail/edit activity
+
+every type of method that you define you have to metion the method return type 
+except constructors 
+
+AdapterView.OnItemClickListener whatever = new AdapterView.OnItemClickListener() : 
+this sets a listener to a specific view item
+
+in order for you to bind data that isn't an array in the strings.xml , you need to bind
+it programatically using an adapter that is if you want to bind a database or some class
+
+Adapter : is the bridge between a data source (database or class) and the list view
+
+ArrayAdapter : is an adapter that deals with arrays and you can use it with any view that 
+extends from arrayAdapter view like lists and spinners
+
+ArrayAdapter is used by initializing it and then binding it with the list view 
+
+INITIALAIZATION :
+
+ArrayAdapter<Drink> drinks = new ArrayAdapter<>(this,android.R.layout.simple_list_item1,Drink.drinks)
+this:context
+android.R.layout.simple_list_item1 : is the layout that is going to be handed to the list
+Drink.drinks : the array or the data source
+
+ListView.setAdapter(ArrayAdapter) : allows you to set an adapter on a list view 
+
+action bar : is the bar at the top of the app 
+
+you can get the support libraries by opening file and then project structure and then 
+the dependencies tab
+
+the app's theme is located in the androidMainfest.xml file 
+
+mipmap folder : is a folder that contains graphics that could be used as icons
+
+if you want to have different resolutions use this 
+mimmap-hdpi foler
+
+android:label : this is an attribute that is used to name the application
+
+android:theme : determines the theme that is going to be used by the app in case the 
+attribute is located in the <application> component , but used to detect the <activity>
+component theme if it's located within it , "all of this lies in the androidMainfest xml file
+
+two types of themes : 
+hardcoded : inAbility to change colors
+style : Ability to change colors
+
+AppTheme : is a style that is added to android:Them attribute and it has the ability to change
+colors
+
+some themes are like 
+Theme.AppCompat.Light
+Theme.AppCompat.Light.NoActionBar
+Theme.AppCompat
+Theme.AppComapt.NoActionBar
+
+in the styles.xml resource file 
+the name of the <item> in the <style> component indicates what the color refers to 
+if name="colorPrimary" then that means the color indicates the main color of the app
+if name="colorAccent" then that refers to the color that indicates the color of the gui
+components of the app like EditText view and check boxes
+
+an example : <item name="colorPrimary">"this could be a hexadecimal color value" or 
+a refrence to a color string"<item>
+
+toolBar is the updated version of the app bar but with more features
+
+TOOLBAR PROPERTIES:
+android:layout_height="?attr/actionBarSize" : the height size of a tool bar
+android:background="?attr/colorPrimary" : the color of the tool Bar
+android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
+<include layout="@layout/toolbar_main"/> : this is to include a layout in another layout
+
+setSupportActionBar() : is a method that allows a toolbar to be an appbar
+
+android:label="app name" : is an attribute in android mainfest.xml that tells android
+the name that is displayed in the app bar for the whole app and it has to be included 
+within the <activity> component like this <activity android:label="...">
+
+to create an item in a <menu> resource file
+
+<item android:title="@string/whateer" 'the title of the action in the app bar'
+android:icon="@drawable/whatever" 'the icon of the action in the app bar'
+android:orderInCategory="1" 'the order that the button appears in the app bar'
+app:showAsAction="ifRoom"> 'controls how the action appears in the app bar' 'if room
+attribute allows for the action icon to be in the app bar if there is space'
+
+each <item> inside a <menu> resource file is considered an action
+
+onCreateOptionsMenu() method : is used to implement the menu in the tool bar
+
+in order to add a menu actions to an app bar you need to do the following 
+@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main , menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+the whole benefit of the getMenuInflater is to place a menu actions in your app bar 
+
+onOptionsItemSelected method : allows you to take a specific action when you click on 
+an action button in the app bar 
+
+This code 
+@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_create_order: {
+                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+                startActivity(intent);
+            }
+            default: {
+                return super.onOptionsItemSelected(item);
+            }
+        }
+    }
+allows the app bar action button to react when it's clicked and go to another activity
+which is OrderActivity.class
+
+android:parentActivityName="whateve" : allows you to set the parent activity of any activity
+which allows for navigating one step back using an app bar button rather than the default
+back android button which goes through the history of activities
+
+ActionBar actionbar = getSupportActionbar(); : allows you to get a refrence to an action bar
+object
+actionBar.setDisplayHomeAsUpEnabled(true); : allows you to go up to the parent class 
+that you set in the AndriodMainfest.xml file 
+
+action providers : are tools that allow you to add more sophisticated actions to your 
+toolbar
+
+share action provider : is one of the action provider tools that allows you to use other 
+applications to share something from your app
+
+app:actionProviderClass="android.support7......" : allows you to add a share action provider
+to the <menu> resource file 
+
+private shareActionProvider ShareActionProvider;
+MenuItem menuItem = menu.findItem(R.id.Action_share)
+shareActionProvider = (ShareActionProvider)menuItemCompat.getActionProvider(menuItem)
+this is to get a refrence to the share action provider in the <menu> resource file 
+
+STEPS FOR CREATING A SHARE ACTION PROVIDER :
+1:create a menu item in the menu resource file
+2:create a string for it in the strings resource file so that it can have a name
+3:go to the whatever activity code you have and then define a ShareActionProvider
+4:go to the onCreateOptionsMenu() method and then get a refrence to the share action provider item
+from the menu
+5:using the MenuItemCompat.getActionProvider(menuItem) get a refrence to the ShareActionProvider
+6:using the setShareIntent(Intent) method on the ShareActionProvider object set the 
+required intent content ,type and action you require
+
+Inflating : is turning view into java objects
+
+android:name="whatever" : allows for the insertion of the fragment you want to use
+
+IF THE LAYOUT CONTAINS A SINGLE VIEW THAT IS THE FRAGMENT , THE FRAGMENT CAN BE THE ROOT
+
+Fragments : are just gui components with java code that could be implied in multiple files
+
+getSupportFragmentManager() : is a method that allows any activity to deal with it's fragments
+
+getSupportFragmentManager().FindFragmentById(R.id.detail_frag); : gets you a refrence to 
+a specific fragment you are dealing with 
+
+onDetach() : is the last method that is called before the activity is detached from the 
+fragment
+
+View view = getView(); : allows you to get the root view of the fragment so that you can
+select whatever view in the fragment you can 
+
+view.findViewById() : allows you to get the root view of the fragment as fragments don't have
+the same methods as activities so this is the only way to get refrence to views inside 
+fragments
+
+List fragment : is a fragment that comes with it's own list so you don't need to 
+
+if a method is required to respond to a click from the layout it must be in the following
+form 
+pubic void method_name(View view_name){} 
+
+R is a special java file that allows to keep track of resources within your app
+
+android:hint ="something" : is the hint that used with the edit text
+
+in order to create an implicit intent you have to specify the action and specify the 
+type of data sent like the following example 
+Intent intent = new Intent(ACTION_SEND)
+intent.setType("plain/text")
+startActivity(intent)
+
+the category filter in the android manifest xml file decides if the app can recive implicit 
+intents or not if the app is of category default then it's allowed to reciever implicit
+intents else it will be omitted by android when it's looking for apps to execute 
+actions
+
+the activity lifecycle methods are inherited by the activity class where we extend the 
+main activity from 
+
+a bundle allows you to group together different types of data and it's used with 
+onSavedInstanceState(Bundle) so that you can save variables before you destroy your app
+
+android:inputType="value" : value could have phone , textPassword , textCapSentences ,
+textAutoCorrect and you can mix between them by using the | character
+
+ 

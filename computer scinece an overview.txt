@@ -1,0 +1,657 @@
+fvlsi : is a process of putting a lot of circuits in a chip 
+
+each hexadecimal bit is called represents four binary bits 
+
+stream : a string of binary bits 
+
+cells : are parts of the main memory that are programmable to zero and one and typically each cell contains a 
+byte or 8 bits 
+
+address : is the name of each cell in the memomory
+
+RAM : has this name cause of the ability to access random cells in the memory
+
+turing computable functions or computable functions : are functions that could be calculated algorithmicly 
+
+universal progamming languages can solve all turing problems
+
+parity bit : is a way of checking for errors in streams of bits by adding an additional bit called parity bit 
+that changes the number of bits to an odd number so that if an even number of ones is encountered that means that
+the stream has been manipulated
+dram : a tecnology that uses electric charges to store data
+
+track : is a circular way of storing data on hdd
+
+sectors : are the components of the track of size 512 bytes
+
+zoned-bit recording : is more compact way of storing sectors on hdd
+
+seek time : a way of meusring the hdd read and write time but measuring the movements speed of the spindle and 
+the head from one sector to the other 
+
+rotation delay : half the timing rquired to make a comple disk rotation
+
+access time : the sum of the rotation delay and seek time
+
+transfer rate : timing of transfering data from the hdd to another one 
+
+run-length encoding : is a loseless method of compression by replacing repeated items by a code representing 
+this repetetion 
+
+frequency-dependent encoding : also named as hufman-codes which depends on the frequency of repetion of the item 
+in the coded manner 
+
+differential or relative encoding : is used for compressing items that are closely related like the frames of a
+video by finding the relation between those frames insted of saving the whole frame and it could be losy or loseless
+depeding on if the data to be approxmated or strictly required
+
+dictionary encoding : which is depending of finding the constitutents of the data to be compressed and then 
+relating the actual data to the dictionary items and it can be lossy cause sometimes the dictionary elements are consititued 
+
+adaptive dictionary encoding or LZW : is a way of encoding data by creating specific dictionaries according to the
+message itself
+
+GIF : Graphic Interchange Format which depends on individual pixel color 
+
+JPEG : mostly uses the limitation of the human eyes that are able to identify brightness change more than color
+change and then it decresses the color accuracy which cause more compression wihout visual obvious change in the
+image quality 
+
+TIFF : Tagged Image File Formaty which are mostly used for storing data associated with the picture rather 
+than compressing the picture itself and if used for picture compressing it usually uses run-length encoding
+
+MPEG : is the standard for video compression and it usually uses relative encoding techniques with the video 
+changing into picutre frames with some called i frames and all the other frames are related to this frame 
+
+MP3 : is used for audio compression and it's acutally related to the mpeg and developed through the same company
+
+temporal masking : is the technique used by mp3 that uses the human technique where the human ear after a loud 
+sound can't identify the audible sounds from each other 
+
+frequency masking : is a compression technique that is used by mp3 which takes use of the fact that some 
+frequencies mask of nearing frequencies causing them to be faded so mp3 deletes the nearby frequencies to save 
+space 
+
+there is odd parity and even pairty dpeneding on the number of ones if it's even or odd
+
+check byte : is a collection of parity bits that are used to check for errors in bits
+
+checksum and CRCs Cyclic Redundancy checks : are using parity check bytes
+
+hamming distance : which is dependent on the change between two binary characters which should at least be three
+if the hamming distance is less than three then there must be an error
+
+cpu consists of three main units , registers , alu and control unit
+
+bus : wires that transfer the data between the pc's components 
+
+general purpose registers : are cpu registers that are responsible for holding temporary data that is going 
+to be manipulated by the cpu 
+
+the data goes the gerenal purpose registers 
+then it's manipulated by the alu 
+and the result is saved in another general purpose register 
+and then the result is transferred to a memory cell 
+
+cache memory :  is the transient memory between secondary storage and the main memory and it's high speed memory
+and it's located in the cpu itself
+
+stored program concept : is the concept of storing the program in the main memory rather than only storing the 
+program in the memory and the data in a secondary storage 
+
+Risc : reduced instruction set computer  is a an archticture topology that depends on creating a cpu that has 
+can execute minimum amount of elementary commands cause there is a therotical number of basic instructions that 
+are essence to the computer and increasing them doesn't cause any improvement to the theortical capabilities of 
+the pc 
+
+CISC : complex instruction set computer is a computer that has more elementary commands encoded in the cpu and the
+only argument in favour of this archicture is that the more complex the cpu is the more it's able to deal with 
+complex demands 
+
+the processes of the of the cpu are 
+data transfer 
+arthimatic /logic 
+control group 
+
+cpu instructions are either two byte instructions or variable length instructions if the cpu arechticture is CISC
+
+one the of the instructions of the control unit is to do conditional and uncoditional jumps 
+
+opcode : is the code that indicates which operations are to be executed 
+
+operand : includes the meta data such as the locations of the data to be operated on and what the data is 
+
+machine instruction is constituted of first 16 bits
+most sginificant four bits are for operantional code and the next 12 bits are for operand data
+example 35a7 the 3 would mean to do a storing operation and the 5 is the general purpose register to store the
+data on and a7 is the memory cell that has the source of the data 
+the the bits 12 bits after the op-code 4 bits are defined according to the needs of the op-code 
+
+instruction register and program counter : are examples of special purpose registers 
+instruction register is used for holding the instruction to be executed 
+program counter : is used to hold the address of the next instruction 
+
+the machine or cpu cylcle of applying the commands : 
+fetch : is the done by getting the address of the next instruction from the program counter 
+decode : decode the machine order 
+execute : perform the action required by the instruction 
+
+clock speeds : are the number of pulses that are generated by the cpu in one second
+
+bitwise operations : is the same as boolean operations that takes two bits of data and returns one bit of data
+as the result
+
+masking : is a method of detecting which part bit stream should be of an effect by ANDING it with zero
+
+you can mask using and , or and xor
+
+ciruclar shift : is done by placing the falling bit in the gap that is caused due to right or left shifting 
+
+logcial shift : fills the gap with 0 
+
+arithmetic shift : is used to fill the gap with the original sign bit
+
+controller :is the intermediate step between the i/o devices and the computer 
+
+usb : is a form of controller that most i/o devices sue
+
+memmory mapped I/O : which are memory sections that are directly communicating with the controlers
+
+DMA : Direct memory access is a future some controllers have that allows them to access the main memory when the 
+CPU isn't using the BUS 
+
+von newman bottle neck : is the probelem that is encountered due to the competetion between the controller and 
+the cpu on the bus
+
+status word : is a handshaking message between the peripheral device and the computer that is a bitmap that 
+checks on the computer
+
+parallel and serial communication : are ways of transferring signal where the data is transferred parallel to 
+each other or in a serial way one after the other 
+
+DSL : dependent on the fact of wider frequency range of telephone lines , using lower frequencies for tele
+comms and higher frequencies for digital comm 
+
+cable modems : uses television coaxial cables for internet transfer 
+
+throughput : is the number of orders that a machine can execute per second 
+
+pipelining : is when the machine requests orders while executing others
+
+SOC : System On a Chip is the approach of placing more pc components in a single ship 
+
+multi core cpus : has more than one cpu on the same chip
+
+MIMD : Multiple Instruction Stream
+
+batch processing : is the process of executing multiple programs without the need of the user
+
+JCL : Job Control Language which was the prepration instructions for preparing the machine for the job
+
+load balancing : allocation of tasks to various processeors 
+
+scaling : breaking tasks in number of subtaks so that it can accomodate the processor architecture
+
+embedded system : are single purpose computer embedded in systems such as home appliance and medical device
+
+system software and application software : are what constitues an operating system
+
+utility software is system software that is not essential for the OS but is essential for things like 
+copying data from a flash drive , formatting a disk and so one
+
+paging and virtual memory : paging is moving ram tasks to the secondary storage and the virutal memory is the 
+name of the space allocated for the paging process
+
+booting is the process of transfering the operating system from the secondary storage to the main memory
+
+rom : is a part of the ram where the memory isn't volatile and where the initial booting is constructed
+
+scheduler : is the one that manages the processes and updates the process table which has all the processes
+
+ready : is a program's state where it can become a process 
+
+waiting : is the process state where the program has to wait for another event to occur
+
+dispatcher : oversees cpu resources allocation to different proccesses each for some time called time slice
+
+context switch : is the switching between operations for some period of time 
+
+multiprogramming approach : is the approach of assigning time slices to different processes to give the illusion
+that they are all working at the same time 
+
+flag : is a value that indicates wether the process is currently in use or not 
+
+semaphore : is a refrence to the flag property of being able to handle one value at a time like a railroad that
+is able to only have one train at a time 
+
+critical region : is the set of instructions of the process that are needed 
+
+mutual execlusion : is the agreement that only one process is allowed to execute it's critical region
+
+dead lock : is the condition where two processes are waiting for each other's used resources
+
+spooling : is the process of converting non sharable resources into sharable ones by recieving all the required
+ciritical region from the process in the mass storage and then executing it by the resource at one time 
+
+auditing software : is the software that is used for monitoring users activity on the OS and detecting irrigularties
+that may occur that is an indication of a breach 
+
+sniffing software : is an activity recording software that reports os activity back to the intruder of the system
+
+csma/cd : Carrier Sense Multiple Access with collision Detection 
+
+csma/ca : Carrier Sense Multiple Access with Collision Avoidance which is somewhat similar to csma/cd but the
+difference is that in the csma/ca , the device only waits for some time before sending the signal by sensing 
+if the channel that it wants to send data through is silent or not and if it's silent it waits for a speicfic 
+period of time
+
+repeater : is a device that amplifies signal between two bus networks 
+
+bridge : same as repeater but it can detect the addresses of the packages 
+
+switch : same as bridge but connect multiple bus networks
+
+routers : allows different networks of different types to be connected together
+
+interprocess communication : is the name of the communication between processes 
+
+client/server model : is an interprocess communication model that depends on the server to be the one that 
+serves the computer's processes
+
+P2P : Peer to Peer is an interprocess communication model where the two connected systems are serving each other 
+and not only one of them 
+
+distributed systems : is a form of collective processing where each computer serves the end-goal process
+
+cluster and grid computer are examples of distributed systems where multiple computers are doing different parts
+of the whole process but grid computers have their computers more closely related to each other and working through 
+the same software 
+
+DARPA : Defense Adavnced Project Agency 
+
+tier1 ISPS : very few huge scale internet providers that are thought of as the backbone of the internet and 
+most of those companies were actually telephone line companies and got to the telecommunation services such as 
+the internet and example of a tier1 ISP would be te-data in egypt 
+
+tier2 ISPS : are like orange , vodafone and eitsalat in egypt 
+
+last mile problem : is the problem that some cables are still very old and those are mostly customer's cables
+
+TLD : Top level domains are the last part of the website address like .com .edu .net and so on
+
+SMTP : Simple Mail Transfer Protocol
+
+cdn : content delivery network are groups of local servers that are local to the user and allows faster streaning
+
+xml : extensible markup language
+
+a virus : is a form of malware that has a primary term of infecting other pcs
+
+worm : like a virus but transfers itself in the network and may cause network overload and failure
+
+trojan : is a kind of malware that disguises itself as a useful software and is then transimitted 
+
+spyware : malware used for reporting data
+
+spoofing : is by taking an ip address and pretending to be someone else
+
+effective algorithm : is an algorithmm that has steps that are doable 
+
+primitves : are the building blocks of algorithms representation 
+
+some times it's better to proceed with solving the problem before fully understanding it because it's by solving
+the problem that we gain better understanding of it 
+
+incubation period : is the time required by the subconcious part of the brain to relaize a solution to a problem 
+
+one way of problem solving is finding a problem that is simpler and is related to the problem that we have in our hands 
+
+another approach is to solve a specific simple example of this problem and this generlaising the solution 
+
+stepwise refinement : is the process of breaking a problem into smaller problems and thus solving the final problem
+in an easier manner 
+
+top down methodolgy : is a problem solving methodolgy that works by moving from the general to the specific 
+
+
+bottom up methodolgy : progresses from the specific to the general
+
+sequential search : searching item by item to sequentially to find the result 
+
+looping termination condition : is the condition that cause a loop to terminate
+
+odoo has two types of constraints which are python constraints and sql constraints 
+
+programming paradaigm : is a way of programming like functional or oop programming 
+all programming paradigms fall into two categories 
+imperative : which is procedural programmin where the programmer describes the steps that a program follows in 
+order for it to apply something or achieve some goal 
+declarative : is where the programmer asks for something and gets it like sql commands where you make a query 
+and recieve the result 
+
+string="something" : is an attriubte that allows you to overwrite the name of a model's attribute that is 
+visible to the user 
+
+default=some function : 
+
+the default value of the model's class variables could be generated by a fucntion 
+
+the types of models that could be created in odoo are 
+Model : which is a regular odoo model
+TransientModel : which is a model that has some data that is vaccumed or deleted offently 
+AbstractModel : which is a model that is meant to be inherited by other models 
+
+python closure is when we have a nested function 
+
+a nonlocal variable : is a varaible that initialized in a function and accessed by an inner function 
+
+h=function(variable) : this assigns all the inner variables of function to h and if there is a nested function
+in function then it's passed to the h
+
+f(a)(b) : this allows you to call a nested functions and pass variables to the function and the nested function
+where a is the variable of the outer function and b is the variable of the inner function 
+
+bound variable : a variable that is located in the scope of a nested function
+
+close term : a function that has only bound variables 
+
+free variable : the variable outside the scope of a nested function 
+
+open term : is a function that contains free variables 
+
+colsure : is a function that "closes" the free variables and "closes" an open term 
+
+h.__code__.co_freevars : this shows you the free varaibles of a function
+
+table constraint : is a constrait in postgres that is applied to all the table and it has to be seperate to be applied
+like this
+CREATE TABLE hello {
+int mohamed,
+name something,
+CHECK(MOHAMED == AHMED)
+} this is a table constraint and is applied on the whole table 
+
+lisp : is an example of a functional paradigm programming language 
+
+311	
+
+decoration : an attibute for tree view that allows for styling trees 
+
+encapsulation : an oop approach where data is restricted within specific classes
+
+overloading is a type of polymorphism
+
+parallel or concurrent processing : is where one function is used so simaltaneously that it gives the illusion 
+that it's working parallely
+
+mutually execlusive access : mean that the data can only access on thread
+
+resolution : is when you assume something cause of something else
+if i told u bodi is sick or in the stage 
+and then i told u he isn't on the stage 
+then you know he is sick
+
+resolvent : a collection of statements when resolved together or group together resolves in a third statement
+
+prolog : programming in logic is the name of a declartive programming language
+
+predicates : are the snippets that prolog use to apply the higher level logic
+
+CASE : computer Aided Software engineering is the discipline where computer help people with the software engineering
+process
+
+ACM : Association for computer machinery is an Association headquarterd in new york that is intersted in the 
+development of educational improvement of a lot of computer science field
+
+software life cycle : is the process of development , use , maintanince
+under development falls the follwing states :requirments analysis, design , implementation , testing
+
+stake hodlers :are the software users 
+
+requiremnents analysis :requires a lot of user input 
+
+SRS : Software Requirement specifications and it has a standard by IEEE
+
+water fall model : is where the software follows only one direction in the way of the normal life cycle of the 
+software
+
+incremental model : is the model where software is released pieces at a time
+
+iterative model : is the process of refining software one at a time
+
+RUP : Rational Unified Process is a software devolpment paradigm developed by IBM and aided by CASE tools
+
+agile method : is a versatile live development process that is able to felxibly update software to the customer's
+requirement
+
+modularity : is the division of large software into modules where each do a specific function
+
+coupling : is the measure of the indepedne of the moduels of software
+
+control coupling : when a module is in control of another by calling it 
+
+data coupling : is the transfer and the dependece of the moduels on data transferred between them 
+
+cohesion : is the relatedness of the system's module's compnents to each other and it's something that needs
+to be increased
+
+logical cohesion : is a weak cohesion that is represented by natural logic
+
+functional cohesion : is focused on the fact that some foucntions are focused on achieving a speicific function
+
+UML : Unified Modeling Language is a lnaguage that is used to model internal structure of a program and relations
+between it's classes 
+
+association : is a term in UML that describes connections between different classes
+
+sqa : Software Quality Assurance are entities that are responible for assuring qualtiy of software
+
+black box testing : is when the tester doesn't care about the underlying software and all they care about 
+is the software's performance and accordance with timeline
+
+boundary value analysis : is a black box testing method that identifies the ranges of data that the program
+deals with and then tests at those limits
+
+equivlance classes : are the ranges of data for a software
+
+beta testing : is a black box testing method that allows for the software to be released as a primary version
+and then test it in real life sensarios before releasing the full app
+
+alpha testing : is where the developer tests his software at his own website 
+
+ergonomics : is a part of the user interface system that deals with software that harmonizes with the human 
+physical capapilites 
+
+cognetics : is the user design paradigm that deals with the desigining of software that is harmonizing with 
+the human capibality of thinking
+
+linked list : is any list where the stored memory cells are not in the same block and are scaterd along the memory
+
+stack pointer :an extra reserved memory cell that allows for the pointing to the stack head
+
+circular que : is a phenomenon that happens cause we insert the last elements of the que back at the beggining of 
+the que to keep the que confined to it's previously allocated memory 
+
+grabage collection : is the process of retrieving unused memory cells
+
+memory leak : is the unability of the grabage collector to retrieve the unused memory cells which cause a memory 
+leak
+
+user-defined data types : are just a collection of primitive data types stored and connected under the same name
+
+ADt : Abstract Data Type is a user defined data type that has both data and functions 
+
+STL : Standard Template library is a c++ structure that allows for having abstracted data types in c++ without 
+having to declare them manually 
+
+immediate addressing : is where the data is stored in the register directly 
+
+direct addressing : is where address points to the location of the data 
+
+indirect addressing : is where the register stores the address that point to the address of the datat
+
+data mining : is the science of finding patterns among extracted data
+
+subschema: is a part of the schema that is avaible to a user with specific need
+
+schema : is the description of the whole data stored inside the table 
+
+database model : is the conceptual preception of the data base
+
+presistent objects : objects that are saved in the object oriented model databases that are saved after the
+termination of the program 
+
+cascading rollbacks : is the process when some data is dependent on the data that is being rolled back which casues
+the other data to be roll backed too
+
+clsutering : when a number of keys refrences the same entity
+
+collision : a form of clustering 
+
+class description : is a form of data mining of finding the common proprties among a group 
+
+class descrimination : is a form of data mining of finding what makes two groups different
+
+cluster analysis : is respnosible for finding the groups that might be later has a class description done on it
+
+association analysis : is responsible for finding the relations between groups 
+
+outlier analysis : is the analysis that is responsible for finding the outlied cases that detect an upnormal 
+behaviour
+
+sequential pattern analysis : is the analysis that is responsible for detecting behaviours over long periods
+of time 
+
+data cubes : is a form of data that has multiple dimension of different arrays of data
+
+in animation there are three processes :
+modeling : which deals with constructing the images that are gonna be dealt with 
+rendering : is the production of a two dimensional image as if was taken by a camera from a specific position
+
+prespective projection : is when the object is being projected to a single surface and then is viewed from a
+single prespective representing the human eye and this is called prospective projection 
+
+parallel projection : is when the are different parallel proejectors and that helps envision the object in it's 
+true form not like prespective projection 
+
+planar patches : is a the constructing item of 3d objects and it's a flat surface
+
+any 3d object is a bunch of flat surface called planar patches
+
+polygonal mesh : is a colleciton of polygons that form the shpae of a 3d object  each polygon is an example of 
+planar patches
+
+digitizing : is the process of touching upon an object in the three space to define it's control points 
+so that it can be animated
+
+
+proceduarl module : is a moudle that uses algorithms to generate specific objects and shapes and they may be 
+used to create variations of the same object 
+
+particle systems : they are used to move particales in the system the same way mocules interact in real life
+
+fractal : is the process of using small geometric shapes into more complex shapes 
+
+texture mapping : is the process of having a background for a surface 
+
+diffused light : is a scattered light that is reflected off of a surface
+
+anisotropic surface : are surfaces that are changed by the light orientation
+
+isotropic surface : where the reflection pattern doesn't change the looks of the object
+
+rendering pipeline : is the process of only rendering the scenes that are in the player's image view
+
+aliasing : is the phenomenon when the pixels can't represent the true colors of the scene
+
+scan conversion : is the process of mapping pixels to speicific parts of the scene 
+
+shading : is the process of determining the orientation of the planar batches and then shading them based on this
+orientation 
+
+gouard shading and phong shading : are shading techniques but phong shading is more dependent on the planar 
+patch orientation that it's more like to predict specular light 
+
+bump mapping : gives different textures to planar patches making them look more realistic
+
+local lighting model : is the result of redering pipeline because light is reflected on single objects as 
+if it were the only object in the scene that casues light interaction between models to be distorted in things
+like shadows and reflections
+
+global lightning model : takes into consideration the interaction between the objects light
+
+ray tracing : is the process of following the light back to it's source
+
+distributed ray tracing : is the process of following multiple rays rather than single ray tracing 
+
+radiosity : is another form of light interaction between objects but traces total light of objects rather than a 
+single ray tracing process
+
+morphing : the illusion of changing one object into another
+
+avars : Articulation Variables are variables for controlling the motion of hte characters in the scene
+
+agent : an ai term that is about a device that responds to stimuli from it's environment and an agent could 
+be a lot of things , a character in a video game, a process with other processes and so on 
+
+procedural knowledge : is the actions required by the agent
+
+declartive knowledge : is the knowledge of what to do 
+
+image processing : is understing the characterstics of the image 
+
+image analysis : understing what does the proprties of the image mean 
+
+speech reconginsion processes : 
+syntatic analysis : is the process of checking the word's correctness gramitically and it's spelling
+semantic analysis : is the detection of the structure of the sentence and things like the subjects , verbs and
+names
+contenxtual analysis : is the actual meaning of the analysis in it's context 
+
+production system : is a commanlity property among many proplems and it's divided into the following components
+which are collection of states , collection of productions , control system 
+
+states : are where the system is going it usually starts by the start state and ends with the goal state
+collection of productions : are executed moves based a certain input
+
+control state : the control system consists of the states required by the system to reach the goal states
+
+any production system problem can be represented by a state graph 
+
+breadth first : is following the depth of the tree 
+
+best first : is moving through the columns of the tree and choosing which path has the most potential 
+
+heuristic : is the process of choosing the best fit or the best path to solve a problem
+
+beahviour based intellegince : is the measure of intelligence based on behaviour
+
+meta-reasoning : is the reasoning about reasoning
+
+frame-problem : is the effect circle of the information at hand and it's consequences
+
+learning steps for ai :supervised trining , training set , reinforcment set
+
+genetic algorithms : are the algorithms that depend on the evolutionary process of finding solutions and trying
+them over a period of time 
+
+chromosome : is the trial of a solution for a problem 
+
+gene : is the compnenet of the chromosom
+
+evolutionary programming : is a way of programming that depends on genetic algorithms 
+
+threshold value : is the value that triggers the synapses neuron value which aftwwards the synapse fires
+
+accoiative memory : memory that is associated with the current info at hand 
+
+recursive function theory : problems that are unsolvable with algorithms
+
+computable functions : are functions that has algorithmic steps for them
+
+halting problem: is testing where a program will be continuing or 
+
+polonomyal problems : is the max time required by the function to solve a problem ,it's like the upper limit 
+of the solving function and if a function isn't polonomyal then it takes a lot of time that it's impractical
+
+intractable problems : are problems that are not bound by a polonomyal function

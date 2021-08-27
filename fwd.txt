@@ -1,0 +1,488 @@
+db principles:
+presistence : meaning that the database needs to be accissible at any time 
+shared source of truth : means that the database is shared accross many users 
+ability to store many types of data 
+concurrency control : handling multiple db actions at once 
+
+execution plan : is the set of instructions that your database uses to implement your query 
+
+communication protocol : is the protocol that is used between servers and clients to communicate 
+
+transactions are concerned with updates inserts and deletes 
+
+objects relational database : a feature in postgres that allows you to store multiple values in one column 
+
+postgres clients : are the interfaces that are used to deal with the postgresql database like pgadmin 
+
+dbapi : database application interface is the code that you write to interact with the database , DBAPIs are also
+called adapters 
+
+sqlalchemy layers are the orm , dialect, connection pool , dbapi and the engine : the db api is responsibe for
+sendig the queries required for the database , the connection pool is responsible for handling closing and opening
+connections and handles dropped connection , the engine is like the dbapi and allows for sending raw sql and is the lowest layer of abstraction 
+
+app = Flask(__name__) : sets the name of your flask app to the name of your module if your module is named 
+app.py then your app will be named app 
+
+@app.route('/')
+def function():
+this will define the action that is going to happen when this route is entered by the client 
+
+set FLASK_APP=app.py : this allows you to use the flask command , like flask run , which will initialize your 
+server 
+
+db = SQLAlchemy(app) : this will allow you to connect your flask instance to the database
+
+app.config() : is a method that sets all the rules for your flask application 
+
+db.session : allows us to manipulate the transactions happening on the database 
+
+class Model(db.Model):
+	__tablename__ = 'model'
+	id = db.Column(db.Integer,primary_key=True)
+this allows you to create a table in the database , by default the database initializes the table in the database
+with lower casing of the class 
+
+db.createall() : detects models automatically and creates tables for them in the database 
+
+someQuery = db.Model.query.first() : would return the first record in our model 
+someQuery.name : will return the name column value 
+
+set FLASK_DEBUG=true : will set the server on watch mode 
+
+after running your python interprter into interactive mode you do 
+import appName : to import your flask application file 
+from appName import SQLALchemy_model_name
+SQLALchemy_model_name.query.all() : will return all the records in your database 
+SQLALchemy_model_name.query.first().name: will return the value of the column name if it exists 
+SQLALchemy_model_name.query.filter(Person.name=="abdelrahman\n").first() : returnws a query based on a filter 
+SQLALchemy_model_name.query.filter_by(name=="abdelrahman\n").first() : this is a more pythonic version of the
+previous query 
+
+you can call .column() on a first() or all()[number] function 
+
+def __repr__(self):
+	reutrn self.columnName : this will return the specified column from the table 
+this is a model fucntion that will get printed every time you output a record from that model 
+
+db.session.add() : this allows you to insert a record in the database , but this is a transaction and it wouldn't
+be added to the database untill you commit to the database
+
+db.session.commit() : this will commit the changes to the database 
+
+there are different data types for the database that you can refer to in the sqlalchemy documentation
+
+column = db.Column(type,constraint) , example: db.Column(db.String(),unique=True)
+
+db.Column(db.Float, db.CheckConstraint('price>0')) : here CheckConstraint function allows you to add your custom
+constraints to the database 
+
+db.session.add_all([records list]) : will add a list of records to your db , you must commit for the changes to 
+happen in the database though 
+
+db.session.query.count() : will get you a count of your queries 
+
+db.query.get(id_of_record) : to get a record by id 
+
+in the filter method of the query you can pass more than one constraint like this 
+person.query.filter(Person.name="something", Person.age="something")
+
+person.query.filter(constraint).delete() : this will delete the record that is returned 
+
+you can do chaining with queries like this
+person.query.filter().filter()
+
+Order.query.limit(100).all() : limits the number of records returned from the database 
+
+session.rollback() : unexecutes queries on the database 
+
+database object lifecycle are three states 
+transient , is where an object is created but it's not associated with a session yet
+peding : the object is attached to a session but no actions or conversions to sql has happened yet
+flushed : changed into sql commands that aren't yet executed in the database 
+commited : the sql commands are now executed in the database 
+
+any changes in the pending state are added in sqlalchemy query object , and are returned eventhough they are still
+not stored in the database 
+
+whenever a query is invoked a flush occurs 
+
+render_template('html page',data=list of objects representing the data ) : this flask method allows the createion
+of a templet to be the response of the routeand usually it looks for the html page inside the templates folder ,
+the data is going to be passed to the rendered page , data could be any variable of any name but when in the 
+templating engine if you wanna access the data you have to mention the same name with {{}}
+
+templating engine : is an engine that allows embedding non html code inside html 
+
+jinja is the templating engine used by flask 
+
+there are three ways of getting data from the user :
+1-thorugh query paramters from the url like this : value = request.args.get('field') , the args object here 
+is an object provided by flask that allows getting the args of a paramter , the paramters of the url are placed
+after a ? in the url 
+2-through a form that the user filled like this : value = requrest.form.get('input_field')
+3-through json like this value=request.data and then json.loads(value)
+
+post http method puts the data in the request body while get puts the data in the url 
+
+every interaction that is happening on the web browser is sending a request to the server 
+
+redirect : from the flask pacakge allows you to redirect to a page 
+
+ajax requests are requests that are recieved without the need for refreshing the pages , they are asynchronus 
+requests 
+
+request.get_json() : this is a flask method that allows fetching the json request that was sent by the client 
+
+jsonify : a flask function that changes a response to json 
+
+import sys
+print(sys.exc_info()) : this allows you to output the error when the code enters the except statement
+
+after you commit the data you retrieved from the transient database object will be null 
+
+from flask import abort
+abort(status_code) : this will return an error code from a route in case of an error , example: abort(500)
+
+migration is a file that keeps track of changes that we have made to our database
+
+migrations represent the states of our database 
+
+flask-migrate : allows for creating a migration script 
+
+flask-script : runs the migration script , if flask-migrate was the only thing availaible , we would have only
+been able to detect changes to databases but not execute those changes to the database 
+
+from flask_migrate import Migrate : allows you to import Migrate library from flask 
+
+migrate = Migrate(your_flask_app,your_db_instance) : this will link our app and db using migrations 
+example = Migrate(app,db) and this will be the interface that allows us to deal with migrations , like generating
+them and dealing with them 
+
+flask db init : this allows us to create the basic structure of the database migration structure folders and 
+create a migrations folder 
+
+flask db migrate: detects the changes that happened on the database and generates the commands that are required
+to update the database to the latest version , those commands are then committed using flask script 
+
+if you place migrate library in your code , you shouldn't use db.createall
+
+flask db upgrade : this executes the generated migration commands and changes the structure of your database
+
+flask db downgrade : this revets back the upgrades that was made on the database 
+
+alembic version : this is a table that is created by alembic to store the different versions of the database
+that exited before in case we want to revert back to them 
+
+in the versions folder , there exists the upgrade and downgrade functions you can modify them according to your
+needs 
+
+you should read alembic docs and flask migrate docs to learn more about the migration process 
+
+todo = Table.query.get()
+db.session.delete(todo)
+Todo.query.filter_by(id=todo_id).delete()
+db.session.commit() 
+those are the full steps of how you delete an item from the database 
+
+if you are sending a request to delete an item from the front end , you should send a delete http method 
+
+foreign key is always stored in the child table and the primary key is always stored in the parent table 
+
+to define a relationship between tables or a "relation" you do the following 
+class something(db.model):
+	id = db.Column()
+	relationsip = db.relationship('the_child',backref='parent_name' lazy=true) 
+the first property would be the child class name , the backref attribute would be the refrence that any child 
+object uses to refrence the parent, the db.relationship() is only set on the parent model 
+lazy attribute decides the type of the loading that is going to be happening , if it's easy loading or eager
+loading 
+you can checkout the relationship api to check more options for the relationship api
+collection_class = list : this will set the list of children in a collection of type list , it could be dictionary
+and other types
+cascade = 'save-update' : will cascade changes to the children 
+
+eager loading : resources are loading initially , this causes very fast times for querying but causes a lot of
+initial loading time 
+
+
+lazy loading: resources are only loaded when needed , this has an advantage of no initial waiting time , but
+every time a request is made , the time is taken to make the request of the join , this is the default in sqlalchemy
+
+
+users notice any change that takes more than 150 ms 
+
+joins are expensive so we should always take care of when we call the loads 
+
+referential integierity : foreign keys always ensure that the keys they refrence aren't empty 
+
+some_parent_id = db.Column(db.Integer,db.ForeignKey('some_parent.id'))
+this would create a foreign key , that is related to a parent model , the ClassName = some_parent in this 
+case , and the .id is the id field and the foreign key must match the type of the parent in the parent table 
+
+anything you do to a parent model is automatically done to the child model
+
+
+query = request.form.get('search_term', '')
+    results = len(Show.query.filter(Show.venue_name.ilike("%" + query + "%")).all()
+
+curl api_link : this will result in you testing the api end point and reutrn 
+the result 
+
+curl -X method api_link : this will test the api using an http method like 
+get or post 
+
+curl -d : this will allow you to send data to the url using curl 
+
+curl -f : this will allow you to submit form data 
+
+curl -u : allows you to submit a user name and a password 
+
+curl -h : allows you to add header data
+
+your api should be self explanatory , meaning that you shouldn't need to
+define what that api endpoint would get you back , if what we get back from 
+an api endpoint is suprising , then it's not a good api endpoint
+
+api should be organised around the resources you are getting , if you have a
+social media app , then all the api endpoints that get you the resource for 
+posts should be in the same place 
+
+the path names of the api should be nouns only and not verbs from example
+this is bad , https://example.com/create-tasks and this is good
+https://example.com/tasks
+
+the names of the nouns should be plural and not singular , this is good 
+example.com/tasks , and this is bad example.com/task 
+
+keep your api endpoints shorts 
+
+so in summary your url endpoints should be plural nouns that are short like 3
+paths at max
+
+example good api endpoint , example.com/tasks : this will get you all the
+tasks
+
+exmaple.com/tasks/1 : will get the first task
+
+exmaple.com/tasks/1/notes : will get the notes of the first task 
+and if we do a post request to tasks , then you create a new post 
+
+if we do a patch request to task/1 then it will change parts of the first task
+and if we do a put request on tasks then it will do a partial update to all
+the requests 
+
+same origin policy is intended for protection accross attack from scripts from
+different origin
+
+differents origin in cors doesn't only mean , different website, it means 
+a different domain or subdomain or different port or different protocol
+
+access-Control-Allow-origin : this is a cors header that allows certain
+domains to access your website 
+
+access-control-allow-credentials : this allows cookies for authentication of
+cors 
+
+access-control-allow-methdods : this sets the methods that are allowed to
+access your website 
+
+access-control-allow-headeres : the headers that you will allow for the
+requests you recieve 
+
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}}): this allows your 
+api to be accesses by all websites entering it through the options we have 
+
+@app.after_request
+def after_request(response):
+	response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization,true')
+	response.headers.add('Access-Control-Allow-Methods', 'GET,PATCH,POST,DELETE,OPTIONS')
+	return response
+
+this will allow for you response to be edited with headeres 
+
+this allows cors for a specific end point 
+@app.route('/messages')
+    @cross_origin()
+    def get_messages():
+        return 'GETTING MESSAGES'
+
+@app.after_request : this decorator is directly run after the request is
+recieved , just like the @app.route decorator 
+
+@app.after_request
+def after_request(response):
+	response.headeres.add('header','value') : this code will add headeres
+	return response 
+to the headeres to the response
+
+@app.route('/')
+@corss_origin
+def function():
+	return "hello"
+this will use crosss origing fro this function only
+
+@app.route('/entrees/<int:entree_id>'): this will allow the accessing the
+variables in the routes 
+and this is called converter syntax and it looks like this 
+<converter:variable_name> like this '/entrees/<int:entree_id>'
+
+@app.route('/hello', methods=['GET','POST']) : this will allow different
+methods to access the url using the methods paramter 
+
+pagination is done to divide the response data into pages 
+the request.method allows for accessing the method of the request 
+
+inside a route method you can do the following 
+requests.args.get('page',1,type=int) : this will get the page variable from
+the url and if it doesn't exist it will return 1 , and the type of the
+variable will be integer 
+
+in case of errors a json repsonse should be returned 
+
+the abort method is the one used for returing errors in flask 
+
+@app.errorhandler(error statuscode) : this is a route for handling errors in 
+fask and in this decorator we want to name the decorator function the same
+name of the error status code , and those routes are always triggered when 
+the error status code in the error handler arises 
+
+the order for app development should be always the following : 
+development
+unit testing
+quality assurance
+production
+
+we write test cases by resources , so if you have an api that deals with two
+resources , then you write two test classes
+
+the test case class extends
+the unittest.TestCase class 
+
+def setUp(self):
+	pass : this function is the first function that is called in a
+unittest class , it initialises the app by having it's database url and all
+the configuration settings that are required for the app to launch 
+
+def tearDown(self):
+	pass : this function is used for closing anything that is opened by 
+a test , like ports or cleaning any data 
+
+def testFunction(self):
+	res = self.client().get('url'): this line is used to make the request
+to the api endpoint and recieve the response from the api endpoint
+	self.assertEqual(something,value) : this is a test function that is
+used to test our code , by putting the expression instead of something and
+value infront of the expression , you can test if your test outputs the
+desired result or not 
+
+if __name__ == "__main__":
+    unittest.main() : those final two tests make the lines executable and
+allows them to run and this part is written outside of your test class 
+
+in pair programming in tdd , one person writes the code and the other writes
+the test , the cycle of development is the following 
+wrte the test
+fail the test 
+write some code 
+pass the test 
+refactor 
+
+tdd helps us to really envision what our client wants and what are the
+scenarios that our client might pass through 
+
+and makes development cycles short and rapid 
+
+your api documentation should have sample resopnses for different requests 
+
+you should have a documentation for the error codes that result from your api
+and what do they mean
+
+you should also map sample requests 
+
+api sections you should include:
+
+introduction : an overview of your api and what it does including the project
+title 
+getting started : the base url that represents your api which could be your 
+localhost or your url api if it's hosted an example would be
+"https://127.0.0.1:5000/
+if there are deplyment steps they should be included here 
+error codes : the error codes that result from your application and what do
+they mean 
+resource endpoint library : the endpoints of your api and those those
+endpoints should be classified by categories of those resources and those
+should have sample requests and sample resopnses and document any input that
+is needed in the requests and of course because they are ENDPOINTS , they
+should have the http method next to the url that they are requesting 
+
+flask db migrate -m "your migratino name" : changes the name of your migration
+
+db.relationship(use_list=False) : this will implement a one2one relationship
+only
+
+401 status code means unauthorised 
+
+403 : doesn't have permissions for this resource
+
+flask run --reload : will start flask in watch mode 
+
+SSO or single sign on is a technique that allows you to login using another
+platform such as google or facebook 
+
+mutli-factor authentication is second factor authenticatoin
+
+microservices are done to divide the tasks of the backend into seperate
+entities to ensure maintainbility and scalibilty
+
+
+stateless jwt token : means that the user doesn't need to make subsequent
+requests to the database to verify their identity using their token 
+cause the token itself wil be verified and will be terminated by the server 
+automatically once it's invalid 
+
+jwt is divided into haeder.payload.signature structure and jwt is encoded
+using base64 encoding , the payload includes info about the user like his
+permissions , the header has the algorithm data that is used for encoding the
+jwt info 
+signature is outputted based on the header and the payload , where basically
+there is a function that combines the header and the payload to generate the
+signature part of the jwt , the functoin on the server can't decode the
+encoded jwt unless it has the password that is used for decoding the jwt token 
+
+localstorage.getItem('the_key_of_the_website')
+
+jwt.encode(header,payload,algorithm)
+
+bearer is the header that is added to the requests to include the jwt token
+for future requests 
+
+request.headers['Authorization] : this will get the request the authorization
+headeres 
+	
+serialization : is the process of transforming data objects into more sharable
+form of data 
+
+hashing is a one way encryption method that removes the key and only encrypts
+data
+
+authentication : is the process of wether the person can access or not
+
+authorization : is wetheer the person has the permissions to additional
+resources or not 
+
+premissions are restricted to an action and a noun
+
+role based access control RBAC: groups that have certain permissions 
+
+feature branch : is a sub branch of the development branch , that is submitted
+to the dev branch after review 
+
+stage branch is the branch directly before production it allows you to test 
+prodcution features to make sure they are working properly before pushing them
+into master 
+
+continious integration CI: automatically runs unit or integration testing before
+submitting code to statging , making it more automated 
+
+continious delivery CD : automatically deploys our project once CI is done 

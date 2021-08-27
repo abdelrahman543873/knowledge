@@ -1,0 +1,315 @@
+algorithm : is a description of the computational procudure that is used to achieve a specific
+input ouput relationship
+
+an instance of a problem : is an example input for the problem
+
+data structures : are ways of storing data so it's easy to organise and access the data
+
+NP complete problem : are problems which have no effecient solutions
+
+lgn : stands for log2n
+
+loop invariants : is a method that is used to show us why an Algorithm is correct 
+through three states 
+1-initialization : it's true prior to the first iteration of the loop 
+2-maintenance: wether it remains true or not before the next iteration 
+3-termination : after the loop terminates it shows us wether the loop is correct or not 
+by showing a useful property of the algorithm 
+
+
+devide and conquer : is a way of desigining algorithms which is based on three steps 
+1-devide : devide the problem into subproblems
+2-conquer : solve the subproblems individually 
+3-combine : combine the solutions to the subproblems to create one final solution
+
+recurrence : the total overall time of a recursive function 
+
+Bubblesort algorithm : is a popular sorting algorithm. It works by repeatedly swapping adja-
+cent elements that are out of order
+
+insertion sort algorithm worest case running time is theta n^2 and it works by 
+comparing one element to all the other elements of the data structure for sorting 
+
+asypmtoticallly postive function : meaning that the the constants and the lower bound terms
+don't affect the time of the overall function 
+
+A function f (n) is monotonically increasing if m < n implies f (m) < f (n).
+Similarly and monotonically decreasing if m< n  implies f(m) > f(n)
+
+ln(1 + x) = x - x^2/2 + x^3/3 - x^4/4 + x^5/5 - ··· .
+
+x/1+X <= ln(1+x) <= x where x>-1
+
+polylogarithmically bounded if f (n) = O(lg^k n) cause the bounding function
+is a logarithm function
+
+functional iteration f^(i)n = f(f^(i-1))n) 
+
+three methods for finding recurrences which is the big O of the fucntion
+
+substitution method:
+where we guess a bound and then use mathmetical induction to prove it correct 
+
+recursion tree method :
+where we have nodes of a tree that represents the time cost at different levels of the
+recursion and we use techniques for bounding summations to solve the recurrence
+
+master recurrence method: 
+provides bounds for recurrences in the form of T(n) = aT(n/b) + f(n)
+ a = 1, b > 1
+
+push : order to add an element to a stack which is added on the top of the stack 
+pop : an order to remove the top element of the stack 
+
+LIFO : Last In First Out which means that the last element you add is the first element
+you remove in the stack 
+
+FIFO : First In First Out means that the first element added to the queue is the first
+element to be removed
+
+maps : containers of data where each part of a container has a key and the item inside of 
+it is called the definition and those keys are random and maps is a set base data structure
+and in python maps are called dictionaries
+
+set : is an unordered list that you can't allow for repeated elements insides and inside
+of it elements can't be repeated
+
+hash functions : is the algorithm you apply to the data you are taking to spit out the index
+of an array so you can go to the index of the array to get the data 
+
+collisions : is when your hash function spits out the same data for two inputs 
+and there is no perfect solution but you can implement one of the following techneques 
+either you apply a array of data in each array item or you change the data in the array
+
+load factor : number of entries / number of buckets 
+the load factor identefies how empty your array is 
+maybe you will have 10 entries and 100 bukets and in this case your load factor will be 
+0.01 which shows that your list is empty 
+
+hash maps : you apply the key to the hash function and it gets out another key of a 
+map where you can store the denfintion in this key 
+
+string keys : you can change a string into an array index by hashing the string so that 
+you output a key which is the index of the array that you are going to be storing the data
+corresponding to the string in 
+like a real life dictionary and definition of words
+
+tree : is simply an extension of a linked list where each node of the tree has a pointer
+to couple of other element 
+rules : you can't have an unconnected node in a tree , you can't have cycles in a tree
+level : is a description for the positon of the node 
+leafs : are the nodes at the bottom of the tree 
+height : is the overall levels of the tree where leafs are level 0
+depth : is how far the node is from the parent where the first depth level is 0 at the 
+root level
+root : the parent of all the nodes in a tree
+BFS : is Breadth First Search where the first things that are searched are nodes at the 
+same level
+DFS : is depth first Search where all the children are searched first that is called pre-order DFS
+DFS  in-order where we keep checking a LEFT child if we didn't see it's parent so we end 
+at the leaf and then we go back up the tree and check the parent and we call it in order
+cause we checked the whole tree from left to right 
+DFS post-order is when  we hit the leaf and check it first and check all the children of
+a parent before we hit the parent
+BINARY TREES : are trees where nodes have at most two children 
+DELETING a node in case of a parent node is done by replacing the parent with a leaf
+
+each level in a tree can hold 2^level nodes 
+
+binary search tree (BST) : is the same as binary trees but you organise the elements in their
+arithmetic order 
+example 
+if the parent node has a 5 stored and you want to place a number bigger than it then
+you place it on the right , if you wanna place it in a number bigger than it then 
+place it to the left
+
+average case of search for trees is O(log n) and worst is O(n)
+
+heaps : are types of trees that are either max heaps or min heaps where the root 
+node is the biggest or the smallest and you have to fill low levels of the tree first before
+higher leves like if you have a binary heap you must have two trees at each level
+
+ALL THE PREVIOUS KINDS OF TREES HAD TO BE BINARY TREES EXCEPT THE HEAP TREE
+
+red-black trees : are rules that make sure that the tree is self balancing by implementing
+some rules like
+any parent node must be black 
+any node that has less than two children must have an extra null node
+the path to a null node must contain a number of black nodes that is equal to the level
+of the null node 
+
+graph : is data structure that is designed to show relations between objects , it has 
+nodes and the links between the objects are called edges a tree is a type of graph
+
+in a graph edges could also contain info like the strength of relation between two objects
+
+directed graph is a graph that has directed edges between it desciribing a direction 
+between nodes 
+
+connectivity of a graph is described by how many nodes should be removed in order for the
+the graph to be completely destroyed
+A connected graph is a graph where there is a link between each vertex of a graph and 
+every other vertex
+A strongly connected directed graph should have connections between every node in two 
+way fashion so for example if we have two nodes a and b , then a is connected to b and b
+is connected to a
+
+edge list : is a list that contains the connections that the edges are making between 
+vertecies like this 
+[[1,0] , [2,4]] that means that the first edge is connecting two vertecies of id 1 and 0
+and because of this way of storing an edge list sometimes it's called a 2D list 
+
+adjacency list : [[1,2] , [3,4]] is just using the index of the lists inside the edge list
+as a the value of the vertex 
+so there is a vertext that has an id of 0 connected to vertecies id 1 and 2 and so on 
+
+adjacency matrix : is showing the linking the vertecies of a graph by putting
+zero or one inside the list corresponding to the indecies in the list 
+in the example zero is connected to none of the other vertecies with ids 0,1,2
+and 1 is connected with vertecies of ids 0 and 2 but not 1
+but 
+   0 1 2 
+0[[0,0,0]] 
+1[[1,0,1]]
+
+Having a solid base of algorithmic knowledge and technique is one characteristic
+that separates the truly skilled programmers from the novices. With modern com-
+puting technology, you can accomplish some tasks without knowing much about
+algorithms, but with a good background in algorithms, you can do much, much
+more.
+
+the running time of an algorithm is the number of steps the algorithm executes to 
+solve an problem
+
+when we write the time constraint of an algorith usually denoted as big o we ignore the 
+constants cause of the rate of growth 
+
+selection sort happens by searching for the smallest element in the array and then 
+placing it at the beggining of the array and then the second and so on 
+
+
+when we are looking at large enough inputs to an algorithm to make the growth terms only 
+relevant we are studying the asymptotic effecincey
+
+asympotitcally smaller means w()
+asympotitcally larger means o()
+
+polynomially bounded is when f(n) = O(n^k) where k is some constant , p.s = means belong to
+, and it's called polynomially cause as you see the limit function is a power function
+n^k
+
+any exponential function with base bigger than 1 (constant^k) grows faster than a polynomyial
+function like (number^constant)
+
+e^x = summation(from i=0 to infinity) x^i/i!
+
+binary logarithm is log to the base of 2
+
+the rate of growth of polynomials is greater than the rate of growth of polylogarithms
+
+stirling's approxmation is for finding the value of a factorial and finding the lower 
+and upper bounds of the factorial function
+
+if A is subset of B and C is a set of A then C is a prober subet of A
+
+a reflexive relation is a two way realation between two numbers like = or <= 
+a relation like < is not reflexive
+
+a binary realtion is a subset of the cartesian product of any two numbers 
+
+uniform random permuatation : is an equal probability of some permutations
+
+we call an algorithm randomized if the behaviour isn't only defined by the input but by 
+the ouput too
+
+there is a variation of the set that's called a multiset that can contain an element 
+more than once 
+
+Z is the set of all integers positive and negative
+R is the set of Real numbers
+N the set of natural number (positive integers) 
+
+if A is a subset of B then all element of a are in b
+
+algorithms : are just methods to solve problems
+
+data structures : which are ways to store data
+
+union command : connects two objects
+
+connected command : checks if there is a path that connects two objects
+
+in all these states an objected p is connected:
+reflexive : if p is connected to p
+symetric : if p is connected to q and q is connected p
+transitive : is p is connected to q and q is conected to r then p is connected to r
+
+steps of solving the problem in a scientifc way through mathematical models testing:
+modelling the problem and knowing what are the elments of the problem that need to be solved
+find an algorithm to solve this problem
+check if it's fast enough and wether it fits in the memory or not
+if not figure out why 
+find what's the problem 
+repeat till conditions are satisfied
+
+dynamic connectivity : 
+union command connects two ocjects:
+find or connected command checks if two objects are connected or not "even if the connection is not direct
+
+connected components : are a set of objects that are mutually connected "or all of them are connected to each
+other"
+
+you need to build a client to test your class and see if it works or not 
+
+
+QUICK FIND algorithm : one of the algorithms that is used to solve the dynamic connectivity problem
+depends on having an array with the entries of the components of each elements,
+where the element content is the index of the array and the component id is the content of the array.
+elements with the same component id means they are connected .
+component ids are stored into an array .
+if you want to union two elements p and q , you change the id of the p component to the id of the q component
+the problem with quick find algorithm is that is takes N squared or quadratic time which is very slow and not 
+acceptable in big problems
+
+quadratic algorithms don't scale with technology , you may have a 10 times computer but with quadratic algorithms
+it doesn't scale so much and the speed remains the same 
+
+quick union algorithm : quick union depends on the tree idea , 
+if we say union(2,3) then 2 becomes a child of 3's root which in this case is 3 itself
+quick union could be faster than quick find but if the trees get taller it could be slower cause then you would
+have to traverse all N traverses in order to get the root 
+and the find may take linear number of times in order to get to the root
+
+weighted quick union : it solves the quick union problem which is long trees by always putting the short tree 
+under the long tree and avoiding the other scenario which make the find way faster cause the maximum depth of the
+node in the tree is lgn "log to the base 2 of n " and that changes the connected and the union methods running
+time to lgn at most
+
+weighted quick union with path compression : when checking the root of the element you may pass many parents of 
+that element , path compression assigns all of those parent elements to the root directly
+
+percolation is the connectivity between two parts , if it connects then it percolates and then if doesn't connect
+then it doesn't percolate
+
+percolation problem example is the monte carlo simulation , where white dots are randomally filled to check wether
+the system percolates or not and then find out the percentage at which the system percolates,
+connect the rows at the top with the rows at a virtual site and then check if it's connected or not
+
+aliasing : is when two declrations are referring to the same array and it's not a good idea
+
+static methods : are methods that created inside a class and refrenced by typing classname.staticmethod
+
+method signature : is the the method name , it's variables and the order of those variables
+
+method body : is the statements that are gonna be executed inside the body 
+
+variables are passed by values in the method and not by refrence
+
+overloading a method : is having a method with the same name but with different signature or variables
+
+a method can have several return satetments but one return value only 
+
+basic programming model : develping a program that aims at a specific computational task by creating a library of 
+static methods
+
+

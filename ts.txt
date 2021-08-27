@@ -1,0 +1,333 @@
+type script is a js super set , which means it taks js and builds up on it 
+
+ts gives you types that allows you to identify errors before running your code 
+
+const something = document.getElementById()! as HTMLInputElement : the ! tell ts that there is always going
+to be an element and as tells ts that this element is going to be an HTMLInputElement 
+
+npm install --save-dev lite-server : this allows you to install a server that automatically reloads every
+time your code changes , and then you go to package.json under the 'test' key and then add 'start' key 
+and add the value lite-server 
+
+npm start : after you have installed the lite-server , you then can start your development server which 
+refreshes each time you update your code 
+
+number,string,boolean,objects,arrays,tuples are the core types ts provides , and boolean doesn't deal with 
+truthy or falsy values 
+
+typescript only helps during development , it doesn't do anything during compilation 
+
+even if ts throughs an error while development and you tried to compile the ts code ,by default it's gonna
+get compiled  
+
+ts is statically typed language which means that varaibles types can't changes during run time 
+
+type inference : is ts ability to detect the types of varaibles automatically 
+
+let variable:number; : this is the only case where you should tell ts what type your variable is , when 
+you don't initialize your variables 
+
+type objects : are ts objects that holds the object's proprties types 
+
+const something :{} ={} : this is the type script object notation
+
+const seomthing :[] =[] : ts type of array
+
+string[] : is ts type which is called strict array , which means this array accepts only strings 
+
+any[] : an array that can store data of any type 
+
+variable something : [number,string] = [1,'hello'] : this is an example of a tuple which allows for only 
+two elements with defined types 
+
+enum Variable {something,someone,something elese} : this will cause something to be 0 , somone to be 1 and
+something else to be 2 by default , and that's the enum type in ts 
+enum's job is to assign labels to numbers 
+if you want to change the default values you can do this enum Variable {something=0,someone= 100}
+and it doesn't have to be numbers 
+
+value : string | number = something : this is called a union value where you get to choose your types 
+between string and numbers
+
+value : 5; : this is an example of a ts literal that allows you to store only a literal value like 5 or any 
+string value 
+
+type something = number | string : this is an example of custom type of type aliases , that allows you to 
+create your own types in ts 
+
+function():type{} : this allows for assigning a type for functions 
+
+:void : this allows you to retrun nothing for a function 
+
+const something : Function; : this allows you to set type function to a variable
+
+const someone : (value1:number, value2:number) => number ; : someone variable right now will only store 
+a function that returns a number and has two numbers as inputs and this is called function types 
+
+const variable : unknown; : this allows for setting the type unknown which allows you to set a variable to 
+have a type of unknown which is allows you to set any type of value insie variable but 
+if you try to set 'variable' to another ts type then you will recieve an error , example
+const hello:unknown = 5;
+const new = hello ; this will throw an error 
+
+:never : is a type for functions that doesn't return anything and also crashes or stops the code , like 
+functions that throw errors and so on 
+
+tsc file.ts -w : allows for Watch mode , which saves you the effort of always tsc file when making a change 
+in your ts file 
+
+tsc --init : this allows you to manage all the tsc files and recompile them when changes happen , navigate
+to your folder project and run the command and a tsconfig.json file will be created managing all your 
+ts files and then to recompile all your files do 'tsc' and it will recompile allow your ts files 
+and if you do tsc -w now it will wach changes for all your ts files automatically 
+
+if you go to the tsconfig.json file and then after the compiler options dict you add "exclude":['file.ts'] ,
+then this allows you to remove those ts files from the compilation process 
+and if you do "execlude":['*.dev.ts'] : this will execlude all files that end with .dev.ts 
+
+"include":[] : a tsconfig.json attribute that will allow you to select specific files to compile in ts 
+
+"files":[] : like include but for folders 
+
+sourceMap : true : a tsconfig.json option that allows you to show ts files in the browser too so you could 
+debug your ts files too and not only the js ones 
+
+usually in project the ts files lies in a 'src' folder and the js compile files like in a 'dist' folder 
+and you can set the tsc to output those compile js files in those destinations using the outdir and rootdir
+options in the tsconfig.json file 
+
+"noEmit":true : is a ts option that allows you to prevent outputting js files , which would happen if you 
+only wanted to check js files 
+
+noEmitOnError : true : this will prevent tsc from producing js files when there is an error in ts files 
+
+strictFalseChecks : a tsc option to prevent error for not putting the ! infront of html element
+
+default argument in functions should be at the end of the paramters of a function 
+
+(...something :number[])=>{} : this is how you use the rest paramter with ts and functions 
+
+this : ClassName : this declares what the this function should refer to 
+
+private : an identifier for fuctions and variables inside ts that allows them to be used only inside the 
+class and not accessible outside of it 
+
+class ClassName{constructor(public variable:type){}} : the keyword public allows for the variable to be 
+initialized as a field 
+
+constructor(public readonly varaibleName : type) : this allows this variable to be only written once and can't
+be overwritten 
+
+class something extends someone{
+	constructor(id:string){
+	super(id,'something'
+	}} : the class something is inheriting the class someone and overwriting one of it's proprties 
+which is id , by passing the paramter to the constructor and then passing the paramter and it's value to 
+the super method
+
+protected : a function or variable identifier that prevent access to the function or the variable from outside
+the class but allows it from inside classes that extend this class  
+
+class ClassName{
+	set someProperty(){}
+	get someProperty(){}}
+those are called getters and setters and they allow you to add extra logic when trying to set the value of 
+a property or retriev a property and if you want to access the value of someProperty from the class you 
+do it like this 'ClassName.someProperty' without the () and this will trigger the getter method and if you 
+do this 'ClassName.someProperty=value' this will trigger the setter method 
+
+static allows you to call the method or the field without the new to instantiate the class with the new
+keyword example:
+class ClassName{
+	static field1;
+	static method1(){}}
+now to access className's field1 you can do this className.field1 instead of having to do this 
+let variable = new ClassName(); variable.field1; , and same for the method too , it's a grouping mechanism
+just like namespaces ,but you can access those satic parts of your functions in non static parts like
+the constructor or your normal class methods , because in order to access normal methods or fields you 
+do this.theThingYouWantToGet , but this refers to the instance of the class and static fields and methods
+are not meant to be got from the instances of the class but if you need to get it , you can do it like this
+ClassName.field1
+
+abstract Class{abstract field1; abstract method1();} : this now means that any class that inherits this 
+abstract class will have to implement field1 and method1 in their own implementation and abstract methods
+can only have paramters and must have their curly braces empty , and abstract classes can't be inheirted 
+
+singletons are classes that can only have one object of them which you create by have a private key infront
+of the constructors 
+
+interface are like classes in that they also provide a blueprint for objects but more abstract example
+interface something {name:string; age:number; hello();} and now you can use this type for your objects like
+this let newObject : something ; and it's like this type something = {name:string; age:number; hello();} 
+but type has more features 
+one main difference between types and interfaces is that interfaces could be implemented by classes like
+this 'class something implements interface1,interface2{}' and also if you noticed you can inherit more
+than one interface 
+
+difference between interfaces and abstract classes , is that interfaces can't have any implementation details
+while abstract classes can have a mix implememnted and not implemented classes 
+
+you can have readonly proprties inside interfaces 
+
+an interface can extend another interface  like this 'interface current extends previous'
+
+you can define functions structure using interfaces like this 
+interface AddFn{ (a:number):number;} : this now would be a function type that can be used for functions
+function : AddFn;
+
+interface something{ property?:string;} : this tells the object extending this class that it should have the
+property method but it doesn't have to , and this ? can be done in the class too 
+
+:Date : a ts type 
+
+type something = type & anotherType : this is called type intersection type which means that now something 
+is a mixture of both type and another type 
+
+property IN object : this returns True if the property exists in this object 
+
+property IN Class : also checks for property in class 
+
+type guard : the concept of checking if the operation your about to do matches your ts type or not 
+
+discriminated unions : to have one property in all interfaces or classes and use it to identify the object
+you create 
+
+type casting : telling ts what the type of the object gonna be like this 
+const element = <HTMLInputElement>document.getElementById('id') or like this 
+const element = document.getElementBy('id') as HTMLInputElement
+
+document.getElementById()! : the ! tells ts that this expression will never yield null 
+
+index proprties: a feature that gives you flexibility regarding the number of inputs you need and their types
+and you can do it like this 
+interface ErrorContainer{
+	[prop:string]:string;} : which will allow you to have an object from that type that includes strings 
+only 
+
+fucntion overloading : having the same function called with the same name but with different proprties 
+and it's done like this 
+function add(a:string):string;
+function add(a:number){
+	console.log(a)
+}
+
+optional chanining : something?.something?.something , this checks first if the first something object exists
+and if it does , it goes into the second something and then checks if the second something exists or not 
+and if does it goes into the third and so on
+
+nullish coelecing : const something = value ?? value1 : this tells ts that if value is null or undefined , 
+then value1 will be stored into something 
+
+generic type : a type that allows you to connect to any other type that you want an example would be 
+const names: Array<string> = [] : this allows you to store a string in the array 
+
+generic function : 
+function name<T,U> (obj1:T, objB:U)}
+	return Object.assign(obj1,objB)} : this will now return an object that has an intersection between 
+t and u 
+so if you do this const hello = name(one,two); hello.property; then this wouldn't yield an error in type
+script cause ts now knows that the resulting object will be mixture of both object 
+
+constraints : allows you to specifiy a generic type to a class by using extend example
+function name<T:extends object> {} : this now specifies that the t should be of type object 
+and this is done for generic types 
+
+function something <T extends interface>(paramter : T){} : this allows you to check that the object that is 
+being passed as a paramter to the function something has the property of the interface 
+
+keyof constraint : this allows you to check if the paramter that you pass after the keyof is a key of a certain
+object , exmaple:
+function something <T extends Object , U extends keyof T>(something:T,key:U){}
+
+class <T>{} : class of generic type 
+
+let something : partial<Type> = {} : this 'partial' identifier tells ts that all the paramters of this object
+are optional which means we can start with an empty object 
+
+let something: ReadyOnly<string[]> = ['hello'] : now this array can't be modified by pushing or removing 
+elements 
+
+main difference between generics and unions is that generics makes you choose one type throughout the whole
+function, class , method and so on , unions on the other hand allow you to use types together or in a mixed
+way 
+
+in order to use decorators go to tsconfig.json and then change the experimental decorators to true 
+
+decorators are functions that you could apply to classes , and they start using the class once they find
+it's definition not once it's instantiated an example decorator
+function Logger(something:Function){
+	console.log(something)}
+@Logger 
+class Person{constructor(){}} : notice that the logger is without ()
+logger functions can be factory functions and it's done like this
+function factory(something){
+	return function(constructor:Function){}} 
+
+if you add more than one decorator they execute from bottom to top 
+
+decorators can be added to class fields and methods 
+
+decorators execute when the class is defined not when an object of the class is instantiated , so if you 
+create three objects from the class that doesn't cause the decorator to execute more , cause simply decorators
+are just doing more work to define the classes and that's it
+
+you can make the decorators return constructor and if you do so , decorators are going to be run when we
+instantiate the class 
+
+decorators on fields and paramters don't care about the return value of the decorator
+
+Array.isArray(array) : this returns true if this is an array 
+
+///<refrence path='file.ts'/> this allows you to import classes or names or interfaces from other files 
+and the things in that file have to be included in a namespace syntax like this
+namespace something{export your code goes here} and then after you do that go to the file you want to use those
+namespaces and then wrap your code in the namespace like this namepsace something{your code}
+and then if you have another seperate file , wrap your code in the same namespace and write exports next to 
+it 
+
+outifle : a property in the ts configuration that tells js to bundle all the output files in one ,
+and it's instantiated like this , "outfile":"./dist/something.js"
+
+
+npm install --save-dev webpack webpack-cli webpack-dev-server ts-loader : the webpack setup with ts 
+
+webpack cli : is the command line that allows us to run webpack commands 
+
+debpack-dev-server : autoreloading functionality while development 
+
+ts-loader : tells js how to convert and bundle our ts code into js code 
+
+module.exports{
+	module:{
+		rules: [ {
+			test: /\.ts$/
+			execlude:/node_modules/
+			use:'ts-loader
+			}]
+		resolve:{extensions:['.ts','.js']
+			}} : this all tells webpack to use type script loader to bundle and use ts files
+and the resolve option tells webpack the extensions to look for 
+
+publicPath:'file path' : this tells webpack where the source code is 
+
+npm install --save-dev @types/library : this tells ts the files that could be used with js  
+
+delcare var SOMETHING:any; : this tells ts that this global variable will exist 
+
+classtransformer : a ts library allows transofrmation of objects to ts objects 
+
+const loaderProducts = plainToClass(the_class_you_want_to_transform_to, the things you wanna convert)
+this is a classtransformer library function
+
+class-validator : allows validation decorators 
+
+npm install --save-dev nodemon
+
+npm install --save-dev @types/node : to make node work with ts 
+
+npm instal --save-dev @types/express : allows for ts with express
+
+scripts{"start":"nodemon dist/app.js"}: now this allows you to go to the terminal and enter node start instead
+of nodemone dist/app.js
+
+nestjs : allows you to use type script out of the box

@@ -1,0 +1,546 @@
+the difference between a bridge and a hub is the following
+hubs don't know which port is which and they broadcast the message to 
+every one
+
+bridges know the mac addresses of devices and only sends the message to a 
+specific MAC address
+
+bridges were slow cause they used software for routing that's why they made
+ASIC which is a hardware for routIng and it standS for application integrated
+specific circuitry and it's A CHIP which allows the cpu of the switch
+to be offloaded and makes the processes of the switch faster and easier 
+for it 
+
+layer 2 switches learns the mac addresses and puts them into a CAM 
+Content Accessible Memory and it's drawn as a horizontal square with arrows inside
+and based on that it makes forward decisions
+
+layer3 swtiches has a routing functionality build into it and it looks like
+a vertical square box with arrows coming out of it
+
+routers allow for your local network to actually connect to the outer internet
+and simply it connects different networks together
+
+there are frequencies in the air and the more the magnitude of the frequency
+the more bandwidth (number of devices to connect on this frequency)
+and the less range or distance away from the access points you can get
+
+what you have at home now is called an access point not a router
+
+channels are slices or sections of the frequency and the channels 
+actually interfere with each other
+
+2.4 ghz frequency has only 3 clean channels 1,6,11 
+
+there is something from cisco that is called wireless controller that
+controls wireless access points
+
+WAP Wirless Access Points are drawn like a rectangle that has interfering
+waves on it 
+and maybe like a square that has a tower and signal to it 
+
+a wirless access points controller is drwan as a rectangle that has 
+waves interfering on it and arrows on top of it 
+
+firewalls blocks traffic moving between networks by default but enables 
+by exception 
+
+firewalls can be in transparet mode which means that they are installed inside
+a local network between routers and they actually filter the data going
+inside the network without breaking the network or being detected
+
+firewalls routed mode actually divides networks from each other opposit
+to routed mode which is inside a local network 
+
+firewalls has security zones where each zone has a security level
+and they do stateful routing which means that high security zones can
+speak to low security ones but not vice versa unless the high security 
+zone actually asked to communicate with low security ones
+
+IPS intrusion prevention system looks for unusal network behavior and 
+blocks it 
+
+routers allows traffic between networks and blocks traffic by exception
+
+network communication is done in terms of bits mean while 
+storage is done in terms of bytes
+
+eithernet channelling takes in two or more eithernet cables and combines there
+speed 
+
+switches run a portocol called carrier sense multiple acess / collision detector
+protocol CSMA/CD
+
+cause access points send signals in the air they don't detect collisions
+so they have CSMA/CAvoidance protocol for sending data which means that
+every device connected to the access points has to actually wait sometime 
+before sending data
+
+MDF Main Distribuation Facility 
+IDF Intermediate Distribution facility
+
+two kinds of fiber optic cables 
+single mode cables which go for longer distances with a glass core in the cable
+multi mode cables which goes for less distances than the SM
+
+for ethernet cables the more twisted the better and they have to be in 
+a specific order 
+
+straight through ethernet cables connect different devices together 
+throught the fact that the pins at the end of the cable are divided into
+recieve and transmit and they are in reversed in the start and the ends of the cable
+which allows for any device to reciver and send data
+
+cross over cables connect similar devices togther through aligning the 
+recieve and transmit pins togehter at the ends of the calbe
+
+and that categories of cables are on it's way to be gone 
+cause there is something in modern cisco equipment that is called 
+AUTO MDIX which senses the end of the pins 
+
+
+types of communication 
+Unicast :one to one
+multicast:one to many 
+broadcast:one to all
+anycast : one to closet
+
+ARP Address Resolution protocol and this happens when a device wants to 
+connect to another address so it broadcasts a message to everyone on the
+server first asking for aspecific ip address AND ARP assigns mac addresses to ip addresses on a local network 
+if you type arp -a on the CMD you can find all ip addresses's mac addresses
+
+ip 192.168.1.1
+subnet mask 255.255.255.0
+then that means that this ip address has the first three octets(parts) 
+representing a network and the last octet representing the host range
+
+Network definition is a group of devices that are grouped together 
+under the in the same ip address network octet part as defined by 
+the subnet mask 
+
+Networks are classes and are classfied acording their size using the 
+subnet mask 
+a class c network has 254 devices and has a subnet mask of 255.255.255.0
+a class b network has 65.536 deivces and has a subnet mask of 255.255.0.0
+
+Gw gate way addres is the default address of the router that allows any
+device in the network to communicate to another device in another network
+so all devices in a network have on GW
+
+NAT network address translation is the regulator of private and public
+addresses 
+
+
+
+the internet packet consists of the following
+source ip address "the address of my pc"
+destination ip address "the website i am going to "
+source MAC  "my pc MAC"
+destination MAC "my router MAC"
+
+tracert -d website name : allows you to trace where your packet is going
+
+MACs are used for networks hop by hop communication while ip addresses are used for 
+end to end communication 
+
+TCP transimition control protocol which ensures packets aren't dropped 
+between sources and destination and it's reliable way of communication
+
+UDP User Datagram Protocol doesn't ensure packet arrival to the destination
+and is used for real time communcation things like games and calls 
+
+Tcp is a reliable connection protocol and it uses three way hand shake 
+to initiate any session so 
+
+my pc send a syn "syncronisation" msg to a server which include my first sequence number let's say 1000
+
+server replies with a syn/akc msg which has a syn of the choice of the server let's say 4000
+and an akc that notifies my pc that it recieved my packet which is 1001
+
+then my pc sends an ACK with number 4001 so that it notifies the server
+that it's ready to communicate with the server 
+
+Tcp sliding windows is why your pc start slow and then it becomes fast when 
+downlaodin a file cause it first sends a very small packet to test the 
+server cabapility to actually send and recieve data and at first 
+the test packet is very small so when your pc calcualtes the time it 
+actually takes to send data it's very huge but then the actuall packet 
+data transfer gets bigger and your overall tranfser rate gets highter'
+
+ICMP internet control message protocal and that is the 
+protocol used for pinging
+
+first 6 digits in a mac address is the vendor id 
+
+port of https 443
+
+Ping is an icmp protocl msg
+
+APPLICATION layer is responsible for generating requests that the user 
+wants to do 
+
+PRESENTATION layer is responsible for standardizing the request into a 
+more standard form like formatting the request into an html , jpeg request
+simply so that any machine can understand your request 
+
+session:is used for sessioning data into different categories
+
+TRANSPORT layer has the protocols that are used for communication by the 
+application layer and decides the ports used for each request 
+
+netstat is used for detecting the ports that are used for communication 
+on my pc and it's a windows cmd command
+
+NETWORK layer has the ip address to do end to end communication 
+
+DATA LINK layer has the mac addresses to do hop to hop communication 
+
+physical layer is where data is converted to zeroes and ones to move through
+the cable 
+
+the whole osi model process is called the encapsulation process
+
+the tcp/ip model consists of application layer , transport ,internet , network access layer
+
+we have a senario where the application layer is chrome 
+then the following steps happen 
+1- transport layer adds the protocol that's going to be used which is
+for example tcp and then it adds the source and destination port 
+where the source port is my pc itself and destination port is the servers
+service that i am going to be using in this case for http 80
+2- network layer then adds the ip source which is my pc and the destination
+ip which is the server 
+3- data link layer then adds the mac address which is responsible for hop
+by hop communication  and it actually has another future which is the 
+cheksum of the data where it adds some number in the data 
+and then if the server recieves it , it inputs the data in an equation and
+if the output of the equation is = to the number on the packet then it's not
+corrupted data
+4- the physical layer which converts everything in binary ones and zeroes
+ALL OF THIS IS CALLED ENCAPSULATION 
+
+UDP stands for User Datagram Protocol
+
+IOS internet operating system is platform specific and memory requirement
+specific
+
+enable commmand on ios changes the mode from user mode to privilage mode 
+
+conf t command changes the mode to global mode
+
+line change the mode to line mode where you can set password for the 
+access to your router 
+
+in order to be able to go to global mode you have to pass by limited
+and privilage mode first 
+
+you can go back a mode by typing EXIT
+
+you can drop all the levels by typing end or ctrl+z
+
+if you print ? you can see all the commands that you can type
+
+show ip interface brief : shows you all the modes in you routers
+
+no ' any command' : defaults any command after it 
+
+any modem goes through the following stages when booting up 
+post which is the process to check on the hardware of the cisco syste
+ios decomposing process where it loads the ios on the premanent memory of 
+the cisco device 
+
+space scrolls down the page 
+
+if you type part of the command followed by a ? then it's going to show 
+you all the commands that start with this letter
+and if you type the ? at any place in the command it tells you the rest of it 
+
+the TAB key continues your commmand on the ios 
+
+up and down shows commands like linux
+
+show history : shows you all the comands that you typed before 
+
+ctrl + a : goes to the start of the command 
+ctrl + e : goes to the end of the command
+
+reload in 5 : is a command that reboots the cisco device after 5 minutes
+which allows you to restore the original config even if you typed something
+that disconnected you from the router 
+
+reload cancel : cancells the reload in command 
+
+show running-config : shows you what is the current config of the system 
+
+NVRAM : non volatile random access memory 
+
+copy running-config startup-config : copies the config that you have in the
+terminal now into startup config so when the device boots it load the
+start-up config 
+
+wr : is the same as copy running-config startup-config
+
+wirte erase : resets the cisco device to it's original settings 
+
+enable secret cisco : this puts a password on the privilage mode which 
+is cisco 
+
+if you would like to compleltely change the running config then you should
+copy a configuration from an tftp server into the NVRAM and then reboot
+the device and then it will load the config from the nvram 
+
+banner motd ! : shows you a login message when you enter the router 
+
+
+password blabla 
+login
+this locks the device on future access and requires a passcode to enter 
+the device 
+
+line con 0
+logging synchronous
+this allows you to type you commands on a single line and doesn't allow 
+the interference of system messages with your commands 
+
+ip address 192.168.1.1 255.255.255.0 
+this sets your ip address to the address shown 
+
+ip address dhcp 
+this allows the assigning of your ip address using dynamic host config
+protocol
+
+ip domain-lookup 
+is actually the cisco device that you have ,,,searching for whatever you 
+type that's not a command on dns SO 
+
+no ip domain-lookup 
+negates that 
+
+service password-encryption : this changes all the passwords to type 7 
+encrypted password so that when someone types 
+show running-config , they can't see the passwords you assigned 
+
+enable secret yourpass : creates a password that encrypts the passwords 
+in type 5 encryption which allows it to be more secure 
+
+
+telnet isn't secure , it actually sends and recieves paackets in plain text
+
+FQDN : Fully Qualified Domain Name is actually when the website address
+is constructed of www.thewebsitename 
+
+ip domain-name cbtnuggets.com : assigns a domain name of cbtnuggets.com
+which the device's keys are associated with , cause every device has got
+it's own encryption keys so we have to refrence them using domain names
+and that's all for the ssh connection to be established
+
+transport input : is for defining which protocols are going to be allowed
+to be passed in the ports 
+
+show ip interface brief : shows you which interfaces are connected to the 
+cisco device that you are using and what are their status
+
+CAM : content Accessible memory where the router stores all of it's learned
+mac addresses
+
+packet : is the data type at layer 3 "networking"
+frame : is the data type at layer 2 "data link layer" 
+
+switches has a 5 minute CAM table and then it resets the CAM table and 
+learns the mac addresses of the device again 
+
+if the device is talking to the switch then the switch keeps reseting 
+the 5 minute timer preventing the mac address of the talking device from
+being deleted 
+
+we don't use hubs anymore it's because they have only one collision domain
+which means that every device that wants to send anything has to wait and 
+see if there is any other device speaking or not 
+
+in swtiches we have the CAM which allows us to know the mac address of every 
+device connnected to the switch which allows for minimal collision and 
+other benefit is that we have collision domains on every port of the switch
+which means that every device in the network can send and recive data the 
+same time 
+
+show mac address-table : shows all the mac addresses of a switch 
+
+show mac address-table| include anything : allows you to find the 
+anything from the address table quickly 
+
+show cdp neighbors : shows you all the devices connected to your switch 
+
+interface fa2/0/45 : if you type this it allows you to deal directly with 
+this port so if you type shutdown after this command it's like unplugging
+the device from the port 
+
+username abdelerahman secret abdoul : this creates a user name and pass
+for the ssh channel 
+
+crypto key generate rsa : this generates the keys for the ssh and it must
+be proceeded with ip domain-name 
+
+login local : to actually use the usernama and pass you created
+
+interface fastEthernet 2/0/1 
+speed 100 
+duplex full 
+this sets the port to be full duplex which allows it to send and recieve
+data at the same time 
+
+if you hardcode a port in a switch to have 100/full duplex 
+then you must do the same to the device connected to that port 
+cause if it's set to auto then it's going to default to 100 /half duplex
+
+
+for security limit the number of mac addresses accessing the port 
+or hardcode the mac address that is going to access each port 
+
+if port security broke then it's going to protect , restrict or shutdown
+where in protecting it's going to allow only the devices specified 
+, restrict is the as protect but with notification 
+, shutdown shuts down the port 
+
+interface fastEthernet 0/1
+switch port-securtiy maxmimum 2
+this allows only two mac addresses on each port 
+
+switch port-security violation shutdown 
+this shuts down the port on violation 
+
+show : before commands to show you commands status 
+
+switchport port-security mac-address sticky : remembers a mac address
+for the port 
+
+show interface fastEthernet 0/5 : show you all the details about this port
+
+when you type the command show iterface focus on the input errors and 
+CRCs
+
+CRCs are terminators of each packet and if you see a lot of those that 
+means that there is something wrong with the cable or the port 
+
+collisons : this numbers increases if you have the port and the device 
+connected to that port different in duplex and speed settings 
+
+late collisions : this happens when the fast ethernet 
+cable length is above 100 meters 
+
+VLANs : Virtual Local Area Network is for dividing the ports of the 
+switches into groups to make it faster and more secure and each group of 
+ports has it's own subnet and they allow you to do QOS
+
+TRUNKS : are the ports that aren't parts of the VLANs and are used to 
+extend networks and connect switches togehter
+
+access ports : are ports that can only access one vlan network 
+
+DTP : Dynamic Trunking Protocol , which dynamically detects if the connected device 
+is a switch or a computer and based on that determines the type of the port 
+
+switchport mode access/trunk: allows you to change the port to be a trunk or access 
+
+native VLAN : is the default VLAN for packets without tags on it to tell it which VLAN 
+it belongs to 
+
+CDP : is a message broadcasted by cisco devices showing their ios and thir device type 
+to neighbouring devices 
+
+VTP : Vlan Trunking Protocol it replicates the Vlans in one switch to the others 
+and it has something called VTP domain which is the vtp protocol name 
+and there are three vtp modes which are client , server and transparent 
+where transparent is the equivelant of "off" , and server means that every switch can 
+modify the vtp database , and client don't have the permissions of vtp server
+
+
+show ip route : shows you the routing table of a router 
+
+ip route 0.0.0.0 0.0.0.0 192.168.1.1 : is for creating a default routing table to get 
+to any network availble through 192.168.1.1 router gate way  
+
+
+802.1Q : is a trunking protocol that is used today 
+
+ROAS : Router On A Stick which is used for routing between vlans
+
+interface fastEthernet 0/2
+switchport mode access
+switchport access vlan 51
+those commands allows the access of ports to only vlan 51
+
+show vlan : shows your vlan configuration 
+
+encapsulation dot1Q 51 : if you want to configure a router to respond to 
+packets that are coming from vlan 51 and that majorly happens when you 
+are on a sub interface 
+
+interface fastEthernet 0/0.51 : that creates a sub interface 51 
+
+tracert -d ip address : is a windows command to trace route of 
+a ping 
+
+conf t
+vlan 51
+name hello 
+exit
+this creates vlan 51 with name hello 
+
+SVI : Switch Virtual interface , which is an imaginary interface in the 
+switch that responds to layer 3 traffic 
+
+ip routing : is a switch command that turns on the SVI 
+
+interface vlan 51 
+ip address 125.100.1.1 
+that assigns an ip address to the vlan 51 which allows all the ports on this
+vlan to access the network through the ip
+
+pool of ip addresses : in Dhcp you can have a pool of ip addresses whatever
+range you want , let's say  100 ip addresses 
+
+ip dhcp excluded-address 10.1.52.1 10.1.52.19
+ip dhcp excluded-address 10.1.52.100 10.1.52.255
+ip dhcp pool VLAN 52
+network 10.1.52.0/24
+dafault-router 10.1.52.1
+dns-server 4.2.2.2 8.8.8.8
+what those commands do is that it creates a dhcp server and it follows
+the the following steps 
+a:it excludes specific addresses from 10.1.52.1 to 10.1.52.19 so that 
+they won't be give by the router to any devices on the vlan
+b:it excludes address from 10.1.52.100 and above 
+c:it enters the configuration mode of the dhcp server on the router 
+for vlan 52 and then the next command is assigining the vlan 
+ip to be 10.1.52.0/24 
+d:it's assigning the default gateaway for the network to be the router
+e:assigning dns servers 
+
+ipconfig /renew : this asks for a new ip address "cmd command"
+
+ipconfig /release : this releases the ip address allocated to the device 
+
+DHCP relay : is what the router does when it recives a broadcast and where
+it sends this broadcast to and the command for it is 
+ip helper 10.1.52.200 which means that the router will be sending broadcasts
+to this address
+
+each class of ip address wether it's class a ,b,c has a standard 
+private ip address range for example class c private address range is 
+192.168.1.0
+
+subnetting is used for reducing the waste of ip addresses when creating 
+a network 
+
+when subnetting you change the subnet into binary and take the last 
+bit of the network bits and make it your increment 
+so of example if we have more three bits for the network then 
+the increment is going to be 32 and then if you have the address 
+216.21.5.0 as your first network then the second network is 215.21.5.32 
+and so on and all the addresses between those two are devices 
+
+VLSM : Variable Length Subnet Mask  which is bassically changing the 
+subnet mask according to the network needs 
+
+

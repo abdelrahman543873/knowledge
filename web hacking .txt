@@ -1,0 +1,346 @@
+GET method is meant to retrieve the info that was requested by the URI Uniform Resource 
+Identifier and URI has types like URL 
+
+HEAD method is used for testin the validity and accessibilty of HTML 
+
+POST method is used for invoking a function on the server side , meaning it's requesting
+the server to do something 
+
+PUT method is usually used for updating an existing entity like an account or a blogpost 
+
+DELETE method is used for invoking a request to delete a resource identified by the URI
+
+TRACE it's the used to reflect the request back to the requester to see what the request
+looks like on the server end
+
+CONNECT method is used with proxy 
+
+OPTIONS method allows the requester to know which method are availaible on the server 
+like GET and head is available but maybe not CONNECT and put 
+
+OWASP  Open Web Application Security Project
+
+interstitial webage is a webage that is shown to the user before being redirected to another
+site
+
+always take notes of the services a website is using cause it represents new attacks vectors
+
+HPP Http Paramter Pollution which is injecting the HTTP request with some malitious content
+and seeing how the website server repsonds to it on your side
+
+and example of HPP is doubling the paramters of the url 
+
+php/apache processes the last occurence of a url variable value , ASP/IIS processes all of them 
+
+take a look at website that has links to social media as they can be HPP vulunerable
+
+keep a look for params like UID that take the user socail account number as the may 
+be vulnerable to HPP
+
+if a site is vulunrable to HPP then it's a broad systematic problem and you should investigate
+the rest of the site and start by social media links 
+
+CSRF stands for Cross Site Request Forgery 
+
+CORS stands for Cross origin Resource sharing which is used to defend against CSRF
+
+GET requests should never be able to modify anything on the server site 
+
+when you are reporting a bug the following is important :
+1-title
+2-severity
+3-Description 
+4-reproduction stpes 
+5-impact
+6-mitigation or how it's fixed
+7-affected assets 
+
+xss : is when the user input is run and rendered on the website servers 
+
+ssl : stands for secure sockets layer doesn't protect the website 100% cause this only 
+means that other users on the same network can't view any sent or recieved data between 
+a client and a server , but the attacker can attack the website directly and gain access
+to it 
+
+CORE DEFENSES AGAINIST ATTACKS :
+
+handling user access : 
+this is very widespread and it's accomplished using the following techniques
+
+Authentication:
+Whenyou are attacking a web application, you should invest a significant amount of
+attention to the various authentication-related functions it contains
+
+session management:
+when a user receives a token, the browser automatically submits it back to the server in each subsequent HTTP request, enabling
+the application to associate the request with that user and usually the security of the 
+session managment depends on the security of it's tokens , and the flaw is usually in how
+the tokens are generated 
+
+access control: is all about having a defined set of rules for each user's access level
+and it usually has some vulunerabilities because it's usually overlooked by the developer
+
+-------------------------------------------------------------------------
+
+defenses againist user's input :
+
+one of the least effective methods that are used on websites are blacklists for patterns 
+of attack and it's least effective cause you can easily bypass it and there are always novel
+ways of malicious input which are most likely not to be included in the black list 
+
+some firewalls can't process a null byte like this %00 or this /0 and as a result any 
+code that comes after them isn't processed and it's usually bypassed 
+
+opposite to the blacklisted input there are white lists of input and this is a defense 
+mechanism that by default rejects every input and passes only input that is matching the 
+criteria for "safe" input 
+
+sanitaization : is by accepting every input which maynot be 100% safe and clean it of any 
+malicious known input and it's problem is the sanitaization of a lot of the user's input
+at the same time 
+
+boundary validation : is a defensive technique that allows certain boundries and functions
+of the application to check for possible attacks at each layer of processing in the app
+
+to bypass the sanitaization it's essential to know the deffencing mechanism that is used
+to defend againist the attack for example if the word <script> is sanitized you may use 
+<scr<script>ipt> and that will usually bypass the defensing mechanism  
+
+
+
+the GET method is used for retrieving info from the server and is usually followed by 
+a link 
+
+in the HTTP request there is a refer header that shows the web application where did the 
+request come from 
+
+usear-agent is an attribute in the http header that shows the web browser that orginated 
+the request 
+
+host is the server of the website 
+
+cookie contains additional paramters specifically for each user 
+
+server header in the response http contains the server OS and it mayn't be accurate
+
+pragma : instructs the browser not to store the cookie in it's cache 
+
+--------------------------------------
+some of the methods used in http 
+
+head is same as GET but with no message in the body of the html and it's used to check 
+wether a resource is availbe or not on the server before making a GET request for it 
+
+TRACE is used for diagnostic purposes and it returns in the html body the exact header of 
+the request it recieved and that could help to show if there was any manipulation done
+on the way between the client and the server 
+
+OPTIONS shows the available methods for a specific resource on the server and usually 
+the server repsonds with an allow header that conatains the corresponding availble methods
+
+PUT uploads a specific resource to the server using the message body and this could be used 
+to upload malicious scripts if not prevented
+
+URL stands for Uniform Resource Locator is the address of a resource on the web to be 
+retrieved 
+
+REST Representational State Transfer : which are the rules that the url styles follow 
+
+--------------------
+http headers
+
+connection tells the server wether to clost the tcp connection or keep it opened for further
+communication 
+
+content-encoding contains the type of encoding for the contents of the body of the message
+, for example gzip is used sometimes as encoding method for faster transmittion 
+
+content-length contains the length of the message in the body in bytes but not in case of 
+the head request 
+
+content-type specifies the type of the content in the body of the html sometimes it may 
+be text or html 
+
+transfer-encoding : specifies if there was any encoding done on the message body to show 
+if there was any encoding done or not for the purposes of faster transmittion 
+
+------------------
+
+Request headers :
+
+accept : tells the server what kind of content the client is willing to accept like 
+jpeg or text file types or others 
+
+accept-encoding : tells the server what kind of encoding the client is willing to accept
+
+authorization : submits the credentials of the user to the authentication mechanism of 
+the server
+
+cookie : submits cookies to the server that the server previously issued 
+
+host : specifies the host name that appeared in the url being requested 
+
+if-modified-since : is rquest that asks the server if a specific resource have been modified
+or not and so the server may tell the browser to load the cached copy instead the requested
+resource is not modified by responding with code 304
+
+if-none-match : submits the content of the message body to the server that was issued by 
+the server last time to find if the message body has changed or not and if not the server
+obligates the client browser to used the last cached message body 
+
+origin : show where the request originated from 
+
+refer : specifies the url that the request originated from 
+
+-------------------------
+Response headers 
+
+access-control-allow-origin: specifies if the requested resource can be retrieved by 
+the originatin url or not 
+
+cache-control : specifies if the web browser can cache the data or not 
+
+Etag : is a header that is issued by the server and stored on the client browser to be 
+retrieved later by the browser to know what version of the data does the client has 
+and based on that the server can instruct the client to use the cached info or the server 
+can send the updated info 
+
+location : specifies where the client is goin to be redirected 
+
+pragma : passes cahcing control paramters 
+
+server provides info about the os being used by the server 
+
+set-cookie : issues cookies to the browser that the client is going to submit back with 
+further responses 
+
+www-authintcate : is used in the responses issued by the code 401 to specify what authentication
+level the website supports
+
+x-frame-options : indicates the frames that are going to be used within the client browser
+frame
+
+-----------------
+
+status codes :
+
+status codes are the numbers that are included in the response http from the server 
+and it falls into the following categories
+
+1XX :informational
+
+2XX :sucsseful request 
+
+3XX: the client is redirected to a different resource 
+
+4XX: some error of some kind
+
+5XX: the server encountered an error fullfilling the request 
+
+-------------
+some famous status codes to encounter 
+
+100 continue : indicates that the server is requiring to continue the body of the message 
+you are sending and it's probably going to send you another status code when the server
+recieves the full body of the message 
+
+201 created : indicates that a file is uploaded succsefuly 
+
+301 moved : site address is changed permanently and the site that the client is going to be
+redirected to is in the location header and the browser caches the location and never
+uses the original adress again 
+
+302 found : same as 301 but temporary meaning that the next time the client wants to go 
+the the website he should use the original link 
+
+304 not modified : the resource the client is asking for is cached on the client side 
+and he should use the same cached resource 
+
+400 bad request : the http request has been modified and can be processed
+
+401 unauthorized : the request requires http authentcation and the www-authenticat http header
+determines the type of the authentecation required 
+
+403 forbidden : no one is allowed to access the resource even if they are authenticated
+
+404 not found : requested resource doesn't exist
+
+405 method not found : method used in the http request isn't supported for the resource 
+
+413 request Entity too large : the body of the request is too big for the server to handle
+
+414 request URI TOO large : the url used is very big for the server to handle 
+
+500 internal server error : the server encounted an error fullfilling the request 
+which means that the input that you submitted caused some error on the server 
+of some kind and you should examine the error message closely to find out the type of the
+error
+
+503 service unavailable : server is working but the application interface of the 
+server isnt able to respond to requests and you should verify if that was because 
+of some shit you did or not
+
+----------------
+https is different from the http just by using ssl encryption to provide safety 
+over the network 
+
+------------
+
+http autehntication methods 
+
+basic : base64-encode string embeded inthe request header of the htmll
+
+NTLM : a mechanism that uses WINDOWS NTLM protocal
+
+digest : using md5-checksum to encrypt user's data
+
+
+==============
+j2ee : java enterprise edition 
+
+EJB : Enterprise Java Bean is a specific software component responsible for processing 
+hard shit in the server environment 
+
+POJO : Plain Old Java Object are user defined simple objects that are 
+more simple than EJBs
+
+java servlet : object on the sever that recives and responds to http requests
+
+web container : engine that provies runtime environment for java bsed web applications 
+like apache 
+
+_______________
+
+
+modular non-custom built codes are easily implemented with java 
+like 
+
+authentication  JAAS , ACEGI
+
+presnetation layer sitemesh tapestry 
+
+database object relational mappin : hibernate 
+
+logging -log4j
+
+if you determine open sources packages like this you can download them and perform code 
+review or install them to experiment on , a vulnerability in those may be exploitable to 
+compromise wider application 
+
+
+------------
+
+some technologies 
+
+ASP.NET : used by rookies who don't know shit about building a website so you may 
+find a lot of vulnerabilities other the xss cause asp.net protects againist it by default
+
+php : has security flaws within the framework itself 
+
+least perviliged : means give it the least access rights 
+
+refactoring : rewriting code and dividing it to be more simple 
+
+edge cases : cases that aren't expected 
+
+defense in depth : is a multilayered security system 

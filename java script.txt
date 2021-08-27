@@ -1,0 +1,1434 @@
+java script is dyanmic weakly typed , compiled at run time language on any computer
+
+java script is run in a java script engine , in chrome is called v8 and in firefox it's called spider 
+monkey 
+
+the java script engine parses the code and then converts it to machine language and then executes the code 
+
+dynamic means that variables types can be changed during execution of code
+
+weakly typed language : means that you don't need to predefine the type of the variable while using it 
+
+node js is just google javascript engine extracted outside the browser to run java script on the machine
+instead of only in the browser 
+
+ecma script : is a the standarised core of javascript and there are a lot of other ecma script implementations
+, and java script is one of those implementations 
+
+you must hava a closing and opening script tags 
+
+it's best practice to use const variables as often as possible because it makes your coding intenations
+very clear and it makes reading your code easier 
+
+variables in java script are done using camel casing 
+
+javascript is case sensitive 
+
+$ and _ are the only special characters that can be used at the start of a variable name 
+
+you shouldn't name variables with _ between sections of the variable name 
+
+you can't start with digits in your variable name 
+
+if you have two expressions on the same line in javascript you have to use ;
+but in case you have expressions in different lines , then it's okay to not use it 
+
+** is exponentiation in java script 
+
+in java script you can concatenate strings and numbers together with the + operator
+
+`${varaible} some text` : this allows you to concatenate varaibles and strings without the need of a +
+sign , and this is called template literal and it allows you to have backspaces without the need of \n
+
+if you define a function at the buttom of the page and then call it at the top , this will still work
+cause javascript sends all the variables to the top of the script 
+
+
+function something(num1,num2){
+ some code 
+} : the paramters don't need the keywords let or const in here 
+
+? in functions explainations means that the paramter can be removed
+
+let string = 'helllo
+man' : you can't do this in js since js doesn't read strings on multiple line 
+
+inside functions in js you can access any global varaible and change it but it's very bad practice 
+and you can call a fucntion in inside the definition of another function 
+
+you can define functions inside other functions 
+
+shadowing : is when you redifine a global variable inside a fucntion and both varaibles have the same 
+name , and this would result that inside the function the varaible that is gonna be used is the function's
+local variable and if this local variable doesn't exist it would fall back to the global varaible 	
+
+empty return statement is used to cancel function exection 
+
+HtmlElement.addEventListener('click',functionName) : functionName should never be like this 'functionName()'
+because this actually calls the function directly and insted we want the event listener to call it for 
+us , so the function is the one that will do this functionName() 
+
+HtmlElement.value : get's the value inside a field input 
+
+if a function is changing a global variable, it shouldn't return any value 
+
+you can call a fucntion inside another function's definition
+
+whatever the value you get from the input html element is gonna be a text , 
+so if you do htmlElement.value , it's always gonna return a text 
+
+parseInt() : this will change a string or a decimal value into an int 
+
+parseFloat() : this will change a value into a float 
+
++Variable : this will change the varaible into it's numerice value , so if the varaible is an int 
+it will change it into an it , if it's a decimal it will change it into a decimal 
+
+value.toString() : changes a value to a string 	
+
+if you do this 3*'3' or this 3-'3' : this works and the first gives you 9 and the second gives you 
+0
+just 3+'3' : gives you 33 because the + sign supports concatenation 
+
+it's better if functions are placed before definitions 
+
+// is how you comment a line in js
+
+/* */ this is used to comment multiple lines 
+
+make your comments short and precise , comments aren't meant to be paragraphs 
+
+objects in java script are like this let hello = {name:'abdel',age:50}
+
+arrays : arrays are defined like this , array=[1,2,3]
+
+arrays should have plural varaible names 
+
+array.push(element) : appends an element to the end of the array 
+
+you access elements from objects by using the . notation like this 
+dictionary and then . , so if you have bodi={name:'bodi'} , then you can access the name like 
+this bodi.name  
+
+udefined : is the value of a variable when it's not initialized , it indicates that something like
+a varaible has no value inside of it , and undefined is a data type 
+
+null : is the same as undefined in terms of definition but it's not assigned to empty varaibles
+and you can assign it manually to varaibles where you want them to store no data 
+
+NaN : stands for Not a Number , and it's an error result that indicates that a wrong calculation
+was made , with values that aren't numbers 
+
+typeof something : a function that returns the type of a variable 
+example typeof 'hello' returns a string 
+
+array's type is object , cause it's just a special type of object 
+
+you should place your script at the beggining of the code with the attribute defer , that would 
+allow the code to download first and only execute after the html parsing is done
+
+async attribute for script : allows the download and execution of script once it's downloaded and 
+it doesn't gurantee order cause it all depends on which script was donwloaded faster , it's good
+if your script isn't interacting with the html 
+
+async and defer only works with imported scripts while it doesn't with inline scripts 
+
+defer and async are controllers for what happens after the download 
+
+MDN : is the official source for js , it's like w3schools but for js 
+
+you can debug your code by break points in the debug mode in chrome 
+
+call stack : is the sequence that you functions are handeld
+
+the watch property in google chrome allows you to track the life of any variable you choose 
+
+if you write click on the code lines in the sources page in chrome and add conditional break 
+it will be triggered only in case of satisfying a certain condition
+
+it's best practice to use === instead of == and also a best practice to use !==
+
+we don't add a semi colon after a function
+
+if you compare two object with the same content it would return false 
+
+&& || : and and or operators in java 
+
+arithmatic operators are higher precedence than comparison operators 
+
+and has higher precedence than or 
+
+falsy and truthy values checks work in js 
+like this 
+let hello = 'max'
+if (hello) {
+} : this yields true cause hello has something inside of it 
+
+empty arrays and objects are treated as true even if they are empty inside
+
+const GLOBAL_VARIABLE :  this is the naming convention for global varaibels that don't changes 
+
+boolean values varaible name are named like this 
+let hasSomething = true ;
+
+let variable = prompt(something,'some value') : this allows the user to enter data and then have an initial value
+of some value and the message that is displayed will be be something and the prompt function will
+return the value entered by the user 
+
+isNaN(value) : this checks if the value is numeric or not 
+
+if you access a property that doesn't exist in a js object , it's gonna be create like this
+let something = {name:'hello'} , if you do something.new = 'nice' the object is gonna change to this
+something = {name:'hello', new:'nice'}
+
+ternary operator : allows you to assign a value to a variable inline 
+like this let variable = condition? trueValue:FalseValue and it's done only for simple conditions
+and not for complicated ones 
+
+expression is something that returns a value 
+statement is something that doesn't return a value like an if statement 
+
+!! is called boolean coercion where you change a falsy or truthy value to a true boolean value 
+
+const name = value1 || value2 : this is called default value assignment is where the value that 
+satisfies the condtion is returned , like here if value2 is not a empty string then name would be
+equal to what inside this string 
+
+let something = value1 && value2 : this will make something equal to value2 when value1 evaluates
+to true 
+
+switch (value)
+{
+	case value_of_the_value:
+		something;
+		break;
+} : values of the variable are switched and the case that is met is executed 
+if you don't put the break keyword all the conditions are gonna be executed 
+
+normal js for loop 
+for (let i = 0; i<3; i++){
+	code
+} 
+
+for of loop 
+for (let el of some_iterable){
+	console.log(el)
+} : as if it was for in , in python
+
+for in loop : 
+this loop works with objects and iterates through keys 
+for (const key in obj)
+{ console.log(key)} 
+
+while loop 
+while(condition) {do something }
+
+array.length : is how you get the length of an array 
+
+you can use const as a loop iterator cause the const doesn't get edited it gets recreated every loop 
+
+you can access the proprties of an object using the [] square brackets notation like this 
+object['name_of_key'] : which is the way you would access the keys in a for in loop 
+
+labeled statements : this allows you to name loops and if statements which allows you to break 
+an outer loop from an inside nested loop 
+label: for (let i =0; i<5; i++){break label;} , this is an example of a labeled statements 
+and the break statement allows you to break the labeled statement 
+and you could do this from any place in your code 
+and you could use it with the continue fuctionality like this continue some label:
+
+try{something}catch(error){do something}finally{} : error here will be an error that result 
+from the code inside the try block , finally will execute wether the error happened or not 
+
+most errors in js are objects with message property 
+
+throw{message:"some message"} : allows you to throw an error 
+
+{let varaible = something } : that creates a varaibles with it's scope inside the curly braces and 
+you don't need to assign it to anything  
+
+when you declare a variable like this 
+something; 
+this automatically puts a var before the variable
+
+"use strict"; at the begginging of your code allows you to strictly follow es6 guidelines
+
+interprter : converts your code to byte code 
+
+compiler : converts your code to machine code 
+
+just in time compilation : means that the compilation is done while the code is being run or executed 
+
+heap is the long term memory where we store permanent or long term memory data 
+
+stack : is where we store short term (execution data) and it where function's order of execution
+is laid 
+
+java script is a single threaded language which means it executes one thing at a time 
+
+the browser and the js engine is what handels event listeners 
+
+parts of the js code are handeled by the browser apis and some are handeld by the js engine
+
+WHATWG : is responsible for standarisation of browser apis
+
+primitive types are numbers, booleans, strings and they are stored in the stack and are copied by 
+values and not by refrence  
+
+all objects are passed by refrence 
+
+refrence values are stored in the heap and are expensive to recreate that's why they are passed 
+by refrence 
+
+in refrecne variables , variables store pointers to the objects and not the object themselves 
+so when you copy the pointer you are copying the pointers and not the content of the pointers 
+
+if you really need to copy an object you do like this 
+let newObject = {...oldObject} ;  and this is called spread operator 
+
+if you try to equate two objects using === , it will retrun false cause it's comparing pointers 
+and not the actual content of those pointers 
+
+garbage collector removes the unrefrenced objects in the memory  for example
+let something = {name:'hello'}
+something = null 
+now the object became unrefrenced as there is no variable holding it's address
+
+htmlElement.addEventListener('click', ()=>{}) : this behaviour allows for memory leaks to happen
+cause the function isn't stored in a refrenced function any more it's always recreated 
+
+arguments are the values you pass to a function call 
+
+paramters are the attirubtes that you pass when you define a function 
+
+object = {something: ()=>{}} : this allows the object to have a function and you can call the function
+like this , object.something() 
+
+functions are objects and they are treated as so , like for example they are stored in the heap 
+
+const something = function someone(){}; : this will store a function in a constant and then if 
+you want to refer to this function you do it like this 
+something(); and this is called function statement 
+and the default function definition is called fucntion declaration 
+
+in the function expression your function can't be called anywhere as it's hoisted as undefined 
+
+string.toUpperCase(); : changes a string to upper case letters 
+
+arrow functions ()=>{} and if it's one liner function you can do this 
+()=> some_code , and if one paramter you can do this 
+paramter => some_code 
+
+if you don't pass all the paramters to the function , the paramters that you didn't pass defaults
+to undefined unless you have a default value set in your function definition 
+like this function(paramter=default_value){} 
+
+if you pass an undefined value to the function eventhought you have a default value , then the 
+default value will be used 
+
+you can make paramters refer to each other in function definition like this
+function hello(paramter1 , paramter2=paramter1){} 
+
+function hello(...some_input){} : this ... is called rest operator which allows the entering of a variable
+amount of inputs and then it takes all those inputs and then merges them into an array 
+and the rest operator has to be the last input in your function  
+
+arguments : a keyword that allows the retrieval of all the arguments from the user input but only
+in the case of defining the function with the word function , and it would be like this 
+function(){console.log(arguments)} : this would take in all the varaibles that are passed to the 
+user by the function but it a bad practice and it's better to use the new es6 rest operator syntax 
+
+callback function : is a js function that is passed to another function as a paramter and the other
+fucntion is responsible for calling it like this 
+function(functioning,paramter2){functioning(hello)}
+
+const something = () => something : this function definition will return something without the need
+for using the keyword return 
+
+function.bind(this,paramters) : this allow passing paramters to the function without actually calling
+it , if this function was a callback function then when this callback function is called inside 
+other function the paramters that are passed to the callback are gonna be appended after the paramters of 
+bind , the first paramter refers to the context of this function , you can pass an object that is the
+parent to the function
+
+the true root of the browser is the WINDOW object that is provided by default from the browser
+it includes all the APIs by the browser and includes everything that the browser wants to expose to you
+and it only has the data of one tab and not all the tabs 
+
+the DOM includes only the body of the loaded webpages and not all the browser functionality like th
+WINDOW provides 
+
+console.dir(object) : gives you access to the true proprties of that object instead of console.log
+which just load the content element of that object 
+
+if you type $0 this gets you the last element you selected in the elements tab in chrome 
+
+two types of nodes exist in the DOM , element nodes which gives you access to something like h1 elements 
+and so on , text nodes which gives you access to the text inside the elements 
+
+dom nodes are objects which means they are refrence values which means that any manipulation happening
+will be a manipulation using the addresses of those objects and not the objects themselves 
+
+querySelectorAll() and getElementsByTagName() : those return a node list which is a like array 
+object but not an array , and it doesn't have the arrays proprties 
+
+querySelectorAll() gives a non live representation of the DOM meaning that if you change the 
+DOM the change isn't going to be reflected in the node list returned by the query selector 
+meanwhile , getters like getElementById will return a live represnetation of the DOM
+
+nodes are a generice description of any node in the dom like text nodes or element nodes , elements
+on the other hand , are only the element nodes like html and node and h1 node 
+
+const h1 = document.getElementById('hello')
+h1.querySelector('something') : this will allow you to query the children of the h1 element 
+
+the most used querying method is the query selector method 
+
+element.textContent : get the text of the element 
+ 
+element.id : gets you the id of the element 
+
+element.className : get the class name of the element 
+
+element.style.whatever_property_you_want : the .style method gives you a list of all the css style
+attributes in the element that you can change , 
+
+if you wanna search for any property of any element you can use console.dir 
+example : console.dir(element.style) would give you all the css properties that you can change 
+which is kinda cool 
+
+attribute is what inside the element inside the html code 
+
+property is what's inisde the object that is created based on your html code 
+
+attributes and proprites can have live synchronsation which means that when an attribute is changed
+the property is changed and vice versa , but not all attributes have live synchornisation and not 
+all attriubutes have the same names when they are converted to proprties 
+
+element.setAttribute('attributeName',property)  :this allows you to set the value of an attribute
+that you wouldn't be able set if you have done it throught the property of the object 
+
+element.getAttribute('attributeName') : this allows you to get the value of any attribute 
+
+attributes that have names with a - are converted to camel casing when they are changed to properties 
+
+child is a direct child of an element 
+
+desecndant is a direct or indirect child of the element
+
+div the direct parent  
+
+ancestor is a direct or indirect parent of the element 
+
+element.parentNode or element.parentElement or element.closet() : this will get you the parent node 
+of the element 
+parent node selects any parent node even if it's a text node, meanwhile parent element selects only
+a parent node that's an element node 
+closet() : allows you to put any query in the parantheses and chose the closet element that achieves
+that query 
+
+element.childNOdes : selects any node that is a chidl , wether text or element 
+
+element.firstChild : get the first child of any node type 
+
+element.firstElementChild : get the first element child node 
+there also exists element.lastChild and element.lastElementChild 
+
+element.previousSibling or previousElementSibling or nextSibling or nextElementSibling
+
+element.children : return a node list of all the children element nodes of an element  
+
+element.childrenNodes : gets all the children nodes of all types of an element 
+
+text nodes can't have children 
+
+query selectors are exepnsive 
+
+dom traversal : is selecting elements based on relations and postions 
+
+style from js have the highest precedence
+
+element.classList returns an object with some cool proprties while element.className returns a string
+of all the classes 
+
+array.includes('something') : checks if something is included inside the array 
+
+element.innerHtml : replaces the html inside the elemnt with what it's equated to and that 
+forces the nodes inside the element to rerender the whole element 
+
+element.insertAdjacentHTML(position , html) : insert html without removing the existing one and puts it in some 
+postition and they are either 
+before begin, afterbegin , before end , after end 
+
+const something = document.createElement('tagName') : this allows for the creation and the returning
+of a new element , and if it's not saved in a varaible then it's going to be garbage collected 
+and if you wanna add this to the dom you do this
+element.appendChild(something) 
+
+something.append(element) : adds an element at the end of body of the something element 
+
+element.prepend(element) : adds the element at the beggining of the element 
+
+element.before(insertedElement) : this allows the adding of an element before a speicifc element 
+
+we also have element.after and element.replaceWith() 
+
+element.clone(boolean) : allows for the deep cloning(element with children) if set to true
+and only element cloning if set to false and returns the cloned element 	
+
+element.remove() : removes an element from the dom 
+
+element.removeChild(child) : removes a speicfic child from the dom
+
+getters have better performance than query selectors 
+
+element.classList.toggle('class') : this adds the element if it's not in the class list and turns
+it off if it's not in the class list 
+
+inputElement.value.trim() : the trim function allows the removal of the white space from the value
+retrieved from the input 
+
+array.splice(index,number_of_elements) : this removes elements from an array 
+
+array.splice(index,no_of_elements_to_delete,element) : adds an element in the specified index 
+and if you the second argument is set it deletes the numbers of elements specified starting 
+from the first index 
+
+array.splice(number) : if set to zero it will delete the first element from the array and all 
+the elements after it 
+
+array-like object : an object that doesn't have all the methods of the array but have some common
+behaviour between it and the array 
+
+const numbers= [1,2,3] : is the default most common way of creating array 
+
+arrays are like list they can store different types of data 
+
+const numbers = new Array(1,2,3)  : is another way of creating arrays , that have elements 1,2,3
+if you only pass in one number in the paramter it will create an array that is empty and have 
+a length of 5 , you can also ommit the new keyword and it would still work the same way 
+
+const array = Array.from(array-like object) : this changes an array-like object into a real array 
+
+array.push('something') : adds this element to the end of the array 
+
+array.unshift('something') : add the element to the beggining of an array 
+
+array.pop() : removes the last element if no arguments are passed , pop returns the element you 
+popped so you can actually use popped elements 
+
+element.appendChild() or element.append() : creates a new element and puts it inside the element 
+
+if you put an element in an index bigger than the list length the element would be added but all 
+elements in between would be empty undefined elements 
+
+array.slice() : copies an array and not the refrence address to this array 
+
+array.slice(0,2) : this will get the first two elements of the array 
+
+array.slice(2) : this will select all array elements starting from element 2 
+
+array.concat([]) : this will extend the current array with a new one , not like push([]) which will 
+just push one element that is an array and returns the new array address 
+
+array.indexOf(element,start) : returns an index of the element in the array and if the second paramter
+is provided then the search starts from that element and it stops after finding the first element 
+, indexOf returns -1 if the value doesn't exist 
+if you pass an object instead of an element it won't find it , cause variables that point to objects
+store addresses and not the objects themselves 
+
+array.find((element,index,array)=>{return element ==='something} : finds an element inside an iterable
+and takes a paramter of a function with three elements at most that indicate the iterations , indecies
+and the whole array 
+
+array.includes(element) : returns true if an element is in the array 
+
+array.forEach((element,index,array)=>{}) : this allows for the iteration of the array and having the
+index,element of the current iteration and the full array from the paramter array 
+
+array.map((element,index,array)=>{}) : this changes elements of the array and returns a new array with 
+changed elements wihtout touching the old one , inside the map function the ananoymous function 
+must return something on every iteration of the array 
+
+if you compare strings , it compares the first element of the number by default so 10 is less than 
+3 cause 1 < 3 
+
+array.reverse() : reverses the elements of the array 
+
+array.filter((element,index,array)=>{ if (element>0){return True}} : filter returns a new array that
+has all the elements that are bigger than 0 in the older array 
+
+array.reduce((prev,curr)=>{return prev+curr},0) : this will return the sum of all elements of the array
+, prev represents the previous calculation, curr represent the current element of the iterable ,
+0 represents the initial value 
+
+string.split("seperator") : changes a string into an array of splitted elements 
+
+array.join('seperator') : changes an array into a string seperated by comma by default if seperator 
+isn't provided 
+
+const hello = [...array] : this will copy array into the hello variable , ... is called spread operator
+and it takes the elements of the array and changes them to their individual elements 
+
+math.min(1,2,4) : returns the minimum of an array 
+
+if you ...arrayOfObjects this will get you out refrence pointers that will be saved in the new array
+, so any change in the old array will reflect in the new array 
+
+const [variable1,varaible2] = [value1,value2] : this will equate the two variables with the two values 
+and this is called array destructuring 
+
+const something = new Set([]) : this will take an array and change it to a set 
+
+array.findIndex : same as array.find but will return an index of the elment
+
+set.entries() : returns elements of the set 
+
+set.has(element) : returns true if element exists 
+
+set.add(element) : adds an element to a set 
+
+set.values() : returns the elemet
+
+set.delet(element) : removes element from set 
+
+maps : are iterables that allow you to store extra data about an object without having to call the
+data everytime you call the object and it's done throught the following 
+let person1 = {name:'max'}
+let personData = new Map([[person1,{anotherInfo:'tall'}]]
+this will store extra data about person1 and if we want to get that data we can do 
+something = personData.get(person1)
+
+for (const [key,value] of Map.entries()){
+	console.log(key,value)
+} : this allow you to loop through two variable togehter using the array destructuring 
+
+maps provide better performance for adding removing data and for large sets of data
+
+objects are betteer for medium sized data and allows the addition of functions inside the objects
+
+objects are quicker to create than maps 
+
+let something = new Weakset() : a Weakset is like a set but it allows items inside of it to be 
+grabage collected if they are no longer refrenced anywhere else in the program 
+
+let something = new WeakMap() : same as Weak set
+
+() => ({}) : to directly return an object 
+
+objects are entities that allow reflection of real world data 
+
+accessing a property that doesn't exist in an object you get undefined 
+
+object.propert_that_doesn't_exist = something adds a new property to the object and assigns value to 
+it 
+
+delete object.property : removes the property from the object 
+
+you can have strings as keys for objects 
+like this  let person = {'first name' : 'some value'} and you can access it like this 
+person['first name']
+
+element.style['key'] : allows you to access the css proprties you want 
+
+you can do this let something={somone} instead of this let something={someone:someone} where someone after
+the : is a variable 
+
+let newObject = {...oldObject,property:value} : copies the object from the old one to the new one 
+and if you want , you can overwrite a property by putting a comma after the old object 
+
+...object.array : this will override a property of an object if it's an array 
+
+let newObject = Object.assign({},existing_object); : this will copy over the an existing_object into
+the emptyObject {} and return this object to new object and you can replace it with the spread operator
+copying method 
+
+object destructuring : 
+let something = {name:{age:25,color:black}}
+let {name} = something : this will get the name key and put it's value in a name variable , so here
+if you console.log(name) it will return {age:25,color:black} , now you can also do this
+let {age} = name and this will return the age property, and the name of the value on the left side 
+has to be exactly the same name on the right side 
+
+something in object : this will check if the something key is in the object keys and works with arrays
+too 
+
+this is like self in python , it refers to the parent container of you current code , like if you 
+are in a class it refers to the class , if you are in an object it refers to that object and so on 
+and mainly this referes to the caller of the function 
+
+let someObject = {getSomething(){}} : this allows you to have a function inside an object  
+
+somefunction.call(context,paramters) : it calls the function directly and allows you to have the context
+of this function 		
+
+a normal function binds the keyword this to it it's container but an arrow function doesn't overwrite
+the context of the keyword this to it's container but it leaves the keyword this as if this was outside
+of the arrow function 
+
+let something = {set title(){'hello'} , get title(){'nice'}} : this is called getters and setter 
+this allows you to insert logic when you are assigning a value to the property title and allows you 
+to insert logic when you are reading the value of the property title 
+
+classes are blue prints of objects and objects are instances of classes 
+
+classes proprties are called fields when defining them inside the classes 
+
+class Class{
+	field = something;
+	anotherField;
+	anohterOne;
+	constructor(input1,input2,input3){
+	this.field = input1;
+	this.field = input2;
+	this.field = input3;}
+} 
+new Class(something,something,something) : this is how you define a class and call it , the constructor
+keyword allows for the inputing of paramters when creating an object using the keyword new 
+if you are defining a constructor you don't need to put the fields above and your class can look like 
+this directly 
+class Class{
+	constructor(one, two){
+	this.one = one;
+	this.two = two;}
+} you only need the first way of initializing the class if you need to set default values to class
+proprties 
+
+classes have to be defined before they are used 
+
+if you want to refer to a class that you are in from inside a class method you should bind(this) with
+the function call 
+
+static classes are cread like this 
+class something{
+	static init(){}
+} and called like this something.init() instead of new class() , static classes are used instead of 
+instance classes when inistintiation of classes are not required 
+static fields are created static by default inside the init() method without the need to put the 
+word static before them
+
+you can use getters and setters in classes like this 
+class Class{
+	get someProperty(){};} : which gonna execute the fucntion whenever you call the someProperty
+property from the class 
+
+number.toFixed(number) : this sets the percision fo the number to a fixed number of decimals 
+
+class Class extends anotherOne{
+	constructor(){super();}} : this allows class to inherit anotherOne class and the super keyword
+allows for the calling of the parent class if it has a constructor that recieves arguments
+and those arguments are passed in the super and in the constructor like this
+constructor(something){super(something)}
+
+class class{ #property} : this creates a private field or a private method 
+
+_property : is a pseudo private field or method but doesn't technically prevent access to it like #
+does 
+
+object instanceOf Class : returns true if the object is an instace of the class 
+
+Object.getOwnPropertyDescriptors(object) : this allows you to change the dafault config of the object
+values for example to make them undeletable or uniterable 
+
+object.defineProperty(object, property,{property_configurations}) : this allows you to change the 
+default behaviour of object properties like making them uniterable or undeletable 
+
+function Construct() {
+	this.field = something;
+	this.function = function(){}
+} : this is a constructor function that is the base of the class and it allows proprties and methods
+to be called from inside of it and it's also called using the new keyword just like classes do 
+
+the new keyword creates an empty object and adds all the fields and methods to this empty object 
+and then reutrns this object, the object that is created is assigned to the 'this' keyword
+
+prototypes : are a property of every object that acts as a fallback if a property was called from 
+an object and not find in that object , it then searches the prototype of that object which is an 
+another object and so on till it reaches the end of the chain and it's named __proto__ in the object
+proprties 
+
+addEvenetListener('click',(event)=>{event.target}) : event.target here refrences the element that is attached
+to the evenet listener 
+you can do things like event.target.style or event.target.classList and so on 
+
+event delegation is when you instead of putting listeners to each element of a container you put the listener
+to the container itself , which because of event propogation will allow you to control the elements of the
+container 
+
+if the elements of the conatiner are complicated you can do 
+event.target.closest('ancestor_element') : which is gonna allow you to choose the closet parent of the 
+currently selected element
+
+listener evenets like clicks and dblclicks can be triggered programatically like this 
+element.click() which will triger a click on that button 
+
+draggable="true" : this is an html attribute that allows for the element to be draggable across the page
+
+addEvenetListener('dragstart',()=>{}) : this allows you to listen to the element when it's dragged 
+
+event.dataTransfer.setData('text/plain',id) : this will set the transfarable data of the elment , here
+the data transfered will be the id of the elment , so when the elment is dropped , the id of the element
+can be extracted 
+
+event.dataTransfer.effectAllowed = 'move' : this will choose the action that will happen when the elment
+is dropped , it could be copy , move or whatever the operation you want to do 
+
+evenet.dataTransfer.types[0] : this returns the type of the data that is in the dropped object 
+
+in order to configure an area of the website to accept dragged elements you need to add an event listener
+there and configure it like the following 
+element.addEventListener('dragEnter',(event)=>{event.preventDefault()}) and then under prevent default
+method you can add the logic that you need to accept that dropped element 
+
+dragleave : an event that will be triggered whenever a droppable element leaves an area of the parent 
+
+drop : an event that will get triggered when a droppable element is being droped on another element 
+
+pure function : a function that has the same output for the same input and doesn't have side effects (i.e
+doesn't change anything outside that function) 
+
+we should aim at writing pure functions that introduce no side effects 
+
+impure functions : functions that has side effects 
+
+function outer(something){
+	function inner(someone){
+		return something*someone
+	}
+	return inner;
+} : this is called factory function : this is like a preconfigured version of the function that allow
+for lest steps when calling a function example
+let hello = outer(5); : that now is equivaled to this 
+	function(someone){
+		return 5 * someone}
+so when you do this 
+let nice = hello(10) that is now this
+ 	fucntion(10){
+		return 5 *10} : which saves time
+factory functions aim is to make calling functions easier 
+
+every function is a closure , and a closure is when a function closes it surronding environment by saving 
+it's variables inside of it and if those variables are changed , the inside saved varaible are also changed
+and even those variables aren't used anywhere else in the code and thrown away the function will still 
+keep their value in memory 
+
+function hello(x){
+	return x === 1 ? x : x*hello(x-1)} : this is a recrusion function 
+
+recursion is the best when the amount of iteration required isn't known 
+
+every function has it's lexical environment which means that each function has it's variables and private
+proprties 
+
+let xhr = new HTMLHttpRequest();
+xhr.open('GET',url) : this configures the request we are going to send by setting the method 
+and the url we are gonna request from
+xhr.send(somethingToSend) : this will send the request once it's configured and the paramter could be 
+left emptp or include the data that is going to be sent
+
+form.addEventListener('submit',(event)=>{event.preventDefault();}) : this will prevent the default behaviour
+of the submit action which will allow for you checking the logic of the inputs , which you can place after
+the event.preventDefault();
+
+event.target.tagName : gets you the clicked item tagName , this is used in the context of an event listener
+where event is the passed paramter to the listener function , this is used mostly with event delegation 
+
+event.target.closest('element') : gets you the closest ancestor element that was clicked 
+
+xhr.status : gives you the response status 
+
+xhr.onerror =()=>{} : the function that is loaded when an http response has failed , and it only is triggered
+if there is a problem with the server or for some reason the server didn't reply back , but if the 
+server replied with anything this function will not be triggered , instead you need to check the 
+xhr.status and resolve or reject the response accordingly 
+
+you should always handle failing requests on the onload method of the XMLHttpRequest and the onerror
+function will only handle technical request failures 
+
+fetch(url) : a promise based http request make which means you could use it with await , that allows you 
+to get a response from the url by default if no paramter is passed other than the url , 
+
+fetch(url).json() : returns the json object response from the server 
+
+fetch(url).blob() : gives you an access to a downloadable file of the response 
+
+fetch(url).text() : gives you a text response 
+
+xhr.onload = ()=>{console.log(xhr.response)} : this will define what will happen when the request is done and recieved
+and this will log the response once it's recieved usig the xhr.response  
+xhr.addEvenetListener('onload',()=>{}) : is possible but not supported on all browswers 
+
+JSON.parse(jsonString) : this will convert an api response into a js object
+
+JSON.stringify(js object ) : this changes an object in JSON 
+
+xhr.respnoseType = 'json' : this will configure the xhr.response for you and change it into json without
+the need for JSON.parse 
+
+document.importNode(template element.content,True) : this will allow you to get a template html element and use 
+it for rendering and true makes a deep clone here 
+
+fetch(url,{method:method,body:some_body,headers:{}}) : the second paramter of the fetch api allows you to pass extra
+metadata about the request like the header and the method to be used and the body of the request , the 
+headers is an object that takes all the headers required by the website in a form of key value pair 
+inside the headers object 
+
+fetch returns a promise so you can basically follow it by a .then() method 
+
+fetch().status : returns the status code of the repsonse 
+
+the catch clause with the fetch api is only triggered if the fetch technically fails like if the internet
+was not working or something like that , in order to check for logical error , include a check on the 
+fetch().status code and find out if the code was 200 or not 
+
+the response.json() is also promise based , so you can follow it by then
+
+let fd = new FormData(form) : this allows you to create another type of data other than json which is
+form data , the paramter that this constructor takes is a form that is captured using a normal queryselector
+, in order for the formdata to be able to parse the input directly from the form , each input has to 
+have a 'name' attribute set to it 
+
+cdn download : is when you download a script using a link and not directly load it from your server ,
+just place the link in the src attribute in your script tag and the script is going to be imported 
+
+npmjs.com : gives you a refrence for all js libraries and details about them 
+
+axios : is a library that allows you to send http requests easier and it's promise based 
+
+axios.get(url) : allows you to make a get request to a server
+
+axios.post(url,data) : allows you to post data to a server
+
+let something = axios.get()
+something.data : returns the data that you recieved from a server
+something : gets you the response body with any attributes you want 
+
+before selecting a library , check the last update on github , check if new releases are happening or not
+and so on 
+
+in order for a class to be global in the modular approach , you have to go next to the class and add 
+the word 'export' next to the class 
+
+you need to also add type='module' attribute inside the script tag 
+
+npm install -g serve : this will allow you to run the server which then allows the modular approach to your
+code 
+
+serve : this command will serve your index.html file in the browser 
+
+you can export classes function and other things not only classes 
+
+to import a file you do the following 
+import {the thing you want} from './file.extension' : means the same folder
+import {the thing you want} from '../file.extension' : means the previous folder 
+
+to import something you do two steps , go the thing you wanna import and write 'export' before it 
+and then go to where you wanna import it and write import {something} from './something'  
+
+import {functionName,something else} from './file' : this allows you to import a function you exported 
+
+import * as alias from '../something' : this alliasing allows you to bundle all exported elements from this
+file and then use the dot noation to refrence anything specific in that bundle like this
+alias.something : to access something from the alias bundle 
+
+import {something as hello} form '' : allows you to alias something speicific you imported 
+
+export default class {} : this allows you to import that class by default when you refrence the file 
+containing this class , and then you can import this class later like this , "import something from 'file'"
+this something doesn't have to be a specific name it can be anything of your choosing , which allows 
+you to refrence it anyway leter in the file and there doesn't have to only be default export in the file
+other normal export can exist too , but only one default export have to exist in the file 
+
+dynamic importing or lazy loading : is a way of importing that will be triggered only when a specific functionality is needed
+and it's done in the following way
+import ('the file.extension').then(module=>{the syntax that needs that import}) : this allows you to import the 
+file only when you need it 
+
+static importing : is when you statically use the import from syntax in the top of the file 
+
+not only the exported code is loaded but also other code outside of the exported code is loaded , but it's
+only loaded for the first time when the file is imported 
+
+switching the oder of the static import statements doesn't do anything cause when the file is rendered 
+they are moved to the top of the file 
+
+global.This.something = something : this allows you to share data accross different files 
+
+
+webpack-dev-server : a tool that allows autoreloading on code changes 
+
+webpack : a tool that allows bundling imports in one file to cause faster imports 
+
+webpack optimizer : removes all excess data like white space and function names to make code easier to 
+load 
+
+babel : is a tool that allows for code compilation and transformation into older code 
+
+eslint : allows you to write quality code by making sure you follow the same standards as you are writing 
+code 
+
+npm init : allows for npm to manage your project 
+
+npm install -g : -g means globaly 
+
+npm install --save-dev  package_name: means installing this package as a package for the development server 
+
+npm install : install all the required packages in the package.json file 
+
+npm install --save-dev webpack : install webpack for your development server
+
+npm install webpack-cli 
+
+to use webpack we need to create a file called webpack.config.js
+
+module.exports = {
+	publicPath: 'the path of the files that result from the webpack compression'
+	mode : "development" or "production"
+	entry : 'the path of the file where your project importing starts;
+	output : { fielname: 'the output name'
+		   path: the path of the of the otput files
+} : is what exposes the webpack gloabal configuarion to make it usable 
+
+after you finish you go to scripts in the package.json and change 'build' key value to 'webpack'
+
+webpack requires you to remove the extension of the files that you import from cause it fills the extensions
+automatically 
+
+if you have more than one entry point for you project then your entry key in the module.exports of webpack
+should be 
+entry = {entry1: path,entry2:path}
+
+npm install --save-dev webpack-dev-server : this installs the package that allows auto reloading on code
+changes 
+after that you go to the package.json file and add "build:dev":"webpack-dev-server" key value pair 
+
+npm install --save-dev clean-webpack-plugin : a package that allows you to clear the generated compressed 
+import files of webpack , cause every time you modify the code , a new compressed file is exported and 
+that could build up to a lot of usless files 
+and then you go the webpack config file and add plugin key that takes an array as an output and do this 
+plugin:[ new CleanPlugin.CleanWebpackPlugin()] 
+
+you can install packages now like loadash using the npm install command and then if you want to import 
+it you can do this 
+import * as _ from 'package_name' to import everything  or
+import {function name} from 'package_name' to only import what you need 
+
+browser storage : is storage that allows you to store data on the client side and mostly it will be 
+local or session storage like cache or session data , browser and session storage are usally simple
+key value pairs and this data can only be accesses by the user via JS 
+
+indexedDB : is a client side storage db that the clients side server can deal wiht and it's good for stroing
+sophisticated data 
+
+localstorage.setItem('key','value') : this gives you acess to the browser local storage and here we are inserting
+a key value pair into the local storage 
+
+localstorage.getItem('key') : gets you an item from the local storage 
+
+local stortage can't store anything unless it's a string , you can convert an object into a string 
+using JSON.stringify(object), so if you wanna store some object in the local storage you do this :
+localstorage.setItem('key',JSON.stringify(object))
+
+sessionstorage : is data that is stored in the browser as long as the page is open , once it's closed the
+data is gone , maeanwhile local storage exists even after the page is closed 
+
+document.cookie : gives you access to the cookies of the current webpage 
+
+document.cookie = 'some string' : will add values to the cookies and not overwrite it 
+
+const something = '123'
+document.cookie = `key=${something}` : this is how you add a new key to the cookies , but in order to view
+them you have to be served on a real server
+
+same with the local storage , in order to store object you need to json.stringify them first 
+
+by default cookies are deleted when you close the session that's their 'expiration date'
+
+document.cookie = 'somekey value pair; max-age=numberofseconds' : this will set the expiration date for 
+that cookie
+or 'somekey value pair; expires=dateOfExpiration' : this will expire on same date not after some seconds 
+
+indexedDB.open('nameOfDatabase',1) : this will create an indexed database in the browser if it doesn't 
+exist and if it exists , it created a database with this name , the second paramter is the version of the 
+database which is an arbitay number , you can access indexedDB directly cause it's a window global variable 
+
+there exists indexedDB libraries that makes dealing with the indexed DB much easier than the original 
+indexedDB api
+
+browser apis are not part of the core of the js language , it's functionality that the browser allows for you
+and it depends on what browser you are using 
+
+MDN shows you different browser support for different features 
+
+caniuse.com : tells you support for functions for browsers 
+
+navigator.clipboard.writeText(someText) : this will be as if the user presess ctrl +c
+and it's promise based , so you can use .then() with it 
+
+if (navigator.clipboard){} : this is called feature detection , where navigator.clipboard will yield 
+undefined if the navigator is not available and this code isn't going to be executed ,
+
+polyfill : allows you to add support for features that wasn't supported otherwise 
+
+babel is a transpiler which means it converts new code to old code to make it run accross more browsers 
+
+core-js : a package that allows babel to automatically converty promise code to older js code and then 
+make it work on older browsers 
+
+if you are using webpack you don't need to include type='module' in your script tag
+
+<noscript></noscript> : what you place between those tags is what happens when a browser's js isn't working
+
+navigator.geolocation.getCurrentPosition(something=>{something.coords.latitude}) : this will get you the
+latidue of your location 
+and if you replace latitude by longitude , you can get the longitude of your location 
+
+npm run build:dev : runs your development environment for you 
+
+binding this to a function in an event listener , assures that your context will be the class calling the 
+fucntion and not just some random element in the dom
+
+encodeURI(address) : changes a string url into an address object 
+
+element.select() : selects all the content of the element 
+
+const url = new URL(string url ) : allows you to get the url as an object with a lot of options 
+
+rect is a library 
+
+difference between a library and a framwork is that a framework gives a totally different way of structuring
+your code 
+
+angular uses type script 
+
+jsx is an syntax that react gives you that allows you to handle the interface easily and differently 
+
+angular has more features than vue than react 
+
+react is used for building interfaces 
+
+declarative approach : allows you to specify the result and the code will follow it 
+
+impartive approach : allow you to specifically idetify what you need like js 
+
+with react you define components and then you will they will get renderd and it's reusable 
+
+react uses jsx that allows you react to changes on elements dynamically without having to write the js 
+code for it and angular and vue have the same decalarative approach 
+
+a symbol is a unique identifier that could be hidden and access to it could be prevneted , it's useful
+if we want to create something in a library that we don't want anyone to be able to access and this is 
+the most common case senario 
+let a = symbol() : this is how you create a symbol , it doesn't need the keyword new 
+
+iterator : is any object that has the next method , the next method allows you to define your iteration 
+logic for this object 
+
+generator : allows for generating objects that have the next method (iterators) and that's how you create
+a generator
+object = {[symbol.iterator] : function* funcation_name(){ your iterator logic}}
+
+the for loop and the spread operator look for the [symbol.iterator] property of the object in order for 
+them to execute the looping logic
+
+reflect allows you to change the default behviour of dealing with objects for example 
+Reflect.setPrototypeOf(object ,{toString(){return "something}}); : this now allows you to change the 
+default behaviour of tostring on that object so that when to string is called on that object it will yield
+something 
+
+the reflect api is better than the default object api cause it provides more features and methods and is 
+newer than the object api and has better error handling 
+
+proxy api : allows you to set 'traps' on your object , which means that it allows you to add code to 
+normal processes that your user would do on an object , for example:
+const trap= {
+	get(obj,something){
+	retrun obj[something]}
+} now if you do new Proxy(your_target_object,trap)  : whenver the user accesses the target object , it 
+will return obj[someting]
+
+the difference between getters and setters and get traps and set traps is that you here set the set trap 
+on the whole object , while setters and getters set actions on speicifc proprites of the object 
+
+node file.js : this executes the js file
+
+browser apis are missing in node js 
+
+const something = required('some_library') : this allows you to import a library 
+
+const fs = reuqire('fs') : this is a file system library that allows you to deal with files 
+
+fs.writefile('file path', data,function_called_when_finished) : allows you to write data to a file , the
+third paramter is a function that gets called weather the call was successful or not 
+
+fs.readFile('file path') : this returns a file that was read before 
+
+const http = require('http') 
+const server = http.createServer((request,response)=>{
+response.setHeader('Content-Type','text/html'); : this here allows setting the header for the response done
+to any requrest on the server , if we change text/html to text/plain , it's not gonne render the html
+response.write('hello');
+response.end();}); 
+: this 
+here would create the server and woud edit the response to have hello in it and then response.end() would submit this 
+edit 
+server.listen(port) : this allows you to listen for the server on this port 
+request.method : returns the method that was used in the request
+request.url : returns the url the data was submitted to 
+request.on('event',function) : this is like event listener but for requests 
+
+request.on('data',data=>{}) : this allows for this function to be executed everytime a piece of data is 
+recieved , cause the requests are sent in chunks 
+
+request.on('end',data=>{}) : this allow for a function to happen when all the request data is recieved on 
+the server 
+
+since the data is recieved in chunks you would probably push the chunks into an array , in order to convert
+this array to the real string of data recieved do this 
+Buffer.concat(bufferArray).toString()
+
+
+npm install express --save : this allows you to install express on node 
+
+express is a node framework that makes building servers easier 
+
+const express = require('express') : this allows express importing 
+const app = express() : this is how you start using express 
+
+middle ware: a function that recieves a request and can do something with it 
+
+app.use((req,res,next)=>{ res.setHeader('Content-Type','text/html'); next();}) : this allows for the 
+response to be set with a header and the next() function allows the passing of the request to the next 
+middle ware in line with the modified data 
+
+body-parser : a node js package that allows you to parse responses coming from the client side easier 
+npm install body-parser --save : to install it 
+
+app.use(bodyParser.urlencoded()); : this allows for parsing the data coming from the response 
+and then if you do req.body : you will get key value pairs of the data recieved 
+
+ejs : a package that allows you dynamically generate html content and inject it with required data easily 
+
+npm install ejs --save : to install ejs 
+app.set('view engine','ejs'); : this tells express that the view engine used is going to be ejs 
+app.set('views','path for views') : this tells express the path for the dynamic content that is going to be
+loaded 
+
+res.render('ejs file' , {the variable in ejs file : the varaible you pass}) : allows for rendering something 
+
+<%=variable %> : this will be the variable that is passed when rendering the response 
+
+app.use(bodyparser.json()) : this will receive json data format 
+
+const router = express.Router(); : the router now will map certain paths to certain functions 
+
+router.post('url path', (req,res,next)=>{res.json()}) : this will execute when the post is done on the url path 
+the res.json() will send back a json object 
+
+router.get('url path',(req,res,next)=>{}) : this will execute when the get request is done on this url 
+path 
+
+cors : doesn't allows for any website that is not on the same server as the server to request resources 
+from the server  
+
+res.setHeader('Acess-Control-Allow-Origin','*') : this allows all requests from another servers 
+
+router.get('url/:something',(req,res,next)=>{
+console.log(req.params.something}) : this means that this variable after the : is going to be a changining variable
+and the url is going to be someting like this url/123 and the the params is going to allow you to extract
+the something varaible 
+
+xss : cross site scripting attacks , means injecting js code into your webpage and being able to execute
+it on behalf of the user running the link , that's why you should never use innerHTML instead you should
+use textContent
+
+you should sanatize any code before inserting it into the database 
+
+csrf attacks : when someone executes something as if it was you cause they have your cookies 
+
+static hosts : hosts that don't run server side code , they are configured by putting the files on the
+server and then the ip address will return those codes 
+
+dynamic host : can run server side code 
+
+Heroko : allows you to create server side code 
+
+startup time and run time : are the main factors of the website speed, startup time , is the time taken 
+by the website to open up and the run time is the time taken by the website to complete it's tasks
+
+
+run time is defined by how much memory your script consumes and how much work does your script do 
+
+startup time lies in the browser side of js 
+
+script size affects startup time 
+
+http roundtrips : how many http requests need to be done for your scripts affects your startup time 
+
+dom access is really expensive operation and it increases runtime 
+
+measure your performance only in production code 
+
+performance.now() : allows you to know how much time is a certain peice of coding taking 
+
+jsperf.com : measures performance of code snippets 
+
+in the network tab you can simulate a slow 3g in chrome 
+
+performance tab in chrome allows you to throttle the cpu and the network
+
+green house is where you test your website score
+
+coverage tool in js tells you how much of the code is unused 
+
+assets compression : cpressing assests like css , html and so on to allow data transfer to be faster and
+easier
+
+caching : storing reusable data to cut loading times and make it faster 
+
+unit testing : is testing code not all of it , but testing one part of the code at a time 
+
+integaration testing : testing the function integration with other functions 
+
+e2e test : is testing the whole code end to end manner 
+
+test runner : allows for running the test and finding the results , 
+
+mocha : is a famous test runner 
+
+assertion library : allows for defining testing logic and conditions 
+
+chair : is a famous assertion library 
+
+puppeteer : is a chrome headless browser that allows for testing interfaces 
+
+jest : is both a test runner and an assertion library 
+
+headless browser : a light browser that is used for testing 
+
+npm install --save-dev jest : how you install jest 
+
+jest automatically detects files that has .test or .spec in them
+
+in unit testing you have to import the function you are testing first like this 
+const { the thing you want to import } = require('where to import it from ') ; and this is the only syntax
+supported by jest for importing 
+
+test('description of your test',testing function) : this is the jest syntax for testing a function where 
+you pass a function to do the testing for you like this 
+test('testing something',()=>{ const functionOutput = function(); expect(functionOutput).toBe(value)})
+expect : is a function that runs the value for comparison 
+.toBe(value) : checks if the result coming from expect is equal to the value
+
+npm test : after you have configured your tests you run npm test to check your tests 
+
+npm install --save-dev puppeteer : to install puppeteer 
+
+const puppeteer = require('puppeteer') : is how you use it in your project 
+
+test('description' , async()=>{ 
+	const browser = await puppeteer.launch({
+	headless:false,
+	slowMo : 80,
+	args: ['--window-size=1920,1080']});
+	const page = await browser.newPage();
+	await page.goto('file path');
+	page.click('selector of element to click one')
+	page.type('element selecot', 'data you want to type')});
+: this is how you use puppeteer for testing , puppeteer.launch({proprties you want}),
+browser.newPage() : opens a new page in your browser
+page.goto('goes to a file path');
+
+mocks are done for testing and allows for substitution of real functions with dummy ones for testing 
+purposes 
+
+programming paradigm : is how you think and write your code
+
+object oriented : means writing code in objects and classes
+
+procedural : means following along with your code step by step 
+
+functional : means passing and writing functions 
+
+logarithmic time complexity is better than linear 
+
+typescript is a superset to js and it adds types to js
+
+file.ts : the is ts extension 
+
+when importing ts to the browser we import the file with extension .js and not .ts 
+
+in ts you can do this
+
+function(a:number){} : here ts tells the function that a should be a number and if other input gets error
+
+:string : is a type in ts 
+
+:void : ts type for nothing 
+
+const something = document.getElementById('something') as type : this allows for type casting 
+
+:object : for type object in ts
+
+const someObject :{property :type} = {property :value} and you don't have to do this 
+
+let results : {res : value}[] =[] : this will result in an array of objects , and this will allow for 
+inserting any object with any number of properties not just the res property , but at least has to 
+be the res property 
+
+type someType  = {}[] : this here will define a type in ts which will be an array of objects 
+, you can define any type you want and this is called literal types
+
+type value = something | something else : this will now limit the type or the value of the variable to one of 
+those two literal in ts and this is called union type 
+
+enum someting {value , value} : same as unions but different syntax
+
+class parent{
+	private name:string;
+	age:number;
+	constructor(name:string,age:number){
+	this.name = name;
+	this.age=age;}
+} : this is how you create a class in ts , every part here is mandatory and specially the variables 
+defined in the beggining of the class 
+private limits access of the varaible to inside the class only 
+
+class something extends parent { constructor(public name:string, private age:number){super(name,age)}} : 
+this is a shorthand for the above code allowing you to access the name field of the class but not age 
+and those are inherited fields from the parent class 
+
+interface something{} : allows you for having blue prints for both classes and objects 
+
+class something implements interface{} : this now allows you to implement an interface and follow it's 
+strucutre 
+
+:any : generic type 
+
+web components : allows creating your custom html elements and allows you to have logic in the element
+
+web components have custom html elements, shadow dom which means your css style and your normal html element
+, templates and slots allowing you to pass data to those custom html elements 
+
+autonomous elements : web components created from scratch 
+
+extended built-in elements : web components created through other html elements 
+
+
+class someHtml extends HTMLElement{constructor(){super()}}
+customElements.define('html-element',someHtml) : this is how to create a webcomponent , and the naming has to be 
+in this format , and the second paramter is the class that has the logic of the web component 
+
+web components are made up of the primitive html types 
+
+connectedCallback(){} : is what adds elements to your web component and it has to be inside your 
+HTMLElement class 
+
+this.field = this.getAttribute('text') : this is added inside the connectedCallback() method 
+of an HTMLElement class and allows you to set attributes for your custom web components 
+
+template.content.cloneNode(true) : allows for cloning element using a deep clone 
+
+attributeChangedCallback() : allows tracking of changes in attributes 
+
+disconnectedCallback() : gets triggered when an element is deleted 

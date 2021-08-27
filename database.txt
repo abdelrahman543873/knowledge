@@ -1,0 +1,307 @@
+CRUD : Create , Read , Update , Delete : the main four operations that are handeld by 
+any DBMS system
+
+SQL Structured Query Language : is the language that is used by a DBMS 
+to interact with a database
+
+RDBMS Relational Database Managment System : is any DBMS that is used with relational 
+databases
+
+NRDBMS : Non Relational DBMS
+
+primary key : is a unique piece of data that is used to identify a single record
+
+surrogate key : is a primary key that doesn't map to anything in the real world like an 
+employee id 
+
+natural key : is a primary key that maps to the real world 
+
+foreign key : is a key that defines relationships between tables , it's like a primary 
+key of another table
+
+composite key : is a key that is made up of more than one attribute or column
+
+SQL is a DQL , DDL, DCL , DML all at the same time : which stands for 
+Data Query Language , Data Definition Language "which means it's used for defining 
+schemas" , DCL : Data Control Language which means it's used for controlling the acess
+to data in database and user permissions management and a DML : Data Managment Language
+whcih means it's used for inserting , updating , deleting data from the database 
+
+create database girrafee; : is a sql command that is gonna create a database called 
+girraffee
+
+DECIMAL(M,N) : where M is the total number of numbers and N is the total number of numbers
+after the decimal point
+
+VARCHAR(4) : that means that we are gonna store a text that is 4 letters long
+
+BLOB : Binary Large Objects which is a data type used for storing large data like 
+images
+
+DATE : sotres a date in a format like "yyy-mm-dd"
+
+TIMESTAMP : same as DATE but with hours and minutes and seconds
+
+CREATE TABLE student (
+	student_id INT PRIMARY KEY AUTO_INCREMENT  , 
+	name VARCHAR(20) NOT NULL DEFAULT 'HELLO',
+	major VARCHAR(20) UNIQUE 
+	or
+	primary key (student_id)
+); this statement will create a table with first column student_id INT which is 
+PRIMARY KEY that will auto increment itself 
+, name which has a type of VARCHAR(20) which is a string that is 20 
+characters long and it cannot be empty and if you didn't enter a value it's gonna
+be hello automatically
+and column major which is a varchar with 20 characters long and every entry has to be 
+unique or it's gonna yield an error
+and all of those restrictions on the columns are called constraints
+
+DROP TABLE student; : is gonna delete the table
+
+ALTER TABLE student ADD gpa varchar(40) : adds another column that is called gpa with
+number of character 40
+
+ALTER TABLE student DROP COLUMN gpa : this removes the column called gpa
+
+INSERT INTO student VALUES(1,'YES','NO') : this gonna insert the values in the table
+in the order of the columns where the table is created 
+
+SELECT * FROM student : is gonna show all the records in the table
+
+INSERT INTO student(student_id, name) VALUES(2, 'KATE');
+this is gonna insert values only in the columns student_id and name 
+
+UPDATE student
+SET major = 'bio'
+WHERE major = 'biology' OR major = "chemistry";
+this is gonna update every record in the major column that has the value of biology to 
+bio and every cehmistry is gonna change to bio too 
+if you remove the where statement you are gonna change every row in the column to the 
+value given 
+
+DELETE FROM student; : deletes all the columns in the table 
+
+DELETE FROM student WHERE student_id = 5; : is gonna delete every record where student_id 
+= 5;
+
+select * from movie ORDER BY numVotes LIMIT 2 : orders the query response by number of votes in 
+ascending order but if you want them in descnding order you can type 
+DESC at the end of this query or ASC for ascending order
+and LIMIT shows only 2 results
+
+<> is an operator that means not equal to 
+
+SELECT * 
+FROM student 
+WHERE name IN ('claire' , 'kate') ;
+this chooses the records that has kate or calire in them 
+
+CREATE TABLE branch(
+ branch_id INT PRIMARY KEY,
+ branch_name VARCHAR(40),
+ mgr_id INT, 
+ mgr_start_date DATE,
+ FOREIGN KEY(mgr_id) REFRENCES employee(emp_id) ON DELETE SET NULL
+);
+this is gonna create a table and it's gonna make mgr_id a foreign key that refrences 
+emp_id which is already created in another table and in case of deleting anything 
+the data in the record will be set to null 
+
+ALTER TABLE branch` 
+ADD CONSTRAINT ``
+  FOREIGN KEY (`mgr_id`)
+  REFERENCES `branch`.`employee` (`emp_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+this is going to alter the branch_id key in the employee table and make it 
+a foreign key that refrences the brach_id key in the branch table 
+and the happens after the two tables have been created 
+
+PRIMARY KEY (EMP_ID, CLIENT_ID) ON DELETE CASCADE : this creates a composite key which 
+consists of two keys emp_id and client_id and on delete cascade is gonna make any change
+in one table take the same effect in other tables
+
+a foreign key has to refernce a primary key
+
+CREATE TABLE client (
+    client_id int primary key ,
+    client_name varchar(40) ,
+    branch_id int,
+    FOREIGN KEY (branch_id) REFERENCES branch(branch_id)
+);
+this creates a table and assigns the branch id to refrence the branch_id in branch 
+table 
+
+select first_name as fore_name , last_name as surname from employee : returns 
+the columns but not in their real names so instead of returning first_name and 
+last_name , it's gonna return fore_name and surname
+
+select distinct sec from employee : this will show all the different values in 
+a table
+
+select count(emp_id) from employee: will count the number of elements in the column emp_id
+
+select avg(salary) from employee : will get the avg of the column
+
+select sum(salay) from employee : will get the sum of elements
+
+select count(sex) , sex 
+from employee 
+group by sex ; 
+this is gonna group info by the sex category 
+
+select * from client where client_name like '%nice%' : this is gonna get any client name 
+that has the word like nice inside it's client name
+and the % sign stands for any number of characters
+
+select * from movie,movies_details 
+where movie.tconst = movies_details.tconst ;
+this will show two tables movie and movie_details where the values of the columns 
+tconst in movie and movie_details are equal 
+
+_ is a wild card that you can use instead of the % to represent one character
+
+SELECT * from table 
+union 
+select * from another_table 
+this will combine the results of the first table and the second table 
+and both select statement must have the same number of columns
+
+select movie.tconst ,  movie.averageRating, movie.numVotes , movies_details.title 
+from movie
+join movies_details
+on movie.tconst = movies_details.tconst
+this is gonna select the tconst , averagerating , numvotes from the movie table
+and select title from the movie_details table and join them using the common column
+which is tconst in the ON statement 
+if you change join to LEFT JOIN  you will display all of the details of the right table
+and RIGHT JOIN will do the opposite
+
+NESTED QUERY 
+select employee.first_name
+from employe
+where employee.emp_id IN (
+another sql query)
+and you can replace in with = 
+but when that happens the term on the rigth will be evaluated first and it has to be one
+value
+
+on delete set null : sets the deleted record to null 
+
+on delete cascade : deletes the entire row from the all the tables
+
+cursors in databases are like file handles that allow you to send sql commands to your database
+
+cursor.fetchone() : this will return the output of a DB command to the console 
+
+cur.execute('SELECT * FROM counts WHERE email = ?',(email)) : this command will look for a specific email address
+in the email table , the email tuble represents a predefined variable that is gonna replace the ? in the 
+SQL statement
+
+conn.commit() : writes the sql changes to the disk 
+
+hello = cur.execute('select * from counts) : this will returns a list of tuples each tuple has a number of elements
+that is equal to the number of columns  
+
+cur.close() : it's like closing a file connection 
+
+urlib.request.Request('website', headers=header) : allows you to add headers to your request
+
+logical key : is how you would refrence a specific row in a table logically , like refrencing a an album by it's
+name
+
+when creating a database we start from out in , with the most close data to the user
+
+select album.title,artist.name from album join artist on album.artist_id = artist.id: 
+this will join the title column from the album table and the name column from the artist table and 
+
+
+ the parts where they are equal and the ON clause chooses which rows are gonna be fused with each other
+and if you remove the on clause each row is gonna match with every other row in the second table
+
+INSERT OR IGNORE INTO TABLE : this will insert something only if it doesn't exist previously in the table
+
+INSERT OR REPLACE INTO TABLE : if the entry that is going to be inserted is repeated then it will replace the
+entry 
+
+we can change the cardinality of a table from many to many into a one to many by creating a junction table that
+is gonna modle the relationship between the two tables
+
+select student.name,junction_table.course_id,junction_table.user_id,course.id from student join junction_table 
+and junction_table join course on student.id = junction_table.user_id and 
+
+ACID : the data must be Atomic which means that the instruction has to be as a whole and not partial 
+Consistent 
+Consistent : means that quieries have to leave data on the db to be consistent and violate the db's rules
+Durable : is when the data that is saved on the db has to be there after the change 
+isolated : where data only affects what's meant to be affected 
+
+Transaction : is any process on the db 
+
+ansi sequel : is the most minimum requirements for the db commmands
+
+universal key : is the key that is very hard to crack
+
+refrential integrity : allows for the adding of data to follow database conditions
+
+first normal form : each column must only has one value per row or columns of the same type of data 
+
+second normal form : each value must be uniquely identified with a full key not a partial one 
+
+third normal form : don't include a column of data that can be generated from another table of data 
+
+select sum(column) from table: this is an aggregate function that adds up values of the column 
+
+UPDATE table set column where row = something 
+
+stored procedures : stored sql commands 
+
+database is constructed from clauses and they are formed from statements
+
+select 'hello, world' returns hello world 
+
+select something WHERE row IS NOT value : will select rows where something isn't equal to the value 
+
+parantheses are important for WHERE conditions in the database 
+
+SELECT something WHERE row LIKE 'C%'; : this will reutrn any value where the row starts with the letter c
+
+SELECT something WHERE row IS something LIMIT 10 OFFSET 5; : this will limit the results to 10 results starting
+from the 5th record 
+
+SELECT first_name, LENGTH (First_name) FROM people ; this will display each row and the length of the 
+characters stored in the row 
+
+SELECT DISTNICT (first_name) FROM people : this will return the different values in the first_name 
+column 
+
+SELECT COUNT(*) FROM people WHERE state = 'CA';  : this will output the number of enteries where 
+state = ca 
+
+SELECT * FROM people RIGHT JOIN states ON people.state = states.abbr; : this will be a right outer join 
+where all of the records from the right table will exist on the join table cause they exist 
+and if it's FULL it will match from right and left and if it's left it will only be from the left table 
+
+SELECT first_name, COUNT(first_name) FROM people GROUP BY first_name : this will return each record 
+with it's coressponding repetition times 
+
+SELECT team , count(*) , sum(quiz_points), sum(something) FROM people GROUP BY team ; : this will return the 
+count of the teams and their quiz_points 
+
+SELECT first_name FROM people WHERE quiz_points=(SELECT max(quiz_points) FROM people) : will return the first_name of the person 
+with the max number of points
+
+SELECT LOWER(first_name), last_name FROM people : this will LOWER the first name column letters
+
+SELECT first_name AS first FROM people : this will return a query result that is called first instead of first_name
+
+INSERT INTO people (first_name, last_name) VALUES ('George' , 'White'), ('jenn' , 'smith'): this will 
+add two rows 
+
+DELETE FROM people where something IS VALUE
+
+ SELECT pg_terminate_backend(pg_stat_activity.pid)
+    FROM pg_stat_activity
+    WHERE pg_stat_activity.datname = 'target_db'
+      AND pid <> pg_backend_pid();

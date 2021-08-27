@@ -1,0 +1,151 @@
+selenium is a toolset for web browser automation which uses toolsets to remotely control
+a browser and emulate user interaction used primarly for front-end testing of websites
+
+selenium IDE : is a limited selenium development environment
+
+selenium RC : Remote Control selenium used for writing scripts for testing with slenium
+and it has been replaced by selenium webdriver
+
+selenium webdriver : interacts with the browser directly to simulate test cases
+
+selenium Grid : helps with running multiple scripts parallely for parallel execution
+
++ sign to add a url and then copy it to the tab to make a test case
+
+the // sign helps in elemenating the comment and not using it
+
+from selenium import webdriver 
+from selenium.webdriver.common.keys import Keys 
+those are the packages that you need to import in order to use selenium webdrvier
+
+driver =webdriver.Chrome(executable="C:\drivers\chromedriver\chromedriver.exe") : to launch the 
+chrome driver
+
+driver.get("something.com"): this allows us to get a specifc url
+
+drvier.title() : gets you the title of the page you visited
+
+driver.close() : in order to close the browser
+
+driver.current_url : this will get the url of the current page
+
+driver.page_source : which gets you the html source of the code
+
+driver.find_element_by_xpath("").click() : finds an element through it's xpath and then
+click it
+
+import time 
+time.sleep(5) : this pauses the browser for 5 seconds
+
+
+driver.quit() : closes all browsers tabs
+
+driver.back() : will navigate you to the previous page if you do at least two driver.get
+("url") commands
+driver.forward() : is vice verse of driver.back()
+
+driver.find_element_by_name("the_name_path_of_the_element").is_displayed():
+this allows for the capturing of the elemet and then returns true or false based on weather
+it's diplayed or not 
+
+.is_enabled : is the as is_displayed() but for detecting if an element is enabled or not
+
+element = driver.find_element_by_css_selector("input[value=roundtrip]"): will find an element using a css selector
+which has a value of roundtrip and assign it to the variable element 
+
+element.iselected() : will output if the element is selected or not 
+
+three steps of testing in general:
+Set up the data
+Perform a discrete set of actions
+Evaluate the results
+
+when testing it's better to divide your test into sub routines that all are concise and 
+have one task to do which will make them more speedy and more acurate
+
+“headless” operations that don’t require the expensive process of opening a browser ,
+navigating to a page, and anything in this domain
+
+when testing you shouldn't worry about the components of the website you should try 
+to simulate a user and try to solve their problem 
+
+Types of testing:
+Acceptance testing : is a way of finding out if the product's feauture matches it's 
+requirements or not 
+Functional testing : is testing products features to make sure it's working properly 
+without errors
+Performance testing : for testing performance which is devided into 
+load testing : which tests the application under a specific load
+stress testing : which tests the application above the supported load
+Regression testing : done after adding new functionality to make sure that the previous
+features where not affected negatively
+
+TDD : Test Driven Development which starts by testing a function before writing it
+to make sure to save time 
+
+Behavior-driven development : BDD is based on TDD which creates tests and then creates 
+failling unit tests untill all of the test cases are met and then a successful unit is created
+and the goal of BDD is to create more errors to make sure to cover all corner cases 
+
+driver is the inteface that is used by selenium to control the browser
+
+driver.find_element_by_id("cheese") : allows you to find an element on the page through
+it's id which returns a WebElement object
+
+driver.find_element_by_id("cheese").find_element_by_id("cheese") : this nesting will allow
+you to find an element inside another element 
+
+driver.find_elements_by_css_selector("#cheese li") : here we need to find more than one
+element so we use find_elements and not find_element which will return a list of elmeents
+or one element in case one element is found 
+
+eight different element location startigies:
+class name : locates all the elements that have the searched class name and compund class
+nmaes aren't permitted 
+CSS selectors : locates elements through css selectors
+ID : locates elements whose search id matches the searche elements
+name : locates elements whose names matches the searched query
+link text  locates elements through their texts
+partial link text: locates anchor elements ancestors with the searched text and if 
+their exists more than one element only the first will be selected
+tag name : locates elements whose tags match the searched name 
+xpath : locates elements through xpath expression 
+
+best way of selecting elements is through IDs if possible then CSS and then XPATH
+
+
+DOM domain object model : which is the structure of the html page 
+
+name = "hello"
+driver.find_element_by_name("name").send_keys(name) : will select a field and input the
+word hello in it 
+
+source = driver.find_element_by_id("source")
+target = driver.find_element_by_id("target")
+ActionChains(driver).drag_and_drop(source, target).perform()
+will drag and drop two elements 
+
+driver.find_element_by_css_selector("input[type='submit']").click(): will click an element
+
+terminology : 
+API : Application Programming Interface which is the set of commands that are used 
+to control the driver
+
+drivers : are responsible for controlling the browsers themselves and usually written 
+by the browser vendor themselves and sometimes called proxies
+
+framework : is an additional library that is used for supporting webdriver
+
+HtmlUnit and PhantomJS : are headless browsers that simulate chrome and fire fox without
+gui which makes them faster
+
+driver.fresh()
+
+driver.current_window_handle : will get you the handle of the current tab or window that 
+you are opening it's like getting the id of the session you are opening
+
+assert len(driver.window_handles) ==1 : this will check if there is any other windows
+open or not  
+
+if you extract elements like hello
+then hello.text will get you the text out of it

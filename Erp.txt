@@ -1,0 +1,1225 @@
+ERP : is Enterprise Resource Planning software and it's used by companies to manage day to day activities 
+jj
+ERM : is a software that helps plan and budget prediction
+
+ERP Cloud : is an ERP software that requires less hardware and provides more features and is always maintained 
+and updated
+
+saas : software as a service 
+
+crm : cutomer relation management
+
+odoo : open source erp and crm 
+
+createdb MyDB : this is used for creating a database using postgresql 
+
+createdb --template=MyDB MyDB2 : this will copy database MyDB to MyDB2 but the copied database must have no connections
+to it 
+
+psql -1 : lists all databases in your system 
+
+service --status-all : this will show you all services on device , + for running , - for stopped 
+
+to create a basic database you go to odoo.com and choose crm and sales 
+
+to modify your company details on odoo you go to settings then users and companies and then choose your company 
+name and modify it 
+
+to modify users you go to users and companies and choose users and modify the users 
+
+settings dashboard invite to get new users to access your company database
+
+settings developer tools to activate developer mode : to have settings that aren't available for the normal users 
+
+load demo data will load a demo database data that willnot be removed in the future and it's only availble within
+the new  creation of a database 
+
+sales , invoicing , discuss : those are all called modules for your database
+
+apps modules : allows for the installing of new modules 
+
+clock shaped icon in apps  : will show your actions history on odoo
+
+chat icon in apps : will allow for chats between odoo users 
+
+if you click on your icon you will have a documentation option 
+
+odoo user icon -> prefrences : will allow you to change the language and the emails prefrences
+
+setting -> translations -> import a translation : this will allow for a new transaltion to be imported which is 
+gonna appear in prefrences the next time a user clicks on the prefrences and chooses a language	
+
+sales -> selecting a invoice -> actions : this will allow couple of options like import delete and so on 
+
+crm : will create an oppurtunity and allow for managment of customer realtions in a flow of stages
+
+crm -> reporting : allows for statistical analysis for your data
+
+crm -> sales : allows for managing of sales teams and their classification
+
+crm -> configuation : allows activity creation and activation
+
+crm -> configuation -> setting -> leads : that allows for the lead option activation
+
+you can design and edit websites through odoo
+
+crm -> configuration -> settings -> lead generation -> visits to leads : activate recording of people's data 
+who visit your website
+
+crm -> configuration -> settings -> lead generation -> enriching leads : will search an external data base for
+more info about an email of a contact and get things like number or name 
+
+crm -> configuration -> settings -> lead generation -> lead mining : this will generate new leads for you 
+
+sales -> quotations : this will allow for product addition to specific customers 
+
+settings -> users & companies -> companies : in order for you to see a list of the companies 
+
+companies -> edit : will change all the company details 
+
+settings -> users & companies -> users : to modify the users you have and modify their access to your modules 
+and data and we can change the language used for the user and how to communicate with them 
+
+you can import data from an excel sheet in the contacts app from odoo 
+
+i can configure attributes for a product 
+
+going to the tree view of the contacts and then edit tree view will allow you to identify the selection 
+criteria
+
+sum="Total something" : will show the summation of the column of the table 
+
+technical -> views -> menu : this this the menu on the side 
+
+technical ->views -> forms : to modify the forms from the technical mode
+
+after doing a search you can go to favourites and save search and make it a favourite 
+
+to add a filter to filter you can go to edit control panel  
+
+odoo-bin scaffold <module name> <where to put it>
+
+python odoo-bin -r odoo -w pass -d postgresdb --addons=path : this will launch your odoo and your custom
+modules
+
+ORM : Object Relational mapping is doing data CRUD operations without need for dbms
+
+inside the model class _name = "test.model" creates a new table 
+
+name = fields.Char(string="something",required="true",index="True") : this creates a new column 
+string is gonna be the ui name , required is gonna showing if the column is required or not ,  index 
+shows if the column is gonna be indexed or not 
+
+simple fields : are fields that aren't linked to anything else , and relational fields are fields that are
+connected to other fields 
+
+object views : defining the UI display 
+
+data files : are xml or csv files declaring model metadata
+they are constructed by a record tag that has an id attribute that allows external refrence to this data without 
+knowing it's internal model 
+a form that has a name which is the column of the table and the body of the form which is the data added to 
+the table
+after their creation data files have to be declared in the mainfest file in the data list key for permanent
+storage or in the demo key for temporary storage
+
+web controllers : handle requestss from web browsers
+
+mainfest : is the file description of of the data and it only consists of one dictionary 
+
+mainfest contetnts : 
+name : is the name of the module
+
+version : is the version of the modules 
+description , author , website 
+license : which could be one of many and it detects the access rights of the modules 
+category 
+depends(list) : are the dependencies that are reuqired for the model to work 
+data(list(str)) : is the data that comes preloaded with the system
+deom(list(str)) : data preloaded with the demo
+autoinstall(bool) : if set to true , the module will be installed automatically when it's modules are installled 
+external_dependencies(dict) : is a list of all python modules that are required 
+application(bool) : defines if the module would be defines as an application or only as a module
+css(list(str)) : defines list of files associated with the module 
+images(list) : the images files need to be included in the file 
+installable(bool) : wether is it installable from the UI OR NOT
+acitve(bool) : decides wether the modules are active or not 
+
+odoo-bin scaffold <module name> <where to put it>: this command creates a new module 
+
+data files : are files in odoo that are used for data insertion and creation and they consist of record 
+elements that are added to the models of odoo	
+
+ python odoo-bin -u openacademy : to save your data changes to the database
+
+you create an action in the data files the same way you would declare a data record but with different model attriubte
+value set to the action you need and an id that is gonna be refrenced latter by the action-triggering event like 
+a menu click
+
+menus are created through the menu tag and has an id , parent , name, sequence and action 
+the action attriubte refrences the action itself so it can trigger it in the future 
+
+a menu action example is done as in the following 
+
+<record model="ir.actions.act_window" id="action_list_ideas">
+	<field name="name">Ideas</field>
+	<filed name="res_model">idea.idea</field>
+</record>
+<menuitem id="something" name="someting" sequence="somenumber" action="action_list_ideas" parent="menu_root">
+the menu is gonna inherit the menu_root class proprties and is goona trigger the predefined action and have a name
+of the table to be something 
+
+the action must be delared previous to the action-trigring object cause the interpreter executes the code 
+sequentially and therfore the action should be before the trigerring event
+
+views are how the models of data will be presented and it comes from the model="ir.ui.view" and is declared using
+a record element and is done the following way 
+and it's declared like this 
+<record model="ir.ui.view" id="someid">
+    <field name="name">view.name</field>
+    <field name="model">object_name</field>
+    <field name="priority" eval="16"/>
+    <field name="arch" type="xml">
+        <!-- view content: <form>, <tree>, <graph>, ... -->
+    </field>
+</record>
+the arch attribute has to have a type attribute so it can deal with the contained value directly 
+so if i want to have a view for an object having xml then it would be type xml
+the field with the arch element will have the content of the view inside the body of the field
+model attribute defines which object is gonna be styled by this view  
+
+a simple form of view is the tree view and it has it's fields or columns as <field> element
+<tree string="Idea list">
+    <field name="name"/>
+    <field name="inventor_id"/>
+</tree>
+
+serch views : is for customizing the search view agregated in all views an example of it is 
+<search>
+    <field name="name"/>
+    <field name="inventor_id"/>
+</search> 
+and those fields will be what is searched for in the search fields and if no search fields exist by default 
+the search will search for names 
+
+this links two modules through one to one key 
+foo.other_id.name which is gonna link fo and other 
+
+choosing or selecting an xpath element for the element inside of the xpath element which is 
+field in here 
+<xpath expr="//field[@name='description']" position="after">
+          <field name="idea_ids" string="Number of ideas"/>
+        </xpath>
+and it has the following attributes :
+expr : uses the expression to select a specific element 
+position : is used to apply the position to the selected element
+inside : append the xpath body at the end of the matched element 
+replace : replaces the xpath element with the xpath body 
+before : inserts the element before the matched element
+after : inserts the xpath element after it's sibling 
+attributes : alters the attriburtes of the matched element using special attribute element in 
+the xpath's selected body 
+
+search domains : are methods for filtering data of three values where the first is the name , sign and value like
+this one [('product_type', '=', 'service'), ('unit_price', '>', 1000)]
+and you should insert the operators before the operands 
+like this 
+['|',
+    ('product_type', '=', 'service'),
+    '!', '&',
+        ('unit_price', '>=', 1000),
+        ('unit_price', '<', 2000)] 
+
+business objects : are python classes detecting business logic
+
+object views : defenition of ui displays for business objects 
+
+data files : xml and csv files for data representation of the modules 
+
+web controllers : handling web requests from browsers 
+
+static web data : images and css or java script 
+
+actions are declared through data files records
+
+class="ir.actions.act_window" is an action class that allows for the opening of a new window or a set of windows
+
+the first three levels of creating a menu are the following 
+creating a parent menu with only id and name attributes 
+creating a first item on the left side of the menu 
+associating an action with your menu items 
+
+two types of model inheritance : tradional inheritance first allows the inehritance of the first model and 
+do some modification on it 
+by changing it's fields and redifining them 
+delegation model : allows for complete transfer of the data from the parent model  
+
+view inheritance : odoo allows for view inheritance by having the attribute inherit_id in the name attribute of 
+the field and ref attribute to reference the id of the element being modified 
+by doing the following :
+<record model="ir.ui.view" id="someview">
+	<field name="name">somename</form>
+	<field name="model">view.model</form>
+	<field name="inherit ref="the view's id"/>
+	<field name=arch" type="xml>
+		<xpath expr="xpath" position="after">
+			<field name="idea_ids" string="number of ideas"/>
+		</xpath>
+	</field>
+</record>
+the position attribute shows what happens to the selected element 
+if after is put then the newly created element will be after the selected element 
+if before is put then the newly created element will be before the selected element
+if replace then it will replace the selected element 
+after mathcing a single element the position attribute can be set to any other element as an attribute and it
+will be aplied normally
+
+you can modify the model's attribute to have an attribute of domain and put the domain filter you neded 
+
+model method can be created to compute data on the fly without the need of calling data from the database	
+and to define a model's method you do it as in the following 
+def _method(self):
+	some expression 
+the field that is allocated to this method is called a computed field
+
+Onchange : is an odoo function that allows live updating of the data as the form is changed 
+
+model constraints : odoo provides a functionality to put constraints on the models 
+
+installation: True  : if you place this in the module manifest file you will be able to have the installation 
+button on the interface of the app 
+
+application : True : is an attribute when placed inside the manifest file will allow odoo to view your
+module as an application and that will allow it to appear on the search
+
+auto_install: true : allows you to auto install your created modules
+
+web_icon : a menu item attribute used for displayin images as an icon
+
+sequence is what controls the order of the menu on the list
+
+a menu is what's appearing in the navbar
+
+in pycharm you can edit the configuration under the run tab and allow any command to be executed automatically 
+
+the field with the name help in odoo is the field that shows in case that you search for something and you didn't 
+find it 
+
+to change a model in it's tree form and have any number of tree attributes you want do the following 
+<record id="something" model="ir.ui.view">
+	<field name="name">some value</field>
+	<field name="model">the model you want to represent</field>
+	<field name="arch" type="xml">
+		# the fields you are gonna have as columns for the tree view 
+		<field name="db column"/>
+		<field name="db column"/>
+	</field>
+and you can go to the edit and edit tree view and see the columns you have added 
+
+you can reoder your apps showing in the list by going to technical / user interface / menu items
+
+if you put elements in a group tag they will show up their database names 
+
+if you put two groups inside each other then will have the groups next to each other 
+
+allows for the inclusion of a box around the data that is included in the form 
+
+<widget name="web_ribbon" text="archived" bg_color="bg-dagner"> : this will allow you to add a red ribbon if 
+you want 
+
+field.Selection((hello,ya),(bye,no) , string="something") : this will create a drop down menu that has a 
+selection form that can be chosen from 
+	
+to add filters in your filter button you need to create the following with xml where the filer's that are 
+gonna be applied are gonna filter field and the searchpanel is responsible for the search panel that appears 
+
+<record id="student_search_view" model="ir.ui.view">
+            <field name="name">school.student.search</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <search string="Students">
+                    <field name="name" filter_domain="[('name','ilike','self')]" string="Name"/>
+                    <field name="guardian" filter_domain="[('guardian','ilike','self')]" string="Guardian"/>
+                    <filter string ='Male' name="male" domain="[('gender','=','male')]"/>
+                    <filter string ='Female' name="female" domain="[('gender','=','female')]"/>
+		    <searchpanel>
+                        <field name="gender" icon='fa-users'/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+<field name="view mode" /> allows you to choose the views that appear on the top right corner of the screen 
+odoo_import allows you to enter the basics of the modules like api , modules and fields 
+
+odoo_object allows the insertion of a new odoo class
+
+odoo_compute : shortcut
+
+odoo_menu : will allow a menu to be added automatically
+
+odoo_view action : shortcut 
+
+inside the tree tab if you include optional = "show" it will show three dots on the menu that allows the modification
+of the items in the list and if you say optional="hide" then the column willnot be shown by default
+
+<field name="view_id" ref="process_form_view"/> : is a specification that allows it to open a specific view 
+
+in the field "view mode" you can specify the mode to be kanaban 
+
+you to add a menu and an action before the module will appear in the apps list and become a super user 
+
+web icon : is what will be added to to the web view of your application in the enterprise mode
+it's added to the root menu of your module and then it will be displayed 
+like this 
+<menuitem webicon="the link to the icon">
+
+in the ir.model.access.csv : if you leave the group_id empt then it will be accessible to all the users 
+
+if you want to find any external identifier you go to settings technical external identifiers 
+
+def ongoing(self):
+        for rec in self:
+            partner = self.env['products.process'].search([()]).mapped('process_ongoing')
+            print(partner)
+this ongoing function  is gonna be extracting the products.process model and extract the process_ongoing attribute
+or column from the schema
+
+
+<header>
+     <field name="state" widget="statusbar"/>
+</header>
+this is a field that creates a check bar on top of the product and the state field is a selection box
+
+<button name="function" type="object" string="next" class="oe_highlight" states="something"/> : this is a button that calls a function
+and the class oe_heighlight will put foucs onto the button and states will allow the button to be visible 
+only when state = something
+
+time stamp on each process stage 
+products are generated in the log every next pause
+
+api.depepnds for creating computed fields
+
+when having a kanban view have the view mode like this
+<field name="view_mode">kanban,tree,form</field>
+
+from odoo.exceptions import ValidationError 
+raise ValidationError("something") : will raise an error in odoo
+
+<script type="text/javascript" src="path of the java script file"> : this is added to xml file in odoo like 
+this
+<template inehrit_id="web.assets_backend"> 
+<script type="text/javascript" src="path of the java script file"> 
+</template>
+and this means that this script will be add
+
+ir.actions.server : is a view that allows you to call a function from the view 
+
+search_count([]) : is a will give the count of of a record with a specific criteriea 
+
+self.env.ref('external_id') : this will get a record based on it's external id 
+
+record.id : this will return the id of the record 
+
+self.env.browse(id) : this will return a record based on it's id 
+
+states = fields.Many2one("processes", tracking=True, index=True, copy=False)
+<field name="states" widget="statusbar" options="{'clickable': '1'}"/>
+this is how you link a many2one field with a status bar and make it clickable so the user can easily navigate
+through it 
+
+self.env.browse([]).exists() : this will return true if a record exists
+
+current = self.env['something'].create(vals).id : this will return the id of a newly created reocrd
+
+self.env['something'].browse([]).copy() : this will create a copy of the record 
+
+self.env['something'].browse([]).unlink() : this will delete the record 
+
+
+def name_get(self):
+	res=[]
+	for rec in self:
+		res.append(rec.id, %s - %s % (rec.name_seq,rec.patient_name)))
+this will allow you to change the default name shape of the record when you are 
+opening it from odoo
+
+recrod.display_name : this will return the name in display and not the name field 
+
+name_search : is a function in odoo that allows for modifying the search criteria in odoo
+
+@api.model
+    def default_get(self, fields_list):
+        res = super(Process, self).default_get(fields_list)
+	res['name'] = hello
+        return res
+this method will work once you click create and it will get executed before anything else and it will set the 
+name of the record to hello
+
+self.env.filtered : is the same as the search odoo function
+
+self.env.search([]).sorted(key='something',reverse=True) : this will output value in a sorted manner using the 'something'
+key and reverse will return it in the opposite descending order
+
+self.env['some table'].with_context(lang=arabic).search([]): this will return anything you want in another 
+language for example a search result 
+
+http://localhost:8069/web/database/manager : this will allow you to restore or backup your database
+
+list_db = false : in odoo.conf file will allow you to remove the database from the list and make it more 
+protected from the security breaches
+
+activate developer mode (with assets) : prevents the minification process of odoo assets like css and javascript files,
+the minification process is a process that is used to make the loading time faster by compressing the asset files
+of odoo 
+
+disabling the developer mode prevents field info pop ups from showing up 
+
+through the views tab in the models section this will allow you to see all the forms that are connected to this
+module
+
+in the models tab in odoo there is a search view type this includes all the search filters that appear by
+default for that model
+
+tree and lists are the same for odoo 
+
+the view with the lowest sequence will be treated as the default view 
+
+you shouldn't modify the base views because they are regularly updated and the changes you did may be overwritten
+so it's best practice to create an inherited view 
+
+<Field name="category_id" position="after">
+  <field name="x_is_work_team"/>
+</field> : this xml will insert the field x_is_work_team after the field category_id 
+
+if you go to technical/datastructures/models : you can create a new model from the interface 
+
+ACL : Acess Control List which is a list of rules for controlling what different users can access and what  
+they can't 
+
+in odoo you can also control the access ranges that the user can have allowing each user to only access records
+they created 
+
+in odoo the security rules are based on security groups where each user belongs to a specific security group 
+
+internal user : is the base security group and users usually inherit it 
+
+menu item actions : there are three categories of actions "Window Actions" which are the most frequent to use
+and is used to relate menus with models 
+report actions are used to view reports 
+server actions are used to define automated tasks 
+
+<field name ="something" context = "{'default_boolean field':True}"/> : the context attribute allows for the passing of 
+data from one view to another and because of the prefix default , this value will be the default value of this 
+field 
+
+widget = "many2many_tags" : this is an attribute that will show the man2many table as tags table 
+
+edit view control type : this setting in the form view of any model you can define a view type to be search 
+and have default filter showing in the filters bar and in the archicture you can define a search filter like this 
+<search>
+  <fiter name="item_not_done" string="Not done" domain="[('x_is_done','=',False)]"
+  />
+  </fiter>
+</search>
+
+if you click on the bug icon in a form view and click on the edit action option, when you set the domain 
+filter it assigns a predifined domain that can't be changed by the user 
+and if you set a context value then a default search filter can be shown and removed by the user 
+, an example is the following search filter {'search_default_item_not_done':True} , this is divided in two parts
+search_default which is a prefix for any filter you want to apply by default and then the fitler that you 
+want to apply 
+
+debian is the favourite operation system for odoo deployment and odoo's saas service runs on a debian base and it's
+most widely availble for support 
+
+WSL "w-Sel" : Windows Subsystem for Linux is a linux on windows enabler and it allows the running for linux or gnu 
+environment without the overhead of installing a virtual maching 
+
+in odoo you need to first install postgres and then odoo system dependencies
+
+ssh client is a client that allows you to control a server remotely 
+
+sudo apt install postgresql : is the first command u use to install postgresql
+
+sudo su -c "createuser -s $USER" username : this will create a postgresql user that will be able to access and
+create databases on postgres
+
+sudo service postgresql start : is the command that is used to start the postgresql server before you run 
+odoo cause services aren't started automatically on wsl 
+
+sudo apt install python3-dev python3-pip : this will install python3 on your ubuntu server
+
+mkdir : is a linux command that allows you to create a directory
+
+pip3 install num2words phonenumbers psycopg2-binary watchdog xlwt : this will install odoo's missing dependencies
+from the requirements.txt
+
+if you want to run a task at beggining you can go to task scheduler and then click on "create basic task"
+
+dropdb mydb : will drop the data base 
+
+./odoo-bin --save --stop : will save the current configuration of odoo and stop the server after the saving is 
+finished 
+
+./odoo-bin -p "port no" : this will change the listening port from 8069 to any other port number you 
+want 
+
+if you change the port no you can have a database server running on different port
+
+more ~/.odoorc : this will show the configuration settings that was saved
+
+if you create a group that has internal user access , then it has access to all system models 
+
+after creating an access rights group , we have to go to the users tab and choose the access rights
+
+in the groups if we add [('create_uid','=',user.id)] to record rules , then each user will only see his 
+records only , you can access record rules from technical , security , record rules 
+
+--xmlrpc-port : is an option in the odoo.conf file that changes the listening port 
+
+dbfilter = ^databasename.*$ : this sets one database for odoo server instance and the signs are regex signs 
+
+--log-level=debug : this is called a log level of debug , there could be another log levels and you can choose
+from them 
+
+--logfile=<filepath> : this will store the log data to a file 
+
+OCA "Odoo Community Association" : a non profit organization that is responsible for maintaining quality 
+of code and open source values 
+
+apps.odoo.com : allows you to install odoo apps 
+
+readlink -f file : this allows you to locate any file path 
+
+sudo apt install virtuallenv : this will allow you to install the virtual environment feature and run different
+environments on the same machine 
+
+virtualenv -p python3 /path : this will create a virtual environment in the path you define 
+
+virtualenv -p /pathToDifferentPythonVersion /pathToVirtualenv : this will create a virutal environment 
+with the python version you specify 
+
+source path/actiavte : this will activate the virtual environment that you choose 
+
+which python : after an environment is activated we can execute this command to know which python version 
+is working 
+
+pip3 install -e path/odoo : this will install the odoo source code and the -e makes the installation an editable
+installation meaning that it could be updated and modified instead of just taking a snapshot of the code
+and the code of odoo has to be cloned first from the odoo git directory  
+
+rm -r directory to delete a directory you installed 
+
+pip3 install phonenumbers num2words psycopg2-binary watchdog xlwt : those are packages that aren't included
+in the requirements and you should install after installing odoo 
+
+sudo apt-get remove something : will remove the something package 
+
+deactivate : shuts down any active environment 
+
+ls /usr/bin/python* : this will show you the python versions that are installed on your device 
+
+sudo add-apt-repository ppa:deadsnakes/ppa 
+sudo apt install python3.* : those two commands are required for install any python version
+
+python --version : to find out the version of your python 
+
+good practice is to keep the configuration files inside the virtual environment 
+
+cd /odoo-dev
+git clone https://github.com/odoo/odoo.git -b version --depth=1 folder_of_installing
+virtualenv folder_of_virtualenv
+source virtualenv/bin/activate
+pip install -e cloned_folder
+odoo --version
+deactivate
+
+sudo apt install python-dev : this allows you to install different python environmnets in linux 
+
+pypi : python package index is the place that allows you to install libraries 
+
+if you prefix the package with odoo12-addon like odoo12-addon-partner-fax then it will download the partner-fax
+package required for odoo12
+
+--dev=all : this allows automatic upgrade for the server without the need to restart the server when 
+applying a python code upgrade or xml upgrade it's done when launching the odoo code 
+and it requires this installation sudo apt-get install python3-watchdog 
+
+any folder that contains the mainfest file is an odoo module 
+
+odoo scaffold : this creates a new module structure for odoo 
+
+mkdir -p directory/anotherone/lastone : the -p option will create the following folder structure 
+
+vim file : to open a file and edit it 
+
+auto_install : a __manifest.py__ attribute that allows modules to be installed together 
+
+static/description/icon.png : is the path that you use to add an icon for your module 
+
+odoo -i module_name : the -i allows you to install the module name you would like 
+
+odoo -u module_name : this allows a speicific module to be updated 
+
+menu top level item is placed on a file on it's own to have a top level menu 
+
+as long as the top level menu item doesn't have a submenu actionable item then it won't be show 
+
+user groups are devided into two groups , one for users and one for managers with acess to extra data like 
+applications to install and so on 
+
+categories : are types of record that odoo use for security 
+
+security files should be placed before the views file in the data attribute in the manifest file 
+
+TDD : Test Driven Development is an environment where tests are written first to make sure that the code 
+passes the tests before creating a new feature
+
+
+res.partner : is odoo's default module for storing people,companies and addresses
+
+write_uid : is the name of the person who modified a record
+
+write_date : is the time that the record was written 
+
+__last_update : this is used for concurrency check which isn't stored in the database
+
+model_id : is a column in the ir.model.access.cv that allows the identification of the model we are writing 
+the access to , if the model name is library.book then the model name in the model_library_book
+
+group_id : a column in the access file that identifies the group that is going to be given the access to 
+
+perm : gives the access rights which are read , write , create,unlink
+
+if you vim an empty file then it
+
+technical => access rights: this corressponds to the ir.model.access.csv file and you can modify the records
+for the model here 
+
+<date noupdate="1"> tag : this allows the rcords inside this tag to be prevented from being updated on the 
+upgrade of the module
+
+<act_window id="something"/> : is a new way of identifying action_windows
+
+ir.ui.view : is the database schema responsible for storing views
+
+ir.ui.view has three columns name,model,arch
+
+instead of the default form view you can do this 
+<from>
+	<header>
+	</header>
+	<sheet>
+	</sheet>
+</form>
+
+<group> tags should have a name so that they are extendable like this 
+<group name="group lef">
+
+<search> <field name="publisher_id"/> </search> : this will allow for the searching of the records by the 
+fields specified , which is the publisher_Id in this case
+
+from odoo.exceptions import Warning
+this will import a Warning method which can be raised like this
+raise Warning('%s is something' % nice) , which is gonna display 'nice is something'
+
+--test-enable : this options allows for the tests to run on the module 
+
+web controllers are the components responsible for rendering the web pages and they are methods that 
+are defined in the http.controller class , and those controllers are bound to a url endpoint 
+
+Qweb templating engine is the engine that is responsible for rendering the html 
+
+controllers are placed inside a controllers subdirectory 
+
+if you want to import a folder inside the __init__.py file of the module , then the folder imported should 
+have __init__.py file of it's own and write 'from . import main' inside of it 
+
+the main controller class inherits form http.controller like the following class
+class Books(http.controller):
+
+@http.route('something/something' , auth="user or public') : the route decorator defines the end point 
+that will be bound to this link which is something/something , and defines the autharization needed to access
+this link which is either user or public , if it's user , then it's gonna require user login , and if it's 
+public , it requires no login and it could be accesses by users 
+
+http.request.env['model_name'] : this will get all the records with that model_name 
+
+<template> : is the element that is used for qweb xml files 
+
+<t t-foreach="something" t-as="onething"></t> : this allows you to loop through a qweb rendered element , and
+something will be the iterable object that you loop through and t-as="onething" is the object that is gonna
+be queried 
+
+sudo apt install libpython3.7-dev : for solvin include lib.python error while installing odoo
+
+prototype inheritance : is when you create an inherited model and give it a name , it then creates a model
+and gives it a name 
+
+help="something" : this is a field attribute that allows a message to pop up over a field when hovering 
+over it 
+
+
+
+<field name="inherit_id" ref="library_app.view_form_book"/> : this will allow the inheritance of a view
+and then other fields can be inserted after it 
+
+
+<field name="isbn" position="after">
+        <field name="is_available"/>
+</field>   : this will insert the field is_available after the field isbn which is a field from the inherited
+model 
+postion can have a couple of values:
+inside : allows for the insertion of the element inside a node from the parent element , the parent 
+element should be a container like a group or page
+after : adds the element after the selected node
+before : adds the element before the selected node 
+replace : replaces the selected node with another element  	
+attributes : this allows the adition and removal of attributes from the parent element , and it's added
+like this <attribute name="attribute-name">values </attribute>, like <attribute name="invisible"> True</attribute>
+and if added like this <attribute name="invisible"/> this will remove the attribute from the parent element
+
+it's bad practice to do position="replace" because there maybe depending elements in the parent view
+and it's prefered add an attribute to the element to make it invisible 
+
+if you do this 
+<field name="target_field" position="after">
+ 	<field name="my_field" position="move"/>
+</field> : this allow the child field to replace the position of the target_field 
+
+in case of non unique elements like group and page and notebook , these elements can be located using 
+the xpath as in the following 
+<expr="//field[@name='isbn'] position="after"/>
+	<field name="is_available"/>
+</xpath> : this allows the insertion of an elmenet using xml path 
+
+<record id="module.identefier" model="res.groups">
+	<field name="name">Librarian</field>
+</recrod> : this will override the name field in the record with the name "identifier" to make it equal
+to Librarian 
+
+for shortcut elements like <act_window> and <menuitem> elements can't be overwritte as in the record 
+elments 
+
+classic inheritance : this allows for in-place extension which means that no new model is created and only
+the old model is extended which is why when you want to view it , you include the original name of the 
+model in the views 
+
+_inherit=[list of parent models] : this will allow the inheritance of multiple models , and then it's called
+a mixin class , which is only like a feature resevoir , mixin classes aren't meant to be used directly 
+on their own and are only expected to be inherited for other classes 
+
+prototype inheritance will create a new model with it's own database and any new features added to it 
+will be added to only the inherited model 
+
+delegation model with the _inheritS attribute, will extend the inherited model and when a new record is 
+created it will create  two records , one in the parent model and one in the child model
+, when the user views the the final record , it shows the record with all the attributes , but under the
+hood , it will create a two recrods where each model is handling it's own fields and two of them is linked
+with many2one relation 
+
+prototype inheritance : is usually used for mixin classes , and not for regulare classic inehritance , 
+because that would created duplicated database structure, 
+
+delegation inheritance : is the prefered type of inheritance for regualar models 
+
+UML Unified Modeling Language : is a standardised language in the software engineering field that 
+allows for visualizing the design of a system 
+
+composition relationship : is a UML term that refers to a relationship between the models where the 
+parent can exist without the child , but the opposite can't happen 
+
+delegate = True : allows the accessing of a target model to a child model , which coressponds to _inherits
+and makes the model a delegation model 
+an example would be 
+partner_id = fields.Many2one('res.partner',delegate=True,ondelete='cascade',required=True), so here
+all the res.parnter fields are accessible to this new model 
+this would mean that all the field of the res.parnter model would be accsessible to the current model
+
+in delegation inheritance methods from the parent aren't available in the child 
+
+the advantage of delegation inheritance over prototype inheritance is that in the case of the delegation
+inheritance all the records in the parent are made available to any model that is embedding this parent
+model
+
+delegation inheritance could be replaced by :
+overriding the create method to save the record in the parent model 
+a many2one field in the parent model 
+the related fields to the parent fields that we want to expose 
+
+mv folder_to_rename_path folder_new_name : this is used to rename a folder , place the folder name in the
+first paramter and the folder new name in the second paramter
+
+put _ before errors so that you can translate them
+
+in vim e goes the end of the word 
+in vim w goes to the start of the new word
+in vim b goes back 	      
+
+in order to define what users access what models use the following access rights
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_member_user,Member User 
+Access,model_library_member,library_app.library_group_user,1,1,1,0 
+access_member_manager,Member Manager      
+Access,model_library_member,library_app.library_group_manager,1,1,1,1        
+where member_user is an access group and member_manager is a security group   
+
+mixin classes are based on prototype models and are based on models.Abstract instead of models.Model 
+
+the mail.thread model from the mail module allows for social network messaging features of odoo 
+we add it to any custom module by doing the following , first adding the mail dependency in the depends
+manifest file 
+allow the class to inherit mail.thread and mail.activity.mixin classes 
+add the data fields  message_follower_ids,message_ids and activity_ids in the form view to which allows
+for the chatting to be displayed 
+
+_inherit = [classone,class2] : allows for the inheritance of two classes at the same time    
+
+chmod -R +rws directory_path : changes the permissions of the file and all it's subdirectories 
+
+super().method() : will allow for the using of a super class method from an inherited class
+
+web controllers are only for presentation logic and not business logic
+
+class BooksExtended(Books):
+
+    @http.route()
+    def list(self, **kwargs):
+        response = super().list(**kwargs)
+        if kwargs.get('available'):
+            Book = http.request.env['library.book']
+            books = Book.search([('is_available', '=', True)])
+            response.qcontext['books'] = books
+        return response
+
+this is a controller function that allows for responding to different routes in odoo 
+the **kwargs attribute gets all the attributes that are passed in the url as ?available=1
+
+extending a controller isn't done the same way in model classes using the inherit attriubte it's done
+by importing the class from it's file 
+for example here to import the book class you do the following , 
+from odoo.addons.library_app.controlers.main import Books   
+
+controller method : the method in the controller that is decorated by the @http.route() method 
+
+you can overite the controller method by defining another one in the extended class with the same name 
+
+you can modify the Qweb template being used to change the presentation of the web page 
+
+a web template overwrite the representation of the web page of odoo using qweb
+
+you can inherit qweb templates using the following syntax
+<template id="something" name="something" inherit_id="library_app.book_list_template">
+
+external identifier or XML ID : human readable string uniquely identifiying particular records in odoo 
+database table to refrence or edit those records
+
+records id's in odoo are randmo sequential numbers that couldn't be known ahead of time , creating 
+an external xml id allows us to refrence those records without knowing their ids 
+
+records for module data files are labeled by xml ids which allows them to be detected upon upgrade and 
+avoid duplication of data , for example by giving models xml_id 
+
+refrencing between models and each other is also done through XML IDs
+
+ir.model.data : keeps the data connecting the xml ids with their numeric database IDS
+
+complete_id or unique global identifier : allows for the identifying of moduels and records across modules 
+
+record files aren't imported upon module upgrade they are only imported upon moudule installation 
+
+when filling the reocrds it follows the following format <record model="model_name" id="model_id">
+<field name="model_field_name">value</field>
+</record>
+
+
+inside demo data files each record coressponds to a row in the database 
+
+<data> is equivalent to <odoo> as a top level element
+
+attribute noupdate="1" means that a certain element will not be updated and only is changed on module 
+install 
+
+we can have more than one <data> element inside the top level xml element 
+
+values for fields can be hardcode by writing something inside the field tags 
+
+<field name="some_field" eval="some python expression" /> this allows you to compute a python expression
+in the field 
+
+the ref function converts an external identifier into it's coressponding database id and can be used with 
+fields as in the following 
+<field name="publisher_id" eval="ref('some_external_identifier)"/>
+
+<field name="author_ids" eval="[(6,0,[ref('res_partner_alexandre'),ref('res_partner_holger')])]"/>
+this would overwrite the list of author books because of the 6,0 code
+
+<field name="authoer_ids" eval="[(4,ref('res_partner_daniel'))]"/> : this would append a list of records
+from the res_partner_daniel
+
+special command syntax for odoo 
+code 0 creates records
+code 1 update the values
+code 2 removes a specific id and removes the link to it 
+code 3 removes the link but doesn't remove the record
+code 4 links the already existing record 
+code 5 removes all the links wihtout deleting the records 
+code 6 replaces of linked with a provided list 
+
+<act_window> is an alias for ir.actions.act_window
+<menuitem> is for ir.ui.menu
+<report> is for ir.actions.report.xml
+<template> is for ir.ui.view and is for qweb templates 
+those shortcuts overides couple of fields and if you want to customize your fields you should do it with
+the record element 
+
+<delete model="res.partner" search="[('id','=',ref('library_app.res_partner_daniel'))]"/> :
+this will allow for deletion of records 
+and if the specific id is known it could be deleted like this 
+<delete model="res.partner" id="module.model"/>
+
+model functions : are functions that are loaded when the xml file is loaded and it's done using the 
+function attribute 
+<function
+	model="model_name"
+	name="name_of_the_function_inside_this_model"
+	eval="[attributes_that_are_passed_to_the_function]"/>
+
+_order : is used to define the order of the view of the records of this model 
+
+_rec_name : this will be used as a substitute for the _name attribute by allowing you to choose any 
+field you want as a substitute
+
+_table : is the name of the table supporting the model and it's usually by default left to the ORM and
+by default dots are replaced by underscores but by default the model dots in their name are replaced
+by underscores
+
+_log_access=False : this prevents the creation of the default logging fields like create_uid and write_uid
+and the log accessing fields 
+
+_auto=False : this will prevent the automatic creation of the underlying database table 
+
+best practice is to name the models in singular form like library.book instead of library.books
+
+the first name of models should be the name of the module in all of the models 
+
+abstract models are used to be inherited , and their features and functions are inherited , like the 
+mail.thread which is an abstract model 
+
+usually the first field argument is the title of the field , and if not provided the field title 
+will be the field name and all the underscores will be replaced by spaces and they will be captalized 
+
+in the selection field the first field is the value stored in the database , the second is the value 
+presented to the user 
+
+size : is a char field attribute that allows for setting a fixed size in the characters 
+
+translate : makes the field content translatable , for different languages 
+
+trim = false : clears any white space that is surrounding the text 
+
+groups ="base.group_user" : this is a field attribute that allows for the limiting of a field access
+to a certain group 
+
+the default attribute of a field can have a function as default as in the following 
+last_borrow_date = fields.Datetime(default = lambda self: fields.Datetime.now(),)
+and it can be the name of a fucntion too like this default='something_something'
+
+deprecated=True : this attribute allows the logging of a warning whenever the field is being used 
+
+state : is a default field used to represent the lifecycle of the record from required, invisible and 
+read only 
+
+refrence fields : is when a field can refrence another field 
+
+many2one relation : is a foreign key to another id in a record 
+
+relational field attributes
+
+ondelete : defines what happens when you delete something , like options could be set null 
+restricted
+cascade
+
+context : a dictionary of meaningful web client views to carry information 
+
+domain : for selecting records that will be availble for selection 
+
+auto_join = True  : allows ORM to use SQL joins when doing searches which allows for faster searching but
+bypasses the rules
+
+delegate = True : creates a delegation and allows for delegation inheritance 
+
+relational table name is always the two tables names joined by an underscore and the word _rel at the end
+
+in asbtract models we don't want to use the many2many relationship column1 and column2 
+option as it's a limitation on the ORM and prevents the model to be inherited anymnore
+
+highlighted = fields.Refrence([('library.book','Book'),('res.partner','Author')],
+'Category Highlight',) allows you to refrence different fields from different models , in the interface
+you will be able to choose the field and then choose it's correlated records
+and it's stored in the database as the format (model,id) tuples
+
+related fields are read only by default and they could be stored using store=True , they are just like
+computed fields
+
+_sql_constraints [('constraint name, 'sql condition','message')]
+
+ir : Information Repository are any models that are used to inform odoo how to work and to store fields
+menus views and items 
+
+res : is used for storing data about the outside world like company data and users and there addresses in 
+a model like users 
+
+./odoo-bin shell -d database : this allows you to directly interact with odoo ORM
+
+
+ctrl + D : this will close the server 
+
+self.env : allows you to know the api that is currently used in the shell 
+
+context dictionary : is a dictionary that carries session data that could be used both on the client 
+and server side 
+
+active_test : is the dictionary key that when set to false prevents the search method from looking up 
+non-active records
+
+if you want to set a default value for a field you should prefix the field name by default 
+like the following {'default_user_id':uid} which is gonna set the default user 
+
+self.env.ref('model_name') : it transforms and xml id to it's numerical database id 
+
+you can search different models for different records using domains by using the search() or browse
+as in the following self.env.search([domain]) , this allows for returning records for specific domains
+
+self.env.search_count([]) : this will reutrn the number of recrods instead of the records themselves 
+
+=like and =ilike matches against a pattern and _ means a single characer and % means a sequence of characters
+, from example =like = '%value%' : will match against this pattern of letters 
+
+child of : is an operator in the odoo domain expressions to find the children values in hierarchical relation
+
+the domain expressions like & and | precede the expressions to logically and recursively evaluate them 
+, domain expressions use prefix notation where the | and & will preced the operands
+
+prefix notation : is an expression where the operator preceds the operands 
+['!',(is_done','=',True)] , this will negate this expression 
+
+sigelton is a record set with only one record inside of it 
+
+in any record you can access login_date object which returns a datetime object , as an example
+self.browse(2).login_date : this will reutrn the login date and time 
+
+fields.Date.to_date() : converts a string into a date object 
+to_datetime(value) converts a string into a datetime object	
+to_string(value) converts a datetime object to a string 
+
+write() : this method allows the modification of different records at the same time 
+an example would be 
+recs = partner.search([('name','ilike','Azure')])
+recs.write({'comment':'Hello!'}) 
+this will write the value of the comment field value to hello
+
+self.env['model_name'].create(dictionary_with_values) : this allows the creation of a list
+with key value dictionary pairs 
+
+self.env['model_name'].unlink(record_number) : this removes a specific record from the 
+database of the model specifiec
+
+self.env['model_name'].copy(dictionary_of_a_record) : this allows the record to be copied 
+
+self.env['model_name'].ids : returns a list of records ids in this model 
+
+self.env['model_name'].filtered(func): this function allows filtering record based on 
+a function or a field 
+
+self.env['model_name'].sorted(func) : this allows the sorting of a function accroding to 
+a criteria and if reverse = True is placed then the sorting is reversed 
+
+self.env.cr.commit(sql) : commits a sql commands to the database in odoo 
+
+self.env.cr.rollback() : reverses the commands that was done on the database since the last 
+order
+
+self.env.cr.fetchall() : fetches a list of the data after executing the execute statement 
+
+it's possible to use DML to update and insert data into the database and after using it 
+we should use self.env.cache.invalidate() to invalidate cache cause data might be 
+incossistent sometimes
+
+states are a closed selection list of predifined options
+
+stages are open to addition and removal of stages 
+
+<record id="stage_10" model="library.checkout.stage">            
+            <field name="name">Draft</field>    
+             <field name="sequence">10</field> 
+            <field name="state">new</field> 
+</record>  : that's how you write demo records in the xml file in the data folder
+
+@api.multi : this decorator allows the operations done on a record set and ifn't used the orm
+will default to this method for any function 
+
+@api.one : guarentees that the recordset will be a singleton
+
+@api.model : deals with class models and not with single records so you can't use something
+like @api.multi at the same time 
+
+return {
+          'warning':{
+                 'title' : 'Changed Request Date',
+                 'message':'Request date changed to today.',
+       } : this is how you could return a warning from the onchange method 
+
+@api.depend('fields') : this detects what fields should the recomputation happen on when 
+the compute method is used 
+
+<model>.create(value) : this allows for the creation of a record in the model 
+
+<recordset>.write(values) : this allows the updating of a field values using the write
+operations
+
+<recordset>.unlink() : this will delete the record that is being chosen
+
+in the create function you can use the super().create(vals) without paramter for the 
+super function , in python 2 it used to have paramters which are the self and the name of 
+the class we are currently in 
+
+load([fields],[data]) : this would load the columns from a CSV file using the fields 
+data and would load rows in those fields 
+
+export([field], raw_data=False) : this would export raws of data from the ORM api
+
+name_get() : allows the getting of the names of the reocrds instead of only getting the name
+
+whenever you create a new folder you need to go to the init.py file to do 
+from . import the_folder_you_created
+
+and inside the folder you need to go to the init.py in case it's a model and import that model
+
+you can't create one2many relations in transient models as it would prevent them from 
+being deleted from the data base 
+
+many2many relations are stored in dedicated models , and when one side of the relationship
+gets deleted , the deleted side of the model gets deleted 
+
+if you add the target="new" to an xml element it will change it into a wizard 
+
+active_model : the technical name of the view's model
+
+active_id : the id of the form's active record 
+
+active_ids : a list of active records 
+
+active_domain : when the action is triggered in a form view 
+
+test classes types :
+TransactionCase : uses different transaction each time and then rolls it back 
+SingleTransactionCase : allows the running of all the test in one transaction and this
+is specially useful when you want to final test for a piece of code to be the initial test
+for another piece of code 
+
+setUP() method : this allows the data and the variables to be used 
+
+to run the tests you need to put the --test-enable attribute to your command for starting
+odoo and also adding the -u because the tests work while upgrading the module 

@@ -1,0 +1,597 @@
+django-admin startproject website : creates a projecct django named website
+
+__init__.py : this is a file that tell the pc that the directory that this file in is 
+actually a python package
+
+settings.py : is the settings of the website
+
+urls.py : is the file that maps the urls to the functions they are supposed to do or 
+the destinations the website should go to 
+
+wsgi.py : some type of webserver
+
+python manage.py runserver : starts a local server on pc
+
+id = models.AutoField(primary_key=True) : an auto field that is auto increments
+
+websites are devided into individual parts and functionalities called apps
+
+python manage.py startapp : this creates a new section in your website 
+
+admin.py : a python file created for managing of the website like managing users and 
+stuff
+
+models.py : is the blueprint of your website which shows how it's gonna be constructed
+
+tests.py : testing your website
+
+views.py : is the python file that conatains functions that returns htmls responses
+
+from . import something : the . means that this file is at the same directory your
+project is in and it's gonna import this something from this file 
+
+you should create a urls.py file for each app so that the website is organized 
+
+urlpatterns = [
+	url(r'^music/', admin.site.urls)
+] : this is gonna map this music directory to the admin.site.urls 
+
+you should import the views file in the url file because views is resonsible for giving
+back the correct response to the url that the user went to 
+
+if you do url(r'^$') : this ^$ means the hompage of the app you are in 
+
+from django.conf.urls import include : this allows you to include files from different 
+folders in your project
+
+url(r'^music', views.index) : this is gonna return index from views when the user
+goes the music app on my website
+
+def index(request):
+	return HttpResponse("<h1>hellO<h1>") 
+this is an example of a response that is returned from a view that says hello 
+
+whatever you choos the website goes to the main page and checks in the urls 
+page , after that it checks what the user requested and then does the right thing 
+through this url(r'^music/' , include(music.urls)) and then it goes to the urls file in 
+the music folder and then it find the same patters but the only difference is that it
+now uses a function from a python file 
+
+python manage.py migrate : this gonna sync your app with the database you have 
+
+whenever you create a model it turns it into a column in database that's of course
+after you migrate your database 
+
+in the models.py app you create classes that django is gonna classify the data based on 
+
+class song(models.Model):
+	album = models.ForeignKey(Album, on_delete=models.CASCADE)
+this is used to link the each song to an album using a foreign key 
+
+after creating each app you should go to the setting file in installed_apps
+and then add the following line
+'yourAppName.apps.yourappnameconfig' : and then is how django installs an app on your
+website
+
+python manage.py sqlmigrate polls 0001 : this shows you the sql commands that were
+applied on the database
+
+
+migration is basically taking your models and then converting them into sql commands that
+without executing them 
+
+python manage.py migrate : actually executes the commands done by the migration
+
+python manage.py makemigrations music : music is the app model you just created
+
+whenever your website is run it goes into the installed apps and checks for configuration 
+and then reviews your model and checks if it syncs up with the database or not 
+if it does it runs and if it doesn't it creates an error 
+
+whenever you make changes to the model of your app you need two commands 
+python manage.py makemigrations YourAppName
+then 
+python manage.py migrate
+
+python manage.py shell : allows you to interact with the database 
+inside the shell 
+from music.models import Album, Song : this imports the models from the model of music ap
+Album.objects.all() : returns the number of objects in the album table
+a = Album(artist = "hello", album_title="red") : this is gonna create an album object
+with artitst value = hello and album_title = red which are the columns of the album 
+table
+a.save() : saves the changes you made to the album table from the shell memory 
+a.artist : returns the artist table inside the a album
+a.id : returns the id of the element a from the alubm table
+
+a.artist = "something" : changes the value of the a artist attribute inside the alubm table
+from hello to something 
+
+def __str__(self)
+	return self.album_title
+: this goes inside of your model classes so when you type Album.objects.all() 
+it will return the album_title and whatever you specify in the __str__ function 
+and this will also decide what attributes gets shown from your album schema
+
+Album.objects.filter(id=1) : this is a python shell commande that allows you to return 
+the element in the database with the id of 1
+
+or 
+
+Album.objects.filter(question_text__contains="something") : that's gonna search for any text that 
+has something inside of it
+you can change contains with start_with or ends_with to get a text that starts or ends
+with a specific string 
+
+
+
+python manage.py createsuperuser : this creates an admin
+
+inside the admin file you can make your databases accesible by 
+first 
+form django.contrib import admin : which imports the album class from the model file
+admin.site.register(Album) : which makes the album class accessible in the 
+admin area
+
+timezone.now().year : this well output the current year
+
+if you create an extra method inside a class it will be called by assining a specific
+object to a variable and then calling the method as following 
+a= Questions.objects.get(pk=1)
+a.a_dummy_function() 
+and then the dummy_funtion() will return the what's it's assigned to return 
+
+if you have a variable that is euqal to some object from a class you can output it 
+directly by typing the variable name like following 
+q= Questions(question_name"hello")
+q : then this will output the __str__(self) function that you assigned
+
+if you have a class that is linked through a foreign key to another parent class
+then 
+q.choice_set.all() : will get all choices inside question q in this example
+
+
+
+path('<int:album_id>', views.detail) : this will get the number in the url in the specifed
+url path that you are in right now and then return it 
+the < > is a signification that this variable is gonna be grouped into one 
+
+
+to include the data of your database on a page 
+from .models import Album 
+which imports the Album table from the model python file that is in the same directory 
+all_albums = Album.objects.all() : this returns all of the data in the album table in
+ana all_albums variable
+
+<a href="something"></a> : this gets added to the main url 
+
+you should be seperating your html files from your python files
+
+whenever you create a template you should have a templates folder in the app folder and
+then inside the templates folder you should have a folder with the name of the app 
+you are creating the templates for
+this is a must so the loader in the viewws folder could be able to look for the templates
+
+from django.template import loader : this is used to import a loader which is gonna
+load the template in the views
+template = loader.get_template('music/index.html') : this is gonna equal to the html
+page which is index.html and you don't need to specify full path cause pycharm automatically
+know that templates are placed in the templates folder
+
+context = {
+        'all_albums': all_albums,
+    }
+to pass data from views to index you should pass it using a dictionary which is created inside 
+the views file and it's usually called context 
+
+if you are gonna wright python code inside a template you do this by placing the code 
+between {%%} and you place variables between those {{}}
+and a for loop is ended by {%endfor%}
+
+to return the html page you need to render your template and retrun it 
+using 
+return HttpResponse(template.render(context, response)
+
+instead of writing the loader : do this 
+return render(request, 'music/index.html', context) : first paramter is your request
+second paramter is your template render and your lasst paramter is the dictionary that the
+template needs to work 
+from django.shortcuts import render : this is how you import render
+
+from django.http import Http404 : this is how you import the 404 http response
+
+Album.objects.get(pk=album_id) : this is used to get a specific record from the Album 
+model and this generates DoesNotExist error if the album_id doesn't exist in the database
+
+you only need to do migrations when you are changing the database by adding or removing
+cloumns in your models
+
+album1.song_set.all() : this is gonna get the songs associated with album1 via the 
+foreign key that was defined inside the model 
+
+album1.song_set.create() : this is gonna create a where in the models file Album class
+and song class are associated by a foreign key 
+
+album1.song_set.count() : returns the number of songs inside album1
+
+path("path" , view, name="something") : this name = something is used to reference this
+path so that when you go to this path you don't have to reference it and make it 
+a hardcoded url and then 
+url 'something' integer : where something is the url that is defined in the urls
+page  and integer is an object that you are passing through after the something url 
+which is gonna be passed through the detail html page
+
+app_name = 'music" : you should write this in your urls page for every app so that
+when you reference a url pattern it's correctly refrenced to the write pattern 
+
+when you have an app_name then you refrence a url pattern like this 
+music:something
+
+whenever you make migrations you need to restart server
+
+<form action={%url 'music:favorite' album.id" method="post" ></form> :
+action is what url you are gonna send your data to or what url you are gonna triger 
+when submitting this form 
+method is what you are gonna do with this data either post it or get it 
+
+{%csrf_token%} : this takes care of all the measures reqired to protect against csrf attacks
+
+<input type="radio" id=song{{ forloop.counter }}></input> :
+this is gonna display the type of the input which is a radio button here that has the
+id of song1 and song2 and so on which is a unique identifier when accessing this input
+element again
+
+<label for = "something"> : defines a name for a radio button and other elements
+something is the id of the element that we are gonna be labeling 
+
+value pararmter inside any html element assigns a value to this element
+
+we place the css and bootstrap elements in a folder named static inside your app 
+folder and then inside your Static folder you place a folder with the name of your app
+
+
+
+body{
+    background: white url("images/RE1LQPd_1920x1080.jpg");
+} : this is used in css to make the background to be the jpg file 
+
+
+{% static %} : this is how you allow your static files to be included inside an 
+html file and this can't be used inside html or css files cause those files are only 
+static and can't have operations inside them
+
+
+<link rel = "stylesheet" type="text/css" href="{%static 'music/style.css' %}" /> :
+and then you include a specific file using this line where href is the path of your 
+style sheet file
+in the href by having this {%%} sign that means that the static folder is dynamic and 
+not static which makes it easier when adding files 
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+this is gonna include bootstrap in your project from the internet without having to downlaod
+everything on your pc 
+
+
+cool thing about bootstrap is that it comes with all the functionality ready for work 
+
+<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>:
+some fonts from google
+
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>:
+allow for the scripts of the views to be included 
+
+DRY principle : means Don't Repeat Yourself principle
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>:
+and this is jquery 
+
+<button type = "button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+</button> : this allows you to have a menu button to view your bar items whenever you 
+collapse your view 
+
+
+from django.utils import timezone
+timezone.now() : this is used to output the current timing in data and time format
+
+when you change the __str__(self) function of a model you have to restart your python 
+shell in order for changes to take effect
+
+c = q.choice_set.filter(choice_text__startswith ='just')
+c.delete() 
+this will get all the choice from q that starts with the word just and then link it with 
+the variable c and then it deletes it 
+
+the admin page of a website should be only accessed only by site managers
+
+return HttpResponse("you are %s"  %question_id): this will plugin this variable in the 
+place of the %s
+
+the request paramter is always passed in the methods inside views
+
+each response from a view should either return an object or a 404 message
+
+pass : in python is written to ignore something 
+
+question = get_object_or_404(Questions,pk=question_id) : this is gonna get the 
+object Question with the id of question_id and if it doesn't exist then it's gonna return
+a 404 error and to import it you do 
+from django.shortcuts import get_object_or_404 
+6:44
+
+
+Questions.objects.order_by('-attribute')[:5] : this is gonna show the first 5 objects 
+and then sort them by the attribute you set like value or date etc.. 
+and the minus sign before the attribute to signify reverse order 
+
+list comprenhension is done by putting an expression before a for loop which is gonna 
+be added to the list 
+as in the following 
+[i for i in range(10)]
+and this is insted of the old traditional this 
+for i in range(10)
+	list.add(i)
+
+join : is a method that joins stuff together by something specific
+example: 
+'.'.joing[list] : is gonna joing all the elements of a list by a dot 
+
+
+app_name = 'something' : this is called namespacing urls which is done to differentiate
+between urls with the same name in different apps
+
+and then you have to change url refrences from this 
+url 'detail' someVariable 
+url 'poll/detail' somevariable
+
+id attribute is used to refrence elements within the project meanwhile name element is 
+used by the request to a server to identify a specific server element for requesting
+it
+
+the for element in html is used together with label to specify which form 
+element it's assinged to
+
+the value attribute in the input elements is used to identify the default value of the 
+input element before any user input
+
+forloop.counter is a counter that starts at 1 which means that every time to you pass
+by this line you are gonna increase the counter
+
+
+return HttpResponseRediret(reverse('polls:results', args=(question.id,))):
+this is used to deal with data that is submitted from a form using post and it 
+prevents the data from being posted twice if the user hits the back button 
+reverse function helps in avoiding to write the literal url and replaces that with 
+a dynamic one which is polls:results and pases the variable that is assoiciated with 
+this url which is question.id in this case
+
+
+question.choice_set.get(pk=request.POST['choice'] : this request.POST method is gonna 
+go to the form data that is submitted by the user and then returns this data and equal
+it to the key and then the get method will get the selected choice frrom the questions
+and post is basically a dictionary and by selecting choice you will return the value of 
+the choice key 
+where POST is a dictionary that is recieved by the website and it has couple of 
+keys and one of them is choice
+
+after posting data you should alaways return a response redirect so that you avoid 
+data resubmittion
+
+{{something|pluralize}} : this is gonna make some word a plural if it's more than 
+one 
+
+generic views : are something very abstracted to make views easier to create
+
+class IndexView(generic.ListView):
+    template_name = 'poll/index.html'
+    context_object_name = 'latest_question_list'
+
+    def get_queryset(self):
+        return Questions.objects.order_by('-pub_date')[:5]
+: this is an example of a generic view which uses the template poll/index.html and then 
+passes an object called latest_question_list each variable name has to be the same in 
+order for the generic view to identify it 
+
+class DetailView(generic.DetailView):
+    model = Questions
+    template_name = 'poll/detail.html'
+:another generic view that has it's model as Questions and it uses detail.html as a
+template
+
+ListView : is an abstracted view that handles displaying a list of objects 
+
+DetailView : is an abstracted view that handles displaying the details of a list
+
+both of the above views expect the value coming from the url to be called pk 
+that's why we changed this <int:question_id> to this <url/pk> 
+
+context_object_name : is something that is generated automatically for both list and 
+detail view so if you have a model that is named question 
+it's passed automatically to the detail view with context_object_name as question 
+and to list view as question_list 
+so in here we wanted to override that cause our list of questions is latest_question_list
+so we had to overide it in the index View by doing the following 
+context_object_name = latest_question_list
+
+context_object_name is the name of the variable in the html file that you are gonna pass
+the data to 
+
+tdd : test driven development
+
+every time you wanna test something make a class for that test and make the name long 
+and specific and an example would be 
+class something(TestCase): where TestCase attribute is essential to any test class
+and to include the TestCase and that is done by importing through this commands
+from django.test import TestCase
+
+
+self.assertIs(code to test() , result) : when you run python manage.py test polls 
+this line is gonna be run if the test class matches the result that you put in the 
+arguments then there is gonna be no problem and your test is gonna be okay 
+if it doesn't evalueate to the same value then it's gonna crash when you do the test
+
+
+
+you can test your website from the shell using a client  which you should import 
+after importing the clinet 
+and first you need to import  setup_test_environment which allows you to have the client
+side of stuff by rendering webpages which is usually not available
+using 
+from django.test.utils import setup_test_environment 
+setup_test_environment() : to actually start the setup environment
+you can do 
+response = client.get('/') : and this should be equal to 404
+which means that there is nothing which makes sense cause we requested something that 
+doesn't exist
+next we should test something that exists on our website 
+from django.urls import reverse : which is gonna import the reverse method that allows
+for righting the path of the url in this form 'poll:index' instead of something like 
+this "http/127.0.0.1/800/polls" 
+resposne = client.get(reverse('polls:index'))
+resposne.status_code will return 200 which signifies that the site is running 
+and this test is experiencing the website as a user and not a developer 
+
+response.content: will return the content of the page
+
+Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5] :
+this is gonna order the questions in desecending order of the pub date cause of the - before
+pub_date and it's gonna only show 5 elements 
+pub_date__lte : __lte stands for less than or equal to 
+
+self.assertEqual(response.status_code, 200) : check wehter the two values are equal or not
+ :
+self.assertContains(response, "no polls available.") : check wether response contains
+no polls available or not 
+
+self.assertQuerysetEqual(response.context["latest_question_list"], []): evaluates to 
+true if the question list is empty 
+
+test casses have their own databases and don't use the ones in the models they use the 
+ones you create in the test file
+
+the default name of the function that returns anything in the generic views is 
+def get_queryset(self):
+
+url = reverse('poll:detail.html', args=(future_question.id,)) : this creates the url with 
+args = the id of the question future_question
+
+python manage.py test polls  : is how you test an app named polls
+
+
+if you can't test a piece of code it should be refactored or removed
+
+li a {
+	color: green;
+} : turns any link on the website green
+
+in order to create the images directory you put it under poll/static/poll/images/the_image
+body {
+    background: white url("images/maxresdefault.jpg") no-repeat;
+}: to set the image you put in your background
+and this changes any body tag for the website to this background
+
+relative path is the one that is within the same environment you are working in and not
+the absloute path
+
+python manage.py startproject porject name to start a djagno project
+
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates') : this will be in the settings python
+file under base_dir and it's gonna detect where your templates files are 
+in this case it's located in a folder named templates
+and this will join the base path with the templates folder
+and then you add the name of the folder which is templates in this case to the
+templates array under the key named DIRS "and maybe it will be added by default"
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) : this helps locating your 
+static files like html , css and bootstrap files and you should add it under 
+STATIC_URL
+
+<nav class="container"></nav> this allows you to have a navigation bar on the top of your
+website and the class container allows you to contain the conten of the navbar which 
+make it easier to manage and manipulate , you can make the container wider and narrower
+and so everyting inside of it
+
+
+href="/" : means that the link is your home directory 
+
+flexbox allows you to divide the screen equally among screen elements and components
+
+<div class="row"> then everything inside that div will be in a row
+
+<div class="col s4"> this changes the size of the item in the column
+
+<i> is an icon element
+
+<i class="material-icons medium icon-demo">camera </i>: this will get you an already made icon from 
+materilize 
+whatever you wright between those attributes it's gonna be the icon you get
+in this example you will get the camera icon
+
+
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> :
+in order for icons to appear from materialize
+
+
+{% extens 'anotherpage.html' %} is gonna allow you to get a new webpage in a new page
+
+{% block content %}
+ any html element
+{% endblock content %} : this will allow for a new block for an html element
+and it blocks the content from being inherited by another html page
+
+
+placeholder attribute in input shows what text is gonna be shown before inputting anything
+
+you need to add {% csrf_token %} in order for forms to be submitted succefully inside the
+form
+
+{{ context | title }} will handle the captilization for you 
+
+search = request.POST.get(something) : POST is a dictionary with some keys, one of those
+key is something , when you get something you get the value coressponding to that key 
+
+
+hello = "something{}" this {} is gonna be dynamically generated
+hello.format(nice)) is gonna actually put nice instead of {}
+
+import requests in order to be able to do this 
+response = requests.get('url')
+
+from requests.compat import quote_plus : this allows you to add + signs between your
+spaced request
+quote_plus(search) : will handle all search string spaces
+
+soup = BeautifulSoup(data, features='html.parser') : this will create a beautiful soup 
+object that will parse all the data 
+
+post_titles = soup.find_all('a' , {'class': 'result-title'}) : this will find all 
+a elements that has their class as resut-title
+
+python manage.py flush : clears all the database but you have to 
+
+python manage.py migrate --run-syncdb : syncs your data in case of any errors
+
+from scrapy.selector import Selector
+Selector(text=body).css() : this allow you to change a text response into a body that
+you can crawl
+
+image = imageField(blank=true, null=true) : that's how you add an image attribute to 
+your model and
+then you go to your django settings file and add a MEDIA_URL = '/media'
+ and MEDIA ROOT = 'media' as examples
+to control where your files get uploaded
+and then you go to your urls main file of the app which is under settings of your django
+app
+and then add static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1} :
+in order for scrapy to scraper images
+
+you have to have images and images_urls in your item to be able download images and they
+have to have those names
+
+request.cb_kwargs['foo'] : to add additional items to pass through to another method
+28 secs time
+
+

@@ -1,0 +1,1025 @@
+input gets something from the user 
+list = ["hello" , "no"]
+print(list[0]) is the same as print(list[-1])
+print(list[1:]) prints the second element and all the elements after it 
+
+print(list[1:3]) is gonna print the second element and the third one but not the element 
+no 3 in the array 
+
+friends.extend(luck_numbers) : puts the list luck_numbers at the end of the friends list
+
+friends.append("element") : adds the element to the end of the friends list 
+
+friends.insert(1 , "kelly") : this adds the element kelly to index 1 in the array 
+
+from datetime import date 
+fromd datetime import datetime  : this wil import the dates and time 
+
+datetime.now() : returns the current time 
+
+datetime(datetime.now()) : extracts the time 
+
+datetime.now.strftime("the current year is: %Y") : will show the current year 
+%a : will return the weekday 
+%b : for month 
+%d : day of month 
+
+timedelta() : this will return a range of time 
+
+import calendar : imports the timing of the calendar
+
+calendar.TextCalendar(calendar.SUNDAY) : create a calendar that starts at sunday 
+
+in the open method "a" will append to the end of the file 
+
+path.exists("file path") : this will check the file at the entered path 
+
+path.isfile("file path") : will check if the item is a file or not 
+
+path.isdir("file path") : checks if the item is a directory or not 
+
+path.realpath("relative path") : this returns the absloute path of the file 
+
+copystack() : this allows you to copy the all the data about the file 	
+
+os.rename("old name" , "new name") : this renames the old file to the new file name 
+
+import urlib.request : to import the request function 
+
+urlib.request.urlopen("www.something.com") : this will open a url 	
+
+urlib.request.urlopen("something").getcode() : this will return the repsonse code from the server
+
+urlib.reuqest.urlopen("something").read() : this return a html response
+
+import json : imports the json library that allows you to read json responses 
+
+something = json.loads(data) : will load the json data in a variable 
+
+something['something'] : this will return the value with the name something 
+
+parser = HTMLParser() : this will parse the html of the page
+
+from html.parser import HTMLParser
+
+import xml.dom.minidom : this will import xml
+
+hello = xml.dom.minidom.parse("xml file"): will parse an xml file
+hello.nodeName = this will return the root name
+doc.firstChild.tagName = will return the tagName
+
+
+[^ ] : this equivalent to this \S cause the ^ is responsible of negating and then afterwards is the space 
+so we are searching for any character that isn't a space
+
+\^ : this backslash is included when you are trying to search for an ^ in the string 
+
+friends.remove("kelly") : removes the element kelly from the list 
+
+friends.clear() : removes all the elements from the list 
+
+friends.pop() : removes the last element from the list 
+
+friends.index("kelly") : checks if kelly is in the list or not and returns it's index
+
+friends.count("kelly") : tells how many times was kelly repeated in the list 
+
+list.sort() : sorts the list in ascending order 
+
+list.reverse() : reverses the whole list 
+
+friendsing = friends.copy() : copies all the content of the list friends and puts it in 
+friendsing 
+
+friends = () : those braces are how you create a tuple
+
+tuples are immutable which means they can't be changed once set by adding or removing 
+elements from them 
+
+friends[0] : gets you the first element of a tupple 
+
+friends [(4,5) , (5,6)] : a list of tuples 
+
+def say_hi(name):
+    print(name)
+    return name 
+this is how you define a fucntion by using the key word def and then the funciton name 
+and the paramter name is the information that you pass to the fucntion 
+and the return operator gives back the value of name
+you can't put anything after the return statement in the function 
+
+
+and,or,not,!= : are the logical gates used in python
+
+if booolean or,and boolean:
+	whatever inside the if
+elif boolean:
+	executes whatever inside the elif
+else:
+	whatever inside the else
+
+monthConversions = { 
+	"Jan":"January",
+	"feb":"february"
+}
+this is how you define a dictionary 
+
+monthConversions["Jan"] or monthConversions.get("Jan")
+ return the month January which is done by putting a key inside
+the the name of the dictionary 
+
+i=1
+while i<10:
+	do something
+	i+=1
+this is how a while loop is created in python 
+
+for index in range(3,10):
+	print(index)
+this is the for loop and it prints from 3 to 9
+
+len(list) : gives you the length of the list 
+
+2**3 is 2 power 3 
+
+to write a comment use # and then the comment 
+or ''' the comment you want ''' 
+
+try:
+    number = int(input("enter a number "))
+    print(number)
+except ValueError as err:
+    print(err)
+except ZeroDivisionError:
+    print("bitch what")
+this is the try except code block which outputs a number if you input a number 
+and outputs ValueErrror if you don't enter a number and outputs bitch what if you 
+devide by zero
+
+reading = open ("file name" , "r" , encoding="utf8")
+reading.close
+file name : if it exists in the same folder of the project and if it doesn't it's gonna
+create a new file in the project directory if you change to writing mode 
+r: is for reading 
+r+ : reading and writing 
+w : overwrites everything in the existing file 
+a : is for appending only without changing the content of the file 
+you should always close your file after opening it 
+its better to specify the encoding or you get an error
+
+reading.readable() : returns a boolean to check if the file is readable or not 
+you should do this before working on a file and in the open method the mode of opening
+the file should be r 
+
+reading.read() : returns everything in the file 
+
+reading.readline() : returns only a line 
+
+reading.readlines() : returns a list of lines
+
+for line in readinglines():
+	do something :
+if you want to edit something in the file 
+
+
+import something 
+something.what's inside 
+this allows you to use functions from different files and those files are called modules 
+you can find a lot of modules at https://docs.python.org
+
+pip pip installs packages
+pip install "the package name" : when you type this command in the cmd it will install
+modules
+and it's gonna be installed inside the lib folder inside site-packages folder 
+which is in the external libraries folder in python
+
+pip uninstall module-name to uninstall a module
+
+class student:
+	def __init__(self, name, major, gpa):
+		self.name = name
+		self.major = major
+		self.gpa = gpa
+
+
+split('/') : will seperate elements using a splitting sign
+
+
+
+input 2 values seperated by a space 
+string = 5 6
+n ,h= string.split()
+
+max(a,b) : gets out the bigger of two numbers
+
+list(map(int, s)) : convert list s into int 
+
+re.findall("char",string): finds all the occurences of a substring in a string 
+
+m.remove(something) : removes it from list m
+
+from itertools import islice : import islice for allowing to skip multiple iterations in 
+a loop
+z = iter([6, 2, 3, 4, 5, 6, 7, 8]) : changes a list into iteratble 
+for i in z : will iterate through z where i will be each indvidual element of the array
+like 6,2,3 etc...
+list(islice(z, i)) : will skip iterations in the loop
+
+del list[1:2] : deletes those elements from a list
+
+set(list) : will remove duplicates for you
+
+Fraction(something) : allows you to get a fraction in this / form
+
+trunc() : is a function from math that allows you to control precesion
+
+
+% : modulus is used to find the remainder of the division 
+in the modulus the positive and negative aren't the same 
+modoulus is expensive so try to avoid it 
+neagative number % n = negative number
+
+intermediate overflow when at a certain stage of the operation the number overflows
+
+the combination is the mere product of the items
+for example how many styles in 2 shoes and two shirt then it's 2*2 = 4
+
+factorial n /n gets you the number of permutations without repetetion 
+
+listing = [0]*a : initializes a list with a elements that are zero
+
+[abs(x - b[i]) for x in b] : this creates a list where every element is subtracted by b[i] and the value of
+the absloute is replaced
+
+str(list)[1:-1] : will print a list without the [] 
+
+
+b[0:3] = sorted(b[0:3]) : partial sorting of a list
+
+
+machine language versus natural languague : the first is the one the machine can understand , the second one is 
+the one that human beings can understand
+
+source code : are instructions that are written for a pc in a high level programming language
+
+compilation and interpretation : are two ways of translating a high level programming language into an IL 
+
+Compilation : works by translating the whole code at once into machine code like exe, it uses a compiler
+which produces assembly code and then this assembly code is read by a specific assembler architecture that 
+works for this kind of assembly code , like exe is for windows , pkg for linux and so on  
+here we have  architecture-specific machine language after the process is done
+
+interpretation : is the source code and it needs an interpreter that will change those commnads in the source code
+to the machine's understandble assembly code
+here we have source code after the process is done 
+and every time you run the program you need to translate the source code using the interpreter in order to 
+execute the code 
+
+scripting language : is historically the name of interpretted languages like python , and the source code of 
+a scripting language is called script
+
+PSF : python software foundation which is lead by guido himself and all adjustments to the language should 
+follow the PSF's rules
+
+cython : is a python to c translator which allows python scripts to be way faster , this luckily due to the 
+fact that guido fist wrote python in C
+
+jython : is like cython but for java and it only works with python 2
+
+pypy : like cpython but faster becuase it's written in RPYTHON which allows for faster execution
+
+modules are the name of the add ons in python that inlcudes functions like scrapy 
+
+keyword arguments : are words when placed inside parantheses and give a value ouptus a specific action
+
+keyword sep : it's a keyword argument for print which allows for the speration of couple of paramters in the 
+print clause 
+
+print("hello"*2) : prints out hellohello
+
+litearls like numbers but not letters
+
+literals have types like int , double and so on , the type of the litearal decides how it's gonna be stored in 
+the computer memory 
+
+you can write numbers like this 11_111 or like this 11111 in python 
+
+number preceded by zero-o like this 0o123 is an octal representation of the number 
+
+numbers preceded by zero-x like this 0x1h2 is a hexadecimal representation of the number
+
+if you change this 4 to this 4.0 python reads the first as integer and the second as float
+
+3e8 in python is the same 3 times 10 power 8  
+
+the result of division is always a float
+
+// is called integer divisional operator where if two integers were divided they would result in an integer
+integral division is not accurate when it comes to decimals 
+it would always round the decimal to .0
+and it would always FLOOR  the result
+
+round(number , 2) : will round the second decimal place of a number
+
+print("hello"*2) : will prent hello two times as * is used for replication
+
+range(2,5,3) : the third element is the step
+
+import time 
+time.sleep(1) : this will allow for 1 second of pausing between commands 
+
+syntactic candy : are commands that doesn't imporve the languages expressive power but makes the developers work
+easier
+
+or is a disjunction 
+
+and is a conjunction
+
+& | are bitwise operations where they will do logical operations to each bit and not to the whole variable 
+
+bit mask : is a series of bits that the function of it is check the values of the another varaibles with some bits
+
+you set your bit by | with the bit mask by 1 
+
+you reset it by by &ing it with 0 
+
+you negate it by ^ing by 1
+
+>> shifting the number to the right is like dividing by two 
+
+<< shifting the number to the left is like multiplying by two 
+
+>> 1 : corresponds to shifting to the right by 1
+
+<< 2 : corresponds to shifting to the left by 2
+
+a method belongs to the class where the function belongs to the whole code 
+
+a, b = 1, 2 : this will assing the value 1 to a and value 2 to b
+
+the bubble sorting algorithm is called like that cause the large elements look like as if  they were floating to 
+the top of the list
+
+list.reverse : allows for switching elements to their adjacent values like the following
+[1,2,3,4] = [4,3,2,1]
+
+the name of the list refers to the memory location it was stored in which means that any time you update the 
+list , any variable that is equal to that list is gonna change to
+
+list[:] : this is a list slice and if assigned to a variable like this list1 = list[:] then list1 is a slice now
+which means it has copied the name of the list and not it's location in the memory 
+
+list[4:1] : will output an empty list 
+
+list[:4] : will automatically start from element 0
+
+list[1:] : will automatically end at the last element of the list 
+
+del list : will delete the list itself and not the content mean while del list[:] will delete the whole list but
+leave an empty list 
+
+element IN list : this checks if an element is in an array or not and produces true or false 
+
+element NOT IN list : this returns true if the element isnot in the list 
+
+for i in mylist[1:] : this will start the looping from the first element of the list 
+
+list comprenhension is a syntax used for filling massive lists and not described statically 
+squares = [x**2 for x in range(10] will ouput a list like this [0,1,4,.....] etc of powers of 2
+
+[x for x in squares if x % 2 != 0 ] : is an example of list comprenhension that outputs x from squares list
+if x is divisible by 2
+
+row = [EMPTY for i in range(8)] : will output a list of 8 empties 
+
+board = [[EMPTY for i in range(8)] for j in range(8)] : creates a two dimensional array where ecach element of the 
+board list is list that has the word empty 8 times
+
+hello = [[[for x in ragne(20)] for y in range(20])] for z in range(30)]
+
+for element in list:
+    if conditional:
+        expression
+is changed to this [expression for element in list if conditional] in list comprenhension
+
+decomposition is where you divide a large code into functions to make it easier to read and navigate through
+
+functions come from either python itself or modules or code you have written 
+
+in python you can't name the function with the same name as the variable , it will cause a conflict and the 
+function won't work properly
+
+function invocation : is another name for fucntion calling 
+
+shadowing is the phenomenon where you name the a varaible the same as the paramter of a function 
+
+positional paramter passing : is when you are passing the first argument to the first place and the second argument
+to the second place and so on and those are called positional arguments 
+
+keyword argument passing : is when you pass an argument not by it's position but by it's name 
+
+def name(hello):
+	print(hello)
+name(hello="something") : this is called keyword argument passing which means that you don't pass the argument
+by it's position but by it's name 
+
+you can mix both positional and keyword argument but you always have to place the positional before the keyword
+arguments
+
+def function(hello,no="smith") : this function is having the no paramter defaulting as smith for no 
+so if you call the function like this function("yes") it will output yes smith 
+
+in function definition you have to pass the default paramters at the end like this 
+def hello(a,b,c=2):
+
+if return is used in a function with a paramter following it then it terminates the function execution without
+reaching to the last line of the function 
+
+None : a keyword that is used to express the absence of any useful value , it's only used when you are comparing
+it to something or when you are assigning it to a variable
+
+if a function is assigned to return some expression it will default to returning none 
+
+type(value) : returns the type of a specific value 
+
+a variable exisiting outside of function propagates inside a function body 
+
+
+def myFunction(): 
+	global var 
+	var =2 
+this allows a function to modify a variable outside it with the name of var , so if a variable named var = 1 
+was defined before this method then it's value would change to 2 when it passes by the definition of this 
+function
+
+if you pass a list as a paramter to a function then any modification inside the function will reflect outside the
+function cause as we said before list point to places in the memory and not to the content of the lists only 
+
+sequence : is any data that could be iterated through using a for loop
+
+mutability : is the allowness for changibility of a python data during program execution 
+mutable data could be updated at any time 
+immutable data can't
+
+in situ operation : is any operation that could be done without interrupting the system and the operation could
+happen at any time
+
+tuple : it's a sequence that is immutable and cann't be modified after creation 
+it could be created like this (1,3,5) or like this 1,3,5
+in case of one element tuple it has to be like this (1,) to distinguish from a variable
+same way of acess between tuple and list
+tuple + tuple : will append two tuples 
+tuple * number : will append a number of tuples together
+
+dict.keys() : gets out the keys of the dictionary 
+if you want to loop inside a dict you can do 
+for key in dict.keys():
+
+sorted(dict.keys()) : will get out the sorted keys of the dictionary 
+
+dict.items() : returns a list of tuples where each tuple is a key ,value pair
+
+dict['new_key'] = "something" : this allows you to create a new key with a new value something in it
+
+dict.update : is another way of adding key ,value pairs to the dictionary
+
+del dict['key'] : this will delete an item from the dictionary 
+
+dict.popitem() : will remove that last item in the dictionary 
+
+in order for you to add more elements to a dictionary key you have to add a tuple 
+like this dict['hello'] += tupleItem,
+
+you can convert a sequence into a tuple using this tuple() 
+tuple(list) : will convert a list into a tuple
+
+you can assign values to varaibles like this 
+tup = 1,3,5
+a,b,c = tup
+
+tup.count(2) : will ouputs how many recourences of 2 happened in the tuple
+
+for something in list1,list2:
+	print(something)
+this will go through the elements of list1 first and then go through elements of list 2 
+
+dict(tuple): will change a tuple or a list in a dictionary 
+
+module supplier : is someone who creates the modules 
+
+module user : is the user of the module
+
+if you are using fucntions from python modules you can write import directly 
+
+namespace : is the name that includes some entities inside of it 
+like a module 
+math.pi : here the namespace is the math module
+
+if you import a function like this
+from math import sin
+and then do this 
+def sin():
+	Print("ehllo")
+this new definition of sin will override the previous imported def on sin
+
+aliasing : is when you import some entity from a module and then rename it so your usage of it becomes easier
+example
+from math import pi as hello 
+now you can print hello and it will return the value of pi
+and it could be done like this 
+from math import pi as hello , sin as no
+
+import math 
+print(dir(math))
+the function dir will allow you to display all the names of the functions inside the math module
+
+seed : is the initial value that the algorithm has to work on to produce a new random value
+
+from random import random 
+random() : function that will by default produce a random value with a range from 0 to 1
+randrange() : will generate number with a range that you specify 
+
+choice(sequence) : chooses one element from any type of sequence and returns it 
+
+sample(sequence , elements_to_choose=2) : this returns a list of numbers that has 2 elements those 2 numbers are 
+random
+
+from platform import platform,machine,processor,system,version
+print(platform()) : shows you what OS your code is running on 
+print(machine()) : shows you the physical machine that your code is running on
+print(processor()) : shows you what processor your code is using 
+print(system()) : shows you the generic system you are running on 
+print(version()) : shows you the version of your OS
+
+package : is a group of modules
+
+#!/usr/bin/env python3 : this line is called the shabang it's at the beggining of modules to tell systems like 
+unix what interpreter is used to the run the text inside the module
+
+" this is a module" : this is called a doc-string that allows the module reader to figure out what it does
+
+from sys import path
+path.append("the absloute or relative path of the folder containing the thing you want to import") 
+this is how you import modules from different directories 
+path is simply a list of directory paths that the import command look through when importing a module 
+
+__init.py__ : is an initialization python file that is empty that python reuqires in order to recognize a package
+
+ZeroDivisionError : is an exception type that is a result of division by zero
+
+IndexError : happens when going through a list doesn't work
+
+if you do this 
+try:
+	something
+except:
+	somthing 
+cause you didn't include a specific error the except will catch any kind of error
+if you have multiple except then they are searched by the order you coded them and you have to put the default 
+except(the one without an error) at the end of the excepts so it will be the last resort if none of the previous
+excepts work
+you can do except(err1,err2) to handle two errors the same way 
+
+heiracy works as follow
+zerodevision error is an arithmentic error
+key error and index error are both lookup errors
+and those are exceptions 
+and there is system exit and keyboard interrupt
+
+raise ZeroDivisionError : this will allow you to raise the exception as if it was raised in a normal way 
+
+assert expression : if the expression is evaluated to True , nothing will happen but if it evaluates to false
+assertion error will result 
+
+multiline = '''line1
+line2''' : the ''' sign allows you to store multiple lines of strings 
+
++= and *= are applicable to strings
+
+ord(character) : returns the asci value of the character , the function is an abbreaviation of ordinal
+
+chr(ascii number) : changes the number to a letter value 
+
+min(string) : will get the smallest letter in the string
+
+string.index("letter") : will return the index of that letter in the string 
+
+list('string') : will change a string into a list
+
+string.capitalize(): will make the first letter in the string capital and the method returns a string and doesn't
+change the original string 
+
+string.center(number,"letterOfSpacing") : creates a width with the length of the specified number with the specified letter
+and then centers the string in the middle of it 
+
+string.endswith("letter") : checks if the string ends with the letter speciefied or not 
+
+string.find(letter, number_of_search_start) : same as index but returns -1 if the letter doesn't exist and
+ works with strings only and starts from number of search 
+you can do this to find all occurences of a letter
+while fnd != -1:
+    print(fnd)
+    fnd = txt.find('the', fnd + 1)
+
+string.isalnum() : if a string only consists of letters or numbers it returns true
+
+string.isalpha() : checks if only letters exist
+
+string.isdigits() : checks if the string is digits only
+
+string.isspace() : chekcs if the string is a spcace or not 
+
+string.startswith() : checks if a string starts with something 
+
+string.swapcase() : opposes the case of the letter in a string
+
+list[string,string]
+sorted(list) : will sort them into alphabetical order
+
+instantiation : is the process of object creation cause you are creating an object(instance) of the class
+
+LIFO : Last In First Out which is a representation of the stack behaviour
+
+def __init__(self):is the instanstiation of the class that defines the behaviour of every object at the beginig when
+it's first created
+
+instead of creating global varaibles in the class you can access the class variables from inside functions by using
+self.classVariable
+
+if you objects has any variable or "proprties" then you declare them in the __init__ constructor method so that 
+every object will inherit those proprties
+
+if you type __ before any class variable like this __variable it becomes inaccessible to the user of the class
+and it becomes private
+
+self keyword is used to get an instance of the class and pass the classes variables and allow you to refrence 
+to the object generated from that class
+
+you can make a sub class inherit a super class by passing the super class as an argument to the sub class like this
+class class(super class):
+    def __init__(self):
+        super class.__init__(self) : this is an important constructor that will allow you to inherit super class's private variables
+        self.__sum = 0
+it's recommended to initialize the super classes constructor before any other declarations 
+
+if you prefix a method with __ then this method is hidden and can be only called from inside the function
+
+type allows you to find the name of the object's class 
+
+__name__ : is a predefined method for classes that returns the class's name
+
+__bases__ : returns a tuple of the super classes of the current class "only used with classes"
+
+introspection : checking the type and proprties of objects at runtime
+
+reflecton : editing functions and proprties at runtime
+
+isinstance(variable , type"like int or something") : returns true if the variable is the type
+
+setattr(object, propertyname , new value) : changes the an object's property value into new value
+
+in order for you to define a method in a sub class that is inherting the super class's method functionality you have
+to do it like this 
+def method(self):
+	superclass.method(self)
+
+in order to return a value that is hidden inside a class you do it like this :
+def get_value(self):
+	return value
+
+if you are gonna pass a varaible or a porperty to the class you need to add it in the initialaization 
+like this 
+class hello:
+	def __init__(self,property):
+		self.property = property
+
+instance variable : are variables that describe each instance(object) that is created related to the main class
+
+you can create new object instance varaibles like this object.new_property =3
+this means that only this object will have this property and it will not be shared through all the class objects
+
+object.__dict__ : returns all the values and properties of the object
+
+class varaibles : are variables that exist even if there are no objects created the variable is stored inside the 
+class and each object of this class will have a copy of this variable
+
+hasattr : this is an abbreviation of has attribute and it's a function that checks for the presence of a property
+inside a class or an object and it's used like this 
+hasattr(example object , property)
+
+if a class has a variable then every object has this variable
+
+inside any class you can define the following method :
+def__str__():
+	print('hello') 
+this method is the default method that is called when you print the object of this class 
+and in this case it will return hello cause that's what's defined inside the __str__ method
+
+issubclass(class one,class two) : this returns true if class one is a sub class of class twoaa
+
+super().__init__() : this allows for the inheritance of the super class proprties without the need for the self
+or the super class name 
+just make sure to include the super class name in the subclass's arguments
+
+polymorphism : is the idea of re identifying the super class's behaviour in the sub classes to make a new behaviour
+
+virtual method : a method that can be overidden in any of the sub class's changing the predefined behaviour of the
+super class
+
+you do super().__init__() in case you want to inherit the proprties of the super class only 
+
+abstract method : is a method that's not fully implemented as it's gonna be instantiated in the sub classes 
+
+composition is when an object inherits the methods or prorties of another class and it's very similar to 
+class inheritance
+
+single inheritance is always prefered and more safe than multiple inheritance which is more risky 
+
+SRP : Single Responsability Principle states that every class or module should be responsible for one part of 
+functionality 
+
+you can place the else statement after the try block which is gonna be executed if and only if the try block
+is fully executed
+
+finally : this is a statement that is placed at the end of the try except block and it's always executed even if 
+there is an exception that has been raised
+
+except Exception as e : Exception here is the object representing the exceptions object and aliasing it as an e
+letter
+
+the exception class has an argument called args which has the excpetions that is passed to it as a tuple 
+
+you can define your own excpetion which iherits from the base exception class
+
+class.__init__(message) : this is when you you want class to inehrit the proprties of another class and it's 
+defined inside the __init__ function and you can pass the initialization class a paramter
+
+generator : is a function that returns a series of values like a list and is usually invoked more than once
+
+the iterator object : is when an object confomrs with the for and in rules , it follows two mehtods 
+__iter__ which returns an iterable objects and that allows the iteration process to start 
+and the __next__ which allows the the iteration object to return the next part of the iteration object
+
+composing is when you are having a class inside the definition of anohter class
+
+yield : the main difference between yield and return is that return terminates whatever code that it was in 
+meanwhile yield will save the current varaible state untill it's invoked the next time 
+
+list comprehension allows you to directly create a list out of a for loop
+ 
+expression 1 if condition 1 else expression 2 : is another of defining if and it's output is a value
+
+(x for x in something) : this will return a generator and if you replace the paranthes with [] it will be a list
+
+lambda function : is a function without a name that can be called anonmously like this 
+lambda arguments : expression 
+for example 
+two = lamba : 2 this is a function with no arguments that will be called like this two()
+it's only used when it's need for one time applications the same way is the list comprehension
+
+map(function , list) : applies any function on each element of the list
+
+filter(filterinng function , list) : is a function that uses a filtering function to filter a list and it's prefered
+that the filtering function will be a lambda function
+
+closure : is the method of saving the state of variables eventhough there scope is terminated by returning an 
+inside function (an inside function is a function in another function) .
+
+"c:/dir/file" : this the way that paths for files are written in python 
+
+streams or handles : are the way that programming languages access files
+
+to bind a stream with a file or "apply" the changes to the file you need to open the file in python 
+and to end that connection between python and the file you need to close the file
+
+update mode : it's a stream mode where it allows you to read and write in the stream
+
+adequate class : is a class that gets created when you create the object and is terminated when you close the object
+like a file object
+
+\r\n : this marks the end of the line in windows
+
+portable program : is a program that can be executed on different operating system 
+
+the default mode for opening files is read 
+
+the method open returns a stream object 
+
+append mode allows for adding text to the end of the file and if the file doesn't exist it will add create a file
+and append to it 
+
+r+ mode is the read and update mode in the open() function
+
+three main streams that python uses are 
+sys.stdin: a stream opened and responsible for keyboard input and it's going to be read by the system 
+sys.stdout : a stream that is writable and it's responsible for showing text on screen
+sys.stderr : a stream responsible for handling errors
+
+strerror(error number) : is a function that takes an error number and returns a string explaining the reason of the
+error
+
+read(number of characters): is the number of characters that the read function is gonna read from the stream
+and this function returns a string representing the characters read 
+if you repeat read(1) it will not the print the next character every repetion as when you execute the read() function
+the pointer is moved by the number of character you specified so when you start the fucntion again the pointer
+is where you left it last time
+be cautious when applying read() only without the number of character cause that will copy the whole text file 
+and it may not be safe for your memory 
+
+readline(number of bytes) : reads the text as lines and not characters as read with a maxiumum numbr of bytes in
+total
+
+readlines() : invoked without arguments reads all the file content and then tries to return a list of strings 
+
+the open function is an iterable function that reads files line by line where the __next__ function will the 
+return the next line of the file 
+
+bytearray : is simply an array of bytes storing the bytes of amorphious files that we don't know how to deal with
+data = bytearray(100) : this will create  a byte array of 100 bytes and fill all of them with zeroes
+byte array contents are integers from 0 to 250 and if you input any other value it will output a type error
+
+binary files have the .bin extension at the end 
+
+this is how you open a binary file open("file.bin", wb or rb) : where wb means write binary and rb means read binary
+
+readinto(list) : this will put the contents of a binary file into a previously created list
+
+data = bytearray(file.read()) : it's allowed to fille a bytearray with a previously created file
+
+in order to copy content you need to have a buffer to copy the content and then write it into the destination 
+file 
+
+exit(errno) : signals the completion of the task at hand and passing an error number will make the os show the 
+error associated with that number and if not passed the default value is zero
+
+you can sort by key using sorted like this sorted(dic.items() , key=lambda key:key[1]) and this will sort a dictionry 
+bsed on the vlaue
+
+regular expressions "regex" : is a language for matching strings of text wether it's matching it with a search query
+or an online search , and it allows you to manipulate your input strings in order for you to use regex you need
+to import re and then do 
+re.findall() to see if a slice or a whole of a string matches a regular expression
+or 
+re.search("string you are searching for" , string you are searching in) to see if your search exists and returns
+true or false
+
+regex syntax : 
+^ match the begging of a string line
+$ match the ending of a line
+. match any character
+/s match white space
+/S match any non white space character
+* repeat a character
+[aeiou] : matching any character in the set 
+[^als] : matching any character that isn't in the list
+[a-b] : searching for a range of characters
+( : indicates start of string extraction
+) : indicates end of string extraction
+
+string.startswith(string) : this allows you to match a string that has a substring 'string' at the begginig 
+
+^x.*: : the ^ will search for any string and the . will match any character and * represent any number of characters 
+from zero to whatever number followed by :
+so it's searching for a string that starts with x and then followed by any "." number "*" of characters followed
+by a :
+
+^x-/S+: : this will search for anystring followed by any characters that are not white space(/s) that are
+repeated any number of characters (+) and then followed by a :
+
+[0-9]+ : find any number in range 0 to 9 that is repeated any number of times and returns a list of the matches
+
+greedy matching : in regex if the search string matches a substring and a full string it will retrun the full 
+string 
+
+^x-\S+: and ^x-\S+?: : the ? difference in the second regex will perform a non greedy search 
+
+re.find('^string(regexexpression)'): this will select an expression that has a specific string at the begging 
+and will apply the regex expression on the remaining string 
+example
+x = "from h@h"
+re.findall('^from (\S+@\S+)',x) : this h@h is gonna be the result cause i selected a string that is prefixed by 
+a from and then space
+
+re.findall('@/s+')
+
+port 80 is for http and port 443 is for https
+
+import socket 
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) : this is a socket object , this is a connection point
+to my pc but i have to connect it to something , the socket.SOCK_STREAM will connect my connection point to 
+an online stream 
+mysock.connect(('website.com',port_number)) : this has tuples of connections where you put the webiste in the
+first argument and the host port that you want to connect to for expample ('facebook.com',80) will connect to the
+http protocol of facebook.com
+this code will only establish a connection but won't get any data 
+
+cmd = "get http://data.pr4e.org/romeo.txt HTTP/1.0\n\n".encode() : this is a string command that is encoded
+with the encode() method in order for it to be sent as a command to the server 
+after any command you have to have two line empty for the server to respond to the command you you are doing
+ecode() : converts python unicode in python commands to utf8 so that the server understands it
+
+mysock.send(cmd) : this will send the command that we just encoded
+
+mysock.rev(512) : this will recieve 512 bytes 
+
+mysock.close() : this will close the connection 
+
+302 : is a response to a request that means redirecting to a different website
+
+content-Type : is one attribute of the header that tells the browser what type of data it's dealing with 
+it could be equal to palin/text or image/jpeg
+
+headers are the first to come in before the body of the response
+
+python strings are unicode 
+
+bytearray.decode() : the decode method assumes by default that the input bypte array is utf8 and it's job is to 
+convert bytes into unicode so that python dna wokrk wit it 
+
+most of the online servers use utf8
+
+import urllib, urllib.parse,urllib.error
+fhnad = urllib.request.urlopen('website.com) : this will return a file handle containing the website response
+reading = fhand.read() : will read the response and output the html response
+hello = BeautifulSoup(reading,'html.parser') : will allow you to parse the html response 
+hello('a') : this will allow you to get all the a tags from the html response
+
+bs4tag.get("attribute") : this allows you to get the value of an attribute from a tag
+
+bs4tag.contents : returns the value of the attribute
+
+bs4tag.get(tag.attrs) : returns a list of attributes of the tag
+
+wire format : is the format of the data that is gonna be transfered accross the internet infrastructure
+one of those wire formats is the xml and the other is Json
+
+serialization : is the process of transferring the data from a computer into a wire format and then 
+deserialization is the opposite
+
+XML : eXstensible Markup Language and it's a markup language cause it's using tags or the < and the > signs
+
+in xml this <email /> is equal to this <email></email>
+
+xml schema : is data exhcange schema thtat is an agreement before sending the data how the xml structure will 
+look like and it validates the xml data before being sent
+
+XSD : is an XML schema structure and it has 3 categories 
+xs:element which means this tag can't have children
+xs:sequence which means a sequence of tags 
+xs:complexType is a tag that has other tags inside
+
+PARSING XML : 
+import xml.etree.ElementTree as ET : this will import the xml parsing library and aliacing it as ET
+data = ''' <person>
+<name>Chuck</name>
+<name>bodi</name>
+</person>''' : this is an example xml string 
+tree = ET.fromstring(data) : this will parse the xml sample data and then you can do stuff like this
+print(tree.find('name').text) and this will return Chuck which is the text inside the tag
+print(tree.findall('person/name')) : this will return a list of the names under the tag person 
+
+
+JSON PARSING :
+import json
+data = ''' {
+"name" : "bodi",
+"phone" : "911"
+}'''
+json_parsing = json.loads(data) : this will transform json into a tree 
+print(json_parsing["name"]) : will print bodi , it's more like a dictionary 
+
+json objects get translated to python dictionaries which makes them very easy to deal with
+
+json could be a list or a dictionary 
+
+service oriented approach : is data as a service exchange through APIs that allows data exhcange between entities
+
+urllib.parse.urlencode({'something': input}) : this will change a normal search into a paramtrized search text,
+it will change the space into a + and the , into a % for example 
+you have to format the input into a dictionary  and will put the something key in the attributes of the url
+
+request.urlopen("website.com").getheaders() : allows you to extract the headers you need from the http response
+
+if you do string slicing and the end of the slicing is bigger than the actual strig itself it won't throw an error
+but will type your full string
+
+string.replace(old letter, new letter) : is a function that replaces all the instance of a letter in the string
+
+string.strip() : removes the white space from the beggining and the end of the string 
+
+quit() : stops the program completely 
+
+dictionary.get("key",0) : this method will return the dictionary key and it's value and will return zero if the key
+doesn't exist
+
+(a,b) = (4,7) : this will return a = 4 and b = 7 
+
+print(sorted([(v,k) for k,v in dictionary.items()])) : this will sort a list of tuples by value
+
+def __del__(self): this is a function the defines the destructor of the class to decide what happens when the 
+object is anailated
+
+schema : is the governing rules of a table 
+
+re.findall([a-z],string) : extracts only letters from the string
+records['Date'] = pandas.to_datetime(records['Date']) : this changes a series type to data and time 

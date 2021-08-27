@@ -1,0 +1,434 @@
+
+
+data science is the intersection of hacking skills , math and statistics knowledge and a lot of expertise
+
+those are the daily data scientist activities :
+1-Data exploration and Preparation 
+2= Data representation and Transformation 
+3- computing with data 
+4- data modeling
+5- data visualization and presentation 
+6- science about data science
+
+dynamic variable language : means that variables are auto assigned to their type 
+
+string = "hello {} this is {}".format('man','bodi) : this will place man in the first{} and bodi instead of {}
+
+import csv : allows the reading and writing of a csv file 
+
+import datetime : will allow you to store a data and time 
+import time
+
+datetime.timedelta(100) : this allows for creating a delta of 100 days which means 100 days earlier or later 
+
+now = datetime.date.day(): this creates a date time object with the current date
+
+map(function,iterable,iterable) : executes a function on one or more iterable for example :
+map(min , list1 , list2 ) : this will evaluate the smaller value out of the two lists 
+map returns an iterable
+
+[i*j for i in range(10) j for in range(10)] : this is a nested loop 
+
+numpy : allow for the changing of lists to arrays
+
+numpyArray.reshape(rows,columns) : will change a list into a two dimensional array of a number of rows and 
+a number of coumns
+
+numpy functions are mostly used for matrices purposes
+
+array[element>39] : this will choose all the array elements that are bigger than 30
+
+numpy.random.randint(0,10,(4,3)) : this will create a 10 element array that has 4 rows and three columns with
+random numbers ranging from 0 to 10
+
+zip(array1,array2) : this is used in a for loop to iterate over 2 arrays 
+
+pandas are lists that have indices that can be retrieved those indices are indexed by numbers and they are faster
+to index than python lists
+
+list = [1,3]
+pandas.Series(list) : will change this list into a panda 
+if the list has a none type the pandas will change it's underlying storage type to object
+
+nan : is short for Not a Number and it's different from None
+
+if you create a pands from a dictionary the keys of the pandas object will be the keys of the dictionary 
+ 
+hello = pandas.Series(list) 
+hello.index : this will return a list of the keys of the pandas object 
+
+pandas.Series([] , index[]) : this will explicitly define the indecies of the list inside the series object
+
+pandas_object.iloc[index] = s[index]: will return the value associated with that index which is a number
+
+pandas_object.loc[key] = s[key]: will return the object based on the key you passed
+
+if you don't pass a value to the loc method , loc is gonna create a new key and assign value to it 
+
+np.sum(array) : this is way faster than the regular for looping over elements and summing them , this is cause 
+numpy uses victorization 
+
+vectorization : is the process of applying processes in a parallel way which allows for faster execution 
+
+numpy has a lot of vectorized functions 
+
+numpy_array += 2 : this will increase each element of the array by 2
+
+numpy_array.append(elements) : will add elements to the numpy array 
+
+frames : are a type of pandas data type that has two dimensions and it's queired like this 
+frame.iloc(number_of_row)["name of column"] 
+
+data_frame = pandas.DataFrame([dcitonary1,dictionary2],index = ['row_name','row_name']): this will create a table
+where each key of the dictionary will be a column and the row name will be from the index list
+
+data_frame['key'] : is the way you would query a column from the data frame the key could be an index , a column 
+name or a row name
+
+data_frame.loc[] : this would a query a row from the data frame 
+
+df.loc[:,['name','cost']] : this would get all the row data in the name and cost columns and it's the safer method
+to query an intersection data between rows and columns 
+
+data_frame.drop('row_name') : this will delete a row from a table and delete the whole table content if the argument
+is left empty and it doesn't change the original data frame , it just returns a copy of the data frame after the 
+modification is executed
+mostly people copy the modified data frame into a new data frame in order to get what they want
+
+del data_frame['column_name'] : this will modify the original data frame and drop the column from it 
+
+data_frame['column_name'] = 'value' : this will create a new column and assign value to all it's rows 
+
+data_frame = read_csv('file.csv path', index_col = 0, skiprows = 1) : this will read a csv file into a frame 
+and will make the first colum or the index column to be the first column of the table instead of an auto indexed
+column, 
+skip rows will make start reading the table from the first row of the table instead of it being an auto incremented
+row which means that the first row of the table will be the column names 
+
+data_frame.columns : stores a list of all the column names 
+
+inplace = True : is an attribute value that if is True will allow for the value to be changed in the original 
+data frame and not a copy of it 
+
+boolean masking : is the process of overlaying a boolean array or data frame to the queried array or data frame
+to get the query that the user asked for 
+
+data_frame.where(data_frame['column name'] > 0) = df[df['column name']>0] : will use bit masking and return a data frame with the specified
+column name elements that are bigger than 0
+
+data_frame.dropna() : will remove all the nan elements from the data frame and if you specify a specific row 
+or column it will only drop the nan in those places 
+
+df[(df['column'] > 9) | df['another']>9] : this will create an oring between two conditions for more precise queries
+df[(df['column'] > 9) & df['another']>9] : and 
+you have to include the parentheses in order for the command to work 
+
+df['Name'][df['Cost']>3] : this returns names where the cost value is bigger than 3
+
+data_frame.index : will return a list of all the indecies of the rows 
+
+df.set_index('Column_name') : will make the column of choice to be the indexing column of the rows 
+
+df.reset_index() : will return the original numberd auto incremented index of the table rows 
+
+df.str.startswith('string') : allows for performing starts with on pandas
+
+df.head() : will return the first couple of elements from the data frame 
+
+df['column_name'].unique() : will return the distinct values inside the column 
+
+df.fillna(value) : will fill all the nan values with the specifies value 
+
+df.sort_index() : will sort the table according the index which is the first column of the data frame 
+
+df.set_index([]) : if you have a list inside the set index method it will create a composite key or multi level 
+querying 
+
+census_df[clean].max(1) : get the maximum out of each row
+
+when you want to get the max index sort the data frame
+
+df['column_name'] = True : creates a new column and inserts true values to all of the column 
+
+adf['column_name'] = pd.series({0:'helo',2:'nice'}) : this is goin to add the values helo and nice to the 
+column_name in row 0 and 2
+
+pandas.merge(first_data_frame,second_data_frame , how="outer or inner" ,left_on="column name", right_on="column_name
+, left_index=True , right_index=True) :
+this will join two data frames and it's going to be an outer join or inner join depending on the how attribute
+, left _index = True and right_index = True this will merge the values based on the dafault numbered index
+an outer join will combine the data of the two data frames , the inner join will produce data where the left and 
+right indecies of the data frames are equal .
+if how = left or right then it's gonna get out the part of the table that is only presesnt in the left or right part
+respictevly and this is done based on the keys that are used
+left_on , right_on attributes : they allow you to join the table based on a specific column that you specify
+if left_on , right_on were equal to lists like this , left_on=['hello','yes'] , this would merge the two data frames
+based on composite keys 
+
+
+df.rename(columns = {old_name: new_name}) : this will change the name of the column from the old name to the new name
+
+[df["something"]==something].index : will return a list with all the elements that satisfy the condition 
+
+method chaining : is when you use methods in sequence after each other 
+
+df.apply(function, axis=0 or 1): this method applies the function on a series of data , this series's index should
+be either the row index (axis=0) in case of rows , or the column index (axis=1) in case of column modification
+
+numpy.average(frame['something']) : this will clculate the average of something column using the numpy library
+
+data_frame.groupby() : will return a tuple consisting of the grouping criteria and the grouped data 
+
+data_frame.group().agg({'column_name': function}) : this method agg , will take a dictionary that has 
+a key of the column name you want to apply the function on and the value to be the function you want to apply 
+
+ratio scale : is a scale like height and weight where there could possible be an absence of the scale 
+like if the height is zero then that means there is no height .
+units are equal spaced , like the difference between 1m and 2m is the same as 3 and 4m 
+
+interval scale : is a scale like tempreature and compass direction where the zero doesn't indicate the abscene of 
+tempreature or direction but is a tempreature or a direction in itself .
+units are also equallly spaced 
+
+ordinal scale : is a scale where values aren't equal spaced like grades which are A+ and A
+
+nominal scale : is a categorial scale like category for a team is it a club team or a coutnry team 
+
+astype : changes the scale type 
+
+ordered = True : is an astype functino attribute that allows for logical measurments between scale values where 
+the first item in the scale is the least and the last item in the scale is the biggest 
+
+pandas_series.astype('category',categories=['1','2','3'],ordered=True) : this will order the data by category 
+where 1 is the lowest value of the category , 2 is the midle and 3 is the highest
+
+when we want to add data to the a column in a panda frame the number of elements of input data has to be equal
+to the number of rows in the column , otherwise a None should be placed in the place of the empty row 
+
+if two columns are merged with the same name then pandas will add _x and _y to the columns name to preseve the 
+info of the column 
+
+pd.merge(dataFrame1,dataFrame2,how="outer") : this will merge the data by adding the missing data from the second
+data frame into the first 
+
+idiomatic solution : is a solution that has both high readibility and high performance 
+
+pandorable : is like idiomatic but in pandas
+
+chain indexing : is when you have bracket to bracket code in panda and it's NOT a good practice to do so 
+
+if you want to use groupby through a funciton you gotta set the index of the table to be the column that you are 
+going to be grouping by 
+
+pd.cut(series,number) : this will devide a series into a 'number' of categores or ranges 	
+
+pivot tables : those are tables that are the results of realtions between a tables values 
+df.pivot_table(values,index,columns,aggfunc)
+
+pd.Timestamp('9/1/2017 10:07Am') : this will create a time stamp or save a point in time 
+
+pd.period('9/1/2017') : this will save a period of time which is a day here 
+
+pd.to_datetime(dataFrame column, dayfirst = True) : this will format the values of the column to the SAME date time format 
+will set the date fomat of the date to have the day as it's first attribute 
+
+time delta : is the difference between two dates 
+
+pd.date_range('date' , period =2 , freq='2W-SUN') : will create 2 periods after the set date each period will 
+happen after 2 weeks on sunday 
+
+date.weekday_name : this will output what day is the date 	
+
+energy.columns = energy.iloc[0] : will change the name of the column to the values of the first row
+
+df.at['location'] : this allows for singular cell choosing in a data frame , this doesn't work for indicies
+
+df.index.rename("name") : renames the index column
+
+list.index['something'] : finds the id of something in the list 
+
+in order to change a value of the indexes you do the following 
+change the index to a list 
+change the value of the renamed index 
+set the dataframe.index = the new index list 
+
+lambda variable : expression if condition else expression
+
+ScimEn.drop(ScimEn[ScimEn['Rank'] >= 16].index, axis=0, inplace=True) : to drop rows that satisfy a certain condition
+
+np.random.binomial(probability , number of repetions) : this will create a simulation of a binomial experiment
+
+np.std(distribution) : this will calculate the standard deviation of the distribution 
+
+kurtosis : is where the belly of the curve lies 
+
+skewing : is moving the belly of the curve 
+
+bimodal distributions : are distributions that have more than one peek 
+
+hypothesis testing : is the testing of statements through experimentation
+
+alpha : is the critical threshold that signals a requirement for change 
+
+df.drop([col1,col2],axis=1) : is how you drop multiple pandas columns
+
+pd.read_excel('gdplev.xls', skiprows=7, usecols={'Unnamed: 4', 'Unnamed: 6'}) : will only read two columns 4 and 6
+
+cairo wheel model : is a model that is used to rate the complexity of data visualizations
+
+data ink ratio : is how much data on the chart is actually useful and novel 
+
+simplicity and minimilasim are considered the main trend in representing and displaying data 
+
+albero cairo's criteria of judging a data representation:
+truthfullnes
+functionality
+beauty
+insightful
+enlightening
+
+graphic visualizations are manipulated and fabricated using those three elements :
+1. Not showing much data
+2. Showing the data inaccurately
+3. Obfuscating the data
+
+import matplotlib : to import matplot
+
+artists are the ways of representing data and it contains the collections and the primtives that tell the 
+backend how to represent the data  
+
+backend deals with the rendering of the visualizations 
+backends are different and they support different features
+
+scripting layer : a layer that simplifies access to artist and backend layers by manging how the artists are 
+created 
+
+there are two information visualization methods : 
+declaritive method and procedural method 
+procdural is a command after command method 
+declaritiv is a model method where there are relations between objects 
+
+primtives and collections : are drawing components like a triangle or a rectangle
+
+pyplot: is a scripting layer which simplifies the creation of artists by acting as an interface 
+
+figure is the top layer of any matplotlib where exists all the proprties to manage a graph 
+
+the backend , artist , script : are called the stack which represent the matplot lip architecture
+
+two types of artists exist primitive and composite , composite is just a collection of primitives
+
+import matplotliv.pyplot : this will import pyplot which is the scripting layer 
+
+pyplot.gcf() : will get the current axis of the figure
+
+pyplot.gca() : will get the current axis of the figure
+
+plt.gca().axis([0,5,0,2]) : will plot the axes which are the x and y here with numbers from zero to 10 for the 
+x axis and 0 to 2 for the y axis 
+
+when you call the plot function it will update the current plot with the new info 
+
+plt.scatter(np.array,np.array,c="red",label="something) : will represent points on different locations 
+against an x and y axes figure and it's arguments are numpy arrays which represents the points locations 
+and color them with read and label them somethign 	
+
+zip_generation = zip([2, 3, 5], [4, 5, 6])
+x, y = zip(*zip_generation) : this will assign the first list values to x and the second list values to y 
+
+plt.show() : will show the resulting plot
+
+plt.xlabel('label of the x-axis')
+plt.ylabel('label of the y-axis')
+plt.title('having a title of the chart')
+plt.legend(loc=number,frameon=False) : adds a small data table representation of the plotted data
+and loc detects the position of the table and frameon detects if there is a frame around the data or not 
+plt.gca().get_children() : will get the children components of the artist item which are the axes in here
+plt.plot([array],'-o') : will create a connected dots line cause of the paramter '-o'and '--r' will have a hashed
+line which is represented like this ---
+
+plt.gca().fill_between(range(len(linear_data)),linear_data, quadratic_data, facecolor="red") : this will 
+create a filling between two numpy arrays of number which are linear data and quadratic_data and color it red 
+and this will be done between all the points of the two numpy arrays cause of the range(len(linear_data)) function
+
+np.arrange('2017-01-01','2017-02-02',dtype='datetime64[D]') : this will return a list with a range of dates 
+starting from the first to the second date 
+
+pd.to_datatime = is a function that converts any date time to date time formats that matplotlib will be expecting
+
+plt.gca().xaxis : will get the xaxis from gca 
+
+plt.gca().xaxis.get_ticklabels().set_rotation(45) : this will get the labels of the x axis and then set_rotation
+with change the roation of the labels by 45 degrees 
+
+plt.bar([list containing the x-axis values],values of each x-axis value, width of the bar,bottom=another_data):
+an example : plt.bar([0,1,2],[2,3,5],width = 0.3) and bottom is in case you wanna plot new data over the old one
+
+np.arange(0, 5, step=1) : generate a numpy array 
+
+plt.xticks(locations, ticks names) 
+
+pd.DataFrame.from_dict(dicting, orient='index') : to create a data frame from the dictionary where the rows are
+index by the key of the dictionary cause of the attribute orient = index
+
+plt.axis('off') : will remove the axis of the plot
+
+plt.box(on=None) : removes the frame of the plot
+
+plt.bar( color=(0.2, 0.4, 0.6, 0.6)) : color allows for setting the color through rgb where the first 3 values 
+are the rgb values and the third one is the transperency 
+
+plt.ylabel('pop').set_color('grey') : this will change the label of the y-axis into grey and name it pop
+
+[i.set_color("grey") for i in plt.gca().get_xticklabels()] : this will change the ticks of the x axis into grey
+plt.gca().yaxis.set_visible(False): hides yaxis
+
+plt.subplot(nrows,ncolumns,index,sharey=plt.sublot()) : this will create a grid with nrows and ncolumns , and the index will identify 
+where your plt.plot() will be shown 
+whenever you want to plot data in a new place on the grid do it like this
+plt.subplot(1,2,1)
+plt.plot([1,2,3]) : this will will this figure in the first column of the grid created by subplot
+sharey will allow for both the plots to have the same y axis
+
+plt.figure() : creates a figure and adds any incrementation to it
+
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2) : this will create 4 fiugures label from ax1 to ax4
+
+histograms are bar charts descriping the reoccurence of a specific phenomemon and it's probability 
+
+plt.figure() : is used if the default values of the figure are to be modified 
+
+fig ,ax = plt.subplots(2,3) : the ax would be equal to an array of two tuples , each tuple has three elements
+
+ax.hist(list,orientation="horizontal",normed = True) : this will plot a histogram of the list in the paramters
+ , if the number in the list repeats then
+that means it's probability increases this will make the x axis to be vertical instead of being horizontal 
+import matplotlib.gridspec as gridspec :import gridspec which allows you to take up any number of grid cells 
+for one graph
+
+gspec = gridspec.GridSpec(3,3)
+top_histograme = plt.subplot(gspec[0,1:]) : this will allow you to take two cells of the in the first
+tile starting from the first cell 
+top_histograme.scatter([2,3,4],[1,2,5]) : this will create a scatter plot in the top-histograme
+
+pd.describe() : will display a table description of the data presented in the pandas 
+
+standard deviation : is a measure of the variability of the data 
+
+interquartile range : is a mesure of the variability of the data to know if it lies between which quartile of the
+data where there are always 4 quartiles of the data 
+first is below 25% , second is below 50% , thrid 75% , fourth 100 %
+
+the box and wiskers plot or the box plot : tells you a lot of info in the graph where the first vertical line 
+is the lowest point in the survyed tree and the last vertical line is the highest point on the plot and the 
+middle line in the box is the median of the data and the first line of the box is the median of the data less 
+than the actual median of the data and the line after is the median of the data above the actual median 
+
+box plots should plot numpy arrays or pandas as pandas are built on top of numpy arrays 
+
+plt.boxplot([df['normal']],whis='range') : this will plot a column of data from the pandas data frame and
+the first paramter is a list where can output more than one box plot and whis 
+is set to range and it tells the box plot to set the max value whisker and min value whisker to the minimum and 
+maximum values of the data 
+
+output to excel : table.to_excel("C:/Users/abdelrahman/Desktop/something.xlsx")

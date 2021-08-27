@@ -1,0 +1,306 @@
+items : each element or field on a website has a group of items and you should define them in 
+items.py
+
+setttings.py : is the file that contains all the settings of the scraping process 
+like the number of requests sent per minute and the agent that you send the request with 
+
+pipelines.py : allows you to store the data where you want like mongo db or sql database
+
+proxies change the ip addreses so that the bot can bypass the website restrictions 
+
+middlewares.py : is where you include all your additional settings like proxies
+
+create spiders only in the spiders folder
+
+//ul/descendant::*/text() : to get all the elements text under a parent
+
+whenver we create a spider it inherits from scrapy.Spider 
+it has a variable called name which is the name of the spider 
+it has a variable called start_urls = ["the website you wanna scrape"]
+a method called parse(self,response) which takes the response from the url and it has 
+to yield a dictionary 
+
+response.css("title").extract() : gets you the element with what's inside of it
+
+response.css("title::text").extract() : gets you what's inside the element only 
+
+scrapy shell "website name" : executes instant commands
+
+.extract gets you the tag
+
+response.css gets you the whole selector
+
+response.css("element::text") gets you only the data
+
+response.css("element::text")[0].extract() : gets you the first element in the response
+array 
+
+response.css("element::text").extract_first() : reutrns null in case of an empty 
+response
+
+scrapy crawl spiderName : to use a prewritten spider 
+
+response.xpath("//title/text()").extract() : to use xpath to extract something text
+
+response.xpath("//span[@class='text']/text()").extract() : this is equal to 
+response.css("span.text::text").extract()
+
+<li class="next">
+                <a href="/page/2/">Next <span aria-hidden="true">→</span></a>
+            </li>
+response.css("li.next a").xpath("@href").extract() : will extract the href attribute from
+li.next
+
+response.css("a").xpath("@href").extract() : will extract all the values of href attribute
+in the a tag
+
+response.css("tag.class") : you don't put .extract if you don't want the data inside the 
+of the class itself or you just want the data inside the class and not the data of the class
+
+before storing the data in the database you should pass them through containers first 
+
+in order to ouput the data in items structure you need to 
+go to items.py
+initialize the names of the items in the item class 
+go to the spider 
+from items.py import ItemClass
+items = itemClass
+yields items
+
+scrapy crawl quotes -o file.json : to ouput json
+
+import sqlite3 : to work with sqlite in your project
+conn = sqlite3.connect("nameOfYourDB.db") : to create a db called nameofyourdb
+curr = conn.cursor() : this creates a cursor which later helps you to execute commands
+on the db like creating tables and updating the database
+curr.execute("""db command""") : in order to write a multiple line command you need 
+the """ 
+
+example 
+curr.execute("""create table hello(
+quotes text,
+author text)
+""") : this will create a table called hello that has two columns quotes and author
+
+curr.execute(""" instert into hello values ('hello','no')""") 
+which inserts two values in the columns quotes and author
+
+conn.commit() : makes sure that all the commands inside the cursor are executed
+conn.close(): to close the connection which is good after finsihing the commitin
+
+in order for the data to enter any kind of database it has to go through a pipeline first
+
+when yeild is called the initialization method of the pipe line is called
+
+in sqlite3 a connection commits and a cursor executes
+
+everytime you yield an object in scrapy it goes to check the pipline initialization method
+
+connection in mysql is done using mysql.connector.connect(
+	user = "root"
+	passwd = "vindiesel3"
+	port = 33061
+	database = 'quotes'
+
+response.css("a::attr(href)").get() : gives you the href attribute from the a element
+
+response.follow(next_page , callback = self.parse) : where next page is the repsonse , and parse is the 
+method scrapy is going to execute after following the link
+
+if url is not None : this is a condition statement that checks if the url object is empty 
+or not 
+
+pagination : is when the website url has the page number inside of it 
+
+to scrape websites with pagination : create a variable to store the page number 
+and add the page number to the url 
+
+in order to login to a page :
+you first put the starting url as the login page
+
+
+
+from scrapy.http import FormRequest : to submit data into a form 
+
+return FormRequest.form_response(response,formdata={
+	'csrf_token' :'data',
+	'username' : 'data',
+	'password' : 'data'}, callback = self.function)
+this is used to fill in the form with the data required for login and response is the 
+response you got back from the site and formdata is a dictionary that has the required
+login data 
+callback is the function that is gonna be called after succefully loging into the website
+
+from scrapy.utils.response import open_in_browser
+then you type inside a method open_in_browser(response) and that will open the link in
+a browser
+
+in order to build a scrapy project you need to 
+type in the terminal 
+scrapy startproject projectName
+
+scrapy genspider amazon amazon.com : this creates a spider for you inside the scrapy 
+project with the name amazon and website is amazon.com
+
+from ..items import items : this imports the class of the item that you are 
+gonna be scrapping from the website
+
+
+response.css("selection").css("::text").extract() : this is used if you have a big
+selection and you want to extract the text from it
+
+you can change your user agent by going to settings.py file and then change user agent
+to another value 
+you get this value by going to google and typing 
+googlebot user agent and clicking on the second link this will allow you to scrape 
+websites by tricking them into thinking that google is scraping them 
+
+to rotate user agents in scrapy you add scrapy-user-agents package and then 
+go to settings above downloader middlewares and paste downlader middlewares from pypi.org
+which is 
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+}
+
+in order to use proxy you first install the scrapy-proxy-pool package and then add
+those lines to settings file 
+PROXY_POOL_ENABLED = True
+and this below downloader middlewares
+
+DOWNLOADER_MIDDLEWARES = {
+    # ...
+    'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+    'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+    # ...
+}
+
+XHR : XMLHttpRequest
+
+div[contains(@href,'something')]: will allow you to choose any div that has an href attribute
+
+//title[@lang]:Selects all the title elements that have an attribute named lang
+
+//title[@lang='en']:Selects all the title elements that have a "lang" attribute with a value of "en"
+
+span[not(@*)]:selects elements which have no attributes
+
+something[@id="something" or @class="something"]: for using selectors
+with multiple conditions
+
+//node[count(@somthing)=0]/spna: selects a spna that has a parent with
+elements with zero 
+
+cmps-review-star-rating
+
+ RegEx, or Regular Expression is a sequence of characters that forms a search pattern
+
+re.sub('<.*?>','',txt, flags=re.DOTALL) : is an exaple that deletes all the character
+between < and > using a regex by 
+import re
+
+request.cb_kwargs['foo'] : to pass extra arguments in scrapy
+
+ancestor::a : to allow you to choose a parent in xpath
+
+//example[. = 'Hello,  I am an example .'] will get the whole text of the element and its
+children for chososing
+
+descendant::*/text() : to get all text in all desecendants
+
+//x | //y : selecting or x or y elements
+
+//x/y[2] : selecting the second y element inside x
+
+best way to select elements is through ids if possible as they are faster and 
+don't go through a lot of processing 
+
+setx /m path "c:/something" : will add something to your environment path
+
+dynamic webscraping
+
+to wait for a page to load
+driver.execute_script("return document.documentElement.outerHTML")
+
+element/element[last()]: to get the last element child
+
+crawlspider : is another type of spider that has different rules than the normal spider 
+it has attribute rules which allows for setting the rules of the spider and doing different 
+things other than always calling the parse function 
+
+Link extractors allows for extracting all links in a page 
+using 
+from scrapy.linkextractors import LinkExtractor
+
+rules = [Rule(LinkExtractor(allow='catalogue/'),callback='parse_filter_book',
+follow=True)]:is an example of a rule that allows for calling all the links that has 
+the word catalogue in it  
+follow = True : allows the following of nested urls
+
+
+inside the spider class the name variable has to be unique for each spider per project 
+
+start_request() : a spider function that has to return a list of requests 
+
+parse() : is a spider method that will get called for each of the responses coming from the requests initiated by 
+the start_request() function 
+
+scrapy crawl "spider Name attrbitue" : this is how you run a spider 
+
+scrapy shell "http://quotes.toscrape.com/page/1/" : this is how you would scrape a website using scrapy shell
+
+response.xpath('//title/text()').get() : this will get you the text insdie the element and the .get() method 
+will get the first mathced element in the page
+
+response.xpath('something').getall() : will get all the matched elements on the page 
+
+spiders usually yield dicts
+
+scrapy crawl -O file.json : this will generate a json file containing the data that is extracted
+
+scrapy crawl -o file.json : this will the newly extracted data to the old file but remember to change the format
+of the data being appended for example in here json lines are added to the json file and not the whole json file 
+you can do it like this 
+scrapy crawl quotes -o quotes.jl and the .jl file is better than json files it's more scalable and allows for 
+easy addition of data 
+
+response.urljoin(url) : if this url is compleltely different than the response url then it would be appended
+to the original url but if there is a similar part , then the original url would be overwritten and the data
+from the overwriting url would be appended
+example
+if the response url is http://something.com
+and the appended url is http://something.com/hello/whatsup
+then if you use urljoin like this 
+response.urljoin(http://something.com/hello/whatsup) , then the final url would be 
+http://something.com/hello/whatup
+
+response.follow('next_partial_url',callback=self.parse) : this allow for creting the url of the next page and 
+following it at the same time without the need to create the url request yourself and you have to place yield 
+before it and the follow method could be passed a partial url object directly without the need to extract data from 
+it 
+
+yield from response.follow_all(css='ul.pager a', callback=self.parse): this allows you to follow multiple links
+at the same time , the first paramter could be either a selector or an array of links 	
+
+yield from "something" the same as 
+for i in "something":
+	yield i 
+
+shell works with local files as well
+
+scrapy shell "url" --nolog
+
+defining a variable inside the spider called custom_settings and giving it values overrides the project settings
+defined in the .cfg file 
+custom_settings = {
+        'SOME_SETTING': 'some value',
+    }
+
+allowed_domains : the list of domains that the spider is allowed to crawl any webiste beyond this list won't be crawled 
+
+custom_settings : some settings that are specific to the spider and that is different from the other gloabal 
+projects settings 
+
+'//div[@id=$val]/a/text()' : the syntax allows you to pass variables in your xpath query with the $ sign 
+
+//li[re:test(@class, "item-\d$")]//@href' : this xpath exression allows you to use regex operators in your query 

