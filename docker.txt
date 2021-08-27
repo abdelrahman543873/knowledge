@@ -1,0 +1,125 @@
+containers are isolated environments that allow you to run your code independently of the current environment you are running in 
+
+dockers help with creating and managing containers
+
+containers are better than virtual machines in the sense that they don't need other operating systems to run , all they need is just the container support on the os and then docker handles their creation and management
+, they are more lightweight , faster and take less resources compared to a classic vm 
+
+docker run -p 8000:3000 imageName : this will run the image and the -p will Publish the port 3000 that is exposed on the docker container to the port 8000 of the local system 
+
+docker ps : lists all running containers
+
+docker stop containerName : this will stop a running container
+
+images are the blue prints for containers 
+
+containers : are the running instances of the images , images are the static config of the containers 
+
+docker run nonExistingImage : this will search for the image offline and if it's not found it will install it from docker hub 
+
+docker ps -a : is the abbreviation of docker Processes where -a will show you all the processes that are currently running 
+
+docker run -it image : this will expose the running image inside the container so we can interact with it 
+
+FROM node15 : this allows u to build your image on top of another image which is node in this case  and it caches the base image 
+
+COPY . . : this first dot refers to the root directory of local machine and the second dot refers to the working directory on the image container  , and the command copies the first path to the second one 
+example:
+COPY . /app : this will copy the root directory of the local machine to a created folder on the image container called app
+
+RUN npm install : the RUN command will execute a command on the docker container
+
+WORKDIR /app : by default the root folder of the container is the working directory or is the directory where all your commands are going to be executed , here we change the work directory to /app 
+
+RUN : is executed when the image is being built
+
+CMD ['node','server.js']: is executed when the container is being built and in this case it will start the server
+
+EXPOSE 80 : this will expose port 80 from the container "this is for documentation purposes and an optional condition but it should be added"
+
+images are static and are not changed when you change your source code 
+
+docker images layered which means that every command in the docker file is executed in a separate layer , and if it's not changed it will be used from cache 
+if a command is changed in the docker file , then all subsequent layers will be rebuilt from scratch 
+
+COPY package.json /app
+RUN npm install 
+COPY . /app : this separation  is better cause now package.json will only be invalidated from the cache if package.json was changed instead of always reinstalling packages if anything in the source code was changed
+
+docker --help : shows you the list of commands that are available for use 
+
+docker run imageName : this will create a new container and run it and it runs in the foreground , so you can't
+enter more commands 
+
+docker start containerName : this will start a container that was exited , this is better if your source code hasn't 
+changed and it starts the container in the background 
+
+docker run -d imageName : this will run an image in detached mode , allowing you to run the image in the background
+
+docker attach containerName : this will attach the current console to the container and allow you to see 
+the output of the current running container 
+
+docker logs containerName : this allows you to have the logs of the currently running container
+
+docker start -a containerName : this allows you to start a container in attached mode 
+
+docker run -i -t imageName || docker run -it imageName : this allows you to run an image in interactive mode thanks to the -i flag and exposes
+a terminal for you using the -t to interact with the running container thanks to the -t flag 
+
+docker start -a -i containerName : this allows you to start a container in attached interactive mode so you can 
+input to the running container 
+
+docker rm containerName : removes a container 
+
+docker container prune : removes all stopped containers at once  
+
+docker image prune : removes all unused images
+
+docker image prune -a :  removes all images even if used 
+
+docker images : shows you all the images on your machine 
+
+docker rmi imageName : this allows you to remove images 
+
+docker run --rm imageName : the rm flag removes the container once it's exited
+
+docker image inspect ImageName : gives you more data about the image like the date it was created on and the operating
+system of the image 
+
+docker cp dummy/. containerName:/folder : this will copy data from your local host to your running container , here
+it will copy all the dummy folder cause of the /. and it will copy it to the container folder , always in the first 
+part you put the source and in the second part you put the destination 
+
+docker run --name containerName imageName: this will run the container and give it the name you specify which in this
+case is containerName
+
+name:tag : is how you can name images , where name represents the image group and tag specifies the specific image
+we are targeting , and the tag is optional 
+
+docker build -t name:tag .  : this will build the image and give it a name of name and a tag of tag, and tag is 
+optional 
+
+sharing an image is done by sharing the docker file and the source code 
+
+docker login : this will allow you to enter your docker hub credentials before pushing to the server 
+
+docker push imageName : this is going to upload your image to a repository management service like docker hub
+and the repo name has to be the same as the image name and you need to run docker login before pushing
+
+docker tag oldName newName : this will rename an image 
+
+docker pull imageName : this will allow you to pull an image from a repository 
+
+anonymous volumes will be destroyed on removal of containers and the data will be lost 
+
+named volumes will stay after the containers have be destroyed 
+
+bind mounts will have their changes reflected immediately when they are done 
+
+read only mounts : those are volumes that can only read the data on the host machine but can't edit it 
+
+docker volume --help : this will show you the list of the volumes that docker is managing
+
+docker volume ls : this shows you all the volumes that you have 
+
+docker volume create volumeName : this will create a volume with the specified name 
