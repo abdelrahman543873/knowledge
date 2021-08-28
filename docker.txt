@@ -124,3 +124,64 @@ docker volume ls : this shows you all the volumes that you have
 
 docker volume create volumeName : this will create a volume with the specified name 
 
+docker volume rm volumeName : removes the specified volume
+
+docker volume prune : removes all volumes
+
+docker volume inspect volumeName : this will show you all the details about a specific volume , like the day it was created and so on
+
+.dockerignore : is a docker file that specifies which files inside your project should be ignored when executing a copy instruction inside your dockerFile
+
+usually having node_modules in the .dockerignore is a good idea cause it makes building faster as node_modules folder is installed inside the docker using npm install
+also having the DockerFile file and and .git is a good practice as they are needed inside the image or the container 
+
+ARG someValue : this allows you to set argument values inside your DockerFile instead of having to add --arg in your build command 
+
+ENV PORT 80 : ENV variables are variables that will be available for your entire project code and you could use them in nodejs by accessing process.env , and in this case we are setting the
+environment variable port to value equal 80
+
+EXPOSE $PORT : this will allow you to access the environment variable port , using the $ sign
+
+docker run --env PORT=1000 imageName || docker run -e PORT=100 imageName : this will set the environment variable port to 1000 when starting the container 
+
+docker run --env-file ./.env : this will reference the .env file in your project and make the env variables there available during the running of the container , the ./ is for referencing the current
+folder that the command is run in 
+
+it's more secure to have your environment variables at a separate file rather than in the dockerFile , as the docker file env variables are baked into the image and anyone can then view you 
+env variables by doing docker history imageName
+
+ARGs are BUILD time variables that couldn't be used in your code 
+
+ARG DEFAULT_PORT=80
+ENV PORT $DEFAULT_PORT : this here will allow you to use your default port value to be equal with the port environment variable which is available during run time 
+
+docker build --build-arg DEFAULT_PORT=8000 : will overwrite the DEFAULT_PORT value in the dockerFile and so the environment variable PORT will be equal to 8000 instead of 80
+
+networks requests in docker containers work outside of the of the box with no need for special config 
+
+if you want to connect to a running server on your machine , you need to change the localhost part of the connection string and this is how :
+instead of for example 'mongodb://localhost:27017//databaseName' , it needs to be 'mongodb://host.docker.internal:27017//databaseName' 
+host.docker.internal : is a syntax only understood by docker containers at run time and will resolve to the ip of the hosting machine of the container
+
+docker run mongo : since the image of mongodb isn't installed , this command will download the image from docker hub and spin up it's server 
+
+network : is a connection between containers that allow them to communicate if they are on the same network
+
+docker network create networkName : this allows you to create a docker network 
+
+docker network ls : shows you a list of docker networks 
+
+docker run --name imageName : this will run a container of the image and give it the specified image name 
+
+if two containers are running on the same network , they can connect to each other by their container names 
+example : 
+if we have a mongodb container named mongo and nodejs app on the same network , then the connection string on the mongo app will be the following
+'mongodb://mongo:27017/dbName'
+
+docker run --network networkName : this allows the docker image to run and be on the specified network
+
+docker doesn't replace the hostname in you source code, it simply tracks the network requests coming out of your containers and is able to resolve the docker specific domains like 
+host.docker.internal and resolve them to the required service 
+
+docker network create --driver driverName networkName : this will create a network that uses the driverName as it's default driver , the default driver is the 'bridge' driver which works in 
+most cases 
