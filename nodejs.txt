@@ -133,6 +133,14 @@ strategies, the context holds the common logic across all the strategies
 
 strategy pattern is particularly useful for conditions where you have to use a lot of if conditions
 
+constructor(strategy){
+  async someFunc(){
+    return strategy.delegatedFunc()
+  }
+}
+
+this is how the strategy pattern works , it delegates the functionality of some part of the context to the strategy
+
 state pattern : state pattern is a specialization of the strategy pattern where the strategy is changed based on the state of the object
 
 change observer pattern : is a design pattern where the subject notifies one or more changes of any changes that happen , so they can react
@@ -151,3 +159,4 @@ you can decorate with proxy object
 adapter design pattern : allows us to use an object functionality with a different interface than it's original one 
 
 in adapter pattern you have the adapter and adaptee , which is the entity used by the adapter 
+
