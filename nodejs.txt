@@ -160,3 +160,10 @@ adapter design pattern : allows us to use an object functionality with a differe
 
 in adapter pattern you have the adapter and adaptee , which is the entity used by the adapter 
 
+template Pattern : is a pattern that defines an abstract class the defines the common logic and the implementation is left for the
+subclasses 
+
+template methods : are the empty methods of the abstract class that are left to the subclasses to implement
+
+the difference between template and strategy , is that in template , the implementation is done from the begging while strategy is configured
+at runtime which means template is declarative  while strategy is imperative
