@@ -167,3 +167,99 @@ template methods : are the empty methods of the abstract class that are left to 
 
 the difference between template and strategy , is that in template , the implementation is done from the begging while strategy is configured
 at runtime which means template is declarative  while strategy is imperative
+
+iterator pattern : a pattern that aims to decouple the iteration on the elements of the pattern from the way we consume the iterated 
+element
+
+iterator patter in js : iterator pattern could be used in js to iterate over things like streams or events not only containers , so 
+in a more generic sense we could say that iterator pattern could be used with any construct that emits a sequence 
+
+iterator : is an object implementing the next() function of the iterator interface
+
+next() : the iterator function that returns an object that has the following properties 
+done : is a boolean that is true the iteration is finished and no more elements are available for iteration
+value : is the value returned from the operation , if done is true then this value will be called Return Value which is the value that is 
+returned from the operator if the iteration was completed
+
+iterables : are standardized objects that are returned by the iterator 
+
+semicoroutines or generators : are a generalization of functions that have the ability to be pause and resumed at a later time 
+you define a generator using the following syntax
+function * myGenerator () {
+  // generator body
+}
+
+example generator 
+function * fruitGenerator () {
+  yield 'peach'
+  yield 'watermelon'
+  return 'summer'
+}
+generators ares started or resumed when you do .next on them as the following and are stopped when they return 
+const something = fruitGenerator()
+something.next() , since this is the first next it will return peach
+second next will return watermelon and so on
+
+
+kind: PersistentVolumeClaim : is what allows pods and nodes to access persistent volumes
+
+storage class : is a class that defines how persistent volumes are managed and defined
+
+kubectl get pv : this will get you all persistent volumes on your cluster
+
+spec:
+  containers:
+    - name: story
+      env: 
+        - name: envVariableName
+          value: envValue
+this is how you set an env variable value
+
+kind: ConfigMap : this is how you configure a key value pair for your environment variables
+
+kind: ConfigMap
+data:
+  key: value
+this is how you define a key value pair for env configuration
+
+kubectl get configmap: this allows you to get the config maps configured on your cluster
+
+command design pattern : command is any object that has all the details required to execute an action in later point in time
+
+command components :
+command : the object that contains the info required for invocation of a function or a method
+client : the component that creates the command and passes it to the invoker 
+invoker : the component responsible for executing the command on the target 
+target : is the receiver of the action weather it's a method or a function
+
+
+browsers javascript doesn't have the require function or the file system , it only has the import module system
+
+on nodejs , the importing is done directly from the filesystem , which is an performant process, so splitting the code into smaller modules is 
+better approach in nodejs apps but that's not the case on browser code
+
+browser code parses html code , which has referenced scripts , the more the scripts the more the time it will take the application to load  
+
+bundlers use case is to optimize src code files , and for example to have one src per page , also it can minify the code , which is done by 
+removing comments , or removing unused code
+
+on browsers , we deal with two stages building and then runtime , but on the server we only deal with runtime cause source code is executed directly
+
+we can think of a bundler as a compiler for the browser
+
+transpilers like babel will allow us to transform modern js into older js 'ES5' which runs on older browsers
+
+bundlers work is divided into two stages , dependency resolution and packing
+
+dependency resolution is done by going through the code starting from the main module 'the entry point' and then resolving the dependencies
+into an acyclic graph , called dependency graph
+
+the way bundlers resolve dependencies is by going through the import statements of the entry point file first , it parses the import lines , one 
+by one , meaning that it will first go through each import and pause parsing the other imports of the entry point until the first import is resolved
+and then it goes through the second import and so on , it does this at the begging and in the dependencies of the file
+
+the bundler uses this dependency resolution method also with cyclic dependencies meaning that when it encounters a dependency for the second
+time it won't add it to the dependency graph as it's already there 
+
+tree shaking : a bundler technique that doesn't add any classes, functions, or variables that aren't imported to the dependency graph
+meaning that it won't be included in the final bundle

@@ -184,4 +184,11 @@ docker doesn't replace the hostname in you source code, it simply tracks the net
 host.docker.internal and resolve them to the required service 
 
 docker network create --driver driverName networkName : this will create a network that uses the driverName as it's default driver , the default driver is the 'bridge' driver which works in 
-most cases 
+most cases
+
+the difference between a clusterIP service type and loadBalancer service type , is that although both of them have traffic balancing , 
+clusterIP doesn't have out world facing ip address while loadBalancer has one 
+
+coreDNS : allows for definitions of internal ips of your cluster
+
+aws EKS : elastic kubernetes cluster , is a service that allows you to deploy your clusters easily
