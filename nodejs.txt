@@ -263,3 +263,65 @@ time it won't add it to the dependency graph as it's already there
 
 tree shaking : a bundler technique that doesn't add any classes, functions, or variables that aren't imported to the dependency graph
 meaning that it won't be included in the final bundle
+
+modules map : an object that is produced by the bundler after constructing the dependency graph 
+
+IIFE: immediately invoked function expression are functions that are executed in the same place they are defined ,
+example:
+((something)=>{return something})('something') 
+
+
+packing stage is simple working on the modules map and extracting it to have code that works in the browsers
+
+local initialization is the act of initializations something before calling any of it's asynchronous apis
+
+delayed startup : is delayed the usage of any of the components asynchronous operations until it's completely started , this delays each component
+but the solution to this is delaying the start of the app until all of it's asynchronous operations are done
+
+pre-initialization queues : where all the operations that require the component to be started are queued until all the component has started
+
+asynchronous request batching : is batching multiple requests that are made to an asynchronous function with the same input and returning to 
+both clients the same response even there were two requests, the asynchronous operation executes only once, the limitation for this approach
+is if the requests are far in time from each other or if the process is already fast
+
+map is a key value pair container like object but it keeps the order of insertion of the keys
+
+cpu bound tasks : are synchronous tasks that take a lot of cpu power , blocking js thread and it has three solutions
+interleaving with set immediate, using external process and using external threads
+
+child_process.fork(): create a new child process and allows communication with it , just as we do with event emitters
+
+process.on('message',(message)=>{doSomething}) : this will allow us to instantiate the process on receiving the message
+
+processes uses another process from your machine , while threads don't
+
+threads could be seen as a mini version of processes
+
+worker threads run within the same process and are faster than instantiating a new process
+
+additional threads , have their own v8 engine! and their own js environment
+
+workerpool : a library that allows you to deal easier with workers or threads
+
+piscina : a library that allows you to deal easily with processes
+
+the scale cube : is a scalability metric invented by Martin L. Abbott ebay cto that is used to scale applications to allow load balancing , it has three axis
+x-axis for cloning  
+y-axis Decomposing by service/functionality
+z-axis splitting by data partition
+
+z-axis is speaking mostly about database scaling and horizontal and vertical scaling
+z-axis is the last scaling method that should be used only after using x and y 
+
+cluster module : a core nodejs module that eases forking of new node instances and distributes that load across them
+
+round robin distribution algorithm : a distribution algorithm on the master node that distributes load across worker nodes by sequentially 
+assigning requests to them , in a sense that the first request goes to the first worker , the second to the second and so on
+
+autocannon allows you to test the number of requests that your server can take and you can do it like this 
+npx autocannon -c 200 -d 10 http://localhost:8080
+
+
+pm2 library is based on the cluster module that provides monitoring and auto restarting 
+
+stateful communication: is where details about the communication is saved on the side of the server 
