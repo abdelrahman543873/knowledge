@@ -1,0 +1,237 @@
+kuberenets: is an independent container orchestration tool
+
+the problems that kuberenets solve:
+dead containers replacement and container monitoring are automatically achieved by kuberenets
+scaling number of containers as request load increases is automatically done by kuberenets
+distribution of requests are also done by kuberenets
+
+you can write kuberenets configuration that is cross platform that could work on microsoft azure , aws and so on
+
+kuberenets is like docker-compose for multiple machines
+
+pods : pods are the smallest instances managed by kuberenets , they could hold one or multiple containers but usually only hold one container
+
+worker nodes : are the pods manager , they are like virtual machines , or ec2 instances for aws and one worker node can manage multiple pods 
+
+proxy or config : is the network that is managed by the worker node for orchestration between the pods it manages , and how the pods can communicate with the outside world
+
+master node or control plane : is the master worker node that monitors and manages worker nodes and so their pods , it can kill pods , or start them and manage load balancing 
+
+cluster : is the whole system of the control plane , worker nodes and pods 
+
+worker-node structure : 
+kubelet : is the software on the worker node that manages the communication between the worker and the master node
+
+kube-proxy : is the manager of network traffic between the worker node and the outside world
+
+
+master-node structure: 
+api-server : is the counter for communication with kubelet on the worker nodes , that responsible for responding to kubelet
+scheduler: watches for pods and selects the worker nodes to run new pods on
+kube-control-manager : watches and controls the number of worker nodes , ensuring the correct number of pods 
+cloud-control manager : responsible for conversion of commands to cloud providers , and it's like kube control manager but for cloud
+
+services : is an ip address for a collection of pods , making them available to the outside world
+
+kubectl : is the command line for kuberenets to send commands to the cluster specifically to the master node
+
+kuberenets objects : are the configuration objects that kuberenets understands , objects like pods , deployments , services and so on
+
+typically we have one container with a pod
+
+pods are ephermeral : which means that pods will be started , stopped as needed and will not persist data by default
+
+deployment object: defines the structure of your pods and is able to create multiple pods
+
+the core idea behind the deployment object is that it requires us to define a state that kuberenets will reach on it us own 
+
+deployments could be paused , deleted and rolled back
+
+deployments supports auto scaling based on defined criteria like number of requests and so on
+
+kubectl create : this is the imperative approach of declaring 
+
+kubectl create deployment deploymentName --image=imageName
+
+kubectl get deployments: gets all the deployments on your cluster
+
+kubectl get pods : gets all the pods on your cluster
+
+Ready
+0/1
+: this shows you the desired state 'which is one' versus the current state which means something is failing here
+
+kubectl create deployment first-app --image=imageName : this will create a working deployment for this image , where the deployment name will be first-app and based on the specified image , where
+this image has to be on the cluster or on docker hub
+
+kubectl delete first-app : this will delete the deployment called first-app
+
+kubectl commands are sent to the control plane which communicates with the scheduler which sees the running pods and decides the best worker node to have this pod , now the kubelet inside the node
+manages the pod , checks it's health and makes sure it's running
+
+the service object is responsible for exposing the pods to outside the cluster or to other pods inside the cluster
+
+pods change their ip addresses when they recreated so we can't depend on their ip to communicate with them
+
+services give a logical group of pods a static ip address which could be exposed inside or outside the cluster, and the default is internal exposure only
+
+kubectl expose deployment nameOfDeployment --type=ClusterIP --port=8080 : this command would automatically create a service and expose a deployment externally, and the --type decides if this deployment
+would be exposed internally or externally , and it could be ClusterIP or NodePort or LoadBalancer which if the later would expose the pod externally with NodePort or LoadBalancer , or internally using
+ClusterIP 
+
+LoadBalancer means the the ip would be exposed through a load balancer that is installed on the cluster, and it will distribute all the traffic across the pods on the cluster
+
+kubectl get services : get the running services on the cluster
+
+kubectl scale deployment/first-app --replicas=3 : this scales a pod three times to handle more traffic or load in general , and you can scale down your replicas by decreasing the number of replicas
+
+kubectl set image deployment/first-app containerName=imageName : this update the image or a running deployment to a new image , notice that the image has to be with different name or tag from the previous one
+example kubectl set image deployment/first-app kub-first=academind
+
+kubectl rollout status deployment/first-app : this will check your image status on the cluster , in this example it will check your deployment that is named first-app 
+
+kubectl rollout undo deployment/first-app : this will rollback the deployment that was added 
+
+kubectl rollout history deployment/first-app --revision 3 : will show you the deployment history of the deployment that is named first-app and you get the revisions from using rollout history only
+
+kubectl rollout undo deployment/first-app --to-revision=1 : this will rollback the deployment to revision 1 of the deployment 
+
+kubectl delete service first-app : this deletes the service that's called first-app
+
+kubectl delete deployment first-app : this will delete the deployment named first-app
+
+resource definition file : kubectl allows us to create a resource definition file that contains the needed resources 
+
+kubectl apply -f resourceDefinitionFile.yaml : this will apply the resource definitions to the cluster , -f stands for file
+
+apiVersion: apps/v1 : this is the version of the kuberenets configuration that you are going to use
+
+kind: Deployment : the kind property tells kuberenets what kind of resource that we are going to deploy in this resource file here it's a deployment
+
+metadata: is an important configuration setting that tells critical info about the resource deployed like it's name and so on 
+
+metadata:
+  name: something
+this will set the name of the resource that is going to be deployed to something
+
+spec : tells you about the specifications of this resource 
+
+spec:
+  replicas: 1
+this will create one instance of the deployment or more if you increase the number
+
+
+spec:
+  template:
+    metadata:
+      labels:
+        app: second-app
+this will assign a label to the resource named app:second-app
+
+spec:
+  spec: 
+    container:
+      - name: something
+	image: hello
+this will define the specifications of the pod , here the pod will be attached to a container with name something and image hello 
+
+spec:
+  selector:
+    matchLabels:
+      app: second-app
+this will allow the deployment to control all the pods that have the key value pairs app and second:app name , this will be in case the pods were scaled up or down , it allows the deployment
+to know which pods to control
+
+spec:
+  selector:
+    app: second-app
+this is how you define the selector of the service resource file specifications to control the pods you want 
+
+spec:
+  selector:
+    app: second-app
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+this will expose the port 80 to the outside world and map it to the internal port 8080 which is the port that the application exposes
+
+spec:
+  type: LoadBalancer
+this will define the type of the ports of the exposed pods , weather those ports are internal in the cluster or external 
+
+kubectl delete -f=deployment.yaml : this will delete all the resources that were deployed based on the deployment yaml file , and you can add multiple files by adding multiple -f 
+
+--- : this what you use if you want to separate object definitions and make them in the same file
+example:
+apiVersion: apps/v1
+kind: Deployment
+---
+apiVersion: v1
+  kind: Service
+
+selector: 
+  matchExpressions:
+    - {key: app, operator: In, values:[second-app]}
+another way of selecting resources , other than matchLabels , this allows more power for selection, in the example , it will select all of the resources that has the key app and value second-app,
+something like this app: second-app
+
+kubectl delete deployment -l key=value : this will delete all the deployments that are labeled with key with value equal value
+
+spec:
+  containers: 
+    livenessProbe: 
+      httpGet:
+        path: /
+this will be the way that a health check will be requested , through the livenessProbe option, and here it's specified that it will be done by doing an Get http request to path / 
+
+state : is data created by the application that must be kept and not removed
+
+local volumes : are volumes that are stored on worker nodes 
+
+volumes lifetime is dependent on pod lifetime cause volumes are parts of the pods
+
+kuberenets supports a broad variety of volume types unlike docker
+
+volumes are defined in the deployment yaml files cause they are part of the pod
+
+template:
+  spec:
+    volumes:
+      - name: 'someVolume'
+        emptyDir: {}
+this is how you specify a volume for your pods , this is done inside the deployment yaml file, the emptyDir means that we are going to use the emptyDir volume type from kuberenets and the empty
+object means that we are going to use the default config for empty dir volumes
+
+empty directory volume type : empty directories are created with every pod and keep the data of the containers in case of containers restart  
+
+template: 
+  spec: 
+    containers:
+      - name: story
+        volumeMounts: 
+          - mountPath : pathInside container i.e /app/story
+            name: Name of the volume you want to mound i.e someVolume
+the volume mount specifies where the volume created should specify it's data through the mountPath option, the name option specifies the name of the defined volume you want to mount , in the
+example it's someVolume from the previous example
+
+emptyDir types of volumes is specific to a pod which means that if a pod is restarted the data is lost 
+
+template:
+  spec:
+    volumes:
+      - name: 'someVolume'
+        hostPath: 
+          path: /data
+          type: DirectoryOrCreate
+
+hostPath : another type of kuberenets volume , that stores files on the host machine 'the worker node', which means that multiple pods can store their files on the host machine
+type 'DirectoryOrCreate' means that kuberenets will create the path if it doesn't exist yet, type 'Directory' means that it will share an existing folder , but it will fail if it doesn't exist yet
+
+csi : Container Storage Interface which is a malleable type containers that allow you to connect to different storage interfaces like amazon efs or any other driver type for storage as long as it 
+has a csi integration
+
+persistent volumes : are a type of kuberenets volumes that are independent of the pod and container creation and removal and store data independently
+
+
+kind: PersistentVolume : this is the kind of the of the object of persistent volumes

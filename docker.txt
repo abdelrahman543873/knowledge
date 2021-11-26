@@ -185,3 +185,210 @@ host.docker.internal and resolve them to the required service
 
 docker network create --driver driverName networkName : this will create a network that uses the driverName as it's default driver , the default driver is the 'bridge' driver which works in 
 most cases 
+
+frontend end applications run in the browser and can't access server dependencies like the backend or database container through container names
+
+docker run -v data:/data/db : this is a named volume , and it allows volumes to survive container removal 
+
+docker compose purpose , is to make building and managing containers easier , so you don't have to write all the docker commands to start your environment
+
+docker compose services are terminology for the running containers 
+
+docker-compose.yaml : is the docker compose file where you write your container configuration to run multiple containers at the same time
+
+version: "3.8" : this is the first line you write in a docker compose file , it defines the version of docker that is going to be used for the dockerfile 
+
+yaml is like python in that it uses indentation to store values and everything indented by two spaces is a child of the parent element
+
+services:
+  container1:
+  container2:
+  container3:
+this is how you define containers in a docker compose file and in each container you define it's configuration
+
+container:
+  image: 
+this is how you define the image that the container is going to use example
+mongodb:
+  image: 'mongo'
+  volumes: 
+    - data:/data/db
+  environment:
+    ENV_NAME: value
+  env_file:
+    ./file.env
+this is going to download mongo image and build the container on top of it , and it has a volume called data that will be stored in the path data/db
+the container will also have an env variable of name env_name and value of value , you can also write environment variables like this 
+- ENV= value
+env_file syntax will allow loading variables from a specific file in your project
+
+dashes or - are added before values that don't have a key pair , as an object is created with the files directly from the yaml file 
+
+docker compose file will add all services on the same network by default 
+
+volumes:
+  data: 
+this is how you create named volumes , if there was a named volume specified in the services , you have to put it here like this so that docker registers it 
+
+docker-compose up , will build all the images required automatically without needing docker-compose building
+
+docker-compose down -v: removes all images and containers that are a result of docker-compose up and -v removes all volumes
+
+service:
+  build: ./dockerfile
+this allows you to use the docker file in the specified location and build the image based on it 
+
+service:
+  build:
+    context: ./path
+    dockerfile: DockerFile Changed name
+this alternative syntax is used in case the docker file name is changed we use the docker file option , in case we want to provide a more broad context than that is in the docker file we use 
+the context option meaning if the docker file is located in a nested folder for example and the dockerfile is accessing the parent folder , we need to set the parent path to the context option
+
+service:
+ args:
+  ARG:value
+this is how you could specify arguments for your service instead of the ARG keyword in your dockerfile
+
+service:
+  volumes:
+    - namedPath:/path
+this how you add a named volume under a service and then you add it to the volumes top level key like in the volumes: data example above
+
+service:
+  volumes:
+    - ./backend:/app
+this is how you set a bind mount on the backend folder , you specify the path and the path of main folder of the app inside the container, bind mounts are not added to the volumes top level key
+only named volumes gets added 
+
+service:
+  depends_on:
+    - anotherServiceName
+
+the depends on option forces docker to initialize the dependencies of a service before launching itself
+
+you can use docker service names and reference them inside your code 
+
+service:
+  ports:
+    - '3000:80'
+this is how you set exposed ports in you app , where 3000 is the external port and 80 is the internal docker port 
+
+
+when you stop a running docker-compose config , it takes down all the services and removes them 
+
+service: 
+  volumes:
+    - ./backend:/app
+this will create a bind mount , where all the changes happening in the backend folder in the previous example will be reflected without the need for restarting containers
+
+service: 
+  volumes:
+    - /app/node_modules
+this is an anonymous volumes that doesn't need to be named or added into the volumes key in docker-compose config
+
+
+service:
+  stdin_open: true
+  tty: true
+this will launch this service in interactive mode which is the command '-it' in docker run commands , the tty allows for an open terminal and stdin_open allows the service to take input
+
+docker-compose up --build : the --build forces the images to be rebuilt
+
+docker-compose build : only builds images without running them
+
+npm init : allows you to initialize a package.json file
+
+docker exec -it node npm init : the exec command allows you to execute commands in running containers , for example here we will execute npm init in running node environment , and the it will allow
+us to have the container running in interactive mode
+
+docker run -it -v /absolutePathOfYourFolder:/pathInsideContainer node npm init : this will run a node image in interactive mode and have bind mount to the app folder on the container , and execute
+npm init , the command format is like this 'docker run -v bindMount imageName command
+
+if we add a command with docker run like the previous example , it will override the command or CMD specified in the dockerfile
+
+ENTRYPOINT : a dockerfile command that allows you to have an initial command and then every command you execute after the run command will be added after it
+like the following ENTRYPOINT ['npm'] then doing the previous example command your new command will simple be
+docker run -it -v bindMount imageName init , instead of having npm before the init
+
+docker-compose run service : docker-compose run allows you to execute a specific service out of your docker-compose file
+
+docker-compose run service command : this allows you to execute a command after the service
+
+utility containers: a term by max , that allows you to run containers that aren't meant to be used for applications , instead , they are only used for running commands that only could be run 
+with specific dependencies that aren't installed on your machine
+
+docker-compose up service1 service2 .... : you can bring up multiple services using 'docker-compose up' followed by the services you want to start
+
+docker-compose up doesn't pick up changes you have done to your code , to rebuild your images add --build so your images are rebuilt for you
+
+settings you put in your docker-compose file overrides your dockerfile settings
+
+service:
+  entrypoint: ['something']
+this will add an entry point to your code and override the one in the dockerfile
+
+service:
+  working_dir: 'path'
+this will set the working dir of the service and override the one in dockerfile
+
+you don't have the run or cmd docker commands in the docker-compose file and it's only available in the dockerfile 
+
+bind mounts are a bad idea in production cause every container should have everything it needs inside of it 
+
+build:
+  context: path
+context doesn't just set the place where docker will search for dockerfiles , it also sets the place where the image will be built , so if you want to specify a specific path for your dockerfile
+without changing the context you could do this
+build:
+ context: .
+ dockerfile: pathToYourDockerfile
+
+
+ the COPY dockerfile command takes a snapshot of whatever you choose to copy unlike bind mounts where your changes are reflected on the image
+
+ one of the key advantages of docker is that your remote production environment can run your application as your local machine
+
+ bind mounts shouldn't be used in production
+
+ when you deploy a docker image to the cloud it's preferable to have an image pushed to the docker hub and then pulling it on the cloud machine rather than copying your source code on the cloud
+ and creating the docker image to the machine
+
+ *.env : this is what you add to your .gitignore to remove .env file from git 
+
+ docker tag oldName newName : this will rename an image
+
+ docker push imageName : allows you to push your image to docker hub but the image name should be the one specified on the docker repo , so you should rename your image using the previous command
+
+ by default ec2 instances are protected from the world wide web , so you need to modify the security group's 'inbound rules' and allow the connection
+
+ amazon ecs : amazon elastic container service which helps with the monitoring and management of instances instead of manually creating ec2 instances
+
+ when you start the amazon ecs service and open the configuration , you are basically configuring the run command properties
+
+ amazon ecs fargate : allows you to have a lambda like instances , where the instance of amazon will only start when a request is made to it and then shut down once the request is handled
+
+ clusters: are collections of one or more containers that are able to talk to each other
+
+ amazon auto scaling : scales your fargate instance based on the number of requests that it's accepting
+
+ when you push changes to your docker image , you need to create a new 'task on ecs' so that ecs applies the changes
+
+ when you build an image , the environment variables are fed to the instance of that image 
+
+ task : is the configuration of the run command of your docker images
+
+ the load balancer by default checks if the service is healthy by making a request to a certain url and then if it fails it restarts the instance
+
+ efs : elastic file system is what ecs instances use to create volumes
+
+ multistage dockerfile : allows you to have multiple stages for your project , by having multiple FROMs in your dockerfile, as every FROM will create a new stage and discard the previous one 
+
+ FROM node as build : this as syntax will allow this stage to have a name that you can reference later in other stages 
+
+ COPY --from=build /app/build /user/something : this command will take the build folder from the previous build stage and then copy it to the specified destination directory which is /user/something
+ in this case
+
+ containers are by nature stateless meaning that one container writing data will lose it when it's shut down or deleted unless there are volumes 
+
+ services : are running tasks that was previously configured
