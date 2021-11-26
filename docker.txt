@@ -392,3 +392,11 @@ build:
  containers are by nature stateless meaning that one container writing data will lose it when it's shut down or deleted unless there are volumes 
 
  services : are running tasks that was previously configured
+most cases
+
+the difference between a clusterIP service type and loadBalancer service type , is that although both of them have traffic balancing , 
+clusterIP doesn't have out world facing ip address while loadBalancer has one 
+
+coreDNS : allows for definitions of internal ips of your cluster
+
+aws EKS : elastic kubernetes cluster , is a service that allows you to deploy your clusters easily

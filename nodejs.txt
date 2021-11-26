@@ -1,0 +1,327 @@
+buffering is the act of saving all data and then sending all of it as one blob of data to the receiver
+
+streaming : the process of sending the data to the receiver as soon as it's emitted from the sender 
+
+buffers in nodejs v8 engine are limited to a couple of gbs and it's a variant between OS
+
+a scenario where buffers could be a handicap , is when you are buffering a big file where it's size will be more than the size of the buffer
+of the v8 engine 
+
+process.argv[2] : this is how you read a parameter from the command when you are running the file
+
+createReadStream(filename)
+  .pipe(createGzip())
+  .pipe(createWriteStream(`${filename}.gz`))
+  .on('finish', () => console.log('File successfully compressed')): creates a read stream and then pipes the result to createGzip function
+  which creates a gzip from the stream and then passes the data to create write stream
+
+
+stream chunks processing "whatever the processing is" is done in parallel and this is handled by nodejs , which is way better than the buffered approach
+
+the abstract class types of streams are : readable , writable , duplex and transform
+
+streams can handle any js value through two modes
+binary mode : streaming data in form of chunks such as buffers or strings
+object mode : streaming data as a sequence of discrete objects
+
+readable streams are sources of data and are implemented using the steam readable abstract module
+
+flowing mode : is a mode when reading from a stream 
+
+non-flowing mode : the default reading mode from streams where a listener on the stream of data is listening for the read event 
+
+stdin : the standard input is a readable stream 
+
+highWaterMark : is the limit of the internal buffer of streams , where any writable stream would return false if writing exceeds the highWaterMark
+
+backPressure: an advisory mechanism for the limit of internal buffers of streams , it's important to respect backPressure , it also exist in 
+readable streams 
+
+duplex : is a writable and readable at the same time 
+
+transform streams : are a special kind of duplexes that are specially used for transformations
+
+pass through streams : are streams where data is passed by without any processing 
+
+observability : attaching an event listener onData allows you to track how much data is passing through the stream
+
+lazy stream : delaying the initialization of streams until wanting to actually consume data from them  and there is a library that is called
+lazyStream that allows you to create lazy stream instances 
+
+forking streams : is dividing the readable of two streams into two writables , which allows us to do things like multiple operations on the 
+data at the same time 
+
+merging streams : is an operation opposite to forking as it pumps multiple readable streams into a single writable 
+
+design pattern : is a reusable solution to a recurring problem
+
+creational design patterns : are patterns that address the problem of object creation , for example the revealing constructor pattern , 
+exposes the object's properties and methods only during object creation 
+
+factory design pattern : factory is a functional design pattern that enforces encapsulation by leveraging javascript features like closures
+and it simply abstracts the creation of a class object by rapping it with a function and this function is the factory function, and this
+way you can separate object creation from it's implementation
+
+factory design pattern limits the access to classes and prevents their modification by only exposing the factory and keeping classes hidden cause 
+it only exposes a public interface that allows you to deal with the factory
+
+encapsulation : is preventing external code from manipulation of internal details of an encapsulated element like it's properties or it's methods
+
+per new es6 syntax you don't need to add property names when defining functions inside objects you can just do this 
+const something={something(){}}
+
+you cna make properties of a class private by prefixing them with # or having them as private variables of the constructor of the class
+
+builder pattern : a design pattern that eases the creation of classes or calling methods that has long list of arguments by creating methods
+that assign those parameters to the instantiation of the class 
+
+superagent library for testing are actually using the builder pattern
+
+revealing constructor pattern : this pattern allows you to run functionality only while the initialization a class 
+example:
+const something = new RevelingConstructor((reveled parameters)=>{})
+real life example : 
+const  promising = new Promise((resolve, reject)=>{})
+
+purposes of using singleton pattern : 
+sharing stateful information
+optimizing resource usage
+synchronize access to a resource
+
+singleton pattern : allows only one instance of a class to be used by the whole project, simply exporting the class will be enough and make 
+it only used once cause the module system of nodejs will cache the exported module
+or you can have a global variable with the instance you need of the class 
+
+dependency injection pattern : this pattern allow looser coupling between modules , it's different than the traditional module importing in 
+the fact that it allows for easier mocking of dependencies 
+
+injector : is the provider of the required service in the dependent module 
+
+inversion of control : is when you are leaving the control of the application to the framework itself or to a third party package
+
+structural design patterns : design patterns that are related to relations between project entities
+
+proxy pattern : a proxy is an object that controls access to another object called subject
+
+multiple functionalities could be achieved through proxy , like data validation, security, caching, Lazy initialization and logging and remote
+objects
+
+ES15 proxy object : a built in proxy object that allows you to add a proxy to any object like this 
+const proxy = new Proxy(subject, handler)
+
+trap methods : methods like apply, get, set and has this methods could be overridden using proxy
+
+polyfill : is conversion of functionality of APIs to plain js to import in other places where this api doesn't exist
+
+Object Composition :  whereby an object is combined with another object for the purpose of extending or using its functionality
+
+function delegation : is delegating the functionality of an entity like a function to another party like another class 
+
+object augmentation 'monkey patching': is a proxy pattern implementation by modifying the subject directly and overriding a function of it 
+directly , object augmentation or monkey patching is a dangerous approach that should be used at caution 
+
+proxy es object has limitation that it can't be polyfilled or transpiled cause some of it's traps only gets executed at runtime , this is abstract
+limitation when it comes to old browsers using js  
+
+Transpilation : conversion of code from one programming language to another in case of js , it from one version to an older one so that it can
+be run on older devices
+
+behavioral design patterns : are patterns that are concerned with the interaction between different parts of any software
+
+strategy design pattern : this pattern allows an object called context to have different variations of it's logic in separate objects called
+strategies, the context holds the common logic across all the strategies
+
+strategy pattern is particularly useful for conditions where you have to use a lot of if conditions
+
+constructor(strategy){
+  async someFunc(){
+    return strategy.delegatedFunc()
+  }
+}
+
+this is how the strategy pattern works , it delegates the functionality of some part of the context to the strategy
+
+state pattern : state pattern is a specialization of the strategy pattern where the strategy is changed based on the state of the object
+
+change observer pattern : is a design pattern where the subject notifies one or more changes of any changes that happen , so they can react
+to those changes 
+
+decorator pattern : is a design patter that augments the behavior of an object by adding functionalities and properties, it's different from
+classical inheritance that it doesn't add the functionality to all the objects of the class , it adds it only the instance that is decorated 
+
+decorator pattern is different from proxy in that it doesn't modify the existing subject by modifying it's functionality rather it adds new
+functionality to it 
+
+you can do object decoration through object augmentation
+
+you can decorate with proxy object
+
+adapter design pattern : allows us to use an object functionality with a different interface than it's original one 
+
+in adapter pattern you have the adapter and adaptee , which is the entity used by the adapter 
+
+template Pattern : is a pattern that defines an abstract class the defines the common logic and the implementation is left for the
+subclasses 
+
+template methods : are the empty methods of the abstract class that are left to the subclasses to implement
+
+the difference between template and strategy , is that in template , the implementation is done from the begging while strategy is configured
+at runtime which means template is declarative  while strategy is imperative
+
+iterator pattern : a pattern that aims to decouple the iteration on the elements of the pattern from the way we consume the iterated 
+element
+
+iterator patter in js : iterator pattern could be used in js to iterate over things like streams or events not only containers , so 
+in a more generic sense we could say that iterator pattern could be used with any construct that emits a sequence 
+
+iterator : is an object implementing the next() function of the iterator interface
+
+next() : the iterator function that returns an object that has the following properties 
+done : is a boolean that is true the iteration is finished and no more elements are available for iteration
+value : is the value returned from the operation , if done is true then this value will be called Return Value which is the value that is 
+returned from the operator if the iteration was completed
+
+iterables : are standardized objects that are returned by the iterator 
+
+semicoroutines or generators : are a generalization of functions that have the ability to be pause and resumed at a later time 
+you define a generator using the following syntax
+function * myGenerator () {
+  // generator body
+}
+
+example generator 
+function * fruitGenerator () {
+  yield 'peach'
+  yield 'watermelon'
+  return 'summer'
+}
+generators ares started or resumed when you do .next on them as the following and are stopped when they return 
+const something = fruitGenerator()
+something.next() , since this is the first next it will return peach
+second next will return watermelon and so on
+
+
+kind: PersistentVolumeClaim : is what allows pods and nodes to access persistent volumes
+
+storage class : is a class that defines how persistent volumes are managed and defined
+
+kubectl get pv : this will get you all persistent volumes on your cluster
+
+spec:
+  containers:
+    - name: story
+      env: 
+        - name: envVariableName
+          value: envValue
+this is how you set an env variable value
+
+kind: ConfigMap : this is how you configure a key value pair for your environment variables
+
+kind: ConfigMap
+data:
+  key: value
+this is how you define a key value pair for env configuration
+
+kubectl get configmap: this allows you to get the config maps configured on your cluster
+
+command design pattern : command is any object that has all the details required to execute an action in later point in time
+
+command components :
+command : the object that contains the info required for invocation of a function or a method
+client : the component that creates the command and passes it to the invoker 
+invoker : the component responsible for executing the command on the target 
+target : is the receiver of the action weather it's a method or a function
+
+
+browsers javascript doesn't have the require function or the file system , it only has the import module system
+
+on nodejs , the importing is done directly from the filesystem , which is an performant process, so splitting the code into smaller modules is 
+better approach in nodejs apps but that's not the case on browser code
+
+browser code parses html code , which has referenced scripts , the more the scripts the more the time it will take the application to load  
+
+bundlers use case is to optimize src code files , and for example to have one src per page , also it can minify the code , which is done by 
+removing comments , or removing unused code
+
+on browsers , we deal with two stages building and then runtime , but on the server we only deal with runtime cause source code is executed directly
+
+we can think of a bundler as a compiler for the browser
+
+transpilers like babel will allow us to transform modern js into older js 'ES5' which runs on older browsers
+
+bundlers work is divided into two stages , dependency resolution and packing
+
+dependency resolution is done by going through the code starting from the main module 'the entry point' and then resolving the dependencies
+into an acyclic graph , called dependency graph
+
+the way bundlers resolve dependencies is by going through the import statements of the entry point file first , it parses the import lines , one 
+by one , meaning that it will first go through each import and pause parsing the other imports of the entry point until the first import is resolved
+and then it goes through the second import and so on , it does this at the begging and in the dependencies of the file
+
+the bundler uses this dependency resolution method also with cyclic dependencies meaning that when it encounters a dependency for the second
+time it won't add it to the dependency graph as it's already there 
+
+tree shaking : a bundler technique that doesn't add any classes, functions, or variables that aren't imported to the dependency graph
+meaning that it won't be included in the final bundle
+
+modules map : an object that is produced by the bundler after constructing the dependency graph 
+
+IIFE: immediately invoked function expression are functions that are executed in the same place they are defined ,
+example:
+((something)=>{return something})('something') 
+
+
+packing stage is simple working on the modules map and extracting it to have code that works in the browsers
+
+local initialization is the act of initializations something before calling any of it's asynchronous apis
+
+delayed startup : is delayed the usage of any of the components asynchronous operations until it's completely started , this delays each component
+but the solution to this is delaying the start of the app until all of it's asynchronous operations are done
+
+pre-initialization queues : where all the operations that require the component to be started are queued until all the component has started
+
+asynchronous request batching : is batching multiple requests that are made to an asynchronous function with the same input and returning to 
+both clients the same response even there were two requests, the asynchronous operation executes only once, the limitation for this approach
+is if the requests are far in time from each other or if the process is already fast
+
+map is a key value pair container like object but it keeps the order of insertion of the keys
+
+cpu bound tasks : are synchronous tasks that take a lot of cpu power , blocking js thread and it has three solutions
+interleaving with set immediate, using external process and using external threads
+
+child_process.fork(): create a new child process and allows communication with it , just as we do with event emitters
+
+process.on('message',(message)=>{doSomething}) : this will allow us to instantiate the process on receiving the message
+
+processes uses another process from your machine , while threads don't
+
+threads could be seen as a mini version of processes
+
+worker threads run within the same process and are faster than instantiating a new process
+
+additional threads , have their own v8 engine! and their own js environment
+
+workerpool : a library that allows you to deal easier with workers or threads
+
+piscina : a library that allows you to deal easily with processes
+
+the scale cube : is a scalability metric invented by Martin L. Abbott ebay cto that is used to scale applications to allow load balancing , it has three axis
+x-axis for cloning  
+y-axis Decomposing by service/functionality
+z-axis splitting by data partition
+
+z-axis is speaking mostly about database scaling and horizontal and vertical scaling
+z-axis is the last scaling method that should be used only after using x and y 
+
+cluster module : a core nodejs module that eases forking of new node instances and distributes that load across them
+
+round robin distribution algorithm : a distribution algorithm on the master node that distributes load across worker nodes by sequentially 
+assigning requests to them , in a sense that the first request goes to the first worker , the second to the second and so on
+
+autocannon allows you to test the number of requests that your server can take and you can do it like this 
+npx autocannon -c 200 -d 10 http://localhost:8080
+
+
+pm2 library is based on the cluster module that provides monitoring and auto restarting 
+
+stateful communication: is where details about the communication is saved on the side of the server 
