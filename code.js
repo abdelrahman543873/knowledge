@@ -1,48 +1,33 @@
-const inputText = "something is something but something is nothing pls check nothing";
-const lineSplitter = (text, textSize) => {
-  const resultSplitText = [];
-  let counter = 0;
-  const textSplitArray = text.split(" ");
-  for (let i = 0; i < textSplitArray.length; i++) {
-    if (!resultSplitText[counter]) {
-      if (textSplitArray[i].length > textSize) {
-        resultSplitText.push(textSplitArray[i].substring(0, textSize));
-        resultSplitText.push(textSplitArray[i].substring(textSize));
-        counter += 2;
-      } else {
-        resultSplitText.push(textSplitArray[i]);
-      }
-    } else if (
-      textSplitArray[i].length > textSize &&
-      resultSplitText[counter].length < textSize
-    ) {
-      resultSplitText[counter] = resultSplitText[counter] += ` ${textSplitArray[
-        i
-      ].substring(0, textSize - resultSplitText[counter].length)}`;
-      resultSplitText.push(
-        textSplitArray[i].substring(textSize - resultSplitText[counter].length)
-      );
-      counter += 1;
-    } else if (
-      textSplitArray[i].length > textSize &&
-      resultSplitText[counter].length === textSize
-    ) {
-      resultSplitText.push(textSplitArray[i].substring(0, textSize));
-      resultSplitText.push(textSplitArray[i].substring(textSize));
-      counter += 2;
-    } else if (
-      // one extra character for the space
-      resultSplitText[counter].length + textSplitArray[i].length + 1 <=
-      textSize
-    ) {
-      resultSplitText[counter] = resultSplitText[
-        counter
-      ] += ` ${textSplitArray[i]}`;
-    } else {
-      counter += 1;
-      resultSplitText.push(textSplitArray[i]);
-    }
-  }
-  return resultSplitText;
-};
-console.log(lineSplitter(inputText, 8));
+const {
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+} = require("@azure/storage-blob");
+
+const sharedKeyCredential = new StorageSharedKeyCredential(
+  'valsquad',
+  "4+n0m6e+/EwQSJ7img8uDDFiAK9XhZmAq1ECxulQGHtRnVSyFDtjLwB7q/20dRBCr/U7MHpYGIegZJjnAeEd8A=="
+);
+const blobServiceClient = new BlobServiceClient(
+  `https://valsquad.blob.core.windows.net`,
+  sharedKeyCredential
+);
+
+const containerName = "digitalworkspace";
+
+async function main() {
+  const containerClient = blobServiceClient.getContainerClient(containerName);
+
+  const content = "Hello world!";
+  const blobName = "newblob" + new Date().getTime();
+  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+  const uploadBlobResponse = await blockBlobClient.upload(
+    content,
+    content.length
+  );
+  console.log(
+    `Upload block blob ${blobName} successfully`,
+    uploadBlobResponse.requestId
+  );
+}
+
+main();

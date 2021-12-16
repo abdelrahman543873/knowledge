@@ -325,3 +325,47 @@ npx autocannon -c 200 -d 10 http://localhost:8080
 pm2 library is based on the cluster module that provides monitoring and auto restarting 
 
 stateful communication: is where details about the communication is saved on the side of the server 
+
+sticky load balancing : is associating sessions with a specific instance of the instances
+
+reverse proxy : acts as a client originating the requests to the instances, also acts as a load balancer to forward requests to the correct 
+instances
+
+peer to peer load balancing : is when you have two internal services one is scaled and the other isn't and the unscaled service , is responsible
+for load balancing it's requests to the scaled service
+
+peer to peer load balancing is better when it comes to internal scaling , as it reduces both the complexity and the count of the nodes and 
+increases the speed as network packets are reduced by one step 
+
+linux os is a monolithic kernel 
+
+api orchestration layer , is a layer that is used to communicate with the separate micro-services and do the actions required by the user
+
+message broker : is the ability to send and receive messages between services internally
+
+messaging system : is the way that system components communicate together
+
+the elements to consider for any messaging system : 
+direction of communication : which could be one way or request/reply exchange
+the purpose of the message that determines it's content
+the timing of the message: which means is the communication synchronous or asynchronous
+the delivery of the message which could be done directly or via a broker
+
+messaging queue : is used for handling asynchronous communication it stores a queue of messages to be sent over the network
+
+brokers : are isolated dedicated queuing systems
+
+messaging patterns : 
+publish/subscribe: or pub/sub is a one way messaging system , where clients are subscribed to a certain event and is notified when the publisher
+publishes a message like a big observer pattern
+
+a log is a stream of data where it can be only appended and viewed
+
+in asynchronous communications messages are stored and maybe delivered at a later time
+
+message queues : are systems that guarantee delivery of messages to the receiver
+
+the difference between stream and queue messages , is that log messages aren't removed once they are delivered and a client can view stream's
+history while it's not doable on queues
+
+Message Queue Telemetry Transport MQTT: is a lightweight messaging protocol that is used for machine to machine communication 
