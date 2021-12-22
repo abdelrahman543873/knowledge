@@ -368,4 +368,13 @@ message queues : are systems that guarantee delivery of messages to the receiver
 the difference between stream and queue messages , is that log messages aren't removed once they are delivered and a client can view stream's
 history while it's not doable on queues
 
-Message Queue Telemetry Transport MQTT: is a lightweight messaging protocol that is used for machine to machine communication 
+Message Queue Telemetry Transport MQTT: is a lightweight messaging protocol that is used for machine to machine communication
+
+durable subscriber : is when the subscriber will always reliably receive a message even though if he was offline through queues
+
+queues possible properties:
+durable : queues data is stored in disks, in case the queue is restarted or destroyed it's recreated again with the same data
+exclusive: the queue is tied to only one subscriber , when the subscriber disconnects , the queue is destroyed
+auto-delete : this will cause the queue to be deleted when the last subscriber disconnects
+
+redis streams : are another form of messaging systems which relies on queues rather than logs 

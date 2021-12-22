@@ -40,6 +40,8 @@ view Encapsulation: is a feature of angular that limits styles to their componen
 @ViewChild('localReference selector') classProperty : this will allow the selection of an element using the local reference selector of the element we want to select, it will return a refElement , this ref Element could be used to get 
 the underlying nativeElement and then get any DOM property from the native element 
 
+viewChildElement.nativeElement.value : this is how you will get the value of a selector element 
+
 in general , everything that you place between the opening and closing of a component will be lost and won't be rendered
 
 <ng-content></ng-content> : a directive that allows you to add html elements to your components from outside the component itself
@@ -48,8 +50,9 @@ you have this component
 <div>
 <ng-content></ng-content> 
 </div> : then any data that is added from another outside component using this component will be added between the DIVs 
+of if you add in the parent component <div><p></p></div> the paragraph element will be passed inside the div
 
-lifCycle methods of components:
+lifCycle hooks of components:
 ngOnChanges(changes:simpleChanges): first instantiated hook and is always called when changes happens to components and by changes we mean changes in any class properties that are decorated by the @input decorator and it's the
 only hook that receives a parameter which are the changes that happened
 ngOnInit: second instantiated hook that is instantiated right before the component appears on the screen and it will run after the constructor
@@ -57,7 +60,7 @@ ngDoCheck : is instantiated whenever angular checks for changes on the component
 ngAfterViewInit: is instantiated when the view is initialized on the screen
 ngOnDestroy: is called when the component is removed or destroyed in the dom
 
-@ContentChild('localRef') classProperty : this allows you to access content that is rendered inside your component
+@ContentChild('localRef') classProperty : this allows you to access content that is rendered inside your component from an external component
 
 [ngClass] = {'valueOfClass: condition'}: a style directive , that allows you to choose a certain class if a condition
 is satisfied
@@ -260,3 +263,51 @@ input.ng-invalid {
 something.setValue({propriety of the element selected and their values}) : this will override the values of the whole form
 something.form.patchValue({property you want to override}) : this will override only the value of the property you pass 
 something.reset() : resets the whole form for you 
+
+
+source maps : are cli added feature that allows us to trace our js code back to it's typescript source in the browser
+
+in the browser under webpack you can find the . folder which has the src folder of the project
+
+all elements of a component are by default accessible only from the component , and this allows for the concept of view encapsulation
+
+view encapsulation enforces css files to be scoped only to the component they are in 
+
+*ngIf = "elementRef; else anotherElementRef" : this will allow you to show elements based on if else conditioning
+
+attribute directives : are directives that sit on elements as properties and change the properties of the element
+
+structural directives: are directives that change the dom of the html they are sitting on 
+
+[ngClass]="{class: condition}" : this will style the element that it's sitting on with the property class if the condition resolves to true 
+
+[ngStyle]="{backgroundColor: value? 'blue': 'red'}" : this will style the element with the mentioned property if the conditions evaluates to true
+
+camel casing is used with directive selectors
+
+we can create directives that could be used with our elements easily , example : 
+@Directive({
+	selector: '[appDirective]'
+})
+export class AppDirective implements onInit{
+	constructor(private decoratedElement: ElementRef){}
+	onInit(){
+		this.decoratedElement.nativeElement.backgroundColor = 'blue'
+	}
+}
+this way this directive will change the background color of any element it's sitting on to blue and the brackets in the selector tells angular
+that this is going to be property of an element it's sitting on and this is how we use it 
+<p appDirective></p>
+but it's a bad practice to access our elements directly and change them , like done in here so we should use the renderer as following
+@Directive({
+	selector: '[appDirective]'
+})
+export class AppDirective implements onInit{
+	constructor(private decoratedElement: ElementRef, private renderer: Renderer2){}
+	onInit(){
+		this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'blue')
+	}
+}
+this is a better way of accessing the element the directive is sitting on cause angular isn't only limited to running in the browser , for
+example it might run with service workers so this place might not have access to the dom
+

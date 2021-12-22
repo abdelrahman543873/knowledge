@@ -1,33 +1,27 @@
-const {
-  BlobServiceClient,
-  StorageSharedKeyCredential,
-} = require("@azure/storage-blob");
-
-const sharedKeyCredential = new StorageSharedKeyCredential(
-  'valsquad',
-  "4+n0m6e+/EwQSJ7img8uDDFiAK9XhZmAq1ECxulQGHtRnVSyFDtjLwB7q/20dRBCr/U7MHpYGIegZJjnAeEd8A=="
-);
-const blobServiceClient = new BlobServiceClient(
-  `https://valsquad.blob.core.windows.net`,
-  sharedKeyCredential
-);
-
-const containerName = "digitalworkspace";
-
-async function main() {
-  const containerClient = blobServiceClient.getContainerClient(containerName);
-
-  const content = "Hello world!";
-  const blobName = "newblob" + new Date().getTime();
-  const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-  const uploadBlobResponse = await blockBlobClient.upload(
-    content,
-    content.length
-  );
-  console.log(
-    `Upload block blob ${blobName} successfully`,
-    uploadBlobResponse.requestId
-  );
-}
-
-main();
+const http = require("http");
+const staticHandler = require("serve-handler");
+const ws = require("ws");
+const Redis = require("ioredis"); // (1)
+const redisSub = new Redis({});
+const redisPub = new Redis();
+// serve static files
+const server = http.createServer((req, res) => {
+  return staticHandler(req, res, { public: "www" });
+});
+const wss = new ws.Server({ server });
+wss.on("connection", (client) => {
+  console.log("Client connected");
+  client.on("message", (msg) => {
+    console.log(`Message: ${msg}`);
+    redisPub.publish("chat_messages", msg); // (2)
+  });
+});
+redisSub.subscribe("chat_messages"); // (3)
+redisSub.on("message", (channel, msg) => {
+  for (const client of wss.clients) {
+    if (client.readyState === ws.OPEN) {
+      client.send(msg);
+    }
+  }
+});
+server.listen(process.argv[2] || 8080);
