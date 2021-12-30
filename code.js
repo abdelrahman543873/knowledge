@@ -1,27 +1,14 @@
-const http = require("http");
-const staticHandler = require("serve-handler");
-const ws = require("ws");
-const Redis = require("ioredis"); // (1)
-const redisSub = new Redis({});
-const redisPub = new Redis();
-// serve static files
-const server = http.createServer((req, res) => {
-  return staticHandler(req, res, { public: "www" });
-});
-const wss = new ws.Server({ server });
-wss.on("connection", (client) => {
-  console.log("Client connected");
-  client.on("message", (msg) => {
-    console.log(`Message: ${msg}`);
-    redisPub.publish("chat_messages", msg); // (2)
+const soap = require("strong-soap").soap;
+// wsdl of the web service this client is going to invoke. For local wsdl you can use, url = './wsdls/stockquote.wsdl'
+const url = "https://10.2.1.108/tranwall/service/IssuerApi/v2.0?wsdl";
+
+soap.createClient(url, function (err, client) {
+  console.log(client);
+  client.setSecurity({
+    addOptions: function (options) {
+      options.rejectUnauthorized = false;
+      options.strictSSL = false;
+      options.agent = new https.Agent(options);
+    },
   });
 });
-redisSub.subscribe("chat_messages"); // (3)
-redisSub.on("message", (channel, msg) => {
-  for (const client of wss.clients) {
-    if (client.readyState === ws.OPEN) {
-      client.send(msg);
-    }
-  }
-});
-server.listen(process.argv[2] || 8080);
