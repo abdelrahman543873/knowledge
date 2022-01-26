@@ -380,5 +380,36 @@ the status changes in your form realtime , and react to status changes in any fo
 
 pattern="regex" : this html attribute will validate the input against a certain regex
 
+pipes are transformation techniques that allow you to transfer the interpolated string value to anything you want only in the template while
+leaving the component value as it's
 
+{{value | uppercase}} : this is the upper case pipe that transforms the value letters to uppercase
 
+{{date string | date}}: this transforms a date string into a standard date
+
+{{pipe:'parameter'}} : this is the way to pass parameters
+example:
+{{pipe:'fullDate'}} : this parameter will change the parameter format to have the full date
+
+this is how to create a pipe 
+@Pipe({name: 'theNameThatIsGoingToShowInTheTemplate'})
+export class PipeName implements PipeTransform{
+	transform(value:any, param:any){
+		return value
+	}
+}
+where PipeTransform is imported from angular core and transform is the transformer function that takes the value and modifies it and returns
+it back , and you can pass parameters to it
+YOU NEED TO ADD The PIPE TO Declarations
+
+*ngFor="let item of array | pipe" : this syntax allows you to loop through a piped array
+
+@Pipe({pure: false}) : this will recalculate the pipe every time the data being piped is changed , but this is very performance heavy
+
+asynchronousValue | async : this is the async pipe that allows displaying a value that is loaded asynchronously 
+
+if an http request isn't subscribed to in an angular app , the request won't be sent
+
+{[key:string]: type} : this syntax means that we don't know the name of the property of the object but we know it's type
+
+this.httpModule.get<type>(): the <type> will determine the type of the data returned by the http request
