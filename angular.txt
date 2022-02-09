@@ -40,6 +40,8 @@ view Encapsulation: is a feature of angular that limits styles to their componen
 @ViewChild('localReference selector') classProperty : this will allow the selection of an element using the local reference selector of the element we want to select, it will return a refElement , this ref Element could be used to get 
 the underlying nativeElement and then get any DOM property from the native element 
 
+viewChildElement.nativeElement.value : this is how you will get the value of a selector element 
+
 in general , everything that you place between the opening and closing of a component will be lost and won't be rendered
 
 <ng-content></ng-content> : a directive that allows you to add html elements to your components from outside the component itself
@@ -48,8 +50,9 @@ you have this component
 <div>
 <ng-content></ng-content> 
 </div> : then any data that is added from another outside component using this component will be added between the DIVs 
+of if you add in the parent component <div><p></p></div> the paragraph element will be passed inside the div
 
-lifCycle methods of components:
+lifCycle hooks of components:
 ngOnChanges(changes:simpleChanges): first instantiated hook and is always called when changes happens to components and by changes we mean changes in any class properties that are decorated by the @input decorator and it's the
 only hook that receives a parameter which are the changes that happened
 ngOnInit: second instantiated hook that is instantiated right before the component appears on the screen and it will run after the constructor
@@ -57,7 +60,7 @@ ngDoCheck : is instantiated whenever angular checks for changes on the component
 ngAfterViewInit: is instantiated when the view is initialized on the screen
 ngOnDestroy: is called when the component is removed or destroyed in the dom
 
-@ContentChild('localRef') classProperty : this allows you to access content that is rendered inside your component
+@ContentChild('localRef') classProperty : this allows you to access content that is rendered inside your component from an external component
 
 [ngClass] = {'valueOfClass: condition'}: a style directive , that allows you to choose a certain class if a condition
 is satisfied
@@ -124,28 +127,35 @@ const appRoutes:Routes=[{path:"users",component:Component,children:[{path:"",com
 allows you to navigate between components , the path is the string that is place after the url of the website and 
 the component is what get loaded when you go to that url , and the children route will allow you to go to another child route , which means it will be an extension of the main route
 
+we should have an empty route like this [{path:'',component: DefaultComponent}], this means that this will be the component that will be loaded
+when no path is selected
+
 RouterModule.forRoot(appRoutes) : this will control the routes of your app and it's imported in the app module
 
 <router-outlet></router-outlet> : this directive tells angular where to render the component of the route
 
 <a routerLink="/"></a> : this will make angular handle the routing which will prevent the app from reloading with
 with each click which is the normal behavior if we use href
-routerLink="path" : this will navigate to the relative path
-routerLink="/path" : this will navigate to the absolute path
+routerLink="path" : this will navigate to the relative path which means that it will add the path to the path you are currently on
+routerLink="/path" : this will navigate to the absolute path which means that it will add the path to the absolute url of the website
+routerLink="./path": this directory like path will navigate up one level and then go to the mentioned path 
 
 routerLinkActive="active" : this will change the style of the selected routing element to active in this case to 
-mark that it's selected 
+mark that it's selected , the active is the name of the class that is going to be activated when the app is sitting on the current route
 
 [routerLinkOptions]="{exact:true}" : this angular property is used for configuring the options for the routerLinkActive
 directive , and the exact make links activate if they are only refereed to exactly
 
 [queryParams] = {allowEdit:true} : this is a parameter option for routerLink that allows you to add query parameters to the router
 
-fragment = "value" : a fragment option of routerLink that adds a fragment to the route
+fragment = "value" : a fragment option of routerLink that adds a fragment to the route which is #value in this case
 
 this.router.navigate(['servers'],{relativeTo:'the base router you want',queryParamsHandling:'preserve'}) : the router service that is injected in the constructor allows you to navigate 
-to other routes "/ or no / doesn't matter" using the navigate function , and the relative to property determines the base route
+to other routes "/ or no / doesn't matter" using the navigate function as the router service doesn't know which route we are sitting on, and
+the relative to property determines the base route
 queryParamsHandling: this will determine what happens if you redirect from this route and in this case it will preserve the route parameters
+
+subscriptions for angular aren't destroyed automatically in usual and you need to destroy them by implementing onDestroy function  
 
 this.activatedRoute : this will get you the route of the current component that you are in 
 
@@ -184,7 +194,9 @@ export class AuthGuard implements canActivate {
 	}
 }
 
-const path = [{canActivate:[GuardService],canDeactivate:[guard], path:"users/:id",component:Component}] : the can deactivate guard allows you to either leave the route or not 
+const path = [{canActivate:[GuardService],canDeactivate:[guard],canActivateChild:[guard] path:"users/:id",component:Component}] : the can deactivate 
+guard allows you to either leave the route or not and the canActivate property allows you to enter the route or not 
+and canActivateChild will only protect the children routes but not the parent route
 
 const path = [{path:"**",component:Component, data:{}}] : this allows you to pass data to the component and then if you want to access this data you do it like this
 this.activatedRoute.snapshot.data['the property you want to access'] or you can subscribe to the data Observable like this this.route.data.subscribe()
@@ -215,11 +227,15 @@ operators : are transformations that you could apply on the data before receivin
 observable.pipe('use functions from rxjs like map','another rxjs function', ....).subscribe() : this is the way to use operators with observables
 
 subject : is a special type of observable that is more interactive where you can trigger the next function from outside the subject not from the inside as in the case of the normal observable 
-and it can't be used with the @Output from angular
+and it can't be used with the @Output from angular and it could be subscribed to normally as you do with observable
+subjects are also more efficient than observables
+
+you use subjects with your services to emit events which is better
 
 two templates approaches are available in angular :
 template-driven : where you make you html template 
 reactive approach : where the form is created from the code and synchronized with the dom 
+
 
 ngModel : inside forms , this is an angular directive that allows you to control a form element from the dom , and it's syntax is like this
 <input type="text" ngModel name="theNameThatIsGoingToBeRepresentedInTheDom"/>
@@ -276,3 +292,139 @@ in string interpolation you can call a function
 [(ngModel)]="variable" : this is two way binding that will trigger on both sides
 
 ng g c folder/component : this will create the component inside the specified folder
+
+source maps : are cli added feature that allows us to trace our js code back to it's typescript source in the browser
+
+in the browser under webpack you can find the . folder which has the src folder of the project
+
+all elements of a component are by default accessible only from the component , and this allows for the concept of view encapsulation
+
+view encapsulation enforces css files to be scoped only to the component they are in 
+
+*ngIf = "elementRef; else anotherElementRef" : this will allow you to show elements based on if else conditioning
+
+attribute directives : are directives that sit on elements as properties and change the properties of the element
+
+structural directives: are directives that change the dom of the html they are sitting on 
+
+[ngClass]="{class: condition}" : this will style the element that it's sitting on with the property class if the condition resolves to true 
+
+[ngStyle]="{backgroundColor: value? 'blue': 'red'}" : this will style the element with the mentioned property if the conditions evaluates to true
+
+camel casing is used with directive selectors
+
+we can create directives that could be used with our elements easily , example : 
+@Directive({
+	selector: '[appDirective]'
+})
+export class AppDirective implements onInit{
+	constructor(private decoratedElement: ElementRef){}
+	onInit(){
+		this.decoratedElement.nativeElement.backgroundColor = 'blue'
+	}
+}
+this way this directive will change the background color of any element it's sitting on to blue and the brackets in the selector tells angular
+that this is going to be property of an element it's sitting on and this is how we use it 
+<p appDirective></p>
+but it's a bad practice to access our elements directly and change them , like done in here so we should use the renderer as following
+@Directive({
+	selector: '[appDirective]'
+})
+export class AppDirective implements onInit{
+	constructor(private decoratedElement: ElementRef, private renderer: Renderer2){}
+	onInit(){
+		this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'blue')
+	}
+}
+this is a better way of accessing the element the directive is sitting on cause angular isn't only limited to running in the browser , for
+example it might run with service workers so this place might not have access to the dom
+
+@HostBinding()
+
+services are inherited by child components so , if you provide app component with a service all it's children will inherit the same instance of 
+that service
+
+this.router.navigate(['link', id , 'edit'],{queryParams:{property:'value'}, fragment: 'loading'}): this will navigate to the link link,using the
+id that is added , and then using the edit sub link and then the query params will pass the properties the are passed as query params and 
+a fragment loading will be added the route 
+
+it's not good to use a click listener on a form button , as the default behavior of a form button is to send a request to the server , and that
+in angular , is handled by the http service , so the best way is to have ngSubmit on the form element
+
+#referenceElement="ngForm" : this will allow us to pass the from dom as a parameter
+
+ngModelGroup : a directive that allows you to group elements of a form
+
+ReactiveFormsModule: this is the module that is used for creating reactive forms module
+
+new FormGroup({'field': new FormControl(null,validator,asyncValidator)}): this will create a new form that has field as a field in this form
+and the second and third parameters can take sync and async validators for validation of your input
+
+<form [formGroup]="fromGroupPropertyInTSCode"/> : the from group directive will allow angular to infer the form from the typescript code
+
+<input FormControlName="name of the form control in the form group> : this will link this input with the form control specified in the ts
+form group
+
+new FormGroup({'field': new FormControl(null,Validators.required)}): this is how you add required validation in your form, validators is imported
+from angular
+
+you can have nested form groups which is equivalent to have multiple nested form groups like this
+new FromGroup({'groupName': new FromGroup({'something': new FromControl('')})})
+
+new FromArray([new FormControl()]) : allows you to add an array of form controls to your form in a reactive way 
+
+<div formArrayName="formArrayName"> : this will synchronize your div with a form array in your typescript code
+
+you can create custom validators in angular like this
+forbiddenName(control: FormControl):{[s:string]:boolean}{
+	if(condition) return {'forbiddenName':true} // this line means that the validation fails
+}
+notice here that in case of successful validation we return nothing , and then we pass this validator to the form control constructor
+
+you can also create async validators that will do the same thing as sync validators but asynchronously
+
+FormControl.valueChanges.subscribe((value)=>{
+	console.log(value)
+}) or FormGroup.valueChanges.subscribe() : the valueChanges observables is available on both form group or form control and it allows you to detect
+changes in your form realtime , and react to changes in any form control
+
+FormControl.statusChanges.subscribe((status)=>{
+	console.log(status)
+}) or FormGroup.statusChanges.subscribe() : the statusChanges observables is available on both form group or form control and it allows you to detect
+the status changes in your form realtime , and react to status changes in any form control, the status values are pending , invalid and valid
+
+pattern="regex" : this html attribute will validate the input against a certain regex
+
+pipes are transformation techniques that allow you to transfer the interpolated string value to anything you want only in the template while
+leaving the component value as it's
+
+{{value | uppercase}} : this is the upper case pipe that transforms the value letters to uppercase
+
+{{date string | date}}: this transforms a date string into a standard date
+
+{{pipe:'parameter'}} : this is the way to pass parameters
+example:
+{{pipe:'fullDate'}} : this parameter will change the parameter format to have the full date
+
+this is how to create a pipe 
+@Pipe({name: 'theNameThatIsGoingToShowInTheTemplate'})
+export class PipeName implements PipeTransform{
+	transform(value:any, param:any){
+		return value
+	}
+}
+where PipeTransform is imported from angular core and transform is the transformer function that takes the value and modifies it and returns
+it back , and you can pass parameters to it
+YOU NEED TO ADD The PIPE TO Declarations
+
+*ngFor="let item of array | pipe" : this syntax allows you to loop through a piped array
+
+@Pipe({pure: false}) : this will recalculate the pipe every time the data being piped is changed , but this is very performance heavy
+
+asynchronousValue | async : this is the async pipe that allows displaying a value that is loaded asynchronously 
+
+if an http request isn't subscribed to in an angular app , the request won't be sent
+
+{[key:string]: type} : this syntax means that we don't know the name of the property of the object but we know it's type
+
+this.httpModule.get<type>(): the <type> will determine the type of the data returned by the http request
