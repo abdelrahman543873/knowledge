@@ -260,3 +260,19 @@ input.ng-invalid {
 something.setValue({propriety of the element selected and their values}) : this will override the values of the whole form
 something.form.patchValue({property you want to override}) : this will override only the value of the property you pass 
 something.reset() : resets the whole form for you 
+
+@NgModule is imported from forms module
+
+the first file that is loaded in angular apps is the main.ts file and it's the one the allows the selectors in the index.html file to be defined 
+
+the bootstrap property of the NgModule decorator , tells angular which components should be firstly initialized in the index.html file while bootstrapping the app
+
+in string interpolation you can call a function
+
+[property]="someProperty" : this is called property binding it binds a DOM property to the property in the ts 
+
+(click)="someFunction($event)" : this is called event binding where we bind dom events to functions in our ts code passes the data from the event to the bound function
+
+[(ngModel)]="variable" : this is two way binding that will trigger on both sides
+
+ng g c folder/component : this will create the component inside the specified folder

@@ -1,0 +1,61 @@
+react is a javascript library that helps you build js interfaces 
+
+imperative approach : is the approach where you describe everything in your code , step after step 
+
+the reason for react usage is allowing us to use a declarative approach for building our frontend apps , which makes writing them easier and faster
+
+react doesn't have as much built in libraries as angular and view , in react you need to depend much on third party libraries to accomplish things like routing and so on
+
+arrow function solves the problem of this context , where the context of 'this' changes in the normal function declaration to be the function itself , in the arrow function the context of 'this'
+stays to be the outside scope of the function instead of the inside
+
+named exports : are when you have multiple exports and you have to import them by name
+
+default export : is when you do export default something , and this works with one and one export only
+
+classes are blue prints for objects
+
+rest operator '...' , merges the parameters that are passed to a function in an array 
+
+array destructuring is done like this const [a,b] = ['hello','nice'] which is then gonna have two variables a and b assigned the values hello and nice
+
+object destructuring is done like this const {something, hello} = {something:'nice', hello:'cool'} and this is gonna do the same as array destructuring but for objects
+
+index.js is the first file that gets executed in a react app 
+
+only one file is rendered to the react application
+
+ReactDom.render(<App/>, document.getElementById('root')) : render is a react method that tells react to render the react component in the root element of the html
+
+if you import a css file you have to include the .css extension in the imports
+
+jsx : stands for js xml, is a syntax where you include html code in js files
+
+react allows for declarative approach meaning that instead of writing js code to manually fill the dom , you can write the html code directly and js will render it 
+
+it's best practice to build the structure of react apps as one file per component
+
+the app component is the root component of the react app
+
+a component in react is a js function that returns html code
+
+convention react apps components file names are written in camel case and that the function names of the components are the same as the file name
+
+custom components must start with an upper case character as react reads the lower case elements as normal html elements
+
+in react components only one root element is allowed to be returned
+
+conventionally you name the css file with the same name of the component js file
+
+className: is the attribute that you set the value for in jsx code
+
+in order for you to include css code you need to import it in the component , example
+import 'something.css'
+
+{} inside your html code allows you to have normal js expressions inside of the html code
+
+props : is setting the state of your components, like this
+<ReactComponent prop={value}></ReactComponent> 
+and then in the react component we pass one Object that has all attributes passed to the custom component as a parameter
+
+it's better to have the js code in the js part of the component instead of inside the html code itself
