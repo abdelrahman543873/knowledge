@@ -1,0 +1,13 @@
+blockchain : is a database shared across many computers in a network
+blocks : consecutive groups of machines, transactions need to be stored in a block to be successful
+chain: refers to the fact that each block cryptographically references it's parents , so the data in a block can't change unless it gets the approval of all it's parents
+consensus mechanism: the mechanism that is used the the cryptocurrency to validate or add new blocks to the system
+proof of work : is the mechanism used by etherium to validate that you have done the work required and are allowed to add a block
+
+evm : Ethereum Virtual Machine which smart contracts are stored on
+
+a ledger is a data store that keeps track of transactions
+
+wei and gwei are the smallest amounts of either for transactions
+wei is 10 power -18
+gwei is 10 power -9
