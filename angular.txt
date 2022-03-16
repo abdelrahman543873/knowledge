@@ -413,3 +413,99 @@ if an http request isn't subscribed to in an angular app , the request won't be 
 {[key:string]: type} : this syntax means that we don't know the name of the property of the object but we know it's type
 
 this.httpModule.get<type>(): the <type> will determine the type of the data returned by the http request
+
+catchError : is a function from rxjs that allows you to add a function handling for errors
+
+this.httpService.get('url',{header: new HttpHeaders({'header':'value'}) , params: new HttpParams().set('param','value')}): 
+this is how you set your parameters and headers
+
+this.httpService.get('url',{observe:'response',responseType:'Text'}): this will change the returned parsed response from the server , where 
+instead of only getting the body , you will get back the whole response 
+observe: 'events' : this will allow you to granularly observe your response events , like sending , received and so on 
+and responseType: 'text' tells angular that the response should be only text and not converted to json , which is the default http behavior
+
+tap : is a rxjs pipe operator that allows you to execute an action on the received data without interrupting the flow
+
+REQUEST INTERCEPTOR:
+implementing a Request httpInterceptor in angular is done the following way 
+export class AuthInterceptor implements HttpInterceptor{
+	intercept(req:HttpRequest<any>,next:HttpHandler){
+		// your code 
+			return next.handle(req)
+	}
+}
+and then in order for the interceptor to be added to your angular app , you have to add to the app.module in the following way 
+providers:[{provider:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}] : multi option notifies angular that the app is going to be 
+using multiple interceptors , and that angular should handle that 
+
+in angular, request object is immutable and if you want to modify it , you have to clone the original request object using req.clone()
+and pass the cloned request to the next.handle , if you are in an interceptor for example
+req.clone({headers: req.headers.append('Auth','value')}) : this is how you clone the request and add extra headers
+
+catchError : is an rxjs operator that is used to catch errors and could be used in pipes
+
+throwError : an rxjs operator that allows you to throw errors and errors are thrown like this 
+return throwError
+
+angular components typescript files main use case is to handle ui logic  
+
+getter: is a property of classes that allows you to run code when you reference a property in a class
+and you create it like this 
+export class something {
+	get property (){
+		// your getter code here 
+	}
+} 
+also if you do a getter to a class property that means that you can't set it unless you add a setter to the property 
+
+behavior subject : a like subject subscription that has the previous emitted value , even if you weren't subscribed to it 
+
+take : is an rxjs operator that allows to take the value of the latest value of the subscription one time and then unsubscribe automatically 
+
+exhaustMap(function) : this allows you to replace observables that it's appended to by an internal observable
+
+the app component is one of the earliest things that run in the app 
+
+url tree : the canActivate guard in angular allows you to return a url tree that redirects you to whatever page you want instead of doing
+navigation manually and you can return a url tree like this 
+this.router.createUrlTree(['/auth']) this prevents racing conditions that might occur from multiple route.navigate 
+
+ngIf allows you to load the components dynamically
+
+dynamic component loader : allows you to imperatively load and add components from code 
+
+component factory : is provided by angular and allows you to add components to the dom 
+
+entryComponents: is a feature in angular that allows you to look for your components in places other than the routing module and the html 
+templates
+
+angular doesn't search all your application code it only searches for modules that you have imported or used , so modules are the
+building block of angular 
+
+instead of importing individual components and directives and features to the app module you could bundle them into a module and import it
+in the app module
+
+bootstrap property of ng module , specifies which component is available in the index.html module which is the main entry html file 
+
+by default declared features like directives and components are only available in the module scope you have to add an feature to the exports
+array in order for you to be able to use it somewhere else
+so everything in angular works as standalone and isolated from all other things 
+
+feature module : is a module that groups features that are related to a certain feature
+
+splitting app into modules is a prerequisite for improving your app performance
+
+ngFor and ngIf directives are provided by the browser module
+
+the browser module has to be only imported once in any angular app , cause it needs to be only run once cause it does angular app config
+initialization
+
+CommonModule: common module is an angular module that has a lot of angular feature and that is imported to individual modules 
+and it unlocks things like ngFor and ngIf
+
+RoutingModule.forRoot() : should be only used onces for root routes and then you can use RoutingModule.forChild() and it will automatically 
+append routes to the root routes
+
+if you add a feature module routing module you won't need to export your components anymore cause you already have them inside your module
+
+common features should be added to a shared module to avoid code duplication
