@@ -524,3 +524,10 @@ append routes to the root routes
 if you add a feature module routing module you won't need to export your components anymore cause you already have them inside your module
 
 common features should be added to a shared module to avoid code duplication
+
+we use effects from ngrx to handle asynchronous code that runs before or after actions or reducers
+
+import {EffectsModule} from '@ngrx/effects' this is a module that registers all of the side effects like this
+EffectsModule.forRoot([Effects]) 
+
+@Effect({dispatch: false}) : this tells angular that this effect doesn't dispatch an action
