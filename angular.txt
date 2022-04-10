@@ -630,3 +630,9 @@ import {Actions} from '@ngrx/effects'
 export class AuthEffects { 
 }
 
+we use effects from ngrx to handle asynchronous code that runs before or after actions or reducers
+
+import {EffectsModule} from '@ngrx/effects' this is a module that registers all of the side effects like this
+EffectsModule.forRoot([Effects]) 
+
+@Effect({dispatch: false}) : this tells angular that this effect doesn't dispatch an action
