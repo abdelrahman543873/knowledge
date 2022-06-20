@@ -19,3 +19,4 @@ Denial Of Service : where fake users attack a server with excessive load
 Elevation of Privilege: where a user elevates his permissions to another level
 
 MSDL : Microsoft Development Lifecycle 
+

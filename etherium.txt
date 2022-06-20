@@ -11,3 +11,4 @@ a ledger is a data store that keeps track of transactions
 wei and gwei are the smallest amounts of either for transactions
 wei is 10 power -18
 gwei is 10 power -9
+
