@@ -1,0 +1,135 @@
+css: is short for Cascading Style Sheets , and cascading means having multiple rules for the same element
+
+css latest version is version 3
+
+inline styling : having the style attribute in the html element and customizing the css properties of the element
+
+css declaration: defining what you want to style and how you want to style it 
+
+font-family : css property that changes the font family of the text 
+sans-serif: font will use the browser default
+
+class selectors: allow you to choose all elements with a certain class to apply a certain style 
+universal selector : is a selector that is used to style all the elements on the page and is done like this 
+*{
+	color : blue; 
+}
+id selector : selects an element using the id like this 
+#elementId 
+attribute selectors : you select all the elements with certain attributes like this 
+[attribute]{
+	color: blue
+}
+
+css is case insensitive so name your classes like this 
+class-name
+
+the order matters in css if you define the same selector twice cause the latest selector is applied
+
+inline styles have the highest priority 
+
+specificity: means that the more specific the selector , the higher priority it has  
+and the priority list goes from top to bottom as following 
+inline styles
+id 
+classes , :pseudo classes and attribute selectors
+combinator
+tags and pseudo element selectors
+
+inheritance : in css elements inherit styles from their direct and indirect parent elements 
+
+combinator types: 
+ADJACENT SIBLING
+example div + p {}
+the element "p in this case" has to be a direct sibling of the related element "div in this case" , meaning that the p must come directly after the div
+and they both elements has to share the same parents too
+GENERAL SIBLING
+example div ~ p {}
+it's same as the adjacent sibling but the p element doesn't have to come directly after the div  
+CHILD COMBINATOR
+div > p {}
+the child element has to be a direct child , in the example case the p has to be the direct child of div 
+DESCENDANT 
+div p {}
+a generic approach of the CHILD COMBINATOR , all the elements that are under a div get the styling 
+it doesn't matter if it's a direct child or not 
+
+value types : 
+PREDEFINED OPTIONS:
+example: 
+display:block
+COLORS: 
+example:
+color: red
+LENGTH,SIZE,NUMBER:
+examples: 
+height: 100px
+FUNCTIONS:
+examples : 
+background : url()
+
+css rule : is the definition of what to style and how to style it 
+
+inheritance has very low specificity and priority 
+
+css property : inherit  : is a css property that allows you to inherit a certain value of a css property 
+
+combinator : allows mixing multiple css selectors together like this 
+#someId .className : this is saying to css select any element with class name className inside of an element with id someId 
+
+box model : content is inside padding that is inside border that is inside margin 
+
+css shorthands : combining values of multiple properties in a single property 
+
+order doesn't matter in css shorthands
+
+margin shorthand : margin top bottom right left  or margin : top&bottom left&right like this "margin 5px 10px" 
+or margin top&bottom&left&right like this  margin: "10px"
+example : margin 5px 10px 5px 10px 
+
+there is by default a margin of 8px in the body 
+
+margin collapsing : is when two elements have a certain margin , and those two elements are next to each other 
+the bigger margin always wins and the two margins between the two elements are combined into one 
+
+you can remove the margin collapsing phenomenon by specifying margin top and margin bottom  
+
+block level elements take up 100% width by default 
+
+margin and border and padding are added to the height set of the element cause the height is set for the content of the element
+
+box-sizing : content-box : this is the default behavior of setting the height and width , they are set to the content box only not to the overall html box 
+
+box-sizing : border-box : this now makes height and width include the border 
+
+block level elements has box-sizing value by default to be content-box 
+
+BEM Block Element Modifier : which is a way of writing css classes names
+
+display property allows changing the nature of the element from inline to block and vice versa 
+
+display : none doesn't remove the element from the dom , it just hides it 
+
+display: inline-block : this allows us to use the behavior of both inline elements in terms of the space they take and the block elements in case of the box model of
+margin and padding and so on 
+
+visibility:  hidden : this will hide an element but keep it's position 
+
+value: calc(4-1): calc function is a css function that allows calculation of maths operations 
+
+text-decoration: none : this removes any text decoration like links decoration
+
+vertical-align : aligns two elements on the same line 
+example : vertical-align:middle
+
+pseudo classes : are classes that are indicating certain state of an element
+
+pseudo elements: defines the style of a specific part of an element 
+example : ::first-letter : allows you to style the first letter of an element 
+
+rules grouping : .class1, .class2{
+	something
+} : this will apply the same rules to both classes 
+
+url() : css function that allows you to reference urls 
+example : background: url() 
