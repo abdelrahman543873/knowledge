@@ -1,22 +1,22 @@
-<<<<<<< HEAD
-function foo() {
-  var x = 1;
-  function bar() {
-    var y = 2;
-    console.log(x); // 1 (function `bar` closes over `x`)
-    console.log(y); // 2 (`y` is in scope)
+function expression(exp) {
+  for (let i = 1; i < exp.length; i++) {
+    if (exp[i] === ")" && exp[i - 1] !== "(") {
+      return false;
+    } else if (exp[i] === "}") {
+      const substring = exp.substring(0, i).indexOf("{");
+      if (substring === -1) return false;
+      const arrayString = exp.split("");
+      arrayString[substring] = "0";
+      exp = arrayString.join("");
+    } else if (exp[i] === "]") {
+      const substring = exp.substring(0, i).indexOf("[");
+      if (substring === -1) return false;
+      const arrayString = exp.split("");
+      arrayString[substring] = "0";
+      exp = arrayString.join("");
+    }
   }
-  bar();
-  console.log(x); // 1 (`x` is in scope)
-  console.log(y); // ReferenceError in strict mode, `y` is scoped to `bar`
+  return true;
 }
-=======
-const someObject = { hello: "hello", sean: "sean" };
-Object.keys(someObject).forEach((property) => {
-  console.log(property);
-const soap = require("strong-soap").soap;
-// wsdl of the web service this client is going to invoke. For local wsdl you can use, url = './wsdls/stockquote.wsdl'
-const url = "https://10.2.1.108/tranwall/service/IssuerApi/v2.0?wsdl";
->>>>>>> 30c065de98128c918f564c270614c79e13b8cfdc
 
-foo();
+console.log(expression("[()][}{()()}"));

@@ -1,0 +1,15 @@
+smart contracts are self executing agreements and the code for smart contracts has the conditions for it to self execute
+
+blockchain explorer : a platform that allows to explore block chain in details and not execute any code , you can inspect transactions or smart contracts codes or event account balances
+
+solidity is the programming language that is used for writing smart contracts and that run on ethereum virtual machines
+
+ERC 20 tokens : is the standard that is applied by smart contracts on the ethereum blockchain and it allows for interoperability between tokens on the platform 
+
+ERC721 Tokens : is the standard for the NFTs 
+
+web3.js : is the library that allows you to interact with the ethereum network and smart contracts 
+
+ens ethereum Name Service : is the network that allows users of the ethereum network to mask their ips with addresses like ab.eth and be able to do transactions
+
+peer to peer transfer : means a transfer 

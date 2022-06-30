@@ -1,0 +1,26 @@
+security misconfiguration : wrong configuration that could leave apps exposed like leaving default password for a db user
+
+sensitive data exposed : when data is exposed form a system and it's not encrypted
+
+insufficient attack protection: is when an application is being attacked and has no idea that it's being attacked
+
+CSRF Cross Site Request Forgery : where logging into one website could lead to unwanted actions in another website where the user is authenticated
+
+using components with known vulnerabilities 
+
+unprotected APIs
+
+xml external entities : when an xml document refers to another xml within the xml entity and that reference causes the vulnerability
+
+insecure deserialization : serialization is the storage of the data in a store like a db , deserialization is the retrieval of the data from the store
+an attacker could modify the data during serialization 
+
+insufficient logging and monitoring : not being able to discover or locate an attack when it happens 
+
+cryptographic failures: causes communication between different parts to be exposed
+
+insecure design : a failure to implement security to design layers that affects integrity , availability and confidentiality 
+
+software and data integrity failure : a software that relies on data from a third party but the third party got corrupted or compromised 
+
+server side request forgery : when a malicious code from the malicious user is executed on the server 
