@@ -443,3 +443,21 @@ y: is a minor version
 z: is bug fixes and security patches 
 
 y and z are compatible on 2 minor releases like 1.19 is compatible with 1.18 and 1.17  
+x.y.z: is the versioning methodology for kuberenets , x is the major version , y is updates , z critical bug fixes
+
+patch versions "Zs" are release every week or a month 
+
+the hard way of downloading k	uberenets is without kubeadm where you need to install each component of the worker node and the control plane manually 
+
+SIG : Special Interest Group
+
+kubeadm allows you initialize cluster the best practice way, also allows you to update delete and downgrade a cluster
+but downgrading using kubeadm isn't recommended 
+
+there is a kubeadm version for each minor version
+
+kubeadm init : allows you to initialize a cluster and it install all the components as static pods
+
+kubeadm upgrade plan : shows you what is the best version to upgrade your cluster to 
+
+upgrades could be only one version at a time 

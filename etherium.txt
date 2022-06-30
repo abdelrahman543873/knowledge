@@ -11,3 +11,13 @@ a ledger is a data store that keeps track of transactions
 wei and gwei are the smallest amounts of either for transactions
 wei is 10 power -18
 gwei is 10 power -9
+
+double spending problem : when a transaction is doubled
+
+peer to peer transfers : transfers where there is no middle man in the transaction 
+
+blockchain efficiencies: 
+solving the double spending problem "where in the real world there are banks as middle men and structures monitoring them , here you have the blockchain which elementals
+the need for monitoring 
+
+we are mostly on the ropsten test network

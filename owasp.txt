@@ -24,3 +24,25 @@ insecure design : a failure to implement security to design layers that affects 
 software and data integrity failure : a software that relies on data from a third party but the third party got corrupted or compromised 
 
 server side request forgery : when a malicious code from the malicious user is executed on the server 
+injection : is when malicious code is sent to the server and is executed successfully and this code allows for malicious attacks 
+
+broken authentication and session management : is when an attacker could impersonate someone else through a broken authentication system 
+
+cross site scripting attack : is where a malicious script is executed on the browser of the victim and there is two types of xss attack 
+persistent xss attack : is where there is malicious code that is stored on the server side 
+non persistent xss attack : is where a link is sent to the user and the user clicks it and then the malicious code is executed to get tokens or hijack sessions 
+
+broken access control : means broken authorization and an authenticated user could do whatever they want once they are logged in
+
+security misconfiguration : which mean incorrect configuration of a system like leaving the default password of a db
+
+STRIDE stands for 
+Spoofing : where someone pretends they are someone they aren't
+Tampering : meaning manipulation with data 
+Repudiation : backing down from a transaction that could happen 
+Information disclosure : where Information is being shared out with other users 
+Denial Of Service : where fake users attack a server with excessive load  
+Elevation of Privilege: where a user elevates his permissions to another level
+
+MSDL : Microsoft Development Lifecycle 
+

@@ -33,7 +33,7 @@ now this something event could be listened to from parent elements and executed 
 
 view Encapsulation: is a feature of angular that limits styles to their component only 
 
-@Component({Encapsulation:ViewEncapsulation.None}): this will disable the view encapsulation mechanism of angular and any style you apply to this component will be applied globally
+	@Component({Encapsulation:ViewEncapsulation.None}): this will disable the view encapsulation mechanism of angular and any style you apply to this component will be applied globally
 
 <input #localReference/> : this allows you to reference an html element locally in the same template , and then you can pass it as an input to other functions in the html template 
 
@@ -525,9 +525,198 @@ if you add a feature module routing module you won't need to export your compone
 
 common features should be added to a shared module to avoid code duplication
 
+standalone features like components and directives can't be added twice to declarations
+
+core module : is a module where you add all services and then add this module back to the app module 
+
+if you add services to the providers of a module and export it you don't need to add it to the exports array 
+
+lazy loading : angular has the ability to lazy load modules directly when their routes are loaded 
+for lazy loading , your module has to bring in it's routes and use routingModule.forChild() , and you can do it 
+by adding the route to main routing module like this 
+import("../recipes/recipes.module").then((m) => m.RecipesModule)
+or like this 
+{ path: "recipes", loadChildren: "../recipes/recipes.module#RecipesModule" }
+that right now means that this module will only be loaded when the route is loaded and not on the initialization of the application
+the lazy loading looks at all the typescript imports and adds it to the bundle so we need to remove any unused typescript bundles 
+it's also IMPORTANT that the routing module of any module will have empty path cause it's included in the main routing module 
+
+if you load module easily they should be only in the routing module and not in the imports array as this will cause to load eagerly and lazily 
+which will create a conflict
+
+RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}) : this allows our app to preload all lazy loaded modules in idle time 
+so that the initial bundle is small and when the user is idle the rest of the lazy loaded modules are loaded
+
+shouldn't provide services through eagerly loaded modules and by default services should be provided in the root using provided in root
+
+if services are provided in the in the lazy loaded modules , new instances of the service are created
+
+JIT : just in time compilation , is the process of the angular cli that interprets js angular code to instructions in the browsers and it
+happens during runtime in our app
+
+AOT: ahead of time compilation allows you to compile your js angular code before it's shipped to the browser which makes your browser code 
+smaller and faster 
+ng build --prod : uses AOT and ships smaller code 
+
+static hosts : are hosts that are capable of running static code like html css but not any server side code
+
+environment variables : you can use key value pairs in environment variables and env variables prd to load different key value pairs and 
+angular cli will replace the keys with values for you , and you just import environment object and then if you do prd build , angular 
+will swap it with prd keys 
+
+application state : the data that controls what the user sees on the interface , so your app could be loading , and that would 
+be a state
+
+rxjs : is the library that allows you to have the functionality like event emitters , and subjects, and observable functionalities
+
+redux : is a state management pattern , where there is a single store for application state and components and services get 
+there values from that state
+
+actions : actions in redux are how you change your data in the central store by adding an identifier "identifying the action you want to do"
+and an optional payload
+
+reducers : are functions the actions talk to to change the data, and you couple code there , that will execute before reaching to the store
+and in normal redux library you only execute synchronous code but in ngrx actions you could execute asynchronous code,
+theses functions take two parameters passed by ngrx, state and action
+
+Ngrx is angular's implementation of redux, you could also use redux directly with angular 
+
+
+Ngrx advantages over normal redux:
+it's deeply integrated into angular  "it has it's own services that you can inject anywhere in your angular app"
+uses rxjs "all the state or the central store is managed as a big observable"
+uses typescript
+
+ngrx state should be a js object
+
+actions identifiers naming convention is all upper case letters like this SOME_ACTION
+
+in actions you have to return a new sate
+
+in ngrx , you MUSTN't change the previous state 
+
+always have your action names in enum or constants
+
+actions should be classes that implements "Action" interface from ngrx/store like this 
+class ActionName implements Action {
+	readonly type = "actionName" // this is done this way to provide safety against changing the action type by mistake
+}
+
+to use 
+
+import {storeModule} from '@ngrx/store' : this allows us to import the store module of ngrx to setup the redux approach using angular
+storeModule.forRoot({shoppingList: shoppingListReducer}) : the for root is to define the reducers of the application , this key in this object
+will be later used for injection into angular services like this 
+
+private store : Store<{shoppingList: {ingredients: Ingredient[]}}> and here the ingredients object is the type of data that the reducer produces
+and instead of having the type of the state of the shopping list as an object you can export an interface from the reducer that describes the interface of the state
+
+this.store.select('shoppingList') : the select function allows you to select a part of your state using the store you injected in this case it's the shoppingList
+area
+
+(observable | async).values : the async pipes could be used with observables to get the values from the observable
+
+this.store.dispatch('actionName') : this allows you dispatch actions to your store 
+
+the reducers for the forRoot function should be stored in a global folder called app.state.ts
+
+make sure to have unique action identifiers as dispatched actions reach all reducers and not only the one that you mean 
+
+reducers only run sync code , and reducers should not have any side effects which means they are pure functions 
+
+@ngrx/effects : gives us a place to manage our actions side effects in angular way 
+
+import {Actions} from '@ngrx/effects' 
+export class AuthEffects { 
+}
+
 we use effects from ngrx to handle asynchronous code that runs before or after actions or reducers
 
 import {EffectsModule} from '@ngrx/effects' this is a module that registers all of the side effects like this
 EffectsModule.forRoot([Effects]) 
 
 @Effect({dispatch: false}) : this tells angular that this effect doesn't dispatch an action
+
+you redux tools in chrome that allows you to track your dispatched actions 
+
+@ngrx/store-devtools: this allows you to track your dispatched actions , through the chrome extension and then you can import it in the app module 
+by importing StoreDevtoolsModule.instrument({})
+
+@ngrx/router-store: this allows you to add a package called StoreRouterConnectingModule.forRoot() and allows you to react to routing
+
+switchMap : an rxjs operator that allows you to switch your subscription inside a pipe rxjs operator 
+
+ngrx.io : is the official docs for ngrx
+
+angular universal allows your angular code to be rendered on the server
+
+platform id : allows you to identify if your angular app is running on a server or a web browser and it's injected like this 
+@Inject(PLATFORM_ID) private privateId
+and then you import isPlatformBrowser(this.privateId) from @angular/common
+
+ng add @nestjs/ng-universal: adds your server side application with nestjs
+
+we use angular 2 animations feature to work with animations 
+like this 
+@Component({animations:[]})
+
+import {trigger} from '@angular/core'
+animations : [trigger('nameOfAnimationElement',[style({}), transition({})])] :  the trigger function recognizes the elements of the html that allows animations and the 
+style function has the switch in the animations that is going to happen 
+and transition has controls the flow between styles
+
+
+transition("state => anotherState", animate(300)): this will allow for a delay of 300 seconds to transit from state to another one
+and if you replace => with <=> this will allow for a vice versa transition easily and if you do this
+"state" <=> "*" , then this transition will get triggered no matter what the state to or from the transition
+
+"void => state" : this controls what happens when the element is moved from the non existing state "void" to a certain state
+
+transition("", []): the array of elements that is added to transition is executed before the element reaches the final state defined in the state identifier
+
+state({offset: 0.3}) : this controls the number of frames this style gets of the total time of the transition which is 30% here
+
+group([animate(),animate()]) : this allows you to group multiple animations at the same time
+
+(@divState.start())="function()": this is an animation life cycle hook , and the code inside it will start when the animation starts 
+
+angular allows you to run other codes in threads using service workers
+
+ng add @angular/pwa : the package that allows you to use service workers with angular  and adds all the boiler plate needed to the project
+
+TestBed : is the like the testing module in nestjs
+
+.editorConfig: is a file that is generate by angular cli to control the format of the angular code in the project 
+
+browsersList : a file generated by angular to tell it what browsers to build the code for 
+
+karma.conf.js : this file manages the testing environment for angular , cause the testing framework by angular is karma behind the scenes
+
+ng lint : lints your angular code 
+
+defaultProject : is an angular.json option that specifies which project should be used as default if there are multiple projects in the folder 
+
+architect : is an angular.json option that tells you which commands do what and assigns their options
+
+schematics: allows you to have your own generated templates using ng generate and ng update
+
+ng add package : this command not only installs the npm dependencies for a package , it also configures all of it's code by adding the required config in the 
+code of the project
+
+ng update : this allows you to update your angular packages and their dependencies , and it could also tell you which code in your angular project needs to update
+
+ng deploy : allows you to deploy your project to cloud providers
+
+differential loading : allows your application angular to identify which type of browser is running your angular app "modern or legacy browser" and serve the most 
+optimized code in each case , "smaller bundle in modern browsers and big bundle in case of old browsers"
+
+ng new appName --create-application=false : this will generate the files for angular without the application or the project folder so that in the future if we 
+want to have multiple projects in the main directory 
+
+ng generate library: this generates boiler plate code for creating an angular library 
+
+web component : this allows you to render angular components dynamically 
+
+@angular/elements : helps us with creating angular web components by doing this 
+createCustomElement(Component , {injector}) : the component is the angular component you created and you need to import it , and the injector is the dependency injection
+system that is going to be used to inject this component and usually it's the angular injection system

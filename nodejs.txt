@@ -172,7 +172,6 @@ iterator pattern : a pattern that aims to decouple the iteration on the elements
 element
 
 iterator patter in js : iterator pattern could be used in js to iterate over things like streams or events not only containers , so 
-in a more generic sense we could say that iterator pattern could be used with any construct that emits a sequence 
 
 iterator : is an object implementing the next() function of the iterator interface
 
