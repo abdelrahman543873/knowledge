@@ -133,3 +133,65 @@ rules grouping : .class1, .class2{
 
 url() : css function that allows you to reference urls 
 example : background: url() 
+
+rgb(5,5,5) : this is a color function that allows you to control the red green blue degrees 
+
+rgba(color,color,color,blurriness) : is like rgb but the fourth parameter is the blurriness of the color    
+
+box-shadow : allows you to have a shadow behind a box , example:
+box-shadow : 2px 2px 2px 2px rgba(0,0,0,0.5)
+
+if you want to align text in an element you set the text-align property in the parent element to center like this 
+ParentElement {
+	text-align : center 
+}
+
+border-radius: 50% : this style allows you to have a circle element , but the height and the width of that element must be equal , aka square
+
+margin : auto : this will center element horizontally but not vertically, so there will be equal distances to the left and to the right 
+
+the order where you import the style sheets into the html is important , the last css import is the one that overwrites all the previous ones 
+
+float is a css feature that allows you to overwrite the browser default positioning and move elements to left or right
+we rarely use flow cause it overrides default browser flow , it might be good for positioning elements but not so great for block level elements
+
+position value is static by default
+
+when you change position to fixed , it takes the element out of the document flow , so the other elements doesn't see it as existing 
+
+when you change position to "fixed", any positioning that you do becomes related to the view port 
+
+fixed positions doesn't care if the element is inline or block element
+
+z-index: is the property that controls which elements are on top of other ones
+
+z-index value by default is 0 which means all elements will be on the same level 
+
+z-index doesn't work with static position values 
+
+z-index with negative values will make the icon that is assigned the property under all other default component which have z-index equal to 0
+
+position: absolute : this changes the element to define it's position relative to be closest element that has position property applied 
+
+position : relative : this moves the element relative to it's original position , not to the view port like fixed or the parent that has the position property 
+
+overflow : hidden : this will hide the element if it gets out of it's parent element
+
+if you put the overflow property on the body , it gets moved to the html 
+if you want to really apply the overflow property to the body , you have to apply the overflow property to both the body and the html element 
+
+position : sticky : acts as relative and fixed combined , as relative cause as soon the element is out of the parent it disappears , and as fixed cause it becomes on top of other elements
+
+if some elements has the position fixed with no z-index , the last element is the element on top
+
+a fixed position element can't be lower than it's parent , even if it's z-index is lower 
+
+stacking context: is the context that the z-index is calculated within , meaning that if two elements have a have specific z-indices then the children of the element with lower z-index
+can't bypass the children  or the element with the higher z-index  or can the parent with the lower z-index
+
+background-size : width height : you can set the image size this way by setting width and height 
+example : background-size : 500px 600px 
+
+background-size : cover :  will always fit the image to the container even if the image is smaller it will zoom in the container 
+
+background-size: contain : will always make sure that the whole image is inside the container 
