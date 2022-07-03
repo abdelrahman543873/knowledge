@@ -236,6 +236,213 @@ persistent volumes : are a type of kuberenets volumes that are independent of th
 
 kind: PersistentVolume : this is the kind of the of the object of persistent volumes
 
+alias k="kubectl" : this is a linux command that allows you to alias any command you have , after that kubectl can be replaced with k 
+
+kubectl explain "resource" : this command tells you all the available config for the mentioned resource 
+example: kubectl explain pod
+
+kuberenets : is a greek name that mean pilot
+
+k8s : is an abbreviation of the number of letters between the k and the s 
+
+k8s : is the linux kernel of distributed systems , cause it manages linux containerized application,
+cause the containers of any app is based on linux
+
+Cloud Native Computing Foundation : CNCF : this is the organization that is responsible for managing k8s and doing it's exams
+
+the problem with virtualization is that it's a virtualization of the operating system 
+
+vms are way less portable , meaning that application that run on linux , can't run on windows and so on
+
+containers don't run on operating systems , it shares operating systems, as it virtualize the kernel
+
+nodes are worker machines that are managed by the control plane 
+
+there are two types of nodes in k8s , it's either a worker node or a master node "control plane"
+
+k8s control plane is run on linux as sytemd services or static pods 
+
+k8s maser node components : 
+etcd distributed persistent storage , there is where all the configuration master node of the cluster
+API server: is what orchestrates the communication between the different components of the kuberenets cluster
+controller manager: is what makes sure that the configuration on the worker nodes are they are intended to be based on the etcd distributed persistent storage
+scheduler : makes sure to correctly deploy your pods and distribute them on the worker nodes according to application resources needed and availability of nodes
+
+k8s worker nodes components are run as system cd services or worker nodes
+
+k8s worker node components : 
+kube-proxy : will route the packet to reach your containerized app and it communicates with the api server
+kubelet: is both responsible for registering the worker node with the api server on the master node and also manages and monitors app deployments , and also responsible for inner communication
+between running containers and outside world "the api server"
+container run time as docker or so 
+
+k8s commands structure:
+kubectl command type name flags
+command : is the command you want to do like get
+resource : is the resource to want to act on like pods stateful sets and so 
+name : is the name of the resource
+flags : is the options of the command 
+
+
+kubectl commands also speak to the api server
+
+kuberenets allows you to add dns server , which is by default core dns in k8s
+
+the api server is the only one that will talk to the etcd distributed persistent storage
+
+the life cycle of the resource in k8s is CRUD operations on the resource
+
+the configuration of your cluster is always written in the etcd of the cluster , "configurations like what is deployed where and so on"
+
+everything monitors the api server to track the states of resources 
+
+the api server is secured using authentication and it's called the GATEKEEPER
+
+the api server is responsible for admission , validation , authentication , authorization of any requests 
+validation is the validation that the commands that are going to be executed by the api server is valid commands 
+
+after any request from a client has been processed by the server , it's written to the etcd first
+
+controller manager : 
+
+each resource in k8s has a corresponding controller process in the controller manager , those controller processes don't know of the existence of each other and they don't communicate , 
+all the communication is done through the api 
+
+the controller manager has a manager component of each resource type , like pod controller , replica set controller and so on 
+all of the controller manager components WATCHES for any changes in their corresponding resource types 
+
+replica set ensures that are certain number of pods or replicas for a specific resource exist and the one responsible for that 
+is the replica set controller that is a controller manager component of the controller manager 
+
+scheduler is called also kube-scheduler
+
+scheduler steps for scheduling is the following : 
+filtering : it filters out all the nodes that are eligible for hosting the required resources 
+scoring : if multiple nodes are eligible for hosting a resource it will choose the one based on the best score , and if multiple node have the same score 
+it will do it in a round robin fashion
+
+etcd is also called the Data store
+
+the reason etcd is picked for a data store for k8s is that it is distributed
+
+all etcd data is stored in a /registry
+
+etcd stores values in a key value pair fashion
+
+etcdctl : is the command used for managing etcd 
+
+you need tls certificates with etcdctl to connect to it 
+
+kubelet is also known as the node agent , and it runs as a systemd service on every worker node and the master node too cause it's responsible for creating pods 
+
+kubelet is responsible for the lifecycle of pods , it instructs the container runtime "docker or rocket ..etc" for CRUD operations of pods and it watches the api server
+
+kubelet get the configuration of the pods from the api server
+
+kubelet also monitors the pods , to check for their health 
+
+service kubelet status
+
+pods are EPHEMERAL : meaning that if they are deleted or destroyed you are never gonna restore the same pod with the same identity again
+
+services are the network representation of pods using a durable ip or domain name
+
+services are not EPHEMERAL
+
+a service is a load balancer that redirects inbound traffic to their corresponding ips of pods and this transition from a static ip to pod ip is done by kube-proxy 
+
+kube-proxy has two modes , either user space which is slow cause it depends on an actual proxy server or iptables that is faster cause it depends on the routing iptables of 
+linux 
+
+even when pods want to communicate with each other they don't communicate using their ips they communicate using their service ips and this happens by looking at the iptables and the natting 
+system
+
+so kube-proxy configure the iptables and the routing and it only runs on the worker nodes 
+
+CRI stands for Container Runtime Interface allows for decouple of the kubelet from the container runtime system either docker or rocket or whatever
+cause in the past docker code used to be integrated directly in the source code of kubelet
+
+REST: stands for representational state transfer
+
+kuberenets objects are resources that are managed by the rest api 
+
+url root : is the api uri that is responsible for a resource , it's always singular and unique 
+
+any k8s resource is manage by the api server as a k8s API object
+
+API group : is a collection of API objects ,
+there are two types of api groups 
+core or legacy or v1 api group , and it's path configuration "appVersion" is 'v1'
+named api groups and their apiVersion path is groupName/version
+
+and then if you want to refrence a resource within those api groups you do 
+/api/v1/resource or
+/apis/groupName/version/resource
+
+'kind' yaml config : is the type of the resource we try to access within the api group  so an example configuration is 
+apiVersion: v1
+kind: pod
+metadata:
+  name: newPod
+  namespace: someNameSpace
+
+
+api versions in kuberenets have : 
+alpha : is still buggy and not stable 
+beta : a bit stable and could be used
+stable: means it's final and stable
+
+kubectl explain resource : gives you all the info about the resource like the api group the versioning , and all configuration parameters for it 
+
+kubectl get nodes : gets you the nodes of your cluster 
+
+the port that the api server listens on is 6443
+
+kubectl proxy:  allows for communication with the api server directly
+and if you do curl -s 127.0.0.1:8001 , you will be able to see all api groups 
+
+if you do /version on the kuberenets api server url , you will get the k8s version you are using 
+
+if you do /api/v1/namespaces/default/pods/podName : this will get you all the info about that specific pod
+
+and everything you do with the api server you can do directly from the kubectl commands
+
+kubectl get svc : this will get you all the services of the cluster 
+
+kuberenets objects: are all the resources that are used to scale or manage pods including pods themselves
+
+manifests : are objects configuration files in yaml 
+
+three types of values in manifests :
+mapping : which is the key value pairs 
+sequence : a list of values 
+scalar : is a primitive datatype like boolean number etc..
+
+the obligatory mappings in a manifest are : 
+apiVersion, kind, metadata.name , metadata.namespace and the spec 
+spec : has the actual configuration of the object like the number of replicas and so on 
+
+akms : api version , kind , metadata , spec : those are the building blocks of any manifest file 
+
+status : is the description of the state that the pods is actually in , opposite to the spec that is the endpoint configuration of that object 
+
+kubectl create -f manifest.yaml : this will create the kuberenets object that is specified in the manifest file
+
+there are two ways to create resources either imperatively or declaratively 
+
+kubectl edit : updates resource in place without updating it's manifest file  
+
+kubectl get collection resource -o wide : this gives you in depth details of the resource 
+
+kubectl describe collection resource : this gives you all details about a certain resource
+
+kuberenets versioning uses semantics : 
+like the following 
+x: is a major version release that deems other kuberenets previous k8s apis incompatible 
+y: is a minor version
+z: is bug fixes and security patches 
+
+y and z are compatible on 2 minor releases like 1.19 is compatible with 1.18 and 1.17  
 x.y.z: is the versioning methodology for kuberenets , x is the major version , y is updates , z critical bug fixes
 
 patch versions "Zs" are release every week or a month 

@@ -1,26 +1,22 @@
-function biggerIsGreater(w) {
-  var vals = w.split("");
-  var largestI = -1;
-  for (let i = 0; i < vals.length - 1; i++) {
-    if (vals[i] < vals[i + 1]) {
-      largestI = i;
+function expression(exp) {
+  for (let i = 1; i < exp.length; i++) {
+    if (exp[i] === ")" && exp[i - 1] !== "(") {
+      return false;
+    } else if (exp[i] === "}") {
+      const substring = exp.substring(0, i).indexOf("{");
+      if (substring === -1) return false;
+      const arrayString = exp.split("");
+      arrayString[substring] = "0";
+      exp = arrayString.join("");
+    } else if (exp[i] === "]") {
+      const substring = exp.substring(0, i).indexOf("[");
+      if (substring === -1) return false;
+      const arrayString = exp.split("");
+      arrayString[substring] = "0";
+      exp = arrayString.join("");
     }
   }
-  if (largestI === -1) {
-    return "no answer";
-  }
-  var largestJ = -1;
-  for (let j = 0; j < vals.length; j++) {
-    if (vals[largestI] < vals[j]) {
-      largestJ = j;
-    }
-  }
-  let temp = vals[largestI];
-  vals[largestI] = vals[largestJ];
-  vals[largestJ] = temp;
-  var endArray = vals.splice(largestI + 1);
-  endArray.reverse();
-  vals = vals.concat(endArray);
-  return vals.join("");
+  return true;
 }
-biggerIsGreater("hkdc");
+
+console.log(expression("[()][}{()()}"));
