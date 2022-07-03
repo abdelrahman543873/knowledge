@@ -133,3 +133,67 @@ rules grouping : .class1, .class2{
 
 url() : css function that allows you to reference urls 
 example : background: url() 
+
+element.class {
+	property:value
+}: this is a way to select elements with specific classes and you can do it like this 
+a.someClass 
+
+class selectors are the most widely used type of selectors 
+
+don't use id selectors if you just want to do some styling , cause they have some side effects , like being able to add links to ids from other parts of the app
+
+!important : is a css value that overrides any specificity and always applies the value 
+but it's bad practice to use it , so avoid it 
+
+not(): is a css selector , that negates anything that is inside 
+example : a:not(.active){
+	property : value 
+} 
+this will negate a selection 
+it's not recommended to use the not and to mostly use positive cases 
+
+background-position : sets how the position of the image is set relevant to the container of the image 
+example : 
+background-position : 20px 50px  => this will set the left part of the image 20px away from the container and the 50px will set the top of the image 50px away from the container 
+background-position : 10% 5% -> this will shift up the left of the image 10% to the left and 5% to the top , and the default is 50% cropped at the top 
+background-position : center : this allows you to center the image , it's the same as 50% 50%
+background-position : left bottom : this will cause the 
+
+background-origin : this specifies the position area of the background
+
+background-clip : shows where the clipping should happen , and background-clip overrides the background-position
+examples : 
+background-clip : padding-box : this will clip at the padding if possible
+
+background-attachment : it controls the behavior of the background when scrolling
+
+background: url('imageLink') left 10% bottom 20%/cover no-repeat border-box : this background shorthand could replace all the previous background value 
+the url is for 'background-image' , the left 10% bottom 20% is for the 'background-position' 
+the slash and the cover is for the 'background-size'
+and the border-box is for the 'background-origin' and 'background-clip' together
+
+if you use an image tag , the original width and height of the image will always be used 
+
+images don't respect the surrounding container if it's an inline element but it does respect the container proportions if the surrounding element is block or inline block 
+
+linear gradient : is the option that allows for smooth transition between two parts 
+examples : 
+background-image : linear-gradient(to left bottom, red, blue) : this will transition the two colors diagonally 
+background-image : linear-gradient(0deg, red, blue) : this will do a transition of 0 degree "from the bottom to top" from red to blue 
+background-image linear-gradient (to left bottom , red 70%, blue) : that means that the red will take 70% of the transition
+
+
+radial gradient : allows for transitions in certain shapes
+background-image : radial-gradient(red,blue) : this will produce an ellipse "default radial-gradient shape" starting with read ending with blue 
+background-image : radial-gradient(circle 20px at top , red, blue) : this produces a circular transition "only alternative shape to the default sphere" and this circle will stop at the top of the screen  
+and the 20px here refers to the diameter length of the circle 
+
+we separate different layers with commas in css 
+example :
+background: linear-gradient(), url('url link') left 10% bottom 20%/cover no-repeat, red
+this will have three layers of background , a linear gradient , an image and a color 
+
+filters : are css functionalities that allows us to change the visual looks of html elements things like 
+blurring for example : 
+filter: blur(10px) : this will blur an element by 10px 
